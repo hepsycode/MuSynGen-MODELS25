@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hml:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hml="org.univaq.hepsy">
+  <nodes xsi:type="hml:Stimulus" name="Stimulus">
+    <ports name="stim">
+      <pChannels name="stim_sys_ch" pFrom="//@nodes.0/@ports.0" pTo="//@nodes.2/@ports.0" queueSize="8" rendezVous="true">
+        <message name="stim_sys_pay">
+          <entry name="ex" type="sc_biguint"/>
+        </message>
+      </pChannels>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:Display" name="Display">
+    <ports name="dis">
+      <pChannels name="log_DC_ch" pFrom="//@nodes.1/@ports.0" pTo="//@nodes.2/@ports.1" queueSize="8" rendezVous="true">
+        <message name="log_DC_">
+          <entry name="ex" type="sc_uint"/>
+        </message>
+      </pChannels>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:StructuredNode">
+    <nChannels name="sampleTimeCord_cleanData_04_ch" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.4" queueSize="8" rendezVous="true">
+      <message name="sampleTimeCord_cleanData_04_pay">
+        <entry name="ex" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="sampleTimeCord_cleanData_01_ch" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.1" queueSize="8" rendezVous="true">
+      <message name="sampleTimeCord_cleanData_01_">
+        <entry name="ex" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <nChannels name="sampleTimeCord_cleanData_02_ch" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.2" queueSize="8" rendezVous="true">
+      <message name="sampleTimeCord_cleanData_02_pay">
+        <entry name="ex" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <nChannels name="sampleTimeCord_cleanData_03_ch" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.3" queueSize="8" rendezVous="true">
+      <message name="sampleTimeCord_cleanData_03_pay">
+        <entry name="ex" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <nChannels name="cleanData_ann_01_ch" nFrom="//@nodes.2/@processes.1" nTo="//@nodes.2/@processes.5" queueSize="8" rendezVous="true">
+      <message name="cleanData_ann_01_pay">
+        <entry name="ex" type="sc_bigint"/>
+      </message>
+    </nChannels>
+    <nChannels name="cleanData_ann_02_ch" nFrom="//@nodes.2/@processes.2" nTo="//@nodes.2/@processes.6" queueSize="64" rendezVous="true">
+      <message name="cleanData_ann_02_pay">
+        <entry name="ex" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <nChannels name="cleanData_ann_03_ch" nFrom="//@nodes.2/@processes.3" nTo="//@nodes.2/@processes.7" queueSize="8" rendezVous="true">
+      <message name="cleanData_ann_03_pay">
+        <entry name="ex" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <nChannels name="cleanData_ann_04_ch" nFrom="//@nodes.2/@processes.4" nTo="//@nodes.2/@processes.8" queueSize="8" rendezVous="true">
+      <message name="cleanData_ann_04_pay">
+        <entry name="ex" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <nChannels name="ann_dataCollector_04_ch" nFrom="//@nodes.2/@processes.8" nTo="//@nodes.2/@processes.9" queueSize="8" rendezVous="true">
+      <message name="ann_dataCollector_04_pay">
+        <entry name="ex" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <nChannels name="ann_dataCollector_03_ch" nFrom="//@nodes.2/@processes.7" nTo="//@nodes.2/@processes.9" queueSize="8" rendezVous="true">
+      <message name="ann_dataCollector_03_pay">
+        <entry name="ex" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <nChannels name="ann_dataCollector_02_ch" nFrom="//@nodes.2/@processes.6" nTo="//@nodes.2/@processes.9" queueSize="16" rendezVous="true">
+      <message name="ann_dataCollector_02_pay">
+        <entry name="ex" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <nChannels name="ann_dataCollector_01_ch" nFrom="//@nodes.2/@processes.5" nTo="//@nodes.2/@processes.9" queueSize="8" rendezVous="true">
+      <message name="ann_dataCollector_01_pay">
+        <entry name="ex" type="sc_bigint"/>
+      </message>
+    </nChannels>
+    <ports name="sys_in" portExtension="//@nodes.2/@processes.0"/>
+    <ports name="sys_out"/>
+    <processes name="sampleTimCord"/>
+    <processes name="cleanData_01"/>
+    <processes name="cleanData_02"/>
+    <processes name="cleanData_03"/>
+    <processes name="cleanData_04"/>
+    <processes name="ann_01"/>
+    <processes name="ann_02"/>
+    <processes name="ann_03"/>
+    <processes name="ann_04"/>
+    <processes name="dataCollector" processExtension="//@nodes.2/@ports.1"/>
+  </nodes>
+</hml:BehaviorSpecification>

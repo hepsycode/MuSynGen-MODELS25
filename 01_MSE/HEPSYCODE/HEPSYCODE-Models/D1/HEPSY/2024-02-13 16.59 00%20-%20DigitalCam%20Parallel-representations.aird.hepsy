@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hml:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hml="org.univaq.hepsy" name="">
+  <nodes xsi:type="hml:Stimulus" name="Stimulus">
+    <ports name="stim_system_out_port">
+      <pChannels name="stim_system_channel" pFrom="//@nodes.0/@ports.0" pTo="//@nodes.2/@ports.0" queueSize="8" rendezVous="true">
+        <message name="stim_system_payload">
+          <entry name="stim_01" type="sc_uint"/>
+        </message>
+      </pChannels>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:Display" name="Display">
+    <ports name="system_display_in_port">
+      <pChannels pFrom="//@nodes.1/@ports.0"/>
+      <pChannels pFrom="//@nodes.1/@ports.0" pTo="//@nodes.2/@ports.1"/>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:StructuredNode" name="DigitalCam">
+    <nChannels name="ccdpp_cntrl_channel" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.1" queueSize="16" rendezVous="true">
+      <message name="ccdpp_cntrl_payload">
+        <entry name="img_01" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <nChannels name="cntrl_codec_channel" nFrom="//@nodes.2/@processes.1" nTo="//@nodes.2/@processes.2" queueSize="8" rendezVous="true">
+      <message name="cntrl_codec_payload">
+        <entry name="img_01_08" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <nChannels name="codec_cntrl_channel" nFrom="//@nodes.2/@processes.2" nTo="//@nodes.2/@processes.1" queueSize="16" rendezVous="true">
+      <message name="codec_cntrl_payload">
+        <entry name="img_01_08" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <nChannels name="cntrl_uat_channel" nFrom="//@nodes.2/@processes.1" nTo="//@nodes.2/@processes.3" queueSize="8" rendezVous="true">
+      <message name="cntrl_uat_payload">
+        <entry name="img_out" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <nChannels name="cntrl_codec_01_channel" nFrom="//@nodes.2/@processes.1" nTo="//@nodes.2/@processes.4" queueSize="8" rendezVous="true">
+      <message name="cntrl_codec_01_payload">
+        <entry name="img_01_08" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <nChannels name="codec_01_cntrl_channel" nFrom="//@nodes.2/@processes.4" nTo="//@nodes.2/@processes.1" queueSize="8" rendezVous="true">
+      <message name="codec_01_cntrl_payload">
+        <entry name="img_01_08" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <nChannels name="cntrl_codec_02_channel" nFrom="//@nodes.2/@processes.1" nTo="//@nodes.2/@processes.5" queueSize="8" rendezVous="true">
+      <message name="cntrl_codec_02_payload">
+        <entry name="img_02_08" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <nChannels name="cntrl_codec_03_channel" nFrom="//@nodes.2/@processes.1" nTo="//@nodes.2/@processes.6" queueSize="8" rendezVous="true">
+      <message name="cntrl_codec_03_payload">
+        <entry name="img_03_08" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <nChannels name="cntrl_codec_04_channel" nFrom="//@nodes.2/@processes.1" nTo="//@nodes.2/@processes.7" queueSize="8" rendezVous="true">
+      <message name="cntrl_codec_04_payload">
+        <entry name="img_04_08" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <nChannels name="cntrl_codec_06_channel" nFrom="//@nodes.2/@processes.1" nTo="//@nodes.2/@processes.8" queueSize="8" rendezVous="true">
+      <message name="cntrl_codec_06_payload">
+        <entry name="img_06_08" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <nChannels name="cntrl_codec_07_channel" nFrom="//@nodes.2/@processes.1" nTo="//@nodes.2/@processes.9" queueSize="8" rendezVous="true">
+      <message name="cntrl_codec_07_payload">
+        <entry name="img_07_08" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <nChannels name="cntrl_codec_08_channel" nFrom="//@nodes.2/@processes.1" nTo="//@nodes.2/@processes.10" queueSize="8" rendezVous="true">
+      <message name="cntrl_codec_08_payload">
+        <entry name="img_08_08" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <nChannels name="codec_02_cntrl_channel" nFrom="//@nodes.2/@processes.5" nTo="//@nodes.2/@processes.1" queueSize="8" rendezVous="true">
+      <message name="codec_02_cntrl_payload">
+        <entry name="img_02_08" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <nChannels name="codec_03_cntrl_channel" nFrom="//@nodes.2/@processes.6" nTo="//@nodes.2/@processes.1" queueSize="8" rendezVous="true">
+      <message name="codec_03_cntrl_payload">
+        <entry name="img_03_08" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <nChannels name="codec_04_cntrl_channel" nFrom="//@nodes.2/@processes.7" nTo="//@nodes.2/@processes.1" queueSize="8" rendezVous="true">
+      <message name="codec_04_cntrl_payload">
+        <entry name="img_04_08" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <nChannels name="codec_05_cntrl_channel" nFrom="//@nodes.2/@processes.8" nTo="//@nodes.2/@processes.1" queueSize="8" rendezVous="true">
+      <message name="codec_05_cntrl_payload">
+        <entry name="img_05_08" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <nChannels name="codec_07_cntrl_" nFrom="//@nodes.2/@processes.9" nTo="//@nodes.2/@processes.1" queueSize="8" rendezVous="true">
+      <message name="codec_05_cntrl_payload">
+        <entry name="img_07_08" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <nChannels name="codec_08_cntrl_channel" nFrom="//@nodes.2/@processes.10" nTo="//@nodes.2/@processes.1" queueSize="8" rendezVous="true">
+      <message name="codec_08_cntrl_payload">
+        <entry name="img_08_08" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <ports name="stim_system_in_port" portExtension="//@nodes.2/@processes.0"/>
+    <ports name="system_display_out_port"/>
+    <processes name="ccdpp"/>
+    <processes name="cntrl"/>
+    <processes name="codec_01"/>
+    <processes name="uat" processExtension="//@nodes.2/@ports.1"/>
+    <processes name="codec_02"/>
+    <processes name="codec_03"/>
+    <processes name="codec_04"/>
+    <processes name="codec_05"/>
+    <processes name="codec_06"/>
+    <processes name="codec_07"/>
+    <processes name="codec_08"/>
+  </nodes>
+</hml:BehaviorSpecification>

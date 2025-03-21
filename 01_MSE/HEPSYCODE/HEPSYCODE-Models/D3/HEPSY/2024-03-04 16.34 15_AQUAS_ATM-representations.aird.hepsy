@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hml:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hml="org.univaq.hepsy">
+  <nodes xsi:type="hml:Stimulus" name="Stimulus">
+    <ports name="stim1_system1_p">
+      <pChannels name="sti1_sys1_ch" pFrom="//@nodes.0/@ports.0" pTo="//@nodes.2/@ports.0" queueSize="8" rendezVous="true">
+        <message name="sti1_sys1_payload">
+          <entry name="ex" type="sc_int"/>
+        </message>
+      </pChannels>
+    </ports>
+    <ports name="stim2_system2_p">
+      <pChannels name="sti2_sys2_ch" pFrom="//@nodes.0/@ports.1" pTo="//@nodes.2/@ports.1" queueSize="8" rendezVous="true">
+        <message name="sti2_sys2_payload">
+          <entry name="ex" type="sc_logic"/>
+        </message>
+      </pChannels>
+    </ports>
+    <ports name="stim3_system3_p">
+      <pChannels name="stim2_sys3_ch" pFrom="//@nodes.0/@ports.2" pTo="//@nodes.2/@ports.2" queueSize="8" rendezVous="true">
+        <message name="stim3_ch3_payload">
+          <entry name="ex" type="sc_int"/>
+        </message>
+      </pChannels>
+    </ports>
+    <ports name="stim4_system4_p">
+      <pChannels name="stim4_sys4_ch" pFrom="//@nodes.0/@ports.3" pTo="//@nodes.2/@ports.3" queueSize="8" rendezVous="true">
+        <message name="sti1_sys1_payload">
+          <entry name="ex" type="sc_uint"/>
+        </message>
+      </pChannels>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:Display" name="Display">
+    <ports name="dis1_sys">
+      <pChannels name="sys_dis1_ch" pFrom="//@nodes.1/@ports.0" pTo="//@nodes.2/@ports.4" queueSize="8" rendezVous="true">
+        <message name="sys_dis1_pay">
+          <entry name="ex" type="sc_uint"/>
+        </message>
+      </pChannels>
+    </ports>
+    <ports name="dis2_sys">
+      <pChannels name="sys_dis2_ch" pFrom="//@nodes.1/@ports.1" pTo="//@nodes.2/@ports.5" queueSize="8" rendezVous="true">
+        <message name="sys_dis2_pay">
+          <entry name="ex" type="sc_uint"/>
+        </message>
+      </pChannels>
+    </ports>
+    <ports name="dis3_sys">
+      <pChannels name="sys_dis3_ch" pFrom="//@nodes.1/@ports.2" pTo="//@nodes.2/@ports.6" queueSize="8" rendezVous="true">
+        <message name="sys_dis3_pay">
+          <entry name="ex" type="sc_uint"/>
+        </message>
+      </pChannels>
+    </ports>
+    <ports name="dis4_sys">
+      <pChannels name="sys_dis4_ch" pFrom="//@nodes.1/@ports.3" pTo="//@nodes.2/@ports.7" queueSize="8" rendezVous="true">
+        <message name="sys_dis4_pay">
+          <entry name="ex" type="sc_uint"/>
+        </message>
+      </pChannels>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:StructuredNode">
+    <nChannels name="rtlsdr_ads_b_ch" nFrom="//@nodes.2/@processes.2" nTo="//@nodes.2/@processes.3" queueSize="8" rendezVous="true" direction="Unidirectional">
+      <message name="rtlsdr_ads_b_payload">
+        <entry name="ex" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <ports name="sys_stim1" portExtension="//@nodes.2/@processes.0"/>
+    <ports name="sys_stim2" portExtension="//@nodes.2/@processes.1"/>
+    <ports name="sys_stim3" portExtension="//@nodes.2/@processes.2"/>
+    <ports name="sys_stim4" portExtension="//@nodes.2/@processes.4"/>
+    <ports name="sys_dis1"/>
+    <ports name="sys_dis2"/>
+    <ports name="sys_dis3"/>
+    <ports name="sys_dis4"/>
+    <processes name="LTE" processExtension="//@nodes.2/@ports.4"/>
+    <processes name="NAV" processExtension="//@nodes.2/@ports.5"/>
+    <processes name="rtlsdr"/>
+    <processes name="ADS_B" processExtension="//@nodes.2/@ports.6"/>
+    <processes name="autopilot" processExtension="//@nodes.2/@ports.7"/>
+  </nodes>
+</hml:BehaviorSpecification>

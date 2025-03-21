@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hml:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hml="org.univaq.hepsy">
+  <nodes xsi:type="hml:Stimulus" name="Stimulus">
+    <ports name="st_sys">
+      <pChannels name="st_sys_ch" pFrom="//@nodes.0/@ports.0" pTo="//@nodes.2/@ports.0"/>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:Display" name="Display">
+    <ports name="dis_sys">
+      <pChannels name="sys_dis_ch" pFrom="//@nodes.1/@ports.0" pTo="//@nodes.2/@ports.1"/>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:StructuredNode">
+    <nChannels name="fe_rasta_ch" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.1" queueSize="64" rendezVous="true">
+      <message name="fe_rasta_payload">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="rasta_power_ch" nFrom="//@nodes.2/@processes.1" nTo="//@nodes.2/@processes.2" queueSize="64" rendezVous="true">
+      <message name="rasta_power_payload">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="pow_aud_ch" nFrom="//@nodes.2/@processes.2" nTo="//@nodes.2/@processes.3" queueSize="64" rendezVous="true">
+      <message name="pow_aud_payload">
+        <entry name="sample" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <nChannels name="aud_rastaF_ch" nFrom="//@nodes.2/@processes.3" nTo="//@nodes.2/@processes.4" queueSize="64" rendezVous="true">
+      <message name="aud_rastaF_payload">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="frontE_comp_ch" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.5" queueSize="64" rendezVous="true">
+      <message name="frontE_comp_">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="aud_comp_ch" nFrom="//@nodes.2/@processes.3" nTo="//@nodes.2/@processes.5" queueSize="64" rendezVous="true">
+      <message name="aud_comp_payload">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="comp_rastaF_ch" nFrom="//@nodes.2/@processes.5" nTo="//@nodes.2/@processes.4" queueSize="64" rendezVous="true" direction="Unidirectional">
+      <message name="comp_rastaF_">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="rasta_be_ch" nFrom="//@nodes.2/@processes.4" nTo="//@nodes.2/@processes.6" queueSize="64" rendezVous="true">
+      <message name="rasta_be_payload">
+        <entry name="sample" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <ports name="sys_st" portExtension="//@nodes.2/@processes.0"/>
+    <ports name="sys_dis"/>
+    <processes name="frontEnd"/>
+    <processes name="rasta"/>
+    <processes name="powspec"/>
+    <processes name="audspec"/>
+    <processes name="rastaFilter"/>
+    <processes name="compjah"/>
+    <processes name="backEnd" processExtension="//@nodes.2/@ports.1"/>
+  </nodes>
+</hml:BehaviorSpecification>

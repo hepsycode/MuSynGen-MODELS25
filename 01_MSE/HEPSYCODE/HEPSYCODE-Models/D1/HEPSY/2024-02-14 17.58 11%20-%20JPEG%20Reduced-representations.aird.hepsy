@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hml:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hml="org.univaq.hepsy">
+  <nodes xsi:type="hml:Stimulus" name="stimulus">
+    <ports name="stim_out">
+      <pChannels name="stim_sys_ch" pFrom="//@nodes.0/@ports.0" pTo="//@nodes.2/@ports.0"/>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:Display" name="display">
+    <ports name="dis_in">
+      <pChannels name="sys_dis_ch" pFrom="//@nodes.1/@ports.0" pTo="//@nodes.2/@ports.1"/>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:StructuredNode">
+    <nChannels name="cntrl_head_ch" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.1" queueSize="8" rendezVous="true">
+      <message name="cntrl_head_pay">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="head_cntrl_ch" nFrom="//@nodes.2/@processes.1" nTo="//@nodes.2/@processes.0" queueSize="8" rendezVous="true">
+      <message name="head_cntrl_pay">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="cntrl1_cntrl2_ch" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.2" queueSize="8" rendezVous="true">
+      <message name="cntrl1_cntrl2_pay">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="cntrl_ac_ch" nFrom="//@nodes.2/@processes.2" nTo="//@nodes.2/@processes.3" queueSize="8" rendezVous="true">
+      <message name="cntrl_ac_pay">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="cntrl_dc_ch" nFrom="//@nodes.2/@processes.2" nTo="//@nodes.2/@processes.5" queueSize="8" rendezVous="true">
+      <message name="cntrl_dc_pay">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="ac_merge_ch" nFrom="//@nodes.2/@processes.3" nTo="//@nodes.2/@processes.4" queueSize="8" rendezVous="true">
+      <message name="ac_merge_pay">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="dc_merge_ch" nFrom="//@nodes.2/@processes.5" nTo="//@nodes.2/@processes.4" queueSize="8" rendezVous="true">
+      <message name="dc_merge_pay">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="merge_cntrl_ch" nFrom="//@nodes.2/@processes.4" nTo="//@nodes.2/@processes.2" queueSize="8" rendezVous="true">
+      <message name="merge_cntrl_pay">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <ports name="sys_in" portExtension="//@nodes.2/@processes.0"/>
+    <ports name="sys_out"/>
+    <processes name="cntrl_1"/>
+    <processes name="header_and_table"/>
+    <processes name="cntrl_2" processExtension="//@nodes.2/@ports.1"/>
+    <processes name="ac_coeff"/>
+    <processes name="merge_and_write"/>
+    <processes name="dc_coeff"/>
+  </nodes>
+</hml:BehaviorSpecification>

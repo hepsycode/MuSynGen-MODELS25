@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: modelValidation
+Bundle-SymbolicName: modelValidation
+Bundle-Version: 1.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-21
+Automatic-Module-Name: modelValidation
+Export-Package: .
+Require-Bundle: py4j-java,
+ org.eclipse.emf.ecore.xmi
