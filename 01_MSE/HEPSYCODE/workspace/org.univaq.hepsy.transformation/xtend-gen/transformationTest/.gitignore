@@ -4,3 +4,5 @@
 /.XGeneratorLib.java._trace
 /.XGeneratorLib.xtendbin
 /XGeneratorLib.java
+/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/config/secrets-master-llm.json
+/02_SMG/D2_Synthetic_Model_Dataset_FS_RAG/config/secrets-master-llm.json
