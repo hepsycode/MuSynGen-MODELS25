@@ -1,0 +1,12 @@
+node,total_emissions
+generate_query_node,8.673379404634511e-08
+cache_context_node,6.732069486950339e-06
+model_generation_node,6.457203711889852e-06
+model_validation_node,0.0012521624165369222
+model_validation_node,0.001291455667707561
+model_validation_node,0.0012281047139700903
+model_generation_node,6.3464851536011985e-06
+model_validation_node,0.0012043392291570484
+model_validation_node,0.0015649763936269468
+model_validation_node,2.1482400773965457e-07
+FILE_2024-02-14 14.50 03%20-%20RT%20App%20Paper-representations.aird.hepsy,0.010076355924505375

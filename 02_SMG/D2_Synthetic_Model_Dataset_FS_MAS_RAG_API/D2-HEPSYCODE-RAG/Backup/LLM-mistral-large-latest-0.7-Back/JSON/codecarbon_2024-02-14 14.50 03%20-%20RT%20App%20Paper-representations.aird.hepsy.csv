@@ -1,0 +1,24 @@
+node,total_emissions
+generate_query_node,6.550868326354321e-06
+cache_context_node,5.86504861101053e-08
+model_generation_node,0.001495642868097279
+model_validation_node,0.0010992673557673254
+model_validation_node,0.0011063567415335394
+model_validation_node,0.0011215293746259258
+model_generation_node,6.702109912906423e-06
+model_validation_node,0.001221522416131545
+model_validation_node,0.0010915959840177125
+model_validation_node,0.0012021863209697745
+model_generation_node,1.9099294605535515e-07
+model_validation_node,0.0011545883143112576
+model_validation_node,0.001051122760572844
+model_validation_node,0.000984248897425098
+model_generation_node,6.953486738792203e-06
+model_validation_node,0.0012846485630521878
+model_validation_node,0.001269300376791145
+model_validation_node,0.0017723684707310013
+model_generation_node,1.2822332694943644e-07
+model_validation_node,0.0011970701223044562
+model_validation_node,0.0009572385868722177
+model_validation_node,6.733036572772531e-06
+FILE_2024-02-14 14.50 03%20-%20RT%20App%20Paper-representations.aird.hepsy,0.025697709429004446

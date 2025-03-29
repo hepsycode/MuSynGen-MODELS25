@@ -1,0 +1,28 @@
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_E7BzQ8DEeemOkTN6SynWcg" targetNamespace="http://www.omg.org/bpmn20">
+  <bpmn:Process xsi:type="bpmn:Process" id="_G_7pc8DEeemOkTN6SynWcg" name="OpenBankAccountProcess" isClosed="false" isExecutable="true" processType="None">
+    <bpmn:startEvent xsi:type="bpmn:StartEvent" id="StartEvent_1" name="Application Received"/>
+    <bpmn:task xsi:type="bpmn:Task" id="Activity_EvaluateApplication" name="Evaluate Application"/>
+    <bpmn:exclusiveGateway xsi:type="bpmn:ExclusiveGateway" id="Gateway_EvaluationDecision" name="Application Approved?"/>
+    <bpmn:task xsi:type="bpmn:Task" id="Activity_NotifyRejection" name="Notify Customer of Rejection"/>
+    <bpmn:task xsi:type="bpmn:Task" id="Activity_CreateBankAccount" name="Create Bank Account"/>
+    <bpmn:parallelGateway xsi:type="bpmn:ParallelGateway" id="Gateway_ParallelTasks" name=""/>
+    <bpmn:task xsi:type="bpmn:Task" id="Activity_SendWelcomePack" name="Send Welcome Pack"/>
+    <bpmn:task xsi:type="bpmn:Task" id="Activity_SendBankCard" name="Send Bank Card"/>
+    <bpmn:task xsi:type="bpmn:Task" id="Activity_SendPIN" name="Send PIN Number"/>
+    <bpmn:parallelGateway xsi:type="bpmn:ParallelGateway" id="Gateway_EndParallelTasks" name=""/>
+    <bpmn:endEvent xsi:type="bpmn:EndEvent" id="EndEvent_1" name="Process End"/>
+    <bpmn:sequenceFlow xsi:type="bpmn:SequenceFlow" id="SequenceFlow_1" sourceRef="StartEvent_1" targetRef="Activity_EvaluateApplication"/>
+    <bpmn:sequenceFlow xsi:type="bpmn:SequenceFlow" id="SequenceFlow_2" sourceRef="Activity_EvaluateApplication" targetRef="Gateway_EvaluationDecision"/>
+    <bpmn:sequenceFlow xsi:type="bpmn:SequenceFlow" id="SequenceFlow_3" name="No" sourceRef="Gateway_EvaluationDecision" targetRef="Activity_NotifyRejection"/>
+    <bpmn:sequenceFlow xsi:type="bpmn:SequenceFlow" id="SequenceFlow_4" sourceRef="Activity_NotifyRejection" targetRef="EndEvent_1"/>
+    <bpmn:sequenceFlow xsi:type="bpmn:SequenceFlow" id="SequenceFlow_5" name="Yes" sourceRef="Gateway_EvaluationDecision" targetRef="Activity_CreateBankAccount"/>
+    <bpmn:sequenceFlow xsi:type="bpmn:SequenceFlow" id="SequenceFlow_6" sourceRef="Activity_CreateBankAccount" targetRef="Gateway_ParallelTasks"/>
+    <bpmn:sequenceFlow xsi:type="bpmn:SequenceFlow" id="SequenceFlow_7" sourceRef="Gateway_ParallelTasks" targetRef="Activity_SendWelcomePack"/>
+    <bpmn:sequenceFlow xsi:type="bpmn:SequenceFlow" id="SequenceFlow_8" sourceRef="Gateway_ParallelTasks" targetRef="Activity_SendBankCard"/>
+    <bpmn:sequenceFlow xsi:type="bpmn:SequenceFlow" id="SequenceFlow_9" sourceRef="Gateway_ParallelTasks" targetRef="Activity_SendPIN"/>
+    <bpmn:sequenceFlow xsi:type="bpmn:SequenceFlow" id="SequenceFlow_10" sourceRef="Activity_SendWelcomePack" targetRef="Gateway_EndParallelTasks"/>
+    <bpmn:sequenceFlow xsi:type="bpmn:SequenceFlow" id="SequenceFlow_11" sourceRef="Activity_SendBankCard" targetRef="Gateway_EndParallelTasks"/>
+    <bpmn:sequenceFlow xsi:type="bpmn:SequenceFlow" id="SequenceFlow_12" sourceRef="Activity_SendPIN" targetRef="Gateway_EndParallelTasks"/>
+    <bpmn:sequenceFlow xsi:type="bpmn:SequenceFlow" id="SequenceFlow_13" sourceRef="Gateway_EndParallelTasks" targetRef="EndEvent_1"/>
+  </bpmn:Process>
+</bpmn:Definitions>

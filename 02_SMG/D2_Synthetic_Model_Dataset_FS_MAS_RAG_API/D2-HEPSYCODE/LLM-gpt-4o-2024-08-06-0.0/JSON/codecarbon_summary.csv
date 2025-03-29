@@ -1,0 +1,17 @@
+file_name,total_emissions
+2024-02-13 16.44 00%20-%20DigitalCam%20Nominal-representations.aird.hepsy,0.0019859723122973823
+2024-02-13 16.59 00%20-%20DigitalCam%20Parallel-representations.aird.hepsy,0.00873996101897898
+2024-02-13 17.34 01%20-%20FIRFIRGCD-representations.aird.hepsy,0.003010376538609316
+2024-02-14 14.40 02%20-%20RT%20App-representations.aird.hepsy,0.00645161838783357
+2024-02-14 14.50 03%20-%20RT%20App%20Paper-representations.aird.hepsy,0.007684648192355549
+2024-02-14 15.04 04%20-%20RT%20App%20Paper%202-representations.aird.hepsy,0.006065454272808503
+2024-02-14 15.40 05%20-%20Hepsy%20Example-representations.aird.hepsy,0.006107801256599634
+2024-02-14 15.51 06%20-%20Sobel-representations.aird.hepsy,0.007374265094252187
+2024-02-14 15.52 07%20-%20Roberts-representations.aird.hepsy,0.008859747645656236
+2024-02-14 16.25 08%20-%20RASTA-PLP-representations.aird.hepsy,0.007457049347561646
+2024-02-14 17.00 09%20-%20Susan-representations.aird.hepsy,0.003065451155686876
+2024-02-14 17.46 10%20-%20JPEG_encoder-representations.aird.hepsy,0.0019306715725528635
+2024-02-14 17.58 11%20-%20JPEG%20Reduced-representations.aird.hepsy,0.0019984222379385735
+2024-02-14 18.17 12%20-%20FIRFIRGCD_ext-representations.aird.hepsy,0.0076506325817870405
+2024-02-14 18.30 13%20-%20FIRFIRGCD_HPV-representations.aird.hepsy,0.005085156727497064
+TOTAL_APP,0.08854840637010415

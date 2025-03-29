@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hml:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hml="org.univaq.hepsy">
+  <nodes xsi:type="hml:Stimulus" name="Stimulus">
+    <ports name="stim1">
+      <pChannels name="stim1_ch" pFrom="//@nodes.0/@ports.0" pTo="//@nodes.2/@ports.0" queueSize="8" rendezVous="true">
+        <message name="stim1_pay">
+          <entry name="ex" type="sc_int"/>
+        </message>
+      </pChannels>
+    </ports>
+    <ports name="stim2">
+      <pChannels name="stim2_ch" pFrom="//@nodes.0/@ports.1" pTo="//@nodes.2/@ports.1" queueSize="8" rendezVous="true">
+        <message name="stim2_pay">
+          <entry name="ex" type="sc_int"/>
+        </message>
+      </pChannels>
+    </ports>
+    <ports name="stim3">
+      <pChannels name="stim3_ch" pFrom="//@nodes.0/@ports.2" pTo="//@nodes.2/@ports.2" queueSize="8" rendezVous="true">
+        <message name="stim3_pay">
+          <entry name="ex" type="sc_uint"/>
+        </message>
+      </pChannels>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:Display" name="Display">
+    <ports name="dis1">
+      <pChannels name="sys1_ch" pFrom="//@nodes.1/@ports.0" pTo="//@nodes.2/@ports.3" queueSize="8" rendezVous="true">
+        <message name="sys1_pay">
+          <entry name="ex" type="sc_uint"/>
+        </message>
+      </pChannels>
+    </ports>
+    <ports name="dis2">
+      <pChannels name="sys2_ch" pFrom="//@nodes.1/@ports.1" pTo="//@nodes.2/@ports.4" queueSize="8" rendezVous="true">
+        <message name="sys2_pay">
+          <entry name="ex" type="sc_uint"/>
+        </message>
+      </pChannels>
+    </ports>
+    <ports name="dis3">
+      <pChannels name="sys3_ch" pFrom="//@nodes.1/@ports.2" pTo="//@nodes.2/@ports.5" queueSize="8" rendezVous="true">
+        <message name="sys3_pay">
+          <entry name="ex" type="sc_bigint"/>
+        </message>
+      </pChannels>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:StructuredNode">
+    <nChannels name="in_cripter_ch" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.4" queueSize="8" rendezVous="true">
+      <message name="in_cripter_pay">
+        <entry name="ex" type="sc_biguint"/>
+      </message>
+    </nChannels>
+    <nChannels name="out_cripter_ch" nFrom="//@nodes.2/@processes.4" nTo="//@nodes.2/@processes.1" queueSize="8" rendezVous="true">
+      <message name="out_cripter_pay">
+        <entry name="ex" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <nChannels name="cripter_sb_in_ch" nFrom="//@nodes.2/@processes.4" nTo="//@nodes.2/@processes.5" queueSize="8" rendezVous="true">
+      <message name="cripter_sb_in_pay">
+        <entry name="ex" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="cripter_sb_out_ch" nFrom="//@nodes.2/@processes.5" nTo="//@nodes.2/@processes.4" queueSize="8" rendezVous="true">
+      <message name="cripter_sb_out_pay">
+        <entry name="ex" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <nChannels name="cripter_rin_in_ch" nFrom="//@nodes.2/@processes.4" nTo="//@nodes.2/@processes.6" queueSize="8" rendezVous="true">
+      <message name="cripter_rin_in_pay">
+        <entry name="ex" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <nChannels name="cripter_rin_out_ch" nFrom="//@nodes.2/@processes.6" nTo="//@nodes.2/@processes.4" queueSize="8" rendezVous="true">
+      <message name="cripter_rin_out_pay">
+        <entry name="ex" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <ports name="stim1_in" portExtension="//@nodes.2/@processes.0"/>
+    <ports name="stim2_in" portExtension="//@nodes.2/@processes.2"/>
+    <ports name="stim3_in" portExtension="//@nodes.2/@processes.3"/>
+    <ports name="sys1_out"/>
+    <ports name="sys2_out"/>
+    <ports name="sys3_out"/>
+    <processes name="TMTC_IN"/>
+    <processes name="TMTC_OUT" processExtension="//@nodes.2/@ports.3"/>
+    <processes name="SCRUB" processExtension="//@nodes.2/@ports.4"/>
+    <processes name="WDOG" processExtension="//@nodes.2/@ports.5"/>
+    <processes name="Cripter"/>
+    <processes name="Sblock"/>
+    <processes name="Rinjdael"/>
+  </nodes>
+</hml:BehaviorSpecification>

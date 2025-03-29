@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hml:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hml="org.univaq.hepsy">
+  <nodes xsi:type="hml:Stimulus" name="Stimulus">
+    <ports name="stim_system_out_port">
+      <pChannels name="stim_preproc_channel" pFrom="//@nodes.0/@ports.0" pTo="//@nodes.1/@ports.0" queueSize="8" rendezVous="true">
+        <message name="raw_audio_data">
+          <entry name="audio_sample" type="sc_int"/>
+        </message>
+      </pChannels>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:StructuredNode" name="RastaPlp">
+    <ports name="system_display_out_port">
+      <pChannels name="display_channel" pFrom="//@nodes.1/@ports.1" pTo="//@nodes.2/@ports.0" queueSize="8" rendezVous="true">
+        <message name="processed_audio_data">
+          <entry name="processed_sample" type="sc_int"/>
+        </message>
+      </pChannels>
+    </ports>
+    <ports name="preproc_in_port"/>
+    <ports name="preproc_out_port">
+      <pChannels name="preproc_rasta_channel" pFrom="//@nodes.1/@ports.2" pTo="//@nodes.1/@ports.3" queueSize="8" rendezVous="true">
+        <message name="conditioned_audio">
+          <entry name="conditioned_sample" type="sc_int"/>
+        </message>
+      </pChannels>
+    </ports>
+    <ports name="rasta_in_port"/>
+    <ports name="rasta_out_port">
+      <pChannels name="rasta_plp_channel" pFrom="//@nodes.1/@ports.4" pTo="//@nodes.1/@ports.5" queueSize="8" rendezVous="true">
+        <message name="enhanced_spectral_features">
+          <entry name="enhanced_sample" type="sc_int"/>
+        </message>
+      </pChannels>
+    </ports>
+    <ports name="plp_in_port"/>
+    <ports name="plp_out_port">
+      <pChannels name="plp_postproc_channel" pFrom="//@nodes.1/@ports.6" pTo="//@nodes.1/@ports.1" queueSize="8" rendezVous="true">
+        <message name="cepstral_coefficients">
+          <entry name="cepstral_sample" type="sc_int"/>
+        </message>
+      </pChannels>
+    </ports>
+    <processes name="preproc" processExtension="//@nodes.1/@ports.1"/>
+    <processes name="rasta" processExtension="//@nodes.1/@ports.3"/>
+    <processes name="plp" processExtension="//@nodes.1/@ports.5"/>
+  </nodes>
+  <nodes xsi:type="hml:Display" name="Display">
+    <ports name="system_display_in_port"/>
+  </nodes>
+</hml:BehaviorSpecification>

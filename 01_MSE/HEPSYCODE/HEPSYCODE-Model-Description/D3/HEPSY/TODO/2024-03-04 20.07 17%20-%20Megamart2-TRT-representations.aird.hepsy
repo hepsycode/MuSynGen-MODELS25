@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hml:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hml="org.univaq.hepsy">
+  <nodes xsi:type="hml:Stimulus">
+    <ports name="st1">
+      <pChannels name="cfgIRS_ch" pFrom="//@nodes.0/@ports.0" pTo="//@nodes.1/@ports.0" queueSize="8" rendezVous="true">
+        <message name="cfgIRS_pay">
+          <entry name="ex" type="sc_uint"/>
+        </message>
+      </pChannels>
+    </ports>
+    <ports name="st2">
+      <pChannels name="cfgGPS_ch" pFrom="//@nodes.0/@ports.1" pTo="//@nodes.1/@ports.1" queueSize="64" rendezVous="true">
+        <message name="cfgGPS_pay">
+          <entry name="ex" type="sc_uint"/>
+        </message>
+      </pChannels>
+    </ports>
+    <ports name="st3">
+      <pChannels name="CfgDoppler_ch" pFrom="//@nodes.0/@ports.2" pTo="//@nodes.1/@ports.2" queueSize="64" rendezVous="true">
+        <message name="CfgDoppler_pay">
+          <entry name="ex" type="sc_uint"/>
+        </message>
+      </pChannels>
+    </ports>
+    <ports name="st4">
+      <pChannels name="CfgAnemo_ch" pFrom="//@nodes.0/@ports.3" pTo="//@nodes.1/@ports.3" queueSize="64" rendezVous="true">
+        <message name="CfgAnemo_pay">
+          <entry name="ex" type="sc_uint"/>
+        </message>
+      </pChannels>
+    </ports>
+    <ports name="st5">
+      <pChannels name="CfgLoc_ch" pFrom="//@nodes.0/@ports.4" pTo="//@nodes.1/@ports.4" queueSize="8" rendezVous="true">
+        <message name="CfgLoc_pay">
+          <entry name="ex" type="sc_uint"/>
+        </message>
+      </pChannels>
+    </ports>
+    <ports name="st6">
+      <pChannels name="CfgMagNav_ch" pFrom="//@nodes.0/@ports.5" pTo="//@nodes.1/@ports.5" queueSize="8" rendezVous="true">
+        <message name="CfgMagNav_pay">
+          <entry name="ex" type="sc_uint"/>
+        </message>
+      </pChannels>
+    </ports>
+    <ports name="st7">
+      <pChannels name="CfgPerf_ch" pFrom="//@nodes.0/@ports.6" pTo="//@nodes.1/@ports.6" queueSize="16" rendezVous="true">
+        <message name="CfgPerf_pay">
+          <entry name="ex" type="sc_int"/>
+        </message>
+      </pChannels>
+    </ports>
+    <ports name="st8">
+      <pChannels name="SetFp_ch" pFrom="//@nodes.0/@ports.7" pTo="//@nodes.1/@ports.7" queueSize="8" rendezVous="true">
+        <message name="SetFp_pay">
+          <entry name="ex" type="sc_uint"/>
+        </message>
+      </pChannels>
+    </ports>
+    <ports name="st9">
+      <pChannels name="ManageDB_ch" pFrom="//@nodes.0/@ports.8" pTo="//@nodes.1/@ports.8" queueSize="64" rendezVous="true">
+        <message name="ManageDB_">
+          <entry name="ex" type="sc_uint"/>
+        </message>
+      </pChannels>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:StructuredNode">
+    <nChannels name="SensorData_ch" nFrom="//@nodes.1/@processes.0" nTo="//@nodes.1/@processes.1" queueSize="64" rendezVous="true">
+      <message name="SensorData_pay">
+        <entry name="ex" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <nChannels name="MagDecl_ch" nFrom="//@nodes.1/@processes.2" nTo="//@nodes.1/@processes.1" queueSize="64" rendezVous="true">
+      <message name="MagDecl_pay">
+        <entry name="ex" type="sc_bigint"/>
+      </message>
+    </nChannels>
+    <nChannels name="LF_BCP_ch" nFrom="//@nodes.1/@processes.4" nTo="//@nodes.1/@processes.2" queueSize="8" rendezVous="true">
+      <message name="LF_BCP_pay">
+        <entry name="ex" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="LF_BCP_ch" nFrom="//@nodes.1/@processes.4" nTo="//@nodes.1/@processes.3" queueSize="8" rendezVous="true">
+      <message name="LF_BCP_pay">
+        <entry name="ex" type="sc_bigint"/>
+      </message>
+    </nChannels>
+    <nChannels name="LF_BCP_ch" nFrom="//@nodes.1/@processes.4" nTo="//@nodes.1/@processes.6" queueSize="8" rendezVous="true">
+      <message name="LF_BCP_pay">
+        <entry name="ex" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <nChannels name="LF_BCP_ch" nFrom="//@nodes.1/@processes.4" nTo="//@nodes.1/@processes.5" queueSize="8" rendezVous="true">
+      <message name="LF_BCP_pay">
+        <entry name="ex" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <nChannels name="UpdateFlightPlan_ch" nFrom="//@nodes.1/@processes.7" nTo="//@nodes.1/@processes.6" queueSize="8" rendezVous="true">
+      <message name="UpdateFlightPlan_">
+        <entry name="ex" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="TrActiveProfile_ch" nFrom="//@nodes.1/@processes.6" nTo="//@nodes.1/@processes.8" queueSize="8" rendezVous="true">
+      <message name="TrActiveProfile_pay">
+        <entry name="ex" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <nChannels name="WayPointDB_ch" nFrom="//@nodes.1/@processes.7" nTo="//@nodes.1/@processes.9" queueSize="8" rendezVous="true">
+      <message name="WayPointDB_pay">
+        <entry name="ex" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <nChannels name="NearAirportsDB_ch" nFrom="//@nodes.1/@processes.9" nTo="//@nodes.1/@processes.5" queueSize="8" rendezVous="true">
+      <message name="NearAirportsDB_pay">
+        <entry name="ex" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <nChannels name="HF_BCP_ch" nFrom="//@nodes.1/@processes.1" nTo="//@nodes.1/@processes.4" queueSize="8" rendezVous="true">
+      <message name="HF_BCP_pay">
+        <entry name="ex" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <ports name="sys_in_1" portExtension="//@nodes.1/@processes.0"/>
+    <ports name="sys_in_2" portExtension="//@nodes.1/@processes.0"/>
+    <ports name="sys_in_3" portExtension="//@nodes.1/@processes.0"/>
+    <ports name="sys_in_4" portExtension="//@nodes.1/@processes.0"/>
+    <ports name="sys_in_5" portExtension="//@nodes.1/@processes.1"/>
+    <ports name="sys_in_6" portExtension="//@nodes.1/@processes.2"/>
+    <ports name="sys_in_7" portExtension="//@nodes.1/@processes.3"/>
+    <ports name="sys_in_8" portExtension="//@nodes.1/@processes.7"/>
+    <ports name="sys_in_9" portExtension="//@nodes.1/@processes.9"/>
+    <ports name="sys_out_1"/>
+    <ports name="sys_out_2"/>
+    <ports name="sys_out_3"/>
+    <ports name="sys_out_4"/>
+    <ports name="sys_out_5"/>
+    <processes name="Senc_c1" processExtension="//@nodes.1/@ports.9"/>
+    <processes name="Loc_c1"/>
+    <processes name="loc_c3"/>
+    <processes name="Loc_c4" processExtension="//@nodes.1/@ports.10"/>
+    <processes name="Loc_c2"/>
+    <processes name="near_p1" processExtension="//@nodes.1/@ports.11"/>
+    <processes name="traj_r1" processExtension="//@nodes.1/@ports.12"/>
+    <processes name="flpn_r1"/>
+    <processes name="guid_c1" processExtension="//@nodes.1/@ports.13"/>
+    <processes name="DB_airport"/>
+  </nodes>
+  <nodes xsi:type="hml:Display">
+    <ports name="dis1">
+      <pChannels name="Sensors_ch" pFrom="//@nodes.2/@ports.0" pTo="//@nodes.1/@ports.9" queueSize="64" rendezVous="true">
+        <message name="Sensors_">
+          <entry name="ex" type="sc_uint"/>
+        </message>
+      </pChannels>
+    </ports>
+    <ports name="dis2">
+      <pChannels name="NavPerf_ch" pFrom="//@nodes.2/@ports.1" pTo="//@nodes.1/@ports.10" queueSize="64" rendezVous="true">
+        <message name="NavPerf_pay">
+          <entry name="ex" type="sc_int"/>
+        </message>
+      </pChannels>
+    </ports>
+    <ports name="dis3">
+      <pChannels name="NearAp_ch" pFrom="//@nodes.2/@ports.2" pTo="//@nodes.1/@ports.11" queueSize="8" rendezVous="true">
+        <message name="NearAp_pay">
+          <entry name="ex" type="sc_uint"/>
+        </message>
+      </pChannels>
+    </ports>
+    <ports name="dis4">
+      <pChannels name="ShowProf" pFrom="//@nodes.2/@ports.3" pTo="//@nodes.1/@ports.12" queueSize="8" rendezVous="true">
+        <message name="ShowProf">
+          <entry name="ex" type="sc_uint"/>
+        </message>
+      </pChannels>
+    </ports>
+    <ports name="dis5">
+      <pChannels name="Guidance_ch" pFrom="//@nodes.2/@ports.4" pTo="//@nodes.1/@ports.13" queueSize="64" rendezVous="true">
+        <message name="Guidance_pay">
+          <entry name="ex" type="sc_uint"/>
+        </message>
+      </pChannels>
+    </ports>
+  </nodes>
+</hml:BehaviorSpecification>

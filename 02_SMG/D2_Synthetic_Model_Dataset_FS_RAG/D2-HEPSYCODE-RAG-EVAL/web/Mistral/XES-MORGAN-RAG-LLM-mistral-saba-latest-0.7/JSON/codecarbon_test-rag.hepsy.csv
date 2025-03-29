@@ -1,0 +1,14 @@
+total_emissions,node
+5.456751443741413e-08,generate_query_from_metamodel
+0.00017742233482121033,generate_query_node
+6.199585816094097e-05,web_search
+0.0002114166013132821,generate_web
+2.408125066187402e-05,grade_generation_v_documents_and_question
+8.818142562084955e-05,transform_query_web
+0.00011039149890791645,web_search
+0.00014853543779338603,generate_web
+2.699331568797112e-05,grade_generation_v_documents_and_question
+4.025184277073664e-05,evaluate_web_search_output
+0.00011931259095014833,evaluate_web_bert_score
+0.00011051525650368557,cache_context_node
+0.00333857920988655,FILE_test-rag.hepsy

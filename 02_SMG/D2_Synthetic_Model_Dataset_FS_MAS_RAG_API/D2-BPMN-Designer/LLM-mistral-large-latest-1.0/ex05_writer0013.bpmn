@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_H2DifY8DEe-v648egk3nxQ">
+  <rootElements xsi:type="bpmn:Process" id="_H2DifI8DEe-v648egk3nxQ">
+    <flowElements xsi:type="bpmn:StartEvent" id="_JaO8AI8JEe-v648egk3nxQ" name="Customer submits claim" outgoing="_mWlK4I8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:Task" id="_L9OG4I8JEe-v648egk3nxQ" name="Check documents and register claim" outgoing="_8cJyoI8JEe-v648egk3nxQ" incoming="_mWlK4I8JEe-v648egk3nxQ">
+      <documentation id="_z3K_0I8JEe-v648egk3nxQ" text="Documents should be verified and claim registered in the system."/>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_mWlK4I8JEe-v648egk3nxQ" targetRef="_L9OG4I8JEe-v648egk3nxQ" sourceRef="_JaO8AI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_rfT_4I8JEe-v648egk3nxQ" name="Check insurance" outgoing="_PU9pQI8JEe-v648egk3nxQ" incoming="_8cJyoI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_8cJyoI8JEe-v648egk3nxQ" targetRef="_rfT_4I8JEe-v648egk3nxQ" sourceRef="_L9OG4I8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_ZB2vUI8JEe-v648egk3nxQ" name="Perform Assessment" outgoing="_hOYkII8KIe-v648egk3nxQ" incoming="_PU9pQI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_PU9pQI8JEe-v648egk3nxQ" targetRef="_ZB2vUI8JEe-v648egk3nxQ" sourceRef="_rfT_4I8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="_LiJmAI8KIe-v648egk3nxQ" outgoing="_q5PLII8KIe-v648egk3nxQ _4Zf1oI8KIe-v648egk3nxQ" incoming="_hOYkII8KIe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_hOYkII8KIe-v648egk3nxQ" targetRef="_LiJmAI8KIe-v648egk3nxQ" sourceRef="_ZB2vUI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_omxpoI8KIe-v648egk3nxQ" name="Phone garage and authorize repair" outgoing="_boIT4I8KIe-v648egk3nxQ" incoming="_q5PLII8KIe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_q5PLII8KIe-v648egk3nxQ" targetRef="_omxpoI8KIe-v648egk3nxQ" sourceRef="_LiJmAI8KIe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_p0toII8KIe-v648egk3nxQ" name="Schedule payment" outgoing="_C71XgI8KIe-v648egk3nxQ" incoming="_boIT4I8KIe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_boIT4I8KIe-v648egk3nxQ" targetRef="_p0toII8KIe-v648egk3nxQ" sourceRef="_omxpoI8KIe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_LGaE0I8KIe-v648egk3nxQ" name="Reject claim" outgoing="_MV5osI8KIe-v648egk3nxQ" incoming="_4Zf1oI8KIe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_4Zf1oI8KIe-v648egk3nxQ" targetRef="_LGaE0I8KIe-v648egk3nxQ" sourceRef="_LiJmAI8KIe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="_Sbg0oI8KIe-v648egk3nxQ" outgoing="_WhQAsI8KIe-v648egk3nxQ" incoming="_C71XgI8KIe-v648egk3nxQ _MV5osI8KIe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_C71XgI8KIe-v648egk3nxQ" targetRef="_Sbg0oI8KIe-v648egk3nxQ" sourceRef="_p0toII8KIe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_MV5osI8KIe-v648egk3nxQ" targetRef="_Sbg0oI8KIe-v648egk3nxQ" sourceRef="_LGaE0I8KIe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_6teQ4I8KIe-v648egk3nxQ" name="Send letter to customer" outgoing="_w0PMsI8KIe-v648egk3nxQ" incoming="_WhQAsI8KIe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_WhQAsI8KIe-v648egk3nxQ" targetRef="_6teQ4I8KIe-v648egk3nxQ" sourceRef="_Sbg0oI8KIe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="_urVdII8KIe-v648egk3nxQ" name="Process completion" incoming="_w0PMsI8KIe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_w0PMsI8KIe-v648egk3nxQ" targetRef="_urVdII8KIe-v648egk3nxQ" sourceRef="_6teQ4I8KIe-v648egk3nxQ"/>
+    <laneSets id="_ZeQZ4Y8DEe-v648egk3nxQ" name="Insurance Company">
+      <lanes id="_ZeQl4I8DEe-v648egk3nxQ" name="Claim Notification Department" flowNodeRefs="_JaO8AI8JEe-v648egk3nxQ _L9OG4I8JEe-v648egk3nxQ"/>
+      <lanes id="_QySaEI8JEe-v648egk3nxQ" name="Claim Handling Department" flowNodeRefs="_rfT_4I8JEe-v648egk3nxQ _ZB2vUI8JEe-v648egk3nxQ _LiJmAI8KIe-v648egk3nxQ"/>
+      <lanes id="_ef1WkI8JEe-v648egk3nxQ" name="Supervisor" flowNodeRefs="_Sbg0oI8KIe-v648egk3nxQ _LGaE0I8KIe-v648egk3nxQ"/>
+    </laneSets>
+    <artifacts xsi:type="bpmn:DataStore" id="_cVP9kI8JEe-v648egk3nxQ" name="Insurance System"/>
+    <artifacts xsi:type="bpmn:Association" id="_WI2uII8JEe-v648egk3nxQ" sourceRef="_L9OG4I8JEe-v648egk3nxQ" targetRef="_cVP9kI8JEe-v648egk3nxQ"/>
+    <artifacts xsi:type="bpmn:Association" id="_yKAlsI8JEe-v648egk3nxQ" sourceRef="_rfT_4I8JEe-v648egk3nxQ" targetRef="_cVP9kI8JEe-v648egk3nxQ"/>
+    <artifacts xsi:type="bpmn:Association" id="_iXILII8JEe-v648egk3nxQ" sourceRef="_ZB2vUI8JEe-v648egk3nxQ" targetRef="_cVP9kI8JEe-v648egk3nxQ"/>
+    <artifacts xsi:type="bpmn:Association" id="_FzFisI8KIe-v648egk3nxQ" sourceRef="_omxpoI8KIe-v648egk3nxQ" targetRef="_cVP9kI8JEe-v648egk3nxQ"/>
+    <artifacts xsi:type="bpmn:Association" id="_SzXZII8KIe-v648egk3nxQ" sourceRef="_p0toII8KIe-v648egk3nxQ" targetRef="_cVP9kI8JEe-v648egk3nxQ"/>
+    <artifacts xsi:type="bpmn:Association" id="_dKWiUI8KIe-v648egk3nxQ" sourceRef="_6teQ4I8KIe-v648egk3nxQ" targetRef="_cVP9kI8JEe-v648egk3nxQ"/>
+  </rootElements>
+</bpmn:Definitions>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_KkUY4Y8DEe-v648egk3nxQ" name="PhD Admission Process" targetNamespace="http://www.omg.org/bpmn">
+  <bpmn:Process id="_Process_PhD_Admission" name="PhD Admission Process" processType="Private" isExecutable="true">
+    <bpmn:laneSet id="_LaneSet_PhD_Admission" name="PhD Admission">
+      <bpmn:lane id="_Lane_Admissions_Office" name="Admissions Office">
+        <bpmn:flowNodeRefs>_StartEvent_Apply_Online</bpmn:flowNodeRefs>
+        <bpmn:flowNodeRefs>_Task_Generate_PDF</bpmn:flowNodeRefs>
+        <bpmn:flowNodeRefs>_Task_Initial_Assessment</bpmn:flowNodeRefs>
+        <bpmn:flowNodeRefs>_Gateway_Grades_Sufficient</bpmn:flowNodeRefs>
+        <bpmn:flowNodeRefs>_Task_Send_Rejection_Email</bpmn:flowNodeRefs>
+        <bpmn:flowNodeRefs>_Task_Forward_Documents</bpmn:flowNodeRefs>
+        <bpmn:flowNodeRefs>_Task_Check_Selection_Outcomes</bpmn:flowNodeRefs>
+        <bpmn:flowNodeRefs>_Task_Send_Rejection_or_Admission_Email</bpmn:flowNodeRefs>
+      </bpmn:lane>
+      <bpmn:lane id="_Lane_Academic_Committee" name="Academic Committee">
+        <bpmn:flowNodeRefs>_Task_Academic_Assessment</bpmn:flowNodeRefs>
+        <bpmn:flowNodeRefs>_Task_Notify_Admissions_Office</bpmn:flowNodeRefs>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:flowElements>
+      <bpmn:startEvent id="_StartEvent_Apply_Online" name="Student Applies Online"/>
+      <bpmn:task id="_Task_Generate_PDF" name="Generate PDF and Request Documents"/>
+      <bpmn:task id="_Task_Initial_Assessment" name="Initial Assessment by Admissions Office"/>
+      <bpmn:exclusiveGateway id="_Gateway_Grades_Sufficient" name="Grades Sufficient?"/>
+      <bpmn:task id="_Task_Send_Rejection_Email" name="Send Rejection Email"/>
+      <bpmn:task id="_Task_Forward_Documents" name="Forward Documents to Academic Committee"/>
+      <bpmn:task id="_Task_Academic_Assessment" name="Academic Assessment by Committee"/>
+      <bpmn:task id="_Task_Notify_Admissions_Office" name="Notify Admissions Office of Selection Outcomes"/>
+      <bpmn:task id="_Task_Check_Selection_Outcomes" name="Check Selection Outcomes"/>
+      <bpmn:task id="_Task_Send_Rejection_or_Admission_Email" name="Send Rejection or Admission Email"/>
+      <bpmn:sequenceFlow id="_Flow_1" sourceRef="_StartEvent_Apply_Online" targetRef="_Task_Generate_PDF"/>
+      <bpmn:sequenceFlow id="_Flow_2" sourceRef="_Task_Generate_PDF" targetRef="_Task_Initial_Assessment"/>
+      <bpmn:sequenceFlow id="_Flow_3" sourceRef="_Task_Initial_Assessment" targetRef="_Gateway_Grades_Sufficient"/>
+      <bpmn:sequenceFlow id="_Flow_4" sourceRef="_Gateway_Grades_Sufficient" targetRef="_Task_Send_Rejection_Email">
+        <bpmn:conditionExpression>Insufficient Grades</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
+      <bpmn:sequenceFlow id="_Flow_5" sourceRef="_Gateway_Grades_Sufficient" targetRef="_Task_Forward_Documents">
+        <bpmn:conditionExpression>Sufficient Grades</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
+      <bpmn:sequenceFlow id="_Flow_6" sourceRef="_Task_Forward_Documents" targetRef="_Task_Academic_Assessment"/>
+      <bpmn:sequenceFlow id="_Flow_7" sourceRef="_Task_Academic_Assessment" targetRef="_Task_Notify_Admissions_Office"/>
+      <bpmn:sequenceFlow id="_Flow_8" sourceRef="_Task_Notify_Admissions_Office" targetRef="_Task_Check_Selection_Outcomes"/>
+      <bpmn:sequenceFlow id="_Flow_9" sourceRef="_Task_Check_Selection_Outcomes" targetRef="_Task_Send_Rejection_or_Admission_Email"/>
+    </bpmn:flowElements>
+  </bpmn:Process>
+</bpmn:Definitions>

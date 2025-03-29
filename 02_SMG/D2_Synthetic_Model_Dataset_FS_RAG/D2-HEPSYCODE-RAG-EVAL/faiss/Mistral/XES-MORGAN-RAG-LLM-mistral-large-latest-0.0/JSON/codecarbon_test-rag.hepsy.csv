@@ -1,0 +1,10 @@
+total_emissions,node
+4.8805415393813367e-08,generate_query_from_metamodel
+0.0003469020037430382,generate_query_node
+6.161124630918276e-06,retrieve
+0.0013704040320188537,grade_documents
+0.0001366414052570885,grade_generation_v_documents_and_question
+0.00016104012422848537,evaluate_rag_output
+0.00019006431730776038,evaluate_bert_score
+0.0012197120106140942,cache_context_node
+0.007167827949212438,FILE_test-rag.hepsy

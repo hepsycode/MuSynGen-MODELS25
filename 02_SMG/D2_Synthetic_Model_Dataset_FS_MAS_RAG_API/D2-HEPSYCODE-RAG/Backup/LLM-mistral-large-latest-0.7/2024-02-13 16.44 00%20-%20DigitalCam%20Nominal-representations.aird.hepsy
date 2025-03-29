@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hepsy:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hepsy="org.univaq.hepsy" name="ImagingPipeline">
+  <nodes xsi:type="hepsy:Stimulus" name="Stimulus">
+    <ports name="stim_system_out_port"/>
+    <nChannels name="stim_system_channel" queueSize="8" timeout="0" rendezVous="true" direction="Unidirectional">
+      <message name="stim_system_payload">
+        <entry name="stim_01" type="sc_uint"/>
+      </message>
+      <nFrom xsi:type="hepsy:Stimulus" name="Stimulus"/>
+      <pFrom name="stim_system_out_port"/>
+      <nTo xsi:type="hepsy:StructuredNode" name="DigitalCam"/>
+    </nChannels>
+  </nodes>
+  <nodes xsi:type="hepsy:StructuredNode" name="DigitalCam">
+    <ports name="system_display_out_port"/>
+    <processes name="ccdpp" priority="1" criticality="1">
+      <processExtension name="ccdpp_out_port"/>
+    </processes>
+    <processes name="cntrl" priority="1" criticality="1">
+      <processExtension name="cntrl_out_port"/>
+    </processes>
+    <processes name="codec" priority="1" criticality="1">
+      <processExtension name="codec_out_port"/>
+    </processes>
+    <nChannels name="ccdpp_cntrl_channel" queueSize="16" timeout="0" rendezVous="true" direction="Unidirectional">
+      <message name="ccdpp_cntrl_payload">
+        <entry name="img_01" type="sc_uint"/>
+      </message>
+      <nFrom xsi:type="hepsy:Process" name="ccdpp"/>
+      <pFrom name="ccdpp_out_port"/>
+      <nTo xsi:type="hepsy:Process" name="cntrl"/>
+    </nChannels>
+    <nChannels name="cntrl_codec_channel" queueSize="16" timeout="0" rendezVous="true" direction="Unidirectional">
+      <message name="cntrl_codec_payload">
+        <entry name="img_01_08" type="sc_uint"/>
+      </message>
+      <nFrom xsi:type="hepsy:Process" name="cntrl"/>
+      <pFrom name="cntrl_out_port"/>
+      <nTo xsi:type="hepsy:Process" name="codec"/>
+    </nChannels>
+    <nChannels name="codec_cntrl_channel" queueSize="16" timeout="0" rendezVous="true" direction="Unidirectional">
+      <message name="codec_cntrl_payload">
+        <entry name="img_01_ack" type="sc_uint"/>
+      </message>
+      <nFrom xsi:type="hepsy:Process" name="codec"/>
+      <pFrom name="codec_out_port"/>
+      <nTo xsi:type="hepsy:Process" name="cntrl"/>
+    </nChannels>
+    <nChannels name="system_display_channel" queueSize="8" timeout="0" rendezVous="true" direction="Unidirectional">
+      <message name="system_display_payload"/>
+      <nFrom xsi:type="hepsy:StructuredNode" name="DigitalCam"/>
+      <pFrom name="system_display_out_port"/>
+      <nTo xsi:type="hepsy:Display" name="Display"/>
+      <pTo name="system_display_in_port"/>
+    </nChannels>
+  </nodes>
+  <nodes xsi:type="hepsy:Display" name="Display">
+    <ports name="system_display_in_port"/>
+    <nChannels name="internal_display_channel" queueSize="8" timeout="0" rendezVous="true" direction="Unidirectional">
+      <message name="internal_display_payload"/>
+      <pFrom name="system_display_in_port"/>
+    </nChannels>
+  </nodes>
+</hepsy:BehaviorSpecification>

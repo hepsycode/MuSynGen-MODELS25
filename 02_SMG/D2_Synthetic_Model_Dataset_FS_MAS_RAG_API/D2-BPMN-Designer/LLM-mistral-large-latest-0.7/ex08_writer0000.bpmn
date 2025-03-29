@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_KkUY4Y8DEe-v648egk3nxQ" name="Elective Course Selection and Allocation" targetNamespace="http://www.omg.org/bpmn">
+  <bpmn:Process id="ElectiveCourseProcess" name="Elective Course Process" processType="None" isClosed="false" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_1">
+      <bpmn:lane id="Lane_Teacher" name="Teacher">
+        <bpmn:flowNodeRef>ProvideCourseDescription</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>ReceiveStudentList</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>ChooseStudents</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>HandOverNonAcceptedList</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_Secretary" name="Secretary">
+        <bpmn:flowNodeRef>CollectDescriptions</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>EnterInformation</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>SendStudentLists</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>ReceiveNonAcceptedLists</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>AssignStudents</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>RebookStudents</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:flowElements>
+      <bpmn:startEvent id="StartEvent_1" name="Start"/>
+      <bpmn:task id="ProvideCourseDescription" name="Provide Course Description">
+        <bpmn:documentation id="Documentation_1">Each teacher provides a course description to the secretary's office.</bpmn:documentation>
+      </bpmn:task>
+      <bpmn:task id="CollectDescriptions" name="Collect Descriptions">
+        <bpmn:documentation id="Documentation_2">The secretary collects all course descriptions.</bpmn:documentation>
+      </bpmn:task>
+      <bpmn:task id="EnterInformation" name="Enter Information into CBS/CIS">
+        <bpmn:documentation id="Documentation_3">The secretary enters the information into the course booking system (CBS) or course information system (CIS).</bpmn:documentation>
+      </bpmn:task>
+      <bpmn:task id="SendStudentLists" name="Send Student Lists">
+        <bpmn:documentation id="Documentation_4">The secretary sends the list of registered students to each teacher.</bpmn:documentation>
+      </bpmn:task>
+      <bpmn:task id="ReceiveStudentList" name="Receive Student List">
+        <bpmn:documentation id="Documentation_5">Each teacher receives the list of registered students.</bpmn:documentation>
+      </bpmn:task>
+      <bpmn:task id="ChooseStudents" name="Choose Students">
+        <bpmn:documentation id="Documentation_6">Teachers choose which students can participate in the course based on priority rules.</bpmn:documentation>
+      </bpmn:task>
+      <bpmn:task id="HandOverNonAcceptedList" name="Hand Over Non-Accepted List">
+        <bpmn:documentation id="Documentation_7">Teachers hand over the list of non-accepted students to the secretary's office.</bpmn:documentation>
+      </bpmn:task>
+      <bpmn:task id="ReceiveNonAcceptedLists" name="Receive Non-Accepted Lists">
+        <bpmn:documentation id="Documentation_8">The secretary receives the lists of non-accepted students from the teachers.</bpmn:documentation>
+      </bpmn:task>
+      <bpmn:task id="AssignStudents" name="Assign Students to Available Courses">
+        <bpmn:documentation id="Documentation_9">The secretary assigns non-accepted students to courses with free places.</bpmn:documentation>
+      </bpmn:task>
+      <bpmn:task id="RebookStudents" name="Rebook Students in CBS/CIS">
+        <bpmn:documentation id="Documentation_10">The secretary rebooks the students in the CBS or CIS.</bpmn:documentation>
+      </bpmn:task>
+      <bpmn:endEvent id="EndEvent_1" name="End"/>
+      <bpmn:sequenceFlow id="Flow_1" sourceRef="StartEvent_1" targetRef="ProvideCourseDescription"/>
+      <bpmn:sequenceFlow id="Flow_2" sourceRef="ProvideCourseDescription" targetRef="CollectDescriptions"/>
+      <bpmn:sequenceFlow id="Flow_3" sourceRef="CollectDescriptions" targetRef="EnterInformation"/>
+      <bpmn:sequenceFlow id="Flow_4" sourceRef="EnterInformation" targetRef="SendStudentLists"/>
+      <bpmn:sequenceFlow id="Flow_5" sourceRef="SendStudentLists" targetRef="ReceiveStudentList"/>
+      <bpmn:sequenceFlow id="Flow_6" sourceRef="ReceiveStudentList" targetRef="ChooseStudents"/>
+      <bpmn:sequenceFlow id="Flow_7" sourceRef="ChooseStudents" targetRef="HandOverNonAcceptedList"/>
+      <bpmn:sequenceFlow id="Flow_8" sourceRef="HandOverNonAcceptedList" targetRef="ReceiveNonAcceptedLists"/>
+      <bpmn:sequenceFlow id="Flow_9" sourceRef="ReceiveNonAcceptedLists" targetRef="AssignStudents"/>
+      <bpmn:sequenceFlow id="Flow_10" sourceRef="AssignStudents" targetRef="RebookStudents"/>
+      <bpmn:sequenceFlow id="Flow_11" sourceRef="RebookStudents" targetRef="EndEvent_1"/>
+    </bpmn:flowElements>
+  </bpmn:Process>
+</bpmn:Definitions>

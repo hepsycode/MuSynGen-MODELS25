@@ -1,0 +1,52 @@
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<hml:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hml="org.univaq.hepsy">
+  <nodes xsi:type="hml:Stimulus" name="Stimulus">
+    <ports name="stim_rtPaper2_out_port">
+      <pChannels name="stim_rtPaper2_channel" pFrom="//@nodes.0/@ports.0" pTo="//@nodes.2/@ports.0" queueSize="8" rendezVous="true">
+        <message name="stim_rtPaper2_msg">
+          <entry name="data" type="sc_int"/>
+        </message>
+      </pChannels>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:Display" name="Display">
+    <ports name="system_display_in_port">
+      <pChannels name="disp_rtPaper2_channel" pFrom="//@nodes.2/@ports.5" pTo="//@nodes.1/@ports.0"/>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:StructuredNode" name="RT App Paper 2">
+    <nChannels name="stim_capture_channel_2" nFrom="//@nodes.0/@ports.0" nTo="//@nodes.2/@processes.0" queueSize="8" rendezVous="true">
+      <message name="stim_capture_msg_2">
+        <entry name="data" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="capture_filter_channel_2" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.1" queueSize="8" rendezVous="true">
+      <message name="capture_filter_msg_2">
+        <entry name="data" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="filter_preprocess_channel_2" nFrom="//@nodes.2/@processes.1" nTo="//@nodes.2/@processes.2" queueSize="8" rendezVous="true">
+      <message name="filter_preprocess_msg_2">
+        <entry name="data" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="preprocess_analyze_channel_2" nFrom="//@nodes.2/@processes.2" nTo="//@nodes.2/@processes.3" queueSize="8" rendezVous="true">
+      <message name="preprocess_analyze_msg_2">
+        <entry name="data" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="analyze_control_channel_2" nFrom="//@nodes.2/@processes.3" nTo="//@nodes.2/@processes.4" queueSize="8" rendezVous="true">
+      <message name="analyze_control_msg_2">
+        <entry name="data" type="sc_int"/>
+      </message>
+    </nChannels>
+    <ports name="system_display_out_port" portExtension="//@nodes.2/@processes.4"/>
+    <processes name="capture"/>
+    <processes name="filter"/>
+    <processes name="preprocess"/>
+    <processes name="analyze"/>
+    <processes name="control" processExtension="//@nodes.2/@ports.5"/>
+  </nodes>
+</hml:BehaviorSpecification>
+```

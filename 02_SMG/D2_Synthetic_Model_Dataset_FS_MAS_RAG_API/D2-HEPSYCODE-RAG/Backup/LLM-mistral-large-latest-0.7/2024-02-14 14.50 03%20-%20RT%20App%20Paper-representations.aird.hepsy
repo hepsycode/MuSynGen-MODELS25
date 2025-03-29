@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hepsy:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hepsy="org.univaq.hepsy" name="RealTimeSystem">
+  <nodes xsi:type="hepsy:Stimulus" name="Stimulus">
+    <ports name="stim_rtPaper_out_port"/>
+  </nodes>
+  <nodes xsi:type="hepsy:StructuredNode" name="RT App Paper">
+    <nChannels name="stim_rtPaper_channel" queueSize="8" rendezVous="true" direction="Unidirectional">
+      <nFrom href="#//@nodes.0"/>
+      <nTo href="#//@nodes.1"/>
+      <pFrom href="#//@nodes.0/ports.0"/>
+      <message name="stim_rtPaper_message"/>
+    </nChannels>
+    <nChannels name="stim_capture_channel" direction="Unidirectional">
+      <message name="stim_capture_message"/>
+    </nChannels>
+    <nChannels name="capture_preprocess_channel" direction="Unidirectional">
+      <message name="capture_preprocess_message"/>
+    </nChannels>
+    <nChannels name="preprocess_analyze_channel" direction="Unidirectional">
+      <message name="preprocess_analyze_message"/>
+    </nChannels>
+    <nChannels name="analyze_control_channel" direction="Unidirectional">
+      <message name="analyze_control_message"/>
+    </nChannels>
+    <ports name="system_display_out_port"/>
+    <processes name="capture" priority="1" criticality="1">
+      <nChannels name="stim_capture_channel" direction="Unidirectional">
+        <pTo href="#//@nodes.1/ports.0"/>
+        <message name="stim_capture_message"/>
+      </nChannels>
+    </processes>
+    <processes name="preprocess" priority="1" criticality="1">
+      <nChannels name="capture_preprocess_channel" direction="Unidirectional">
+        <message name="capture_preprocess_message"/>
+      </nChannels>
+    </processes>
+    <processes name="analyze" priority="1" criticality="1">
+      <nChannels name="preprocess_analyze_channel" direction="Unidirectional">
+        <message name="preprocess_analyze_message"/>
+      </nChannels>
+    </processes>
+    <processes name="control" priority="1" criticality="1">
+      <nChannels name="analyze_control_channel" direction="Unidirectional">
+        <message name="analyze_control_message"/>
+      </nChannels>
+    </processes>
+  </nodes>
+  <nodes xsi:type="hepsy:Display" name="Display">
+    <ports name="system_display_in_port"/>
+  </nodes>
+  <nodes xsi:type="hepsy:Channel" name="disp_rtPaper_channel" direction="Unidirectional">
+    <nFrom href="#//@nodes.1"/>
+    <nTo href="#//@nodes.2"/>
+    <pTo href="#//@nodes.2/ports.0"/>
+    <message name="disp_rtPaper_message"/>
+  </nodes>
+</hepsy:BehaviorSpecification>

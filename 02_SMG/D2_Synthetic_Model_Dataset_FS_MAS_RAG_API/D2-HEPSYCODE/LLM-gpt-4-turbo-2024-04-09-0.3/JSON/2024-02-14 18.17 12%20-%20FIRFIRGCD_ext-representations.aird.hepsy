@@ -1,0 +1,20 @@
+{
+    "response_length": 2275,
+    "execution_time": 19.486382722854614,
+    "temperature": 0.3,
+    "usage": {
+        "input_tokens": 3879,
+        "output_tokens": 703,
+        "total_tokens": 4582,
+        "input_token_details": {
+            "audio": 0,
+            "cache_read": 0
+        },
+        "output_token_details": {
+            "audio": 0,
+            "reasoning": 0
+        }
+    },
+    "price_usd": 0.05988,
+    "model_name": "gpt-4-turbo-2024-04-09"
+}

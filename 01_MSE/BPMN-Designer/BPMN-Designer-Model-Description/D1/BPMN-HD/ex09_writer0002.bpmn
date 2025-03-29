@@ -1,0 +1,41 @@
+Model the following business process which describes the admission process of
+a PhD program at a university:
+Version a):
+To apply for the PhD program, students first fill in an online application form
+with their personal data. Online applications are recorded in an admission information
+system to which all staff members involved in the process have access.
+After a student has submitted the online form, a PDF document is generated
+and the student is requested to download it, sign it, and send it by post together
+with a transcript of grades and a letter of motivation. When these documents
+are received by the admissions office, the officer makes an initial assessment and
+rejects the application if the student has insufficient grades (such notifications
+of rejection are sent by email). In case of sufficient grades, the admissions office
+forwards the student documents by internal mail to the academic committee,
+which is responsible for deciding whether to offer admission or not. The committee
+meets once every month to examine all applications that are ready for
+academic assessment at the time of the meeting. At the end of the committee
+meeting, the chair of the committee notifies the admissions office of the selection
+outcomes. A few days later, the admissions office checks the selection outcomes
+and sends a rejection or admission email to each candidate.
+Version b):
+To apply for the PhD program, students first fill in an online application form
+with their personal data. Online applications are recorded in an application information
+system to which all members involved in the process have access. After
+a student has submitted the online form, a PDF document is generated and the
+student is requested to download it, sign it, and send it by post together with
+their diploma and a letter of motivation. When these documents are received by
+the administration office, the officer makes an initial assessment and rejects the
+application if the student’s motivation letter is not convincing (such notifications
+of rejection are sent by letter). In case of a convincing letter of motivation,
+the administration office forwards the student documents by internal mail to the
+academic committee, which is responsible for deciding whether to offer admission
+or not. The committee meets once every two months to examine all applications
+that are ready for academic assessment at the time of the meeting. At the end
+of the committee meeting, the committee notifies the administration office of the
+outcomes. A few weeks later, the administration office checks the outcomes and
+sends a rejection or admission letter to each candidate.
+Instructions:
+(1) Model the relevant resources (pools, lanes). The process should be modeled
+from the university point of view, i.e. the student can be modeled as a black
+box.
+(2) Modeling business objects is not required.

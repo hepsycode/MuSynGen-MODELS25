@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_KkUY4Y8DEe-v648egk3nxQ" name="" targetNamespace="" expressionLanguage="http://www.w3.org/1999/XPath" typeLanguage="http://www.w3.org/2001/XMLSchema">
+  <bpmn:Collaboration id="_Collaboration_1" isClosed="false" name="Teacher and Secretary Collaboration">
+    <bpmn:participant id="_Participant_Teacher" name="Teacher" processRef="_Process_Teacher"/>
+    <bpmn:participant id="_Participant_Secretary" name="Secretary" processRef="_Process_Secretary"/>
+    <bpmn:messageFlow id="_MessageFlow_1" sourceRef="_Activity_ProvideCourseDescription" targetRef="_Event_ReceiveCourseDescription"/>
+    <bpmn:messageFlow id="_MessageFlow_2" sourceRef="_Task_ProvideStudentList" targetRef="_Event_ReceiveStudentList"/>
+    <bpmn:messageFlow id="_MessageFlow_3" sourceRef="_Task_ProvideNonAcceptedList" targetRef="_Event_ReceiveNonAcceptedList"/>
+  </bpmn:Collaboration>
+  <bpmn:Process id="_Process_Teacher" name="Teacher Process" isClosed="false" processType="None" isExecutable="false">
+    <bpmn:flowElements>
+      <bpmn:startEvent id="_Event_StartTeacher" name="Start">
+        <bpmn:outgoing>_SequenceFlow_1</bpmn:outgoing>
+      </bpmn:startEvent>
+      <bpmn:sequenceFlow id="_SequenceFlow_1" sourceRef="_Event_StartTeacher" targetRef="_Activity_ProvideCourseDescription"/>
+      <bpmn:task id="_Activity_ProvideCourseDescription" name="Provide course description">
+        <bpmn:incoming>_SequenceFlow_1</bpmn:incoming>
+        <bpmn:outgoing>_SequenceFlow_2</bpmn:outgoing>
+      </bpmn:task>
+      <bpmn:sequenceFlow id="_SequenceFlow_2" sourceRef="_Activity_ProvideCourseDescription" targetRef="_Task_WaitForStudentList"/>
+      <bpmn:task id="_Task_WaitForStudentList" name="Wait for student list">
+        <bpmn:incoming>_SequenceFlow_2</bpmn:incoming>
+        <bpmn:outgoing>_SequenceFlow_3</bpmn:outgoing>
+      </bpmn:task>
+      <bpmn:sequenceFlow id="_SequenceFlow_3" sourceRef="_Task_WaitForStudentList" targetRef="_Event_ReceiveStudentList"/>
+      <bpmn:intermediateCatchEvent id="_Event_ReceiveStudentList" name="Receive student list">
+        <bpmn:incoming>_SequenceFlow_3</bpmn:incoming>
+        <bpmn:outgoing>_SequenceFlow_4</bpmn:outgoing>
+        <bpmn:eventDefinition xsi:type="bpmn:MessageEventDefinition"/>
+      </bpmn:intermediateCatchEvent>
+      <bpmn:sequenceFlow id="_SequenceFlow_4" sourceRef="_Event_ReceiveStudentList" targetRef="_Task_ChooseStudents"/>
+      <bpmn:task id="_Task_ChooseStudents" name="Choose students">
+        <bpmn:incoming>_SequenceFlow_4</bpmn:incoming>
+        <bpmn:outgoing>_SequenceFlow_5</bpmn:outgoing>
+      </bpmn:task>
+      <bpmn:sequenceFlow id="_SequenceFlow_5" sourceRef="_Task_ChooseStudents" targetRef="_Task_ProvideNonAcceptedList"/>
+      <bpmn:task id="_Task_ProvideNonAcceptedList" name="Provide non-accepted student list">
+        <bpmn:incoming>_SequenceFlow_5</bpmn:incoming>
+      </bpmn:task>
+    </bpmn:flowElements>
+  </bpmn:Process>
+  <bpmn:Process id="_Process_Secretary" name="Secretary Process" isClosed="false" processType="None" isExecutable="false">
+    <bpmn:flowElements>
+      <bpmn:startEvent id="_Event_StartSecretary" name="Start">
+        <bpmn:outgoing>_SequenceFlow_6</bpmn:outgoing>
+      </bpmn:startEvent>
+      <bpmn:sequenceFlow id="_SequenceFlow_6" sourceRef="_Event_StartSecretary" targetRef="_Task_CollectDescriptions"/>
+      <bpmn:task id="_Task_CollectDescriptions" name="Collect course descriptions">
+        <bpmn:incoming>_SequenceFlow_6</bpmn:incoming>
+        <bpmn:outgoing>_SequenceFlow_7</bpmn:outgoing>
+      </bpmn:task>
+      <bpmn:sequenceFlow id="_SequenceFlow_7" sourceRef="_Task_CollectDescriptions" targetRef="_Task_EnterInfoIntoCBS"/>
+      <bpmn:task id="_Task_EnterInfoIntoCBS" name="Enter information into CBS">
+        <bpmn:incoming>_SequenceFlow_7</bpmn:incoming>
+        <bpmn:outgoing>_SequenceFlow_8</bpmn:outgoing>
+      </bpmn:task>
+      <bpmn:sequenceFlow id="_SequenceFlow_8" sourceRef="_Task_EnterInfoIntoCBS" targetRef="_Task_SendStudentList"/>
+      <bpmn:task id="_Task_SendStudentList" name="Send student list to teachers">
+        <bpmn:incoming>_SequenceFlow_8</bpmn:incoming>
+        <bpmn:outgoing>_SequenceFlow_9</bpmn:outgoing>
+      </bpmn:task>
+      <bpmn:sequenceFlow id="_SequenceFlow_9" sourceRef="_Task_SendStudentList" targetRef="_Event_ReceiveNonAcceptedList"/>
+      <bpmn:intermediateCatchEvent id="_Event_ReceiveNonAcceptedList" name="Receive non-accepted student list">
+        <bpmn:incoming>_MessageFlow_3</bpmn:incoming>
+        <bpmn:outgoing>_SequenceFlow_10</bpmn:outgoing>
+        <bpmn:eventDefinition xsi:type="bpmn:MessageEventDefinition"/>
+      </bpmn:intermediateCatchEvent>
+      <bpmn:sequenceFlow id="_SequenceFlow_10" sourceRef="_Event_ReceiveNonAcceptedList" targetRef="_Task_AssignStudents"/>
+      <bpmn:task id="_Task_AssignStudents" name="Assign students to available courses">
+        <bpmn:incoming>_SequenceFlow_10</bpmn:incoming>
+        <bpmn:outgoing>_SequenceFlow_11</bpmn:outgoing>
+      </bpmn:task>
+      <bpmn:sequenceFlow id="_SequenceFlow_11" sourceRef="_Task_AssignStudents" targetRef="_Task_RebookStudents"/>
+      <bpmn:task id="_Task_RebookStudents" name="Rebook students in CBS">
+        <bpmn:incoming>_SequenceFlow_11</bpmn:incoming>
+      </bpmn:task>
+    </bpmn:flowElements>
+  </bpmn:Process>
+  <bpmn:signalEventDefinition id="_SignalEventDefinition_1" name="SignalEvent"/>
+</bpmn:Definitions>

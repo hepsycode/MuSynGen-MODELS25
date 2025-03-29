@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hml:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hml="org.univaq.hepsy">
+  <nodes xsi:type="hml:Stimulus" name="stimulus">
+    <ports name="stim_system_out_port">
+      <pChannels name="stim_system_channel" pFrom="//@nodes.0/@ports.0" pTo="//@nodes.1/@ports.0"/>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:Display" name="display">
+    <ports name="system_display_in_port">
+      <pChannels name="display_channel" pFrom="//@nodes.1/@ports.0" pTo="//@nodes.2/@ports.0"/>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:StructuredNode" name="DigitalCam">
+    <ports name="system_display_out_port"/>
+    <ports name="input_port" portExtension="//@nodes.2/@processes.0"/>
+    <nChannels name="stim_ccdpp_channel" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.1" queueSize="8" rendezVous="true">
+      <message name="stim_ccdpp_payload">
+        <entry name="image" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="ccdpp_codec0_channel" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.1" queueSize="8" rendezVous="true">
+      <message name="ccdpp_codec0_payload">
+        <entry name="image" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="ccdpp_codec1_channel" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.2" queueSize="8" rendezVous="true">
+      <message name="ccdpp_codec1_payload">
+        <entry name="image" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="ccdpp_codec2_channel" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.3" queueSize="8" rendezVous="true">
+      <message name="ccdpp_codec2_payload">
+        <entry name="image" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="ccdpp_codec3_channel" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.4" queueSize="8" rendezVous="true">
+      <message name="ccdpp_codec3_payload">
+        <entry name="image" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="ccdpp_codec4_channel" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.5" queueSize="8" rendezVous="true">
+      <message name="ccdpp_codec4_payload">
+        <entry name="image" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="ccdpp_codec5_channel" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.6" queueSize="8" rendezVous="true">
+      <message name="ccdpp_codec5_payload">
+        <entry name="image" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="ccdpp_codec6_channel" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.7" queueSize="8" rendezVous="true">
+      <message name="ccdpp_codec6_payload">
+        <entry name="image" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="ccdpp_codec7_channel" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.8" queueSize="8" rendezVous="true">
+      <message name="ccdpp_codec7_payload">
+        <entry name="image" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="codec_merge_channel" nFrom="//@nodes.2/@processes.1" nTo="//@nodes.2/@processes.9" queueSize="8" rendezVous="true">
+      <message name="merge_payload">
+        <entry name="image" type="sc_int"/>
+      </message>
+    </nChannels>
+    <processes name="ccdpp"/>
+    <processes name="codec0"/>
+    <processes name="codec1"/>
+    <processes name="codec2"/>
+    <processes name="codec3"/>
+    <processes name="codec4"/>
+    <processes name="codec5"/>
+    <processes name="codec6"/>
+    <processes name="codec7"/>
+    <processes name="merge"/>
+  </nodes>
+</hml:BehaviorSpecification>

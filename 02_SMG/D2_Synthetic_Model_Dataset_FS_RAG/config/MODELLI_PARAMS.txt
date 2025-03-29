@@ -1,0 +1,160 @@
+Mistral Models (5 Models)
+
+mistral-large-latest
+Numero di parametri: 123 miliardi
+Context window: 128.000 token
+Prezzo per 1.000 token:
+Input: $0,002
+Output: $0,006
+Numero massimo di token in output: 4.096
+Numero di layer: Informazione non disponibile
+
+pixtral-large-latest
+Numero di parametri: 124 miliardi
+Context window: 128.000 token
+Prezzo per 1.000 token:
+Input: $0,002
+Output: $0,006
+Numero massimo di token in output: Informazione non disponibile
+Numero di layer: Informazione non disponibile
+
+ministral-3b-latest
+Numero di parametri: 3 miliardi
+Context window: 131.000 token
+Prezzo per 1.000 token: 
+Input: $0.00004
+Output: $0.00004
+Numero massimo di token in output: Informazione non disponibile
+Numero di layer: Informazione non disponibile
+
+ministral-8b-latest
+Numero di parametri: 8 miliardi
+Context window: 131.000 token
+Prezzo per 1.000 token: 
+Input: $0.0001
+Output: $0.0001
+Numero massimo di token in output: Informazione non disponibile
+Numero di layer: Informazione non disponibile
+
+mistral-small-latest
+Numero di parametri: Informazione non disponibile
+Context window: 32.000 token
+Prezzo per 1.000 token:
+Input: $0,002
+Output: $0,006
+Numero massimo di token in output: Informazione non disponibile
+Numero di layer: Informazione non disponibile
+
+OpenAI Models (7 Models)
+
+gpt-4o-2024-08-06
+Numero di parametri: Informazione non disponibile
+Context window: 128.000 token
+Prezzo per 1.000 token:
+Input: $0,0025
+Output: $0,00125
+Numero massimo di token in output: Informazione non disponibile
+Numero di layer: Informazione non disponibile
+
+gpt-4o-mini-2024-07-18
+Numero di parametri: Informazione non disponibile
+Context window: 128.000 token
+Prezzo per 1.000 token:
+Input: $0,00015
+Output: $0,000075
+Numero massimo di token in output: Informazione non disponibile
+Numero di layer: Informazione non disponibile
+
+gpt-4-turbo-2024-04-09
+Numero di parametri: Informazione non disponibile
+Context window: 128.000 token
+Prezzo per 1.000 token: 
+Input: $0,01
+Output: $0,03
+Numero massimo di token in output: Informazione non disponibile
+Numero di layer: Informazione non disponibile
+
+gpt-4
+Numero di parametri: Informazione non disponibile
+Context window: 128.000 token
+Prezzo per 1.000 token: 
+Input: $0,03
+Output: $0,06
+Numero massimo di token in output: Informazione non disponibile
+Numero di layer: Informazione non disponibile
+
+gpt-3.5-turbo-0125
+Numero di parametri: Informazione non disponibile
+Context window: Informazione non disponibile
+Prezzo per 1.000 token: Informazione non disponibile
+Numero massimo di token in output: Informazione non disponibile
+Numero di layer: Informazione non disponibile
+
+gpt-3.5-turbo-0125
+Numero di parametri: Informazione non disponibile
+Context window: 4.096 token
+Prezzo per 1.000 token:
+Input: $0,0005
+Output: $0,0015
+Numero massimo di token in output: 4.096
+Numero di layer: Informazione non disponibile
+
+gpt-3.5-turbo-1106
+Numero di parametri: Informazione non disponibile
+Context window: 16.000 token
+Prezzo per 1.000 token:
+Input: $0,001
+Output: $0,002
+Numero massimo di token in output: 16.000
+Numero di layer: Informazione non disponibile
+
+Ollama Models
+
+llama3.2-32k
+Numero di parametri: 32 miliardi
+Context window: 32.000 token
+Prezzo per 1.000 token:
+Input: Informazione non disponibile
+Output: Informazione non disponibile
+Numero massimo di token in output: Informazione non disponibile
+Numero di layer: Informazione non disponibile
+
+Anthropic Models
+
+claude-3-5-sonnet-20241022
+Numero di parametri: Informazione non disponibile
+Context window: 100.000 token
+Prezzo per 1.000 token:
+Input: $0,003
+Output: $0,015
+Numero massimo di token in output: Informazione non disponibile
+Numero di layer: Informazione non disponibile
+
+Google Models (3 Models)
+
+gemini-1.5-flash
+Numero di parametri: Informazione non disponibile
+Context window: 8.192 token
+Prezzo per 1.000 token:
+Input: $0,000075
+Output: $0,0003
+Numero massimo di token in output: 8.192
+Numero di layer: Informazione non disponibile
+
+gemini-1.5-flash-8b
+Numero di parametri: 8 miliardi
+Context window: 8.192 token
+Prezzo per 1.000 token:
+Input: $0,0000375
+Output: $0,00015
+Numero massimo di token in output: 8.192
+Numero di layer: Informazione non disponibile
+
+gemini-1.5-pro
+Numero di parametri: Informazione non disponibile
+Context window: 16.384 token
+Prezzo per 1.000 token:
+Input: $0,00125
+Output: $0,005
+Numero massimo di token in output: 16.384
+Numero di layer: Informazione non disponibile

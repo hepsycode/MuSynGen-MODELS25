@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_KkUY4Y8DEe-v648egk3nxQ" name="Insurance Claim Process" targetNamespace="http://www.omg.org/bpmn" exporter="BPMN Model Exporter" exporterVersion="1.0">
+  <bpmn:Process id="_KkUY4I8DEe-v648egk3nxQ" name="Insurance Claim Process" isExecutable="true" processType="None">
+    <bpmn:flowElements>
+      <bpmn:StartEvent id="_dDiegI8JEe-v648egk3nxQ" name="Claim Received"/>
+      <bpmn:Task id="_obWrUI8JEe-v648egk3nxQ" name="Register Claim"/>
+      <bpmn:UserTask id="_qiungI8JEe-v648egk3nxQ" name="Examine Claim"/>
+      <bpmn:UserTask id="_0FCrQI8JEe-v648egk3nxQ" name="Write Settlement Recommendation"/>
+      <bpmn:UserTask id="_9BHOYI8JEe-v648egk3nxQ" name="Check Recommendation"/>
+      <bpmn:ExclusiveGateway id="_Gf0kgI8KEe-v648egk3nxQ" name="Claim Status?" gatewayDirection="Diverging"/>
+      <bpmn:Task id="_grUBAI8KEe-v648egk3nxQ" name="Mark Claim as Not OK"/>
+      <bpmn:Task id="_vQwAYI8KEe-v648egk3nxQ" name="Mark Claim as OK"/>
+      <bpmn:EndEvent id="_jLYxEI8KEe-v648egk3nxQ" name="Claim Handling Completed"/>
+      <bpmn:SequenceFlow id="_pkQ0II8JEe-v648egk3nxQ" sourceRef="_dDiegI8JEe-v648egk3nxQ" targetRef="_obWrUI8JEe-v648egk3nxQ"/>
+      <bpmn:SequenceFlow id="_tBvnoI8JEe-v648egk3nxQ" sourceRef="_obWrUI8JEe-v648egk3nxQ" targetRef="_qiungI8JEe-v648egk3nxQ"/>
+      <bpmn:SequenceFlow id="_wYnc0I8JEe-v648egk3nxQ" sourceRef="_qiungI8JEe-v648egk3nxQ" targetRef="_0FCrQI8JEe-v648egk3nxQ"/>
+      <bpmn:SequenceFlow id="_J3GCUI8KEe-v648egk3nxQ" sourceRef="_0FCrQI8JEe-v648egk3nxQ" targetRef="_9BHOYI8JEe-v648egk3nxQ"/>
+      <bpmn:SequenceFlow id="_KeNFoI8KEe-v648egk3nxQ" sourceRef="_9BHOYI8JEe-v648egk3nxQ" targetRef="_Gf0kgI8KEe-v648egk3nxQ"/>
+      <bpmn:SequenceFlow id="_iTdqkI8KEe-v648egk3nxQ" name="Not OK" sourceRef="_Gf0kgI8KEe-v648egk3nxQ" targetRef="_grUBAI8KEe-v648egk3nxQ"/>
+      <bpmn:SequenceFlow id="_YVC5oI8KEe-v648egk3nxQ" name="OK" sourceRef="_Gf0kgI8KEe-v648egk3nxQ" targetRef="_vQwAYI8KEe-v648egk3nxQ"/>
+      <bpmn:SequenceFlow id="_ki_dMI8KEe-v648egk3nxQ" sourceRef="_vQwAYI8KEe-v648egk3nxQ" targetRef="_jLYxEI8KEe-v648egk3nxQ"/>
+    </bpmn:flowElements>
+    <bpmn:laneSet id="_L9VaQY8DEe-v648egk3nxQ" name="Insurance Company">
+      <bpmn:lane id="_L9WBUI8DEe-v648egk3nxQ" name="Claims Officer">
+        <bpmn:flowNodeRefs>_dDiegI8JEe-v648egk3nxQ _obWrUI8JEe-v648egk3nxQ _qiungI8JEe-v648egk3nxQ _0FCrQI8JEe-v648egk3nxQ _grUBAI8KEe-v648egk3nxQ</bpmn:flowNodeRefs>
+      </bpmn:lane>
+      <bpmn:lane id="_O5n9gI8JEe-v648egk3nxQ" name="Senior Claims Officer">
+        <bpmn:flowNodeRefs>_9BHOYI8JEe-v648egk3nxQ _Gf0kgI8KEe-v648egk3nxQ _vQwAYI8KEe-v648egk3nxQ</bpmn:flowNodeRefs>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:artifacts>
+      <bpmn:dataObject id="_5J33EI8JEe-v648egk3nxQ" name="Claim Document"/>
+      <bpmn:dataStore id="_3ZUC8I8KEe-v648egk3nxQ" name="Claims Database"/>
+      <bpmn:association id="_8FLxoI8JEe-v648egk3nxQ" sourceRef="_qiungI8JEe-v648egk3nxQ" targetRef="_5J33EI8JEe-v648egk3nxQ"/>
+      <bpmn:association id="_BEBDII8KEe-v648egk3nxQ" sourceRef="_5J33EI8JEe-v648egk3nxQ" targetRef="_obWrUI8JEe-v648egk3nxQ"/>
+      <bpmn:association id="_c38dEI8KEe-v648egk3nxQ" sourceRef="_0FCrQI8JEe-v648egk3nxQ" targetRef="_3ZUC8I8KEe-v648egk3nxQ"/>
+    </bpmn:artifacts>
+  </bpmn:Process>
+</bpmn:Definitions>

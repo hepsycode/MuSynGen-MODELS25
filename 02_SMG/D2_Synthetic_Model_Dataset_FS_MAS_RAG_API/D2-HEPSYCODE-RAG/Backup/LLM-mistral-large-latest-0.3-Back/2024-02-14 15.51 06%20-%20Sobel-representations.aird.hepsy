@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hml:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hml="org.univaq.hepsy">
+  <nodes xsi:type="hml:Stimulus" name="Stimulus">
+    <ports name="stim_system_out_port"/>
+  </nodes>
+  <nodes xsi:type="hml:StructuredNode" name="Sobel">
+    <ports name="stim_preproc_in_port"/>
+    <ports name="preproc_sobelH_out_port"/>
+    <ports name="preproc_sobelV_out_port"/>
+    <ports name="sobelH_merge_out_port"/>
+    <ports name="sobelV_merge_out_port"/>
+    <ports name="system_display_out_port"/>
+    <nChannels name="stim_preproc_channel" nFrom="//@nodes.0" nTo="//@nodes.1" pFrom="//@nodes.0/@ports.0" pTo="//@nodes.1/@ports.0" queueSize="8" rendezVous="true">
+      <message name="raw_image_data">
+        <entry name="image_data" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="preproc_sobelH_channel" nFrom="//@nodes.1/@processes.0" nTo="//@nodes.1/@processes.1" pFrom="//@nodes.1/@ports.1" pTo="//@nodes.1/@ports.2" queueSize="8" rendezVous="true">
+      <message name="preproc_data">
+        <entry name="image_data" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="preproc_sobelV_channel" nFrom="//@nodes.1/@processes.0" nTo="//@nodes.1/@processes.2" pFrom="//@nodes.1/@ports.1" pTo="//@nodes.1/@ports.3" queueSize="8" rendezVous="true">
+      <message name="preproc_data">
+        <entry name="image_data" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="sobelH_merge_channel" nFrom="//@nodes.1/@processes.1" nTo="//@nodes.1/@processes.3" pFrom="//@nodes.1/@ports.3" pTo="//@nodes.1/@ports.4" queueSize="8" rendezVous="true">
+      <message name="sobelH_data">
+        <entry name="image_data" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="sobelV_merge_channel" nFrom="//@nodes.1/@processes.2" nTo="//@nodes.1/@processes.3" pFrom="//@nodes.1/@ports.4" pTo="//@nodes.1/@ports.5" queueSize="8" rendezVous="true">
+      <message name="sobelV_data">
+        <entry name="image_data" type="sc_int"/>
+      </message>
+    </nChannels>
+    <processes name="preproc"/>
+    <processes name="sobel_h"/>
+    <processes name="sobel_v"/>
+    <processes name="edge_merge"/>
+  </nodes>
+  <nodes xsi:type="hml:Display" name="Display">
+    <ports name="system_display_in_port"/>
+    <nChannels name="sobel_display_channel" nFrom="//@nodes.1" nTo="//@nodes.2" pFrom="//@nodes.1/@ports.5" pTo="//@nodes.2/@ports.0" queueSize="8" rendezVous="true">
+      <message name="edge_image_data">
+        <entry name="image_data" type="sc_int"/>
+      </message>
+    </nChannels>
+  </nodes>
+</hml:BehaviorSpecification>

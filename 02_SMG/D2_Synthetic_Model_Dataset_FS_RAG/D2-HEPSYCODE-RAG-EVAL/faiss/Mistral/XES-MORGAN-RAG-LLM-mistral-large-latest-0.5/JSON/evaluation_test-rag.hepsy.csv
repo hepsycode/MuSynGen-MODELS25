@@ -1,0 +1,2 @@
+file_name,faithfulness,answer_relevance,context_precision,context_accuracy,context_recall,context_f1,precision,recall,f1,cosine_similarity,levenshtein_distance
+test-rag.hepsy,0.6,0.7,0.8,0.9,0.8,0.8,0.8544042706489563,0.8332693576812744,0.8437044620513916,0.3254260446284747,0.2684405523745369

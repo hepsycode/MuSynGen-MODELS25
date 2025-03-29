@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hepsy:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hepsy="org.univaq.hepsy" name="DigitalCamModel">
+  <nodes xsi:type="hepsy:Stimulus" name="Stimulus">
+    <ports name="stim_system_out_port"/>
+  </nodes>
+  <nodes xsi:type="hepsy:StructuredNode" name="DigitalCam">
+    <ports name="stim_system_in_port"/>
+    <ports name="stim_ccdpp_out_port"/>
+    <ports name="ccdpp_codec0_out_port"/>
+    <ports name="ccdpp_codec1_out_port"/>
+    <ports name="ccdpp_codec2_out_port"/>
+    <ports name="ccdpp_codec3_out_port"/>
+    <ports name="ccdpp_codec4_out_port"/>
+    <ports name="ccdpp_codec5_out_port"/>
+    <ports name="ccdpp_codec6_out_port"/>
+    <ports name="ccdpp_codec7_out_port"/>
+    <ports name="codec_merge_in_port"/>
+    <ports name="system_display_out_port"/>
+    <processes name="ccdpp" priority="1" criticality="1">
+      <processExtension href="#//@ports.1"/>
+    </processes>
+    <processes name="codec0" priority="1" criticality="1">
+      <processExtension href="#//@ports.2"/>
+    </processes>
+    <processes name="codec1" priority="1" criticality="1">
+      <processExtension href="#//@ports.3"/>
+    </processes>
+    <processes name="codec2" priority="1" criticality="1">
+      <processExtension href="#//@ports.4"/>
+    </processes>
+    <processes name="codec3" priority="1" criticality="1">
+      <processExtension href="#//@ports.5"/>
+    </processes>
+    <processes name="codec4" priority="1" criticality="1">
+      <processExtension href="#//@ports.6"/>
+    </processes>
+    <processes name="codec5" priority="1" criticality="1">
+      <processExtension href="#//@ports.7"/>
+    </processes>
+    <processes name="codec6" priority="1" criticality="1">
+      <processExtension href="#//@ports.8"/>
+    </processes>
+    <processes name="codec7" priority="1" criticality="1">
+      <processExtension href="#//@ports.9"/>
+    </processes>
+  </nodes>
+  <nodes xsi:type="hepsy:Display" name="Display">
+    <ports name="system_display_in_port"/>
+  </nodes>
+  <nodes xsi:type="hepsy:Channel" name="stim_system_channel" queueSize="8" rendezVous="true" direction="Unidirectional">
+    <nFrom href="#//@nodes.0"/>
+    <nTo href="#//@nodes.1"/>
+    <pFrom href="#//@nodes.0/@ports.0"/>
+    <pTo href="#//@nodes.1/@ports.0"/>
+  </nodes>
+  <nodes xsi:type="hepsy:Channel" name="stim_ccdpp_channel" queueSize="8" rendezVous="true" direction="Unidirectional">
+    <nFrom href="#//@nodes.1"/>
+    <nTo href="#//@nodes.1"/>
+    <pFrom href="#//@nodes.1/@ports.0"/>
+    <pTo href="#//@nodes.1/@ports.1"/>
+  </nodes>
+  <nodes xsi:type="hepsy:Channel" name="ccdpp_codec0_channel" queueSize="8" rendezVous="true" direction="Unidirectional">
+    <nFrom href="#//@nodes.1"/>
+    <nTo href="#//@nodes.1"/>
+    <pFrom href="#//@nodes.1/@ports.1"/>
+    <pTo href="#//@nodes.1/@ports.2"/>
+  </nodes>
+  <nodes xsi:type="hepsy:Channel" name="ccdpp_codec1_channel" queueSize="8" rendezVous="true" direction="Unidirectional">
+    <nFrom href="#//@nodes.1"/>
+    <nTo href="#//@nodes.1"/>
+    <pFrom href="#//@nodes.1/@ports.1"/>
+    <pTo href="#//@nodes.1/@ports.3"/>
+  </nodes>
+  <nodes xsi:type="hepsy:Channel" name="ccdpp_codec2_channel" queueSize="8" rendezVous="true" direction="Unidirectional">
+    <nFrom href="#//@nodes.1"/>
+    <nTo href="#//@nodes.1"/>
+    <pFrom href="#//@nodes.1/@ports.1"/>
+    <pTo href="#//@nodes.1/@ports.4"/>
+  </nodes>
+  <nodes xsi:type="hepsy:Channel" name="ccdpp_codec3_channel" queueSize="8" rendezVous="true" direction="Unidirectional">
+    <nFrom href="#//@nodes.1"/>
+    <nTo href="#//@nodes.1"/>
+    <pFrom href="#//@nodes.1/@ports.1"/>
+    <pTo href="#//@nodes.1/@ports.5"/>
+  </nodes>
+  <nodes xsi:type="hepsy:Channel" name="ccdpp_codec4_channel" queueSize="8" rendezVous="true" direction="Unidirectional">
+    <nFrom href="#//@nodes.1"/>
+    <nTo href="#//@nodes.1"/>
+    <pFrom href="#//@nodes.1/@ports.1"/>
+    <pTo href="#//@nodes.1/@ports.6"/>
+  </nodes>
+  <nodes xsi:type="hepsy:Channel" name="ccdpp_codec5_channel" queueSize="8" rendezVous="true" direction="Unidirectional">
+    <nFrom href="#//@nodes.1"/>
+    <nTo href="#//@nodes.1"/>
+    <pFrom href="#//@nodes.1/@ports.1"/>
+    <pTo href="#//@nodes.1/@ports.7"/>
+  </nodes>
+  <nodes xsi:type="hepsy:Channel" name="ccdpp_codec6_channel" queueSize="8" rendezVous="true" direction="Unidirectional">
+    <nFrom href="#//@nodes.1"/>
+    <nTo href="#//@nodes.1"/>
+    <pFrom href="#//@nodes.1/@ports.1"/>
+    <pTo href="#//@nodes.1/@ports.8"/>
+  </nodes>
+  <nodes xsi:type="hepsy:Channel" name="ccdpp_codec7_channel" queueSize="8" rendezVous="true" direction="Unidirectional">
+    <nFrom href="#//@nodes.1"/>
+    <nTo href="#//@nodes.1"/>
+    <pFrom href="#//@nodes.1/@ports.1"/>
+    <pTo href="#//@nodes.1/@ports.9"/>
+  </nodes>
+  <nodes xsi:type="hepsy:Channel" name="codec_merge_channel" queueSize="8" rendezVous="true" direction="Unidirectional">
+    <nFrom href="#//@nodes.1"/>
+    <nTo href="#//@nodes.1"/>
+    <pFrom href="#//@nodes.1/@ports.10"/>
+    <pTo href="#//@nodes.1/@ports.11"/>
+  </nodes>
+  <nodes xsi:type="hepsy:Channel" name="display_channel" queueSize="8" rendezVous="true" direction="Unidirectional">
+    <nFrom href="#//@nodes.1"/>
+    <nTo href="#//@nodes.2"/>
+    <pFrom href="#//@nodes.1/@ports.12"/>
+    <pTo href="#//@nodes.2/@ports.0"/>
+  </nodes>
+</hepsy:BehaviorSpecification>

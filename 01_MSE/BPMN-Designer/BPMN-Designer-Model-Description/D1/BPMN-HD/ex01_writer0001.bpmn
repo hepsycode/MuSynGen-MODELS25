@@ -1,0 +1,9 @@
+Model the following business process for assessing credit risks:
+When a new credit request is received, the risk is assessed. If the risk is above
+a threshold, an advanced risk assessment needs to be carried out, otherwise a
+simple risk assessment will suffice. Once the assessment has been completed, the
+customer is notified with the result of the assessment, and in the meantime the
+disbursement is organized.
+For simplicity, you can assume that the result of an assessment is always positive.
+Instructions: Only use the following BPMN elements: task, events, gateways, sequence
+flow

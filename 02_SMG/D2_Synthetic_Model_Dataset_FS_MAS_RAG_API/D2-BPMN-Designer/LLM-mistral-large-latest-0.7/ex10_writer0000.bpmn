@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_KkUY4Y8DEe-v648egk3nxQ" targetNamespace="http://www.omg.org/bpmn20">
+  <bpmn:collaboration id="_Collaboration_1" name="Supplier-Retailer Collaboration">
+    <bpmn:participant id="_Participant_Supplier" name="Supplier" processRef="_Process_Supplier"/>
+    <bpmn:participant id="_Participant_Retailer" name="Retailer" processRef="_Process_Retailer"/>
+    <bpmn:messageFlow id="_MessageFlow_1" name="Request Offer" sourceRef="_Activity_RequestOffer" targetRef="_Event_Start_Supplier"/>
+    <bpmn:messageFlow id="_MessageFlow_2" name="Send Offer" sourceRef="_Activity_SendOffer" targetRef="_Event_ReceiveOffer"/>
+    <bpmn:messageFlow id="_MessageFlow_3" name="Order Confirmation" sourceRef="_Event_OrderConfirmation" targetRef="_Event_ReceiveConfirmation"/>
+    <bpmn:messageFlow id="_MessageFlow_4" name="Order Change" sourceRef="_Event_OrderChange" targetRef="_Event_ReceiveChange"/>
+    <bpmn:messageFlow id="_MessageFlow_5" name="Order Cancellation" sourceRef="_Event_OrderCancellation" targetRef="_Event_ReceiveCancellation"/>
+  </bpmn:collaboration>
+  <bpmn:Process id="_Process_Supplier" name="Supplier Process" processType="Private" isExecutable="true">
+    <bpmn:laneSet id="_LaneSet_Supplier">
+      <bpmn:lane id="_Lane_Supplier" name="Supplier Lane">
+        <bpmn:flowNodeRef>_Event_Start_Supplier</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>_Activity_PrepareOffer</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>_Activity_SendOffer</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>_Event_ReceiveConfirmation</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>_Event_ReceiveChange</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>_Event_ReceiveCancellation</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>_Event_Timer</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>_Gateway_Decision</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>_Activity_ProcessOrder</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>_Activity_UpdateOrder</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>_Activity_CancelOrder</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>_Event_End_Supplier</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:flowElements>
+      <bpmn:startEvent id="_Event_Start_Supplier" name="Offer Request Received">
+        <bpmn:outgoing>_Flow_1</bpmn:outgoing>
+      </bpmn:startEvent>
+      <bpmn:task id="_Activity_PrepareOffer" name="Prepare Offer">
+        <bpmn:incoming>_Flow_1</bpmn:incoming>
+        <bpmn:outgoing>_Flow_2</bpmn:outgoing>
+      </bpmn:task>
+      <bpmn:task id="_Activity_SendOffer" name="Send Offer">
+        <bpmn:incoming>_Flow_2</bpmn:incoming>
+        <bpmn:outgoing>_Flow_3</bpmn:outgoing>
+      </bpmn:task>
+      <bpmn:intermediateCatchEvent id="_Event_ReceiveConfirmation" name="Order Confirmation Received">
+        <bpmn:incoming>_Flow_6</bpmn:incoming>
+        <bpmn:outgoing>_Flow_7</bpmn:outgoing>
+        <bpmn:messageEventDefinition/>
+      </bpmn:intermediateCatchEvent>
+      <bpmn:intermediateCatchEvent id="_Event_ReceiveChange" name="Order Change Received">
+        <bpmn:incoming>_Flow_8</bpmn:incoming>
+        <bpmn:outgoing>_Flow_9</bpmn:outgoing>
+        <bpmn:messageEventDefinition/>
+      </bpmn:intermediateCatchEvent>
+      <bpmn:intermediateCatchEvent id="_Event_ReceiveCancellation" name="Order Cancellation Received">
+        <bpmn:incoming>_Flow_10</bpmn:incoming>
+        <bpmn:outgoing>_Flow_11</bpmn:outgoing>
+        <bpmn:messageEventDefinition/>
+      </bpmn:intermediateCatchEvent>
+      <bpmn:intermediateCatchEvent id="_Event_Timer" name="48 Hours Passed">
+        <bpmn:incoming>_Flow_4</bpmn:incoming>
+        <bpmn:outgoing>_Flow_5</bpmn:outgoing>
+        <bpmn:timerEventDefinition>
+          <bpmn:timeDuration xsi:type="bpmn:tFormalExpression" id="_Expression_1">P2DT0H0M</bpmn:timeDuration>
+        </bpmn:timerEventDefinition>
+      </bpmn:intermediateCatchEvent>
+      <bpmn:exclusiveGateway id="_Gateway_Decision" name="Decision Point">
+        <bpmn:incoming>_Flow_3 _Flow_7 _Flow_9 _Flow_11 _Flow_5</bpmn:incoming>
+        <bpmn:outgoing>_Flow_12 _Flow_13 _Flow_14</bpmn:outgoing>
+      </bpmn:exclusiveGateway>
+      <bpmn:task id="_Activity_ProcessOrder" name="Process Order">
+        <bpmn:incoming>_Flow_12</bpmn:incoming>
+        <bpmn:outgoing>_Flow_15</bpmn:outgoing>
+      </bpmn:task>
+      <bpmn:task id="_Activity_UpdateOrder" name="Update Order">
+        <bpmn:incoming>_Flow_13</bpmn:incoming>
+        <bpmn:outgoing>_Flow_16</bpmn:outgoing>
+      </bpmn:task>
+      <bpmn:task id="_Activity_CancelOrder" name="Cancel Order">
+        <bpmn:incoming>_Flow_14</bpmn:incoming>
+        <bpmn:outgoing>_Flow_17</bpmn:outgoing>
+      </bpmn:task>
+      <bpmn:endEvent id="_Event_End_Supplier" name="End">
+        <bpmn:incoming>_Flow_15 _Flow_17</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:sequenceFlow id="_Flow_1" sourceRef="_Event_Start_Supplier" targetRef="_Activity_PrepareOffer"/>
+      <bpmn:sequenceFlow id="_Flow_2" sourceRef="_Activity_PrepareOffer" targetRef="_Activity_SendOffer"/>
+      <bpmn:sequenceFlow id="_Flow_3" sourceRef="_Activity_SendOffer" targetRef="_Gateway_Decision"/>
+      <bpmn:sequenceFlow id="_Flow_4" sourceRef="_Gateway_Decision" targetRef="_Event_Timer"/>
+      <bpmn:sequenceFlow id="_Flow_5" sourceRef="_Event_Timer" targetRef="_Gateway_Decision"/>
+      <bpmn:sequenceFlow id="_Flow_6" sourceRef="_Gateway_Decision" targetRef="_Event_ReceiveConfirmation"/>
+      <bpmn:sequenceFlow id="_Flow_7" sourceRef="_Event_ReceiveConfirmation" targetRef="_Gateway_Decision"/>
+      <bpmn:sequenceFlow id="_Flow_8" sourceRef="_Gateway_Decision" targetRef="_Event_ReceiveChange"/>
+      <bpmn:sequenceFlow id="_Flow_9" sourceRef="_Event_ReceiveChange" targetRef="_Gateway_Decision"/>
+      <bpmn:sequenceFlow id="_Flow_10" sourceRef="_Gateway_Decision" targetRef="_Event_ReceiveCancellation"/>
+      <bpmn:sequenceFlow id="_Flow_11" sourceRef="_Event_ReceiveCancellation" targetRef="_Gateway_Decision"/>
+      <bpmn:sequenceFlow id="_Flow_12" sourceRef="_Gateway_Decision" targetRef="_Activity_ProcessOrder"/>
+      <bpmn:sequenceFlow id="_Flow_13" sourceRef="_Gateway_Decision" targetRef="_Activity_UpdateOrder"/>
+      <bpmn:sequenceFlow id="_Flow_14" sourceRef="_Gateway_Decision" targetRef="_Activity_CancelOrder"/>
+      <bpmn:sequenceFlow id="_Flow_15" sourceRef="_Activity_ProcessOrder" targetRef="_Event_End_Supplier"/>
+      <bpmn:sequenceFlow id="_Flow_16" sourceRef="_Activity_UpdateOrder" targetRef="_Gateway_Decision"/>
+      <bpmn:sequenceFlow id="_Flow_17" sourceRef="_Activity_CancelOrder" targetRef="_Event_End_Supplier"/>
+    </bpmn:flowElements>
+  </bpmn:Process>
+  <bpmn:Process id="_Process_Retailer" name="Retailer Process" processType="Private" isExecutable="true">
+    <bpmn:laneSet id="_LaneSet_Retailer">
+      <bpmn:lane id="_Lane_Retailer" name="Retailer Lane">
+        <bpmn:flowNodeRef>_Activity_RequestOffer</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>_Event_ReceiveOffer</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>_Event_OrderConfirmation</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>_Event_OrderChange</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>_Event_OrderCancellation</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:flowElements>
+      <bpmn:task id="_Activity_RequestOffer" name="Request Offer">
+        <bpmn:outgoing>_Flow_18</bpmn:outgoing>
+      </bpmn:task>
+      <bpmn:intermediateCatchEvent id="_Event_ReceiveOffer" name="Offer Received">
+        <bpmn:incoming>_Flow_18</bpmn:incoming>
+        <bpmn:outgoing>_Flow_19 _Flow_20 _Flow_21</bpmn:outgoing>
+        <bpmn:messageEventDefinition/>
+      </bpmn:intermediateCatchEvent>
+      <bpmn:intermediateThrowEvent id="_Event_OrderConfirmation" name="Send Order Confirmation">
+        <bpmn:incoming>_Flow_19</bpmn:incoming>
+        <bpmn:messageEventDefinition/>
+      </bpmn:intermediateThrowEvent>
+      <bpmn:intermediateThrowEvent id="_Event_OrderChange" name="Send Order Change">
+        <bpmn:incoming>_Flow_20</bpmn:incoming>
+        <bpmn:messageEventDefinition/>
+      </bpmn:intermediateThrowEvent>
+      <bpmn:intermediateThrowEvent id="_Event_OrderCancellation" name="Send Order Cancellation">
+        <bpmn:incoming>_Flow_21</bpmn:incoming>
+        <bpmn:messageEventDefinition/>
+      </bpmn:intermediateThrowEvent>
+      <bpmn:sequenceFlow id="_Flow_18" sourceRef="_Activity_RequestOffer" targetRef="_Event_ReceiveOffer"/>
+      <bpmn:sequenceFlow id="_Flow_19" sourceRef="_Event_ReceiveOffer" targetRef="_Event_OrderConfirmation"/>
+      <bpmn:sequenceFlow id="_Flow_20" sourceRef="_Event_ReceiveOffer" targetRef="_Event_OrderChange"/>
+      <bpmn:sequenceFlow id="_Flow_21" sourceRef="_Event_ReceiveOffer" targetRef="_Event_OrderCancellation"/>
+    </bpmn:flowElements>
+  </bpmn:Process>
+</bpmn:Definitions>

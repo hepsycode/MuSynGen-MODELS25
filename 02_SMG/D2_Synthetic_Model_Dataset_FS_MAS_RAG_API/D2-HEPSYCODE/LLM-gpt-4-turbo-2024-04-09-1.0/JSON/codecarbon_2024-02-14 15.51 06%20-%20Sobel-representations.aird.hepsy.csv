@@ -1,0 +1,6 @@
+total_emissions,node
+1.1751116945415265e-07,generate_query_node
+6.51676568524442e-06,cache_context_node
+6.070328835659072e-08,model_generation_node
+7.036361604844074e-05,model_validation_node
+0.002212313649812545,FILE_2024-02-14 15.51 06%20-%20Sobel-representations.aird.hepsy

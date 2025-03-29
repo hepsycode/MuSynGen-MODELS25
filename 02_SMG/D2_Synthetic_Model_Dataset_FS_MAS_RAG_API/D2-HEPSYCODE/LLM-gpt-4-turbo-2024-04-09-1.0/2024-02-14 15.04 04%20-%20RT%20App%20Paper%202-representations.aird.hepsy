@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hml:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hml="org.univaq.hepsy">
+  <nodes xsi:type="hml:Stimulus" name="Stimulus">
+    <ports name="stim_rtPaper2_out_port">
+      <pChannels name="stim_rtPaper2_channel" pFrom="//@nodes.0/@ports.0" pTo="//@nodes.1/@ports.0" queueSize="10" rendezVous="true">
+        <message name="rtData">
+          <entry name="data" type="sc_int"/>
+        </message>
+      </pChannels>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:StructuredNode" name="RT App Paper 2">
+    <ports name="system_display_out_port">
+      <pChannels name="disp_rtPaper2_channel" pFrom="//@nodes.1/@ports.0" pTo="//@nodes.2/@ports.0">
+        <message name="displayMsg">
+          <entry name="result" type="sc_int"/>
+        </message>
+      </pChannels>
+    </ports>
+    <processes name="capture">
+      <nChannels name="stim_capture_channel_2" nTo="//@nodes.1/@processes.1" queueSize="5" rendezVous="true">
+        <message name="capturedData">
+          <entry name="rawData" type="sc_int"/>
+        </message>
+      </nChannels>
+    </processes>
+    <processes name="filter">
+      <nChannels name="capture_filter_channel_2" nFrom="//@nodes.1/@processes.0" nTo="//@nodes.1/@processes.2" queueSize="5" rendezVous="true">
+        <message name="filteredData">
+          <entry name="filteredOutput" type="sc_int"/>
+        </message>
+      </nChannels>
+    </processes>
+    <processes name="preprocess">
+      <nChannels name="filter_preprocess_channel_2" nFrom="//@nodes.1/@processes.1" nTo="//@nodes.1/@processes.3" queueSize="5" rendezVous="true">
+        <message name="preprocessedData">
+          <entry name="preprocessOutput" type="sc_int"/>
+        </message>
+      </nChannels>
+    </processes>
+    <processes name="analyze">
+      <nChannels name="preprocess_analyze_channel_2" nFrom="//@nodes.1/@processes.2" nTo="//@nodes.1/@processes.4" queueSize="5" rendezVous="true">
+        <message name="analyzedData">
+          <entry name="analysisResult" type="sc_int"/>
+        </message>
+      </nChannels>
+    </processes>
+    <processes name="control">
+      <nChannels name="analyze_control_channel_2" nFrom="//@nodes.1/@processes.3" queueSize="5" rendezVous="true">
+        <message name="controlCommand">
+          <entry name="command" type="sc_int"/>
+        </message>
+      </nChannels>
+    </processes>
+  </nodes>
+  <nodes xsi:type="hml:Display" name="Display">
+    <ports name="system_display_in_port"/>
+  </nodes>
+</hml:BehaviorSpecification>

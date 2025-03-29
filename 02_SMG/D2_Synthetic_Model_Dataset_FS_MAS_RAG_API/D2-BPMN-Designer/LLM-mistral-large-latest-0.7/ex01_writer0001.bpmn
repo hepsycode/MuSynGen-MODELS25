@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI-XMI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="_KkUY4Y8DEe-v648egk3nxQ" name="Credit Risk Assessment Process" targetNamespace="http://www.omg.org/bpmn">
+  <bpmn:Process id="_KkUY4I8DEe-v648egk3nxQ" name="Credit Risk Assessment Process" isExecutable="true" processType="Private">
+    <bpmn:flowElements>
+      <bpmn:StartEvent id="_dDiegI8JEe-v648egk3nxQ" name="New Credit Request Received" />
+      <bpmn:Task id="_obWrUI8JEe-v648egk3nxQ" name="Assess Risk" />
+      <bpmn:ExclusiveGateway id="_t0sukI8JEe-v648egk3nxQ" name="Risk Above Threshold?" />
+      <bpmn:Task id="_qiungI8JEe-v648egk3nxQ" name="Perform Advanced Risk Assessment" />
+      <bpmn:Task id="_0FCrQI8JEe-v648egk3nxQ" name="Perform Simple Risk Assessment" />
+      <bpmn:Task id="_Cn4CkI8KEe-v648egk3nxQ" name="Notify Customer with Assessment Result" />
+      <bpmn:Task id="_9BHOYI8JEe-v648egk3nxQ" name="Organize Disbursement" />
+      <bpmn:EndEvent id="_jLYxEI8KEe-v648egk3nxQ" name="Process Completed" />
+      <bpmn:SequenceFlow id="_pkQ0II8JEe-v648egk3nxQ" sourceRef="_dDiegI8JEe-v648egk3nxQ" targetRef="_obWrUI8JEe-v648egk3nxQ" />
+      <bpmn:SequenceFlow id="_tBvnoI8JEe-v648egk3nxQ" sourceRef="_obWrUI8JEe-v648egk3nxQ" targetRef="_t0sukI8JEe-v648egk3nxQ" />
+      <bpmn:SequenceFlow id="_yVKpEI8JEe-v648egk3nxQ" name="Yes" sourceRef="_t0sukI8JEe-v648egk3nxQ" targetRef="_qiungI8JEe-v648egk3nxQ" />
+      <bpmn:SequenceFlow id="_3rueEI8JEe-v648egk3nxQ" name="No" sourceRef="_t0sukI8JEe-v648egk3nxQ" targetRef="_0FCrQI8JEe-v648egk3nxQ" />
+      <bpmn:SequenceFlow id="_wYnc0I8JEe-v648egk3nxQ" sourceRef="_qiungI8JEe-v648egk3nxQ" targetRef="_Cn4CkI8KEe-v648egk3nxQ" />
+      <bpmn:SequenceFlow id="_J3GCUI8KEe-v648egk3nxQ" sourceRef="_0FCrQI8JEe-v648egk3nxQ" targetRef="_Cn4CkI8KEe-v648egk3nxQ" />
+      <bpmn:SequenceFlow id="_AR0KII8KEe-v648egk3nxQ" sourceRef="_Cn4CkI8KEe-v648egk3nxQ" targetRef="_9BHOYI8JEe-v648egk3nxQ" />
+      <bpmn:SequenceFlow id="_ki_dMI8KEe-v648egk3nxQ" sourceRef="_9BHOYI8JEe-v648egk3nxQ" targetRef="_jLYxEI8KEe-v648egk3nxQ" />
+    </bpmn:flowElements>
+  </bpmn:Process>
+  <bpmndi:BPMNDiagram>
+    <bpmndi:BPMNPlane bpmnElement="_KkUY4I8DEe-v648egk3nxQ">
+      <bpmndi:BPMNShape bpmnElement="_dDiegI8JEe-v648egk3nxQ" isMarkerVisible="true">
+        <dc:Bounds x="100" y="100" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_obWrUI8JEe-v648egk3nxQ">
+        <dc:Bounds x="180" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_t0sukI8JEe-v648egk3nxQ" isMarkerVisible="true">
+        <dc:Bounds x="320" y="88" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_qiungI8JEe-v648egk3nxQ">
+        <dc:Bounds x="420" y="60" width="150" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_0FCrQI8JEe-v648egk3nxQ">
+        <dc:Bounds x="420" y="180" width="150" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_Cn4CkI8KEe-v648egk3nxQ">
+        <dc:Bounds x="620" y="100" width="150" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_9BHOYI8JEe-v648egk3nxQ">
+        <dc:Bounds x="820" y="100" width="150" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jLYxEI8KEe-v648egk3nxQ" isMarkerVisible="true">
+        <dc:Bounds x="1020" y="100" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="_pkQ0II8JEe-v648egk3nxQ" sourceElement="_dDiegI8JEe-v648egk3nxQ" targetElement="_obWrUI8JEe-v648egk3nxQ">
+        <di:waypoint x="136" y="118" />
+        <di:waypoint x="180" y="118" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_tBvnoI8JEe-v648egk3nxQ" sourceElement="_obWrUI8JEe-v648egk3nxQ" targetElement="_t0sukI8JEe-v648egk3nxQ">
+        <di:waypoint x="280" y="118" />
+        <di:waypoint x="320" y="118" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_yVKpEI8JEe-v648egk3nxQ" sourceElement="_t0sukI8JEe-v648egk3nxQ" targetElement="_qiungI8JEe-v648egk3nxQ">
+        <di:waypoint x="345" y="113" />
+        <di:waypoint x="345" y="100" />
+        <di:waypoint x="420" y="100" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_3rueEI8JEe-v648egk3nxQ" sourceElement="_t0sukI8JEe-v648egk3nxQ" targetElement="_0FCrQI8JEe-v648egk3nxQ">
+        <di:waypoint x="370" y="143" />
+        <di:waypoint x="370" y="220" />
+        <di:waypoint x="420" y="220" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_wYnc0I8JEe-v648egk3nxQ" sourceElement="_qiungI8JEe-v648egk3nxQ" targetElement="_Cn4CkI8KEe-v648egk3nxQ">
+        <di:waypoint x="570" y="100" />
+        <di:waypoint x="620" y="100" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_J3GCUI8KEe-v648egk3nxQ" sourceElement="_0FCrQI8JEe-v648egk3nxQ" targetElement="_Cn4CkI8KEe-v648egk3nxQ">
+        <di:waypoint x="570" y="220" />
+        <di:waypoint x="570" y="140" />
+        <di:waypoint x="620" y="140" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_AR0KII8KEe-v648egk3nxQ" sourceElement="_Cn4CkI8KEe-v648egk3nxQ" targetElement="_9BHOYI8JEe-v648egk3nxQ">
+        <di:waypoint x="770" y="140" />
+        <di:waypoint x="820" y="140" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_ki_dMI8KEe-v648egk3nxQ" sourceElement="_9BHOYI8JEe-v648egk3nxQ" targetElement="_jLYxEI8KEe-v648egk3nxQ">
+        <di:waypoint x="970" y="140" />
+        <di:waypoint x="1020" y="140" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:Definitions>

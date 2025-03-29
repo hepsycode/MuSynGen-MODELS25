@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hepsy:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hepsy="http://org.univaq/hepsy" name="HepsyExample">
+  <nodes xsi:type="hepsy:Stimulus" name="Stimulus">
+    <ports name="stim_system_out_port"/>
+  </nodes>
+  <nodes xsi:type="hepsy:StructuredNode" name="HepsyExample">
+    <processes name="dataAcquisition" priority="1" criticality="2">
+      <processExtension name="stim_acq_port"/>
+    </processes>
+    <processes name="dataProcessing" priority="1" criticality="2">
+      <processExtension name="acq_proc_port"/>
+    </processes>
+    <processes name="dataControl" priority="1" criticality="2">
+      <processExtension name="proc_ctrl_port"/>
+    </processes>
+    <ports name="stim_acq_port"/>
+    <ports name="acq_proc_port"/>
+    <ports name="proc_ctrl_port"/>
+    <ports name="system_display_out_port"/>
+  </nodes>
+  <nodes xsi:type="hepsy:Display" name="Display">
+    <ports name="system_display_in_port"/>
+  </nodes>
+  <nodes xsi:type="hepsy:Channel" name="stim_acq_channel" queueSize="8" timeout="0" rendezVous="true" direction="Unidirectional">
+    <nFrom name="Stimulus"/>
+    <nTo name="HepsyExample"/>
+    <pFrom name="stim_system_out_port"/>
+    <pTo name="stim_acq_port"/>
+  </nodes>
+  <nodes xsi:type="hepsy:Channel" name="acq_proc_channel" queueSize="8" timeout="0" rendezVous="true" direction="Unidirectional">
+    <nFrom name="HepsyExample"/>
+    <nTo name="HepsyExample"/>
+    <pFrom name="stim_acq_port"/>
+    <pTo name="acq_proc_port"/>
+  </nodes>
+  <nodes xsi:type="hepsy:Channel" name="proc_ctrl_channel" queueSize="8" timeout="0" rendezVous="true" direction="Unidirectional">
+    <nFrom name="HepsyExample"/>
+    <nTo name="HepsyExample"/>
+    <pFrom name="acq_proc_port"/>
+    <pTo name="proc_ctrl_port"/>
+  </nodes>
+  <nodes xsi:type="hepsy:Channel" name="main_disp_channel" queueSize="8" timeout="0" rendezVous="true" direction="Unidirectional">
+    <nFrom name="HepsyExample"/>
+    <nTo name="Display"/>
+    <pFrom name="system_display_out_port"/>
+    <pTo name="system_display_in_port"/>
+  </nodes>
+</hepsy:BehaviorSpecification>

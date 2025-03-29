@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><hml:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hml="org.univaq.hepsy" name="DigitalImagingPipeline">
+  <nodes xsi:type="hml:Stimulus" name="Stimulus">
+    <ports name="stim_system_out_port">
+      <pChannels name="stim_system_channel" pFrom="//@nodes.0/@ports.0" pTo="//@nodes.1/@ports.0" queueSize="8" rendezVous="true">
+        <message name="stim_system_payload">
+          <entry name="stim_01" type="sc_uint"/>
+        </message>
+      </pChannels>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:StructuredNode" name="DigitalCam">
+    <nChannels name="ccdpp_cntrl_channel" nFrom="//@nodes.1/@processes.0" nTo="//@nodes.1/@processes.1" queueSize="16" rendezVous="true">
+      <message name="ccdpp_cntrl_payload">
+        <entry name="img_01" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <nChannels name="cntrl_codec_channel" nFrom="//@nodes.1/@processes.1" nTo="//@nodes.1/@processes.2" queueSize="8" rendezVous="true">
+      <message name="cntrl_codec_payload">
+        <entry name="img_01_08" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <nChannels name="codec_cntrl_channel" nFrom="//@nodes.1/@processes.2" nTo="//@nodes.1/@processes.1" queueSize="8" rendezVous="true">
+      <message name="codec_cntrl_payload">
+        <entry name="img_01_ack" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <ports name="system_display_out_port"/>
+    <ports name="digitalcam_in_port" portExtension="//@nodes.1/@processes.0"/>
+    <processes name="ccdpp"/>
+    <processes name="cntrl"/>
+    <processes name="codec"/>
+  </nodes>
+  <nodes xsi:type="hml:Display" name="Display">
+    <ports name="system_display_in_port">
+      <pChannels name="system_display_channel" pFrom="//@nodes.1/@ports.0" pTo="//@nodes.2/@ports.0" queueSize="8" rendezVous="true"/>
+      <pChannels name="internal_display_channel" pFrom="//@nodes.2/@ports.0" pTo="//@nodes.2/@ports.0" queueSize="8" rendezVous="true"/>
+    </ports>
+  </nodes>
+</hml:BehaviorSpecification>

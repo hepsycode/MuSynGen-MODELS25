@@ -1,0 +1,20 @@
+Model the following business process for rating doctors in a hospital:
+The doctor rating workflow at a hospital is carried out by two different roles.
+The first one is a quality assurance (QA) specialist from the quality assurance
+department, while the second one represents the managing director of the
+hospital.
+
+The QA specialist starts a new case regarding a certain doctor by interviewing
+patients. Since a patient interview workflow is already established, it is simply
+integrated in the new workflow. Meanwhile, the director asks an external expert
+to review the work of the doctor under rating. Unfortunately, since the expert
+only gets a low expenses fee, it can happen that the expert is not responding in
+time. If that happens, another expert has to be asked (who could also not respond
+in time, i.e. the procedure repeats). If an expert finally sends an expertise, it is
+received by the director and forwarded to the QA specialist. The QA specialist
+then files the results containing the patient interviews as well as the expertise and
+afterwards creates a report. While the QA specialist is doing this, the manager
+pays the expenses of the expert by filling a cheque and sending it to the expert.
+Instructions: (1) Model the relevant resources (pools, lanes) 
+(2) Modeling the relevant business objects (data object, data store) is
+not required.

@@ -1,0 +1,15 @@
+Model the following business process between a supplier and a retailer:
+After a retailer requests an offer from a supplier, the supplier prepares an offer
+and sends it to the retailer. Next, the supplier can receive an order confirmation,
+an order change, or an order cancellation from the retailer. It may happen that
+no response is received at all. If no response is received after 48 hours, or if
+an order cancellation is received, the supplier will cancel the order. If an order
+confirmation is received within 48h, the supplier will process the order normally.
+If an order change is received within 48h, the supplier will update the order and
+ask again the retailer for confirmation. The retailer is allowed to change an
+order at most three times. Afterwards, the supplier will automatically cancel the
+order.
+Instructions:
+(1) Model the relevant resources (pools, lanes)
+(2) Modeling the relevant business objects (data object, data store) is
+not required.

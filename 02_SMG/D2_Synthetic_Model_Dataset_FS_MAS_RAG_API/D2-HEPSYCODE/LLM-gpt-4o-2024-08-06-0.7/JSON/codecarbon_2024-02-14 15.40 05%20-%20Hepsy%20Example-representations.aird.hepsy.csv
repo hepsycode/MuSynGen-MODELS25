@@ -1,0 +1,12 @@
+total_emissions,node
+9.07122788469316e-08,generate_query_node
+8.321624630553368e-08,cache_context_node
+0.0003748168114283389,model_generation_node
+0.0002828478362766326,model_validation_node
+0.0002701955795663928,model_validation_node
+1.6424657142297764e-07,model_validation_node
+6.657921810623896e-06,model_generation_node
+1.265170206382784e-07,model_validation_node
+5.897444493997813e-06,model_validation_node
+1.0664740519920509e-07,model_validation_node
+0.004457831925100308,FILE_2024-02-14 15.40 05%20-%20Hepsy%20Example-representations.aird.hepsy

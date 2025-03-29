@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_KkUY4Y8DEe-v648egk3nxQ">
+  <rootElements xsi:type="bpmn:Collaboration" id="_KkUY4I8DEe-v648egk3nxQ">
+    <participants xsi:type="bpmn:Participant" id="_dDiegI8JEe-v648egk3nxQ" name="Supplier" processRef="_obWrUI8JEe-v648egk3nxQ"/>
+    <participants xsi:type="bpmn:Participant" id="_qiungI8JEe-v648egk3nxQ" name="Retailer" processRef="_t0sukI8JEe-v648egk3nxQ"/>
+  </rootElements>
+  <rootElements xsi:type="bpmn:Process" id="_obWrUI8JEe-v648egk3nxQ" name="Supplier Process">
+    <flowElements xsi:type="bpmn:StartEvent" id="_tBvnoI8JEe-v648egk3nxQ" name="Receive Offer Request" outgoing="_pkQ0II8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:Task" id="_wYnc0I8JEe-v648egk3nxQ" name="Prepare Offer" outgoing="_yVKpEI8JEe-v648egk3nxQ" incoming="_pkQ0II8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_pkQ0II8JEe-v648egk3nxQ" targetRef="_wYnc0I8JEe-v648egk3nxQ" sourceRef="_tBvnoI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:Task" id="_yVKpEI8JEe-v648egk3nxQ" name="Send Offer" outgoing="_3rueEI8JEe-v648egk3nxQ" incoming="_yVKpEI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_3rueEI8JEe-v648egk3nxQ" targetRef="_t0sukI8JEe-v648egk3nxQ" sourceRef="_yVKpEI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:IntermediateCatchEvent" id="_t0sukI8JEe-v648egk3nxQ" name="Receive Response" outgoing="_w3ntAI8JEe-v648egk3nxQ" incoming="_3rueEI8JEe-v648egk3nxQ">
+      <eventDefinitions xsi:type="bpmn:ConditionalEventDefinition" id="_AR0KII8KEe-v648egk3nxQ">
+        <condition xsi:type="bpmn:FormalExpression" id="_EYfEkI8KEe-v648egk3nxQ" language="http://www.w3.org/1999/XPath" body="true()"/>
+      </eventDefinitions>
+    </flowElements>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="_w3ntAI8JEe-v648egk3nxQ" name="Response Type" outgoing="_AR0KII8KEe-v648egk3nxQ _KeNFoI8KEe-v648egk3nxQ _9BHOYI8JEe-v648egk3nxQ" incoming="_t0sukI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_AR0KII8KEe-v648egk3nxQ" name="Order Confirmation" targetRef="_9BHOYI8JEe-v648egk3nxQ" sourceRef="_w3ntAI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:Task" id="_9BHOYI8JEe-v648egk3nxQ" name="Process Order" outgoing="_EYfEkI8KEe-v648egk3nxQ" incoming="_AR0KII8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_EYfEkI8KEe-v648egk3nxQ" targetRef="_Cn4CkI8KEe-v648egk3nxQ" sourceRef="_9BHOYI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="_Cn4CkI8KEe-v648egk3nxQ" name="Order Processed" incoming="_EYfEkI8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_KeNFoI8KEe-v648egk3nxQ" name="Order Cancellation" targetRef="_Gf0kgI8KEe-v648egk3nxQ" sourceRef="_w3ntAI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:Task" id="_Gf0kgI8KEe-v648egk3nxQ" name="Cancel Order" outgoing="_J3GCUI8KEe-v648egk3nxQ" incoming="_KeNFoI8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_J3GCUI8KEe-v648egk3nxQ" targetRef="_grUBAI8KEe-v648egk3nxQ" sourceRef="_Gf0kgI8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="_grUBAI8KEe-v648egk3nxQ" name="Order Cancelled" incoming="_J3GCUI8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_9BHOYI8JEe-v648egk3nxQ" name="Order Change" targetRef="_0FCrQI8JEe-v648egk3nxQ" sourceRef="_w3ntAI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:Task" id="_0FCrQI8JEe-v648egk3nxQ" name="Update Order" outgoing="_J3GCUI8KEe-v648egk3nxQ" incoming="_9BHOYI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_J3GCUI8KEe-v648egk3nxQ" targetRef="_t0sukI8JEe-v648egk3nxQ" sourceRef="_0FCrQI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:IntermediateCatchEvent" id="_t0sukI8JEe-v648egk3nxQ" name="Receive Confirmation" outgoing="_w3ntAI8JEe-v648egk3nxQ" incoming="_J3GCUI8KEe-v648egk3nxQ">
+      <eventDefinitions xsi:type="bpmn:ConditionalEventDefinition" id="_AR0KII8KEe-v648egk3nxQ">
+        <condition xsi:type="bpmn:FormalExpression" id="_EYfEkI8KEe-v648egk3nxQ" language="http://www.w3.org/1999/XPath" body="true()"/>
+      </eventDefinitions>
+    </flowElements>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="_w3ntAI8JEe-v648egk3nxQ" name="Confirmation Type" outgoing="_AR0KII8KEe-v648egk3nxQ _KeNFoI8KEe-v648egk3nxQ" incoming="_t0sukI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_AR0KII8KEe-v648egk3nxQ" name="Confirmation Received" targetRef="_9BHOYI8JEe-v648egk3nxQ" sourceRef="_w3ntAI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:Task" id="_9BHOYI8JEe-v648egk3nxQ" name="Process Order" outgoing="_EYfEkI8KEe-v648egk3nxQ" incoming="_AR0KII8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_EYfEkI8KEe-v648egk3nxQ" targetRef="_Cn4CkI8KEe-v648egk3nxQ" sourceRef="_9BHOYI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="_Cn4CkI8KEe-v648egk3nxQ" name="Order Processed" incoming="_EYfEkI8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_KeNFoI8KEe-v648egk3nxQ" name="No Confirmation" targetRef="_Gf0kgI8KEe-v648egk3nxQ" sourceRef="_w3ntAI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:Task" id="_Gf0kgI8KEe-v648egk3nxQ" name="Cancel Order" outgoing="_J3GCUI8KEe-v648egk3nxQ" incoming="_KeNFoI8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_J3GCUI8KEe-v648egk3nxQ" targetRef="_grUBAI8KEe-v648egk3nxQ" sourceRef="_Gf0kgI8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="_grUBAI8KEe-v648egk3nxQ" name="Order Cancelled" incoming="_J3GCUI8KEe-v648egk3nxQ"/>
+  </rootElements>
+  <rootElements xsi:type="bpmn:Process" id="_t0sukI8JEe-v648egk3nxQ" name="Retailer Process">
+    <flowElements xsi:type="bpmn:StartEvent" id="_t0sukI8JEe-v648egk3nxQ" name="Request Offer" outgoing="_w3ntAI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_w3ntAI8JEe-v648egk3nxQ" targetRef="_obWrUI8JEe-v648egk3nxQ" sourceRef="_t0sukI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:IntermediateCatchEvent" id="_w3ntAI8JEe-v648egk3nxQ" name="Receive Offer" outgoing="_AR0KII8KEe-v648egk3nxQ" incoming="_3rueEI8JEe-v648egk3nxQ">
+      <eventDefinitions xsi:type="bpmn:ConditionalEventDefinition" id="_AR0KII8KEe-v648egk3nxQ">
+        <condition xsi:type="bpmn:FormalExpression" id="_EYfEkI8KEe-v648egk3nxQ" language="http://www.w3.org/1999/XPath" body="true()"/>
+      </eventDefinitions>
+    </flowElements>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="_w3ntAI8JEe-v648egk3nxQ" name="Response Type" outgoing="_AR0KII8KEe-v648egk3nxQ _KeNFoI8KEe-v648egk3nxQ _9BHOYI8JEe-v648egk3nxQ" incoming="_w3ntAI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_AR0KII8KEe-v648egk3nxQ" name="Order Confirmation" targetRef="_9BHOYI8JEe-v648egk3nxQ" sourceRef="_w3ntAI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:Task" id="_9BHOYI8JEe-v648egk3nxQ" name="Send Order Confirmation" outgoing="_EYfEkI8KEe-v648egk3nxQ" incoming="_AR0KII8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_EYfEkI8KEe-v648egk3nxQ" targetRef="_Cn4CkI8KEe-v648egk3nxQ" sourceRef="_9BHOYI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="_Cn4CkI8KEe-v648egk3nxQ" name="Order Confirmed" incoming="_EYfEkI8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_KeNFoI8KEe-v648egk3nxQ" name="Order Cancellation" targetRef="_Gf0kgI8KEe-v648egk3nxQ" sourceRef="_w3ntAI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:Task" id="_Gf0kgI8KEe-v648egk3nxQ" name="Send Order Cancellation" outgoing="_J3GCUI8KEe-v648egk3nxQ" incoming="_KeNFoI8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_J3GCUI8KEe-v648egk3nxQ" targetRef="_grUBAI8KEe-v648egk3nxQ" sourceRef="_Gf0kgI8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="_grUBAI8KEe-v648egk3nxQ" name="Order Cancelled" incoming="_J3GCUI8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_9BHOYI8JEe-v648egk3nxQ" name="Order Change" targetRef="_0FCrQI8JEe-v648egk3nxQ" sourceRef="_w3ntAI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:Task" id="_0FCrQI8JEe-v648egk3nxQ" name="Send Order Change" outgoing="_J3GCUI8KEe-v648egk3nxQ" incoming="_9BHOYI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_J3GCUI8KEe-v648egk3nxQ" targetRef="_t0sukI8JEe-v648egk3nxQ" sourceRef="_0FCrQI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:IntermediateCatchEvent" id="_t0sukI8JEe-v648egk3nxQ" name="Receive Confirmation Request" outgoing="_w3ntAI8JEe-v648egk3nxQ" incoming="_J3GCUI8KEe-v648egk3nxQ">
+      <eventDefinitions xsi:type="bpmn:ConditionalEventDefinition" id="_AR0KII8KEe-v648egk3nxQ">
+        <condition xsi:type="bpmn:FormalExpression" id="_EYfEkI8KEe-v648egk3nxQ" language="http://www.w3.org/1999/XPath" body="true()"/>
+      </eventDefinitions>
+    </flowElements>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="_w3ntAI8JEe-v648egk3nxQ" name="Confirmation Type" outgoing="_AR0KII8KEe-v648egk3nxQ _KeNFoI8KEe-v648egk3nxQ" incoming="_t0sukI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_AR0KII8KEe-v648egk3nxQ" name="Confirmation Sent" targetRef="_9BHOYI8JEe-v648egk3nxQ" sourceRef="_w3ntAI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:Task" id="_9BHOYI8JEe-v648egk3nxQ" name="Send Confirmation" outgoing="_EYfEkI8KEe-v648egk3nxQ" incoming="_AR0KII8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_EYfEkI8KEe-v648egk3nxQ" targetRef="_Cn4CkI8KEe-v648egk3nxQ" sourceRef="_9BHOYI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="_Cn4CkI8KEe-v648egk3nxQ" name="Confirmation Sent" incoming="_EYfEkI8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_KeNFoI8KEe-v648egk3nxQ" name="No Confirmation" targetRef="_Gf0kgI8KEe-v648egk3nxQ" sourceRef="_w3ntAI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:Task" id="_Gf0kgI8KEe-v648egk3nxQ" name="Cancel Order" outgoing="_J3GCUI8KEe-v648egk3nxQ" incoming="_KeNFoI8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_J3GCUI8KEe-v648egk3nxQ" targetRef="_grUBAI8KEe-v648egk3nxQ" sourceRef="_Gf0kgI8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="_grUBAI8KEe-v648egk3nxQ" name="Order Cancelled" incoming="_J3GCUI8KEe-v648egk3nxQ"/>
+  </rootElements>
+</bpmn:Definitions>

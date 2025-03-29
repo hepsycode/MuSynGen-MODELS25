@@ -1,0 +1,10 @@
+node,execution_time
+cc_generate_query_from_metamodel,5.442622423
+cc_generate_query_node,10.6754055
+cc_retrieve,5.303431273
+cc_grade_documents,7.994122982
+cc_grade_generation_v_documents_and_question,6.29288578
+cc_evaluate_rag_output,7.593947411
+cc_evaluate_bert_score,9.858069658
+cc_cache_context_node,9.468119383
+FILE_test-rag.hepsy,68.48629141

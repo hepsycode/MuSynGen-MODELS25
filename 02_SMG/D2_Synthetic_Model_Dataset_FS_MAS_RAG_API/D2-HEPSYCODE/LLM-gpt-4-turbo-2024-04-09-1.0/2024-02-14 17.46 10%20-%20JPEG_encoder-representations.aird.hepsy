@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hml:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hml="org.univaq.hepsy">
+  <nodes xsi:type="hml:Stimulus" name="Stimulus">
+    <ports name="stim_system_out_port">
+      <pChannels name="stim_acq_channel" pFrom="//@nodes.0/@ports.0" pTo="//@nodes.1/@ports.0" queueSize="10" rendezVous="true">
+        <message name="raw_image_data">
+          <entry name="imageArray" type="sc_bv"/>
+        </message>
+      </pChannels>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:StructuredNode" name="JPEG Encoder">
+    <ports name="system_display_out_port">
+      <pChannels name="jpeg_disp_channel" pFrom="//@nodes.1/@ports.0" pTo="//@nodes.2/@ports.0">
+        <message name="compressed_data">
+          <entry name="bitstream" type="sc_bv"/>
+        </message>
+      </pChannels>
+    </ports>
+    <processes name="preproc">
+      <nChannels name="preproc_dct_channel" queueSize="10" rendezVous="true">
+        <message name="scaled_data">
+          <entry name="scaled_image" type="sc_lv"/>
+        </message>
+      </nChannels>
+    </processes>
+    <processes name="DCT">
+      <nChannels name="dct_quant_channel" queueSize="10" rendezVous="true">
+        <message name="DCT_data">
+          <entry name="frequency_coefficients" type="sc_lv"/>
+        </message>
+      </nChannels>
+    </processes>
+    <processes name="quantization">
+      <nChannels name="quant_zigzag_channel" queueSize="10" rendezVous="true">
+        <message name="quantized_data">
+          <entry name="quantized_coefficients" type="sc_lv"/>
+        </message>
+      </nChannels>
+    </processes>
+    <processes name="zigzag">
+      <nChannels name="zigzag_entropy_channel" queueSize="10" rendezVous="true">
+        <message name="reordered_data">
+          <entry name="oneD_sequence" type="sc_lv"/>
+        </message>
+      </nChannels>
+    </processes>
+    <processes name="entropy"/>
+  </nodes>
+  <nodes xsi:type="hml:Display" name="Display">
+    <ports name="system_display_in_port"/>
+  </nodes>
+</hml:BehaviorSpecification>

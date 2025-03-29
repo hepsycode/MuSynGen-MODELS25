@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hml:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hml="org.univaq.hepsy">
+  <nodes xsi:type="hml:StructuredNode" name="SystemNode">
+    <processes name="Processor1" criticality="5">
+      <ports name="port1"/>
+    </processes>
+    <processes name="Processor2" priority="3" criticality="3">
+      <ports name="port2"/>
+    </processes>
+    <nChannels name="Channel1" queueSize="10" timeout="5" rendezVous="false" direction="Unidirectional" nFrom="//@nodes.0/@processes.0" nTo="//@nodes.0/@processes.1">
+      <message name="Message1">
+        <entry name="dataEntry" type="sc_int"/>
+      </message>
+    </nChannels>
+    <ports name="InputPort"/>
+    <ports name="OutputPort"/>
+  </nodes>
+  <nodes xsi:type="hml:Stimulus" name="StimulusNode">
+    <ports name="StimulusPort">
+      <pChannels name="StimulusChannel" pFrom="//@nodes.1/@ports.0" pTo="//@nodes.0/@ports.0"/>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:Display" name="DisplayNode">
+    <ports name="DisplayPort">
+      <pChannels name="DisplayChannel" pFrom="//@nodes.0/@ports.3" pTo="//@nodes.2/@ports.0"/>
+    </ports>
+  </nodes>
+</hml:BehaviorSpecification>

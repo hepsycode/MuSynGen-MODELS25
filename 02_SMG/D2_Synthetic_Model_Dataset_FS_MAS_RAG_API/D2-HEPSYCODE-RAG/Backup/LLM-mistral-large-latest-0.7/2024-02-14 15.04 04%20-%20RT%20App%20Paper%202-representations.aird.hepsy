@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hepsy:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hepsy="org.univaq.hepsy" name="RTAppPaper2System">
+  <nodes xsi:type="hepsy:Stimulus" name="Stimulus">
+    <ports name="stim_rtPaper2_out_port"/>
+  </nodes>
+  <nodes xsi:type="hepsy:StructuredNode" name="RTAppPaper2">
+    <nChannels name="stim_rtPaper2_channel" queueSize="10" rendezVous="true" direction="Unidirectional">
+      <nFrom xsi:type="hepsy:Stimulus" name="Stimulus"/>
+      <nTo xsi:type="hepsy:StructuredNode" name="RTAppPaper2"/>
+      <pFrom name="stim_rtPaper2_out_port"/>
+      <pTo name="stim_capture_channel_2_pTo"/>
+    </nChannels>
+    <ports name="stim_capture_channel_2_pTo"/>
+    <processes name="capture">
+      <processExtension name="stim_capture_channel_2_pTo"/>
+    </processes>
+    <nChannels name="capture_filter_channel_2" queueSize="10" rendezVous="true" direction="Unidirectional">
+      <nFrom xsi:type="hepsy:Process" name="capture"/>
+      <nTo xsi:type="hepsy:Process" name="filter"/>
+      <pFrom name="capture_filter_channel_2_pFrom"/>
+      <pTo name="capture_filter_channel_2_pTo"/>
+    </nChannels>
+    <ports name="capture_filter_channel_2_pFrom"/>
+    <ports name="capture_filter_channel_2_pTo"/>
+    <processes name="filter">
+      <processExtension name="capture_filter_channel_2_pTo"/>
+    </processes>
+    <nChannels name="filter_preprocess_channel_2" queueSize="10" rendezVous="true" direction="Unidirectional">
+      <nFrom xsi:type="hepsy:Process" name="filter"/>
+      <nTo xsi:type="hepsy:Process" name="preprocess"/>
+      <pFrom name="filter_preprocess_channel_2_pFrom"/>
+      <pTo name="filter_preprocess_channel_2_pTo"/>
+    </nChannels>
+    <ports name="filter_preprocess_channel_2_pFrom"/>
+    <ports name="filter_preprocess_channel_2_pTo"/>
+    <processes name="preprocess">
+      <processExtension name="filter_preprocess_channel_2_pTo"/>
+    </processes>
+    <nChannels name="preprocess_analyze_channel_2" queueSize="10" rendezVous="true" direction="Unidirectional">
+      <nFrom xsi:type="hepsy:Process" name="preprocess"/>
+      <nTo xsi:type="hepsy:Process" name="analyze"/>
+      <pFrom name="preprocess_analyze_channel_2_pFrom"/>
+      <pTo name="preprocess_analyze_channel_2_pTo"/>
+    </nChannels>
+    <ports name="preprocess_analyze_channel_2_pFrom"/>
+    <ports name="preprocess_analyze_channel_2_pTo"/>
+    <processes name="analyze">
+      <processExtension name="preprocess_analyze_channel_2_pTo"/>
+    </processes>
+    <nChannels name="analyze_control_channel_2" queueSize="10" rendezVous="true" direction="Unidirectional">
+      <nFrom xsi:type="hepsy:Process" name="analyze"/>
+      <nTo xsi:type="hepsy:Process" name="control"/>
+      <pFrom name="analyze_control_channel_2_pFrom"/>
+      <pTo name="analyze_control_channel_2_pTo"/>
+    </nChannels>
+    <ports name="analyze_control_channel_2_pFrom"/>
+    <ports name="analyze_control_channel_2_pTo"/>
+    <processes name="control">
+      <processExtension name="analyze_control_channel_2_pTo"/>
+    </processes>
+    <ports name="system_display_out_port"/>
+  </nodes>
+  <nodes xsi:type="hepsy:Display" name="Display">
+    <ports name="system_display_in_port"/>
+  </nodes>
+  <nodes xsi:type="hepsy:Channel" name="disp_rtPaper2_channel" queueSize="10" rendezVous="true" direction="Unidirectional">
+    <nFrom xsi:type="hepsy:StructuredNode" name="RTAppPaper2"/>
+    <nTo xsi:type="hepsy:Display" name="Display"/>
+    <pFrom name="system_display_out_port"/>
+    <pTo name="system_display_in_port"/>
+  </nodes>
+</hepsy:BehaviorSpecification>

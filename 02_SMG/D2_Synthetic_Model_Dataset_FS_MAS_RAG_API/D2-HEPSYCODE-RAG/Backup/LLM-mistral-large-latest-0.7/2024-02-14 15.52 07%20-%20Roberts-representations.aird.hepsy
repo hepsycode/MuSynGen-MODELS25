@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hepsy:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hepsy="org.univaq.hepsy" name="CentralBehavior">
+  <nodes xsi:type="hepsy:Stimulus" name="Stimulus">
+    <ports name="stim_system_out_port"/>
+  </nodes>
+  <nodes xsi:type="hepsy:StructuredNode" name="Roberts">
+    <ports name="system_display_out_port"/>
+    <nChannels name="stim_preproc_channel" queueSize="10" rendezVous="true" direction="Unidirectional">
+      <nFrom href="#//@nodes.0"/>
+      <pFrom href="#//@nodes.0/@ports.0"/>
+      <nTo href="#//@nodes.1"/>
+    </nChannels>
+    <nChannels name="preproc_cross1_channel" queueSize="10" rendezVous="true" direction="Unidirectional"/>
+    <nChannels name="preproc_cross2_channel" queueSize="10" rendezVous="true" direction="Unidirectional"/>
+    <nChannels name="cross_merge_channel" queueSize="10" rendezVous="true" direction="Unidirectional"/>
+    <nChannels name="roberts_display_channel" queueSize="10" rendezVous="true" direction="Unidirectional">
+      <nFrom href="#//@nodes.1"/>
+      <pFrom href="#//@nodes.1/@ports.0"/>
+    </nChannels>
+    <processes name="preproc" priority="1" criticality="1">
+      <processExtension href="#//@nodes.1/@ports.1"/>
+    </processes>
+    <processes name="roberts_cross1" priority="1" criticality="1"/>
+    <processes name="roberts_cross2" priority="1" criticality="1"/>
+    <processes name="roberts_merge" priority="1" criticality="1"/>
+    <ports name="preproc_out_port">
+      <pChannels href="#//@nodes.1/@nChannels.1"/>
+      <pChannels href="#//@nodes.1/@nChannels.2"/>
+    </ports>
+    <ports name="roberts_cross1_in_port">
+      <pChannels href="#//@nodes.1/@nChannels.1"/>
+    </ports>
+    <ports name="roberts_cross2_in_port">
+      <pChannels href="#//@nodes.1/@nChannels.2"/>
+    </ports>
+    <ports name="roberts_merge_in_port">
+      <pChannels href="#//@nodes.1/@nChannels.3"/>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hepsy:Display" name="Display">
+    <ports name="system_display_in_port">
+      <pChannels href="#//@nodes.1/@nChannels.4"/>
+    </ports>
+  </nodes>
+</hepsy:BehaviorSpecification>

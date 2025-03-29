@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_KkUY4Y8DEe-v648egk3nxQ" targetNamespace="http://www.omg.org/bpmn">
+  <bpmn:Process id="_KkUY4I8DEe-v648egk3nxQ" name="Elective Course Selection and Allocation">
+    <bpmn:laneSet>
+      <bpmn:lane name="Teacher" id="_L9WBUI8DEe-v648egk3nxQ">
+        <bpmn:flowNodeRef>_dDiegI8JEe-v648egk3nxQ</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>_obWrUI8JEe-v648egk3nxQ</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>_qiungI8JEe-v648egk3nxQ</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>_t0sukI8JEe-v648egk3nxQ</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>_w3ntAI8JEe-v648egk3nxQ</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane name="Secretary" id="_O5n9gI8JEe-v648egk3nxQ">
+        <bpmn:flowNodeRef>_0FCrQI8JEe-v648egk3nxQ</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>_Gf0kgI8KEe-v648egk3nxQ</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>_grUBAI8KEe-v648egk3nxQ</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>_jLYxEI8KEe-v648egk3nxQ</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:flowElements>
+      <bpmn:startEvent id="_dDiegI8JEe-v648egk3nxQ" name="Start"/>
+      <bpmn:userTask id="_obWrUI8JEe-v648egk3nxQ" name="Provide Course Description"/>
+      <bpmn:userTask id="_qiungI8JEe-v648egk3nxQ" name="Collect Course Descriptions"/>
+      <bpmn:userTask id="_t0sukI8JEe-v648egk3nxQ" name="Enter Information into CBS/CIS"/>
+      <bpmn:userTask id="_w3ntAI8JEe-v648egk3nxQ" name="Send Student List to Teachers"/>
+      <bpmn:userTask id="_0FCrQI8JEe-v648egk3nxQ" name="Select Participating Students"/>
+      <bpmn:userTask id="_Gf0kgI8KEe-v648egk3nxQ" name="Receive Non-Accepted Students List"/>
+      <bpmn:userTask id="_grUBAI8KEe-v648egk3nxQ" name="Rebook Students in CBS/CIS"/>
+      <bpmn:endEvent id="_jLYxEI8KEe-v648egk3nxQ" name="End"/>
+      <bpmn:sequenceFlow id="_pkQ0II8JEe-v648egk3nxQ" sourceRef="_dDiegI8JEe-v648egk3nxQ" targetRef="_obWrUI8JEe-v648egk3nxQ"/>
+      <bpmn:sequenceFlow id="_tBvnoI8JEe-v648egk3nxQ" sourceRef="_obWrUI8JEe-v648egk3nxQ" targetRef="_qiungI8JEe-v648egk3nxQ"/>
+      <bpmn:sequenceFlow id="_wYnc0I8JEe-v648egk3nxQ" sourceRef="_qiungI8JEe-v648egk3nxQ" targetRef="_t0sukI8JEe-v648egk3nxQ"/>
+      <bpmn:sequenceFlow id="_yVKpEI8JEe-v648egk3nxQ" sourceRef="_t0sukI8JEe-v648egk3nxQ" targetRef="_w3ntAI8JEe-v648egk3nxQ"/>
+      <bpmn:sequenceFlow id="_3rueEI8JEe-v648egk3nxQ" sourceRef="_w3ntAI8JEe-v648egk3nxQ" targetRef="_0FCrQI8JEe-v648egk3nxQ"/>
+      <bpmn:sequenceFlow id="_J3GCUI8KEe-v648egk3nxQ" sourceRef="_0FCrQI8JEe-v648egk3nxQ" targetRef="_Gf0kgI8KEe-v648egk3nxQ"/>
+      <bpmn:sequenceFlow id="_KeNFoI8KEe-v648egk3nxQ" sourceRef="_Gf0kgI8KEe-v648egk3nxQ" targetRef="_grUBAI8KEe-v648egk3nxQ"/>
+      <bpmn:sequenceFlow id="_iTdqkI8KEe-v648egk3nxQ" sourceRef="_grUBAI8KEe-v648egk3nxQ" targetRef="_jLYxEI8KEe-v648egk3nxQ"/>
+    </bpmn:flowElements>
+  </bpmn:Process>
+</bpmn:Definitions>

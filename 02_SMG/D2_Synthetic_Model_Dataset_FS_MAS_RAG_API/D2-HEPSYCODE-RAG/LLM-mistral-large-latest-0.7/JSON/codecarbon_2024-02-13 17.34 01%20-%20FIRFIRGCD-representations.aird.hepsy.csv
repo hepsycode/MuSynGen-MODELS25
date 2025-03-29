@@ -1,0 +1,6 @@
+total_emissions,node
+4.921652130009732e-08,generate_query_node
+6.264185308214291e-08,cache_context_node
+0.0008926574524878223,model_generation_node
+5.701981316924534e-06,model_validation_node
+0.0019766717996222145,FILE_2024-02-13 17.34 01%20-%20FIRFIRGCD-representations.aird.hepsy

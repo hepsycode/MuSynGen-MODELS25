@@ -1,0 +1,35 @@
+Model the following process which describes the selection and allocation of elective
+courses at a school:
+Version a):
+Students must book two elective courses from the 5th school year onwards. Each
+year ten teachers are responsible for offering elective courses (each teacher one
+course). A course description is given by each teacher to the secretary’s office at
+least one month before the start of the school year. The secretary collects all ten
+descriptions and enters the information into the course booking system (CBS).
+One week before the start of the school year, all responsible teachers receive a list
+of students who have registered for their course from the secretary. The teachers
+who have too many registered students choose which students can participate
+in the course. As a general rule, students in a higher year have priority. The
+(potentially empty) list of students who have not been accepted is handed over by
+each teacher to the secretary’s office. The secretary then assigns these students
+to courses in which there are still free places and rebooks the students in the
+CBS.
+
+Version b):
+Students must book two elective courses from the 5th school year onwards. Each
+year twelve teachers are responsible for offering elective courses (each teacher
+one course). A course description is given by each teacher to the secretary’s office
+at least two months before the start of the school year. The secretary collects
+all twelve descriptions and enters the information into the course information
+system (CIS). Two weeks before the start of the school year, all responsible
+teachers receive a list of students who have registered for their course from the
+secretary. The teachers who have too many registered students choose which
+students can participate in the course. As a general rule, students in a lower
+year have priority. The (potentially empty) list of students who have not been
+accepted is handed over by each teacher to the secretary’s office. The secretary
+then assigns these students to courses in which there are still free places and
+rebooks the students in the CIS.
+Instructions:
+(1) Model each resource as white-box pool, i.e. do not use black-box pools nor
+pools with more than one lane.
+(2) Modeling business objects is not required.

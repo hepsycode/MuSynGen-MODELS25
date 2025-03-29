@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_HbU-kI8JEe-v648egk3nxQ">
+  <bpmn:Collaboration id="_HbU-kI8KEe-v648egk3nxQ" name="Collaboration" isClosed="false">
+    <bpmn:participant id="_HbU-kI8LEe-v648egk3nxQ" name="Supplier" processRef="_HbU-kI8MEe-v648egk3nxQ"/>
+    <bpmn:participant id="_HbU-kI8OEe-v648egk3nxQ" name="Retailer" processRef="_HbU-kI8PEe-v648egk3nxQ"/>
+    <bpmn:messageFlow id="_HbU-kI8REe-v648egk3nxQ" name="Request Offer" sourceRef="_HbU-kI8OEe-v648egk3nxQ" targetRef="_HbU-kI8LEe-v648egk3nxQ"/>
+    <bpmn:messageFlow id="_HbU-kI8TEe-v648egk3nxQ" name="Send Offer" sourceRef="_HbU-kI8LEe-v648egk3nxQ" targetRef="_HbU-kI8OEe-v648egk3nxQ"/>
+    <bpmn:messageFlow id="_HbU-kI8UEe-v648egk3nxQ" name="Order Confirmation" sourceRef="_HbU-kI8OEe-v648egk3nxQ" targetRef="_HbU-kI8LEe-v648egk3nxQ"/>
+    <bpmn:messageFlow id="_HbU-kI8VEe-v648egk3nxQ" name="Order Change" sourceRef="_HbU-kI8OEe-v648egk3nxQ" targetRef="_HbU-kI8LEe-v648egk3nxQ"/>
+    <bpmn:messageFlow id="_HbU-kI8WEe-v648egk3nxQ" name="Order Cancellation" sourceRef="_HbU-kI8OEe-v648egk3nxQ" targetRef="_HbU-kI8LEe-v648egk3nxQ"/>
+  </bpmn:Collaboration>
+  <bpmn:Process id="_HbU-kI8MEe-v648egk3nxQ" name="Supplier Process" processType="Private" isClosed="false" isExecutable="true">
+    <bpmn:intermediateCatchEvent id="_HbU-kI8ZEe-v648egk3nxQ" name="offerReceivedEvent"/>
+    <bpmn:ReceiveTask id="_HbU-kI8aEe-v648egk3nxQ" name="Receive Request">
+      <bpmn:dataOutput id="_HbU-kI8bEe-v648egk3nxQ" name="request"/>
+    </bpmn:ReceiveTask>
+    <bpmn:sequenceFlow id="_HbU-kI8dEe-v648egk3nxQ" sourceRef="_HbU-kI8aEe-v648egk3nxQ" targetRef="_HbU-kI8cEe-v648egk3nxQ"/>
+    <bpmn:Task id="_HbU-kI8cEe-v648egk3nxQ" name="Prepare Offer"/>
+    <bpmn:sequenceFlow id="_HbU-kI8fEe-v648egk3nxQ" sourceRef="_HbU-kI8cEe-v648egk3nxQ" targetRef="_HbU-kI8gEe-v648egk3nxQ"/>
+    <bpmn:intermediateCatchEvent id="_HbU-kI8gEe-v648egk3nxQ" name="Send Offer"/>
+  </bpmn:Process>
+  <bpmn:Process id="_HbU-kI8PEe-v648egk3nxQ" name="Retailer Process" processType="Private" isClosed="false" isExecutable="true">
+    <bpmn:intermediateCatchEvent id="_HbU-kI8QEe-v648egk3nxQ" name="OfferSentEvent"/>
+    <bpmn:ReceiveTask id="_HbU-kI8SEe-v648egk3nxQ" name="Receive Offer">
+      <bpmn:dataOutput id="_HbU-kI8REe-v648egk3nxQ" name="Offer"/>
+    </bpmn:ReceiveTask>
+    <bpmn:Task id="_HbU-kI8TEe-v648egk3nxQ" name="Request Confirm Order"/>
+    <bpmn:Task id="_HbU-kI8REe-v648egk3nxQ" name="Request Change Order"/>
+    <bpmn:Task id="_HbU-kI8UEe-v648egk3nxQ" name="Request Cancellation Order"/>
+  </bpmn:Process>
+</bpmn:Definitions>

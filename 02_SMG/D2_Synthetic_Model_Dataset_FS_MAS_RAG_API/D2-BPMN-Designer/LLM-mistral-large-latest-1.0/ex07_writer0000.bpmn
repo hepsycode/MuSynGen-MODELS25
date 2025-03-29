@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_LpVMYI8JEe-v648egk3nxQ">
+  <bpmn:collaboration id="_YlVeI8JEe-v648egk3nxQ" name="Collaboration">
+    <bpmn:participant id="_Participant1" name="Hospital" processRef="Hospital_Process"/>
+    <bpmn:participant id="_Participant2" name="External Expert"/>
+    <bpmn:messageFlow id="_MessageFlow1" sourceRef="_End_Event_Expert" targetRef="_Review_Expert_Recommendation_Event"/>
+    <bpmn:messageFlow id="_MessageFlow2" sourceRef="_End_Event_Expert" targetRef="_Directory_Payment_to_Expert_Event"/>
+  </bpmn:collaboration>
+  <bpmn:Process id="Hospital_Process" name="Doctor Rating Process" processType="None" isClosed="false" isExecutable="true">
+    <bpmn:laneSet id="_LaneSet_Hospital" name="Hospital Departments">
+      <bpmn:lane id="_Lane_QA_Department" name="Quality Assurance Department">
+        <bpmn:flowNodeRef>_Call_Activity_Interview_Patients</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>_Task_Create_Report</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>_End_Event_QA_Report_Done</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>_Task_File_Expertise_and_Interview_Results</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="_Lane_Management" name="Hospital Management">
+        <bpmn:flowNodeRef>_Start_Event_Director</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>_Task_Request_Expert_Review</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>_Task_Pay_Expert</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>_End_Event_Management_Payment_Done</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>_Task_Review_Expert_Recommendation</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>_Gateway_Expert_Response</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:callActivity id="_Call_Activity_Interview_Patients" calledElement="Interview" name="Conduct Patient Interviews"/>
+    <bpmn:task id="_Task_Create_Report" name="Create Report"/>
+    <bpmn:endEvent id="_End_Event_QA_Report_Done" name="QA Report Done"/>
+    <bpmn:task id="_Task_File_Expertise_and_Interview_Results" name="File Expertise and Interview Results"/>
+    <bpmn:startEvent id="_Start_Event_Director" name="Director Starts Evaluation Process"/>
+    <bpmn:task id="_Task_Request_Expert_Review" name="Request Expert Review"/>
+    <bpmn:task id="_Task_Pay_Expert" name="Pay Expert"/>
+    <bpmn:task id="_Task_Review_Expert_Recommendation" name="Review Expert Recommendation"/>
+    <bpmn:endEvent id="_End_Event_Management_Payment_Done" name="Management Payment Done"/>
+    <bpmn:sequenceFlow id="_SequenceFlow1" sourceRef="_Start_Event_Director" targetRef="_Task_Request_Expert_Review"/>
+    <bpmn:sequenceFlow id="_SequenceFlow2" sourceRef="_Task_Request_Expert_Review" targetRef="_Gateway_Expert_Response"/>
+    <bpmn:sequenceFlow id="_SequenceFlow3" sourceRef="_Call_Activity_Interview_Patients" targetRef="_Task_File_Expertise_and_Interview_Results"/>
+    <bpmn:sequenceFlow id="_SequenceFlow4" sourceRef="_Task_File_Expertise_and_Interview_Results" targetRef="_Task_Create_Report"/>
+    <bpmn:sequenceFlow id="_SequenceFlow5" sourceRef="_Gateway_Expert_Response" targetRef="_End_Event_Expert"/>
+    <bpmn:sequenceFlow id="_SequenceFlow6" sourceRef="_End_Event_Expert" targetRef="_Task_Review_Expert_Recommendation"/>
+    <bpmn:sequenceFlow id="_SequenceFlow7" sourceRef="_Task_Review_Expert_Recommendation" targetRef="_Task_Pay_Expert"/>
+    <bpmn:sequenceFlow id="_SequenceFlow8" sourceRef="_Task_Pay_Expert" targetRef="_End_Event_Management_Payment_Done"/>
+    <bpmn:exclusiveGateway id="_Gateway_Expert_Response" name="Expert Response Check" gatewayDirection="Unspecified">
+      <bpmn:incoming>_SequenceFlow2</bpmn:incoming>
+      <bpmn:outgoing>_SequenceFlow5</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+  </bpmn:Process>
+  <bpmn:Process id="Director_Process" name="Director Process" processType="None" isClosed="false" isExecutable="true">
+    <bpmn:laneSet id="_LaneSet_Director" name="Director's Lane">
+      <bpmn:lane id="_Dir_Lane" name="Director Lane">
+        <bpmn:flowNodeRef>_Review_Expert_Recommendation_Event</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>_Director_Forward_Review</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="_Review_Expert_Recommendation_Event" name="Start Director Review Event">
+      <bpmn:outgoing>_SequenceFlow10</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:task id="_Director_Forward_Review" name="Director Forwards Review">
+      <bpmn:incoming>_SequenceFlow10</bpmn:incoming>
+      <bpmn:outgoing>_SequenceFlow11</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="_SequenceFlow10" sourceRef="_Review_Expert_Recommendation_Event" targetRef="_Director_Forward_Review"/>
+    <bpmn:sequenceFlow id="_SequenceFlow11" sourceRef="_Director_Forward_Review" targetRef="_Task_Review_Expert_Recommendation"/>
+  </bpmn:Process>
+  <bpmn:Process id="Expert_Process" name="Expert Process" processType="None" isClosed="false" isExecutable="true">
+    <bpmn:laneSet>
+      <bpmn:lane id="External_Expert_Lane" name="External Expert Lane">
+        <bpmn:flowNodeRef>_Start_Event_Expert</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>_Task_Receive_Experts_Expertise</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>_End_Event_Expert</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="_Start_Event_Expert" name="External Expert Receives Request"/>
+    <bpmn:task id="_Task_Receive_Experts_Expertise" name="Receive Experts Expertise"/>
+    <bpmn:endEvent id="_End_Event_Expert" name="Send Expertise to Hospital"/>
+    <bpmn:sequenceFlow id="_SequenceFlow12" sourceRef="_Start_Event_Expert" targetRef="_Task_Receive_Experts_Expertise"/>
+    <bpmn:sequenceFlow id="_SequenceFlow13" sourceRef="_Task_Receive_Experts_Expertise" targetRef="_End_Event_Expert"/>
+  </bpmn:Process>
+</bpmn:Definitions>

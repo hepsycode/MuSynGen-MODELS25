@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_KkUY4Y8DEe-v648egk3nxQ">
+  <rootElements xsi:type="bpmn:Process" id="_P1" name="Doctor Rating Workflow" isExecutable="false">
+    <laneSets>
+      <bpmn:laneSet>
+        <bpmn:lane name="Quality Assurance Department" id="_Lane_QA">
+          <flowNodeRefs>_StartEvent_QA</flowNodeRefs>
+          <flowNodeRefs>_InterviewPatients_QA</flowNodeRefs>
+          <flowNodeRefs>_ReceiveExpertise_QA</flowNodeRefs>
+          <flowNodeRefs>_FileResults_QA</flowNodeRefs>
+          <flowNodeRefs>_CreateReport_QA</flowNodeRefs>
+        </bpmn:lane>
+        <bpmn:lane name="Managing Director" id="_Lane_Director">
+          <flowNodeRefs>_RequestExpertReview_Director</flowNodeRefs>
+          <flowNodeRefs>_CheckExpertResponse_Director</flowNodeRefs>
+          <flowNodeRefs>_ForwardExpertise_Director</flowNodeRefs>
+          <flowNodeRefs>_PayExpenses_Director</flowNodeRefs>
+        </bpmn:lane>
+      </bpmn:laneSet>
+    </laneSets>
+    <flowElements>
+      <bpmn:startEvent id="_StartEvent_QA" name="Start Doctor Rating"/>
+      <bpmn:task id="_InterviewPatients_QA" name="Interview Patients"/>
+      <bpmn:task id="_RequestExpertReview_Director" name="Request Expert Review"/>
+      <bpmn:exclusiveGateway id="_CheckExpertResponse_Director" name="Expert Responded?"/>
+      <bpmn:task id="_ReceiveExpertise_QA" name="Receive Expertise"/>
+      <bpmn:task id="_FileResults_QA" name="File Results"/>
+      <bpmn:task id="_CreateReport_QA" name="Create Report"/>
+      <bpmn:task id="_ForwardExpertise_Director" name="Forward Expertise to QA"/>
+      <bpmn:task id="_PayExpenses_Director" name="Pay Expenses"/>
+      <bpmn:endEvent id="_EndEvent_QA" name="End Doctor Rating"/>
+      <bpmn:sequenceFlow id="_Flow_1" sourceRef="_StartEvent_QA" targetRef="_InterviewPatients_QA"/>
+      <bpmn:sequenceFlow id="_Flow_2" sourceRef="_InterviewPatients_QA" targetRef="_RequestExpertReview_Director"/>
+      <bpmn:sequenceFlow id="_Flow_3" sourceRef="_RequestExpertReview_Director" targetRef="_CheckExpertResponse_Director"/>
+      <bpmn:sequenceFlow id="_Flow_4" sourceRef="_CheckExpertResponse_Director" targetRef="_ForwardExpertise_Director"/>
+      <bpmn:sequenceFlow id="_Flow_5" sourceRef="_ForwardExpertise_Director" targetRef="_ReceiveExpertise_QA"/>
+      <bpmn:sequenceFlow id="_Flow_6" sourceRef="_ReceiveExpertise_QA" targetRef="_FileResults_QA"/>
+      <bpmn:sequenceFlow id="_Flow_7" sourceRef="_FileResults_QA" targetRef="_CreateReport_QA"/>
+      <bpmn:sequenceFlow id="_Flow_8" sourceRef="_CreateReport_QA" targetRef="_EndEvent_QA"/>
+      <bpmn:sequenceFlow id="_Flow_9" sourceRef="_CheckExpertResponse_Director" targetRef="_PayExpenses_Director"/>
+      <bpmn:sequenceFlow id="_Flow_10" sourceRef="_PayExpenses_Director" targetRef="_RequestExpertReview_Director"/>
+    </flowElements>
+  </rootElements>
+  <bpmn:Collaboration id="_Collaboration_1">
+    <bpmn:participant id="_Participant_QA" name="Quality Assurance Specialist" processRef="_P1">
+      <bpmn:participantMultiplicity minimum="1" maximum="1"/>
+    </bpmn:participant>
+    <bpmn:participant id="_Participant_Director" name="Managing Director" processRef="_P1">
+      <bpmn:participantMultiplicity minimum="1" maximum="1"/>
+    </bpmn:participant>
+    <bpmn:messageFlow id="_MessageFlow_1" sourceRef="_Participant_Director" targetRef="_Participant_QA" name="Forward Expertise"/>
+  </bpmn:Collaboration>
+</bpmn:Definitions>

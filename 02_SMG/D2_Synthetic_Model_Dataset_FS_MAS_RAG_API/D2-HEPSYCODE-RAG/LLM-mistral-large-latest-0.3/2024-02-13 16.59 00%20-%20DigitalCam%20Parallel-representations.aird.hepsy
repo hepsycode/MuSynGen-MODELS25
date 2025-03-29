@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hml:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hml="org.univaq.hepsy">
+  <nodes xsi:type="hml:Stimulus" name="Stimulus">
+    <ports name="stim_system_out_port">
+      <pChannels name="stim_system_channel" pFrom="//@nodes.0/@ports.0" pTo="//@nodes.1/@ports.0" queueSize="8" rendezVous="true"/>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:StructuredNode" name="DigitalCam">
+    <ports name="stim_ccdpp_in_port">
+      <pChannels name="stim_ccdpp_channel" pFrom="//@nodes.1/@ports.0" pTo="//@nodes.1/@ports.1" queueSize="8" rendezVous="true"/>
+    </ports>
+    <ports name="ccdpp_codec0_out_port">
+      <pChannels name="ccdpp_codec0_channel" pFrom="//@nodes.1/@ports.1" pTo="//@nodes.1/@ports.2" queueSize="8" rendezVous="true"/>
+    </ports>
+    <ports name="ccdpp_codec1_out_port">
+      <pChannels name="ccdpp_codec1_channel" pFrom="//@nodes.1/@ports.1" pTo="//@nodes.1/@ports.3" queueSize="8" rendezVous="true"/>
+    </ports>
+    <ports name="ccdpp_codec2_out_port">
+      <pChannels name="ccdpp_codec2_channel" pFrom="//@nodes.1/@ports.1" pTo="//@nodes.1/@ports.4" queueSize="8" rendezVous="true"/>
+    </ports>
+    <ports name="ccdpp_codec3_out_port">
+      <pChannels name="ccdpp_codec3_channel" pFrom="//@nodes.1/@ports.1" pTo="//@nodes.1/@ports.5" queueSize="8" rendezVous="true"/>
+    </ports>
+    <ports name="ccdpp_codec4_out_port">
+      <pChannels name="ccdpp_codec4_channel" pFrom="//@nodes.1/@ports.1" pTo="//@nodes.1/@ports.6" queueSize="8" rendezVous="true"/>
+    </ports>
+    <ports name="ccdpp_codec5_out_port">
+      <pChannels name="ccdpp_codec5_channel" pFrom="//@nodes.1/@ports.1" pTo="//@nodes.1/@ports.7" queueSize="8" rendezVous="true"/>
+    </ports>
+    <ports name="ccdpp_codec6_out_port">
+      <pChannels name="ccdpp_codec6_channel" pFrom="//@nodes.1/@ports.1" pTo="//@nodes.1/@ports.8" queueSize="8" rendezVous="true"/>
+    </ports>
+    <ports name="ccdpp_codec7_out_port">
+      <pChannels name="ccdpp_codec7_channel" pFrom="//@nodes.1/@ports.1" pTo="//@nodes.1/@ports.9" queueSize="8" rendezVous="true"/>
+    </ports>
+    <ports name="codec_merge_in_port">
+      <pChannels name="codec_merge_channel" pFrom="//@nodes.1/@ports.10" pTo="//@nodes.1/@ports.11" queueSize="8" rendezVous="true"/>
+    </ports>
+    <ports name="system_display_out_port">
+      <pChannels name="display_channel" pFrom="//@nodes.1/@ports.11" pTo="//@nodes.2/@ports.0" queueSize="8" rendezVous="true"/>
+    </ports>
+    <ports name="codec_merge_out_port"/>
+    <processes name="ccdpp"/>
+    <processes name="codec0"/>
+    <processes name="codec1"/>
+    <processes name="codec2"/>
+    <processes name="codec3"/>
+    <processes name="codec4"/>
+    <processes name="codec5"/>
+    <processes name="codec6"/>
+    <processes name="codec7"/>
+    <processes name="codec_merge"/>
+  </nodes>
+  <nodes xsi:type="hml:Display" name="Display">
+    <ports name="system_display_in_port"/>
+  </nodes>
+</hml:BehaviorSpecification>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hml:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hml="org.univaq.hepsy">
+  <nodes xsi:type="hml:Stimulus" name="Stimulus">
+    <ports name="stim_system_out_port">
+      <pChannels name="stim_preproc_channel" pFrom="//@nodes.0/@ports.0" pTo="//@nodes.1/@ports.0" queueSize="8" rendezVous="true"/>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:StructuredNode" name="Sobel">
+    <ports name="system_preproc_in_port">
+      <pChannels name="stim_preproc_channel" pFrom="//@nodes.0/@ports.0" pTo="//@nodes.1/@ports.0"/>
+    </ports>
+    <ports name="preproc_sobelH_out_port">
+      <pChannels name="preproc_sobelH_channel" pFrom="//@nodes.1/@ports.1" pTo="//@nodes.1/@ports.2"/>
+    </ports>
+    <ports name="preproc_sobelV_out_port">
+      <pChannels name="preproc_sobelV_channel" pFrom="//@nodes.1/@ports.1" pTo="//@nodes.1/@ports.3"/>
+    </ports>
+    <ports name="sobelH_edge_merge_out_port">
+      <pChannels name="sobel_merge_channel" pFrom="//@nodes.1/@ports.2" pTo="//@nodes.1/@ports.4"/>
+    </ports>
+    <ports name="sobelV_edge_merge_out_port">
+      <pChannels name="sobel_merge_channel" pFrom="//@nodes.1/@ports.3" pTo="//@nodes.1/@ports.4"/>
+    </ports>
+    <ports name="system_display_out_port">
+      <pChannels name="sobel_display_channel" pFrom="//@nodes.1/@ports.4" pTo="//@nodes.2/@ports.0"/>
+    </ports>
+    <processes name="preproc" processExtension="//@nodes.1/@ports.0"/>
+    <processes name="sobel_h" processExtension="//@nodes.1/@ports.2"/>
+    <processes name="sobel_v" processExtension="//@nodes.1/@ports.3"/>
+    <processes name="edge_merge" processExtension="//@nodes.1/@ports.4"/>
+  </nodes>
+  <nodes xsi:type="hml:Display" name="Display">
+    <ports name="system_display_in_port">
+      <pChannels name="sobel_display_channel" pFrom="//@nodes.1/@ports.4" pTo="//@nodes.2/@ports.0"/>
+    </ports>
+  </nodes>
+</hml:BehaviorSpecification>

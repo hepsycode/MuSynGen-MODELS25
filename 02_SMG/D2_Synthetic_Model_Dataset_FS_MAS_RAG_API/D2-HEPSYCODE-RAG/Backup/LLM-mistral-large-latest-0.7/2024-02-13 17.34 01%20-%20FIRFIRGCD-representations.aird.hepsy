@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hepsy:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hepsy="org.univaq.hepsy" name="RTSystem">
+  <nodes xsi:type="hepsy:Stimulus" name="Stimulus">
+    <ports name="stim_rt_out_port"/>
+  </nodes>
+  <nodes xsi:type="hepsy:StructuredNode" name="RTApp">
+    <nChannels name="stim_rt_channel" queueSize="8" rendezVous="true" direction="Unidirectional">
+      <nFrom href="//@nodes.0"/>
+      <nTo href="//@nodes.1"/>
+      <pFrom href="//@nodes.0/ports.0"/>
+      <message name="stim_rt_payload"/>
+    </nChannels>
+    <ports name="system_display_out_port"/>
+    <processes name="acquisition" priority="1" criticality="1">
+      <processExtension href="//@nodes.1/ports.1"/>
+    </processes>
+    <processes name="filtering" priority="1" criticality="1">
+      <processExtension href="//@nodes.1/ports.2"/>
+    </processes>
+    <processes name="decision" priority="1" criticality="1">
+      <processExtension href="//@nodes.1/ports.3"/>
+    </processes>
+    <processes name="control" priority="1" criticality="1">
+      <processExtension href="//@nodes.1/ports.4"/>
+    </processes>
+    <nChannels name="stim_acquisition_channel" direction="Unidirectional">
+      <nFrom href="//@nodes.1/ports.0"/>
+      <nTo href="//@nodes.1/ports.1"/>
+      <message name="acquisition_payload"/>
+    </nChannels>
+    <nChannels name="acq_filter_channel" direction="Unidirectional">
+      <nFrom href="//@nodes.1/ports.1"/>
+      <nTo href="//@nodes.1/ports.2"/>
+      <message name="filtering_payload"/>
+    </nChannels>
+    <nChannels name="filter_decision_channel" direction="Unidirectional">
+      <nFrom href="//@nodes.1/ports.2"/>
+      <nTo href="//@nodes.1/ports.3"/>
+      <message name="decision_payload"/>
+    </nChannels>
+    <nChannels name="decision_control_channel" direction="Unidirectional">
+      <nFrom href="//@nodes.1/ports.3"/>
+      <nTo href="//@nodes.1/ports.4"/>
+      <message name="control_payload"/>
+    </nChannels>
+  </nodes>
+  <nodes xsi:type="hepsy:Display" name="Display">
+    <ports name="system_display_in_port"/>
+  </nodes>
+  <nodes xsi:type="hepsy:Channel" name="disp_channel" direction="Unidirectional">
+    <nFrom href="//@nodes.1"/>
+    <nTo href="//@nodes.2"/>
+    <pFrom href="//@nodes.1/ports.4"/>
+    <pTo href="//@nodes.2/ports.0"/>
+    <message name="display_payload"/>
+  </nodes>
+</hepsy:BehaviorSpecification>

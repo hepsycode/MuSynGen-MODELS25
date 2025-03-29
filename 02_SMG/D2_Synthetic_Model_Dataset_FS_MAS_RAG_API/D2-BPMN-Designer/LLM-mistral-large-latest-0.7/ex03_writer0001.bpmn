@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_KkUY4Y8DEe-v648egk3nxQ">
+  <rootElements xsi:type="bpmn:Collaboration" id="_Collaboration_1" name="Insurer Claim Handling">
+    <participants xsi:type="bpmn:Participant" id="_Participant_Claimant" name="Claimant" processRef="_Process_Claimant"/>
+    <participants xsi:type="bpmn:Participant" id="_Participant_Insurer" name="Insurer" processRef="_Process_Insurer"/>
+    <participants xsi:type="bpmn:Participant" id="_Participant_SAP" name="SAP System" processRef="_Process_SAP"/>
+    <messageFlows xsi:type="bpmn:MessageFlow" id="_MessageFlow_ClaimSubmission" name="Submit Claim" sourceRef="_Participant_Claimant" targetRef="_Participant_Insurer"/>
+    <messageFlows xsi:type="bpmn:MessageFlow" id="_MessageFlow_Notification" name="Send Notification" sourceRef="_Participant_Insurer" targetRef="_Participant_Claimant"/>
+    <messageFlows xsi:type="bpmn:MessageFlow" id="_MessageFlow_Forms" name="Send Forms" sourceRef="_Participant_Insurer" targetRef="_Participant_Claimant"/>
+    <messageFlows xsi:type="bpmn:MessageFlow" id="_MessageFlow_ReturnForms" name="Return Forms" sourceRef="_Participant_Claimant" targetRef="_Participant_Insurer"/>
+    <messageFlows xsi:type="bpmn:MessageFlow" id="_MessageFlow_UpdateForms" name="Update Forms" sourceRef="_Participant_Insurer" targetRef="_Participant_Claimant"/>
+    <messageFlowAssociations xsi:type="bpmn:MessageFlowAssociation" id="_MessageFlowAssociation_1">
+      <innerMessageFlowRef xsi:type="bpmn:MessageFlow" id="_MessageFlow_ClaimSubmission"/>
+      <outerMessageFlowRef xsi:type="bpmn:MessageFlow" id="_MessageFlow_ClaimSubmission"/>
+    </messageFlowAssociations>
+    <messageFlowAssociations xsi:type="bpmn:MessageFlowAssociation" id="_MessageFlowAssociation_2">
+      <innerMessageFlowRef xsi:type="bpmn:MessageFlow" id="_MessageFlow_Notification"/>
+      <outerMessageFlowRef xsi:type="bpmn:MessageFlow" id="_MessageFlow_Notification"/>
+    </messageFlowAssociations>
+    <messageFlowAssociations xsi:type="bpmn:MessageFlowAssociation" id="_MessageFlowAssociation_3">
+      <innerMessageFlowRef xsi:type="bpmn:MessageFlow" id="_MessageFlow_Forms"/>
+      <outerMessageFlowRef xsi:type="bpmn:MessageFlow" id="_MessageFlow_Forms"/>
+    </messageFlowAssociations>
+    <messageFlowAssociations xsi:type="bpmn:MessageFlowAssociation" id="_MessageFlowAssociation_4">
+      <innerMessageFlowRef xsi:type="bpmn:MessageFlow" id="_MessageFlow_ReturnForms"/>
+      <outerMessageFlowRef xsi:type="bpmn:MessageFlow" id="_MessageFlow_ReturnForms"/>
+    </messageFlowAssociations>
+    <messageFlowAssociations xsi:type="bpmn:MessageFlowAssociation" id="_MessageFlowAssociation_5">
+      <innerMessageFlowRef xsi:type="bpmn:MessageFlow" id="_MessageFlow_UpdateForms"/>
+      <outerMessageFlowRef xsi:type="bpmn:MessageFlow" id="_MessageFlow_UpdateForms"/>
+    </messageFlowAssociations>
+  </rootElements>
+  <rootElements xsi:type="bpmn:Process" id="_Process_Claimant" name="Claimant Process" processType="None" isClosed="false">
+    <flowElements xsi:type="bpmn:StartEvent" id="_StartEvent_Claimant" name="Claim Submission"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="_EndEvent_Claimant" name="End"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_SequenceFlow_Claimant_1" sourceRef="_StartEvent_Claimant" targetRef="_EndEvent_Claimant"/>
+  </rootElements>
+  <rootElements xsi:type="bpmn:Process" id="_Process_Insurer" name="Insurer Claim Handling Process" processType="None" isClosed="false">
+    <laneSets xsi:type="bpmn:LaneSet" id="_LaneSet_Insurer" name="Insurer Lanes">
+      <lanes xsi:type="bpmn:Lane" id="_Lane_ClaimsOfficer" name="Claims Officer"/>
+    </laneSets>
+  </rootElements>
+  <rootElements xsi:type="bpmn:Process" id="_Process_SAP" name="SAP Process" processType="None" isClosed="false"/>
+</bpmn:Definitions>
