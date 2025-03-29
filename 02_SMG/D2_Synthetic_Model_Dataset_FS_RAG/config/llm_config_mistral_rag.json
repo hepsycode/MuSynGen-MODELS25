@@ -6,7 +6,7 @@
     "temperature": 0.0,
     "max_retries": 2,
     "api_keys": {
-        "mistral-large-latest": "lumir3Wr8pjXF6OaUO4FvGYu1tmOAKyE"
+        "mistral-large-latest": ""
     },
     "base_url": ""
 }

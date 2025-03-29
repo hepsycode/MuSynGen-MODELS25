@@ -6,7 +6,7 @@
     "temperature": 1.0,
     "max_retries": 2,
     "api_keys": {
-        "gpt-3.5-turbo-0125": "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"
+        "gpt-3.5-turbo-0125": ""
     },
     "base_url": ""
 }

@@ -6,7 +6,7 @@
     "temperature": 1.0,
     "max_retries": 2,
     "api_keys": {
-        "gemma2-9b-it": "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"
+        "gemma2-9b-it": ""
     },
     "base_url": "https://api.groq.com/openai/v1"
 }

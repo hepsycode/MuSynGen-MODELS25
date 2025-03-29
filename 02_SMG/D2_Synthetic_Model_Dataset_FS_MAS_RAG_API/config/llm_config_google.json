@@ -6,7 +6,7 @@
     "temperature": 0.0,
     "max_retries": 2,
     "api_keys": {
-        "gemini-1.5-flash": "AIzaSyDQoez8Us8QFifQb14tery0_weInadqd6A"
+        "gemini-1.5-flash": ""
     },
     "base_url": ""
 }

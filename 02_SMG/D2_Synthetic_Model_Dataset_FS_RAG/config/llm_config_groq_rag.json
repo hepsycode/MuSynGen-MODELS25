@@ -6,7 +6,7 @@
     "temperature": 0.0,
     "max_retries": 2,
     "api_keys": {
-        "llama-3.3-70b-versatile": "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"
+        "llama-3.3-70b-versatile": ""
     },
     "base_url": "https://api.groq.com/openai/v1"
 }
