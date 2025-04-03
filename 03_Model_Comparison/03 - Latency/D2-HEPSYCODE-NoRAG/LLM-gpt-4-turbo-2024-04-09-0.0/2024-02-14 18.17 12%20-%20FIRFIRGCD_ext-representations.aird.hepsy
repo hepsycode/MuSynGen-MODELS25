@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hml:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hml="org.univaq.hepsy">
+  <nodes xsi:type="hml:Stimulus" name="Stimulus">
+    <ports name="stim_fir1_out_port">
+      <pChannels name="stim_fir1_channel" pFrom="//@nodes.0/@ports.0" pTo="//@nodes.1/@ports.0" queueSize="10" rendezVous="true">
+        <message name="stim_fir1_payload">
+          <entry name="raw_data" type="sc_int"/>
+        </message>
+      </pChannels>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:Process" name="fir1">
+    <ports name="fir1_in"/>
+    <ports name="fir1_out">
+      <pChannels name="fir1_fir2_channel" pFrom="//@nodes.1/@ports.1" pTo="//@nodes.2/@ports.0" queueSize="10" rendezVous="true">
+        <message name="fir1_fir2_payload">
+          <entry name="filtered_data" type="sc_int"/>
+        </message>
+      </pChannels>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:Process" name="fir2">
+    <ports name="fir2_in"/>
+    <ports name="fir2_out">
+      <pChannels name="fir2_firext_channel" pFrom="//@nodes.2/@ports.1" pTo="//@nodes.3/@ports.0" queueSize="10" rendezVous="true">
+        <message name="fir2_firext_payload">
+          <entry name="refined_data" type="sc_int"/>
+        </message>
+      </pChannels>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:Process" name="fir_ext">
+    <ports name="firext_in"/>
+    <ports name="firext_out">
+      <pChannels name="firext_gcd_channel" pFrom="//@nodes.3/@ports.1" pTo="//@nodes.4/@ports.0" queueSize="10" rendezVous="true">
+        <message name="firext_gcd_payload">
+          <entry name="enhanced_data" type="sc_int"/>
+        </message>
+      </pChannels>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:Process" name="gcd">
+    <ports name="gcd_in"/>
+    <ports name="gcd_out">
+      <pChannels name="gcd_display_channel" pFrom="//@nodes.4/@ports.1" pTo="//@nodes.5/@ports.0" queueSize="10" rendezVous="true">
+        <message name="gcd_display_payload">
+          <entry name="gcd_result" type="sc_int"/>
+        </message>
+      </pChannels>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:Display" name="Display">
+    <ports name="system_display_in_port"/>
+  </nodes>
+</hml:BehaviorSpecification>

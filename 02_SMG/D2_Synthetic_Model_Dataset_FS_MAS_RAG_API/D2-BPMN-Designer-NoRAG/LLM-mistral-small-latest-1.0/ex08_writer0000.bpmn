@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_1">
+  <rootElements xsi:type="bpmn:Process" id="_2">
+    <flowElements xsi:type="bpmn:StartEvent" id="_3" name="Start" />
+    <flowElements xsi:type="bpmn:UserTask" id="_4" name="Provide Course Description" outgoing="_5" />
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_5" targetRef="_6" sourceRef="_4" />
+    <flowElements xsi:type="bpmn:UserTask" id="_6" name="Collect Course Descriptions" outgoing="_7" incoming="_5"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_7" targetRef="_8" sourceRef="_6" />
+    <flowElements xsi:type="bpmn:UserTask" id="_8" name="Enter Information into CBS" outgoing="_9" incoming="_7"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_9" targetRef="_10" sourceRef="_8" />
+    <flowElements xsi:type="bpmn:UserTask" id="_10" name="Distribute Student Lists" outgoing="_11" incoming="_9"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_11" targetRef="_12" sourceRef="_10" />
+    <flowElements xsi:type="bpmn:UserTask" id="_12" name="Select Students" outgoing="_13" incoming="_11"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_13" targetRef="_14" sourceRef="_12" />
+    <flowElements xsi:type="bpmn:UserTask" id="_14" name="Hand Over Non-Accepted Students" outgoing="_15" incoming="_13"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_15" targetRef="_16" sourceRef="_14" />
+    <flowElements xsi:type="bpmn:UserTask" id="_16" name="Assign Students to Free Places" outgoing="_17" incoming="_15"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_17" targetRef="_18" sourceRef="_16" />
+    <flowElements xsi:type="bpmn:UserTask" id="_18" name="Rebook Students in CBS" outgoing="_19" incoming="_17"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_19" targetRef="_20" sourceRef="_18" />
+    <flowElements xsi:type="bpmn:EndEvent" id="_20" name="End" incoming="_19"/>
+  </rootElements>
+  <rootElements xsi:type="bpmn:Process" id="_21">
+    <flowElements xsi:type="bpmn:StartEvent" id="_22" name="Start" />
+    <flowElements xsi:type="bpmn:UserTask" id="_23" name="Provide Course Description" outgoing="_24" />
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_24" targetRef="_25" sourceRef="_23" />
+    <flowElements xsi:type="bpmn:UserTask" id="_25" name="Collect Course Descriptions" outgoing="_26" incoming="_24"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_26" targetRef="_27" sourceRef="_25" />
+    <flowElements xsi:type="bpmn:UserTask" id="_27" name="Enter Information into CIS" outgoing="_28" incoming="_26"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_28" targetRef="_29" sourceRef="_27" />
+    <flowElements xsi:type="bpmn:UserTask" id="_29" name="Distribute Student Lists" outgoing="_30" incoming="_28"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_30" targetRef="_31" sourceRef="_29" />
+    <flowElements xsi:type="bpmn:UserTask" id="_31" name="Select Students" outgoing="_32" incoming="_30"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_32" targetRef="_33" sourceRef="_31" />
+    <flowElements xsi:type="bpmn:UserTask" id="_33" name="Hand Over Non-Accepted Students" outgoing="_34" incoming="_32"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_34" targetRef="_35" sourceRef="_33" />
+    <flowElements xsi:type="bpmn:UserTask" id="_35" name="Assign Students to Free Places" outgoing="_36" incoming="_34"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_36" targetRef="_37" sourceRef="_35" />
+    <flowElements xsi:type="bpmn:UserTask" id="_37" name="Rebook Students in CIS" outgoing="_38" incoming="_36"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_38" targetRef="_39" sourceRef="_37" />
+    <flowElements xsi:type="bpmn:EndEvent" id="_39" name="End" incoming="_38"/>
+  </rootElements>
+  <laneSets id="_40" name="School">
+    <lanes id="_41" name="Secretary's Office" flowNodeRefs="_6 _8 _10 _14 _16 _18"/>
+    <lanes id="_42" name="Teachers" flowNodeRefs="_4 _12 _14"/>
+  </laneSets>
+  <laneSets id="_43" name="School">
+    <lanes id="_44" name="Secretary's Office" flowNodeRefs="_25 _27 _29 _33 _35 _37"/>
+    <lanes id="_45" name="Teachers" flowNodeRefs="_23 _31 _33"/>
+  </laneSets>
+</bpmn:Definitions>

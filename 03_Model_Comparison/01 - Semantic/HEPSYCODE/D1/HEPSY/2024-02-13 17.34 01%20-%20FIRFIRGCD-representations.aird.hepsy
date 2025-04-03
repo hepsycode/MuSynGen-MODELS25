@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hml:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hml="org.univaq.hepsy">
+  <nodes xsi:type="hml:Stimulus" name="Stimulus">
+    <ports name="stim1_channel_port">
+      <pChannels name="stim1_channel" pFrom="//@nodes.0/@ports.0" pTo="//@nodes.2/@ports.0" queueSize="8" rendezVous="true"/>
+    </ports>
+    <ports name="stim2_channel_port">
+      <pChannels name="stim2_channel" pFrom="//@nodes.0/@ports.1" pTo="//@nodes.2/@ports.2"/>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:Display" name="Display">
+    <ports name="result_channel_port2">
+      <pChannels name="result_channel" pFrom="//@nodes.1/@ports.0" pTo="//@nodes.2/@ports.1"/>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:StructuredNode">
+    <nChannels name="fir8e_parameters_channel" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.1" queueSize="16" rendezVous="true">
+      <message name="fir8e_parameters_payload">
+        <entry name="sample1" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="fir8e_results_channel" nFrom="//@nodes.2/@processes.1" nTo="//@nodes.2/@processes.0" queueSize="18" rendezVous="true">
+      <message name="fir8e_results_payload">
+        <entry name="sample2" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="fir8s_parameters_channel" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.2" queueSize="32" rendezVous="true">
+      <message name="fir8s_parameters_payload">
+        <entry name="sample3" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="fir8s_results_channel" nFrom="//@nodes.2/@processes.2" nTo="//@nodes.2/@processes.0" queueSize="54" rendezVous="true">
+      <message name="fir8s_results_payload">
+        <entry name="sample4" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="result8_channel" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.3" queueSize="44" rendezVous="true">
+      <message name="result8_payload">
+        <entry name="sample5" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="gcde_parameters_channel" nFrom="//@nodes.2/@processes.3" nTo="//@nodes.2/@processes.4" queueSize="95" rendezVous="true">
+      <message name="gcde_parameters_payload">
+        <entry name="sample10" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="gcde_results_channel" nFrom="//@nodes.2/@processes.4" nTo="//@nodes.2/@processes.3" queueSize="88" rendezVous="true">
+      <message name="gcde_results_payload">
+        <entry name="sample10" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="fir16e_parameters_channel" nFrom="//@nodes.2/@processes.5" nTo="//@nodes.2/@processes.6" queueSize="86" rendezVous="true">
+      <message name="fir16e_parameters_payload">
+        <entry name="sample7" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="fir16e_results_channel" nFrom="//@nodes.2/@processes.6" nTo="//@nodes.2/@processes.5" queueSize="165" rendezVous="true">
+      <message name="fir16e_results_payload">
+        <entry name="sample7" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="fir16s_parameters_channel" nFrom="//@nodes.2/@processes.5" nTo="//@nodes.2/@processes.7" queueSize="132" rendezVous="true">
+      <message name="fir16s_parameters_payload">
+        <entry name="sample8" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="fir16s_results_payload" nFrom="//@nodes.2/@processes.7" nTo="//@nodes.2/@processes.5" queueSize="128" rendezVous="true">
+      <message name="fir16s_results_payload">
+        <entry name="sample9" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="result16_channel" nFrom="//@nodes.2/@processes.5" nTo="//@nodes.2/@processes.3" queueSize="56" rendezVous="true">
+      <message name="result16_payload">
+        <entry name="sample6" type="sc_int"/>
+      </message>
+    </nChannels>
+    <ports name="stim1_channel_port2" portExtension="//@nodes.2/@processes.0"/>
+    <ports name="result_channel_port"/>
+    <ports name="stim2_channel_port2" portExtension="//@nodes.2/@processes.5"/>
+    <processes name="fir8_main"/>
+    <processes name="fir8_e"/>
+    <processes name="fir8_s"/>
+    <processes name="gcd_main" processExtension="//@nodes.2/@ports.1"/>
+    <processes name="gcd_e"/>
+    <processes name="fir16_main"/>
+    <processes name="fir16_e"/>
+    <processes name="fir16_s"/>
+  </nodes>
+</hml:BehaviorSpecification>

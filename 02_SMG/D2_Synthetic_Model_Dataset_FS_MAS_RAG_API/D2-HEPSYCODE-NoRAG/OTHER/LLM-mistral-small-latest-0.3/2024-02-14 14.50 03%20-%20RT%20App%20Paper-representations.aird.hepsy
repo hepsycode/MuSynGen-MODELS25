@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hml:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hml="org.univaq.hepsy">
+  <nodes xsi:type="hml:Stimulus" name="stimulus">
+    <ports name="stim_rtPaper_out_port">
+      <pChannels name="stim_rtPaper_channel" pFrom="//@nodes.0/@ports.0" pTo="//@nodes.1/@ports.0" queueSize="8" rendezVous="true">
+        <message name="stim_rtPaper_message">
+          <entry name="sample" type="sc_int"/>
+        </message>
+      </pChannels>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:StructuredNode" name="RT App Paper">
+    <ports name="system_display_out_port">
+      <pChannels name="disp_rtPaper_channel" pFrom="//@nodes.1/@ports.0" pTo="//@nodes.2/@ports.0" queueSize="8" rendezVous="true">
+        <message name="disp_rtPaper_message">
+          <entry name="sample" type="sc_int"/>
+        </message>
+      </pChannels>
+    </ports>
+    <ports name="stim_capture_port">
+      <pChannels name="stim_capture_channel" pFrom="//@nodes.0/@ports.0" pTo="//@nodes.1/@ports.1" queueSize="8" rendezVous="true">
+        <message name="stim_capture_message">
+          <entry name="sample" type="sc_int"/>
+        </message>
+      </pChannels>
+    </ports>
+    <ports name="capture_preprocess_port">
+      <pChannels name="capture_preprocess_channel" pFrom="//@nodes.1/@ports.1" pTo="//@nodes.1/@ports.2" queueSize="8" rendezVous="true">
+        <message name="capture_preprocess_message">
+          <entry name="sample" type="sc_int"/>
+        </message>
+      </pChannels>
+    </ports>
+    <ports name="preprocess_analyze_port">
+      <pChannels name="preprocess_analyze_channel" pFrom="//@nodes.1/@ports.2" pTo="//@nodes.1/@ports.3" queueSize="8" rendezVous="true">
+        <message name="preprocess_analyze_message">
+          <entry name="sample" type="sc_int"/>
+        </message>
+      </pChannels>
+    </ports>
+    <ports name="analyze_control_port">
+      <pChannels name="analyze_control_channel" pFrom="//@nodes.1/@ports.3" pTo="//@nodes.1/@ports.4" queueSize="8" rendezVous="true">
+        <message name="analyze_control_message">
+          <entry name="sample" type="sc_int"/>
+        </message>
+      </pChannels>
+    </ports>
+    <processes name="capture"/>
+    <processes name="preprocess"/>
+    <processes name="analyze"/>
+    <processes name="control"/>
+  </nodes>
+  <nodes xsi:type="hml:Display" name="display">
+    <ports name="system_display_in_port"/>
+  </nodes>
+</hml:BehaviorSpecification>

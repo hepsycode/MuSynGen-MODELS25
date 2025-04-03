@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hml:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hml="org.univaq.hepsy">
+  <nodes xsi:type="hml:Stimulus" name="Stimulus">
+    <ports name="st1_out">
+      <pChannels name="st1_sys1_channel" pFrom="//@nodes.0/@ports.0" pTo="//@nodes.2/@ports.0"/>
+    </ports>
+    <ports name="st2_out">
+      <pChannels name="st2_sys2_channel" pFrom="//@nodes.0/@ports.1" pTo="//@nodes.2/@ports.2"/>
+    </ports>
+    <ports name="st3_out">
+      <pChannels name="st3_sys3_channel" pFrom="//@nodes.0/@ports.2" pTo="//@nodes.2/@ports.3"/>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:Display" name="Display">
+    <ports name="dis1_in">
+      <pChannels name="sys1_dis1_ch" pFrom="//@nodes.1/@ports.0" pTo="//@nodes.2/@ports.1"/>
+    </ports>
+    <ports name="dis2_in">
+      <pChannels name="sys2_dis2_ch" pFrom="//@nodes.1/@ports.1" pTo="//@nodes.2/@ports.4"/>
+    </ports>
+    <ports name="dis3_in">
+      <pChannels name="sys3_dis3_ch" pFrom="//@nodes.1/@ports.2" pTo="//@nodes.2/@ports.5"/>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:StructuredNode">
+    <nChannels name="p1_p2_ch" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.1" queueSize="8" rendezVous="true">
+      <message name="p1_p2_pay">
+        <entry name="sam" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="p1_p3_ch" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.2" queueSize="8" rendezVous="true">
+      <message name="p1_p3_pay">
+        <entry name="sam" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="p2_p4_ch" nFrom="//@nodes.2/@processes.1" nTo="//@nodes.2/@processes.3" queueSize="8" rendezVous="true">
+      <message name="p2_p4_pay">
+        <entry name="sam" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="p3_p4_ch" nFrom="//@nodes.2/@processes.2" nTo="//@nodes.2/@processes.3" queueSize="8" rendezVous="true">
+      <message name="p3_p4_pay">
+        <entry name="sam" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="p5_p6_ch" nFrom="//@nodes.2/@processes.4" nTo="//@nodes.2/@processes.5" queueSize="16" rendezVous="true">
+      <message name="p5_p6_pay">
+        <entry name="sam" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="p5_p7_ch" nFrom="//@nodes.2/@processes.4" nTo="//@nodes.2/@processes.6" queueSize="32" rendezVous="true">
+      <message name="p5_p7_pay">
+        <entry name="sam" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels nFrom="//@nodes.2/@processes.5" nTo="//@nodes.2/@processes.6"/>
+    <nChannels name="p7_p8_ch" nFrom="//@nodes.2/@processes.6" nTo="//@nodes.2/@processes.7" queueSize="64" rendezVous="true">
+      <message name="p7_p8_pay">
+        <entry name="sample" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <nChannels name="p9_p10_ch" nFrom="//@nodes.2/@processes.8" nTo="//@nodes.2/@processes.9" queueSize="128" rendezVous="true">
+      <message name="p9_p10_pay">
+        <entry name="sampl" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="p10_p9_ch" nFrom="//@nodes.2/@processes.9" nTo="//@nodes.2/@processes.8" queueSize="64" rendezVous="true">
+      <message name="p10_p9_pay">
+        <entry name="sample" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <nChannels name="p9_p11_ch" nFrom="//@nodes.2/@processes.8" nTo="//@nodes.2/@processes.10" queueSize="67" rendezVous="true">
+      <message name="p9_p11_pay">
+        <entry name="sample" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <ports name="sys1_in" portExtension="//@nodes.2/@processes.0"/>
+    <ports name="sys1_out"/>
+    <ports name="sys2_in" portExtension="//@nodes.2/@processes.4"/>
+    <ports name="sys3_in" portExtension="//@nodes.2/@processes.8"/>
+    <ports name="sys2_out"/>
+    <ports name="sys3_out"/>
+    <processes name="p1"/>
+    <processes name="p2"/>
+    <processes name="p3"/>
+    <processes name="p4" processExtension="//@nodes.2/@ports.1"/>
+    <processes name="p5"/>
+    <processes name="p6"/>
+    <processes name="p7"/>
+    <processes name="p8" processExtension="//@nodes.2/@ports.4"/>
+    <processes name="p9"/>
+    <processes name="p10"/>
+    <processes name="p11" processExtension="//@nodes.2/@ports.5"/>
+  </nodes>
+</hml:BehaviorSpecification>

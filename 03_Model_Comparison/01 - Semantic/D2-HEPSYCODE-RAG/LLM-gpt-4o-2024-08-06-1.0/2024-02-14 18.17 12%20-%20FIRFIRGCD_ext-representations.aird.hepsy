@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hml:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hml="org.univaq.hepsy">
+  <nodes xsi:type="hml:Stimulus" name="Stimulus">
+    <ports name="stim_fir1_out_port">
+      <pChannels name="stim_fir1_channel" pFrom="//@nodes.0/@ports.0" pTo="//@nodes.2/@ports.2">
+        <message name="stim_fir1_payload">
+          <entry name="rawSignal" type="sc_uint"/>
+        </message>
+      </pChannels>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:Display" name="Display">
+    <ports name="system_display_in_port">
+      <pChannels name="gcd_display_channel" pFrom="//@nodes.2/@ports.4" pTo="//@nodes.1/@ports.0">
+        <message name="gcd_display_payload">
+          <entry name="gcdResult" type="sc_uint"/>
+        </message>
+      </pChannels>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:StructuredNode" name="FIRFIRGCD_ext">
+    <ports name="fir_ext_port" portExtension="//@nodes.2/@processes.3"/>
+    <ports name="output_port"/>
+    <nChannels name="fir1_fir2_channel" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.1" queueSize="10" rendezVous="false">
+      <message name="fir1_fir2_payload">
+        <entry name="filteredSignal" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <nChannels name="fir2_firext_channel" nFrom="//@nodes.2/@processes.1" nTo="//@nodes.2/@processes.2" queueSize="10" rendezVous="false">
+      <message name="fir2_firext_payload">
+        <entry name="refinedSignal" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <nChannels name="firext_gcd_channel" nFrom="//@nodes.2/@processes.2" nTo="//@nodes.2/@processes.3" queueSize="10" rendezVous="false">
+      <message name="firext_gcd_payload">
+        <entry name="enhancedSignal" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <processes name="fir1"/>
+    <processes name="fir2"/>
+    <processes name="fir_ext" processExtension="//@nodes.2/@ports.0"/>
+    <processes name="gcd"/>
+  </nodes>
+</hml:BehaviorSpecification>

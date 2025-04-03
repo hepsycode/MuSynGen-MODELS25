@@ -1,0 +1,12 @@
+{
+    "response_length": 2100,
+    "execution_time": 33.85810899734497,
+    "temperature": 0.0,
+    "usage": {
+        "input_tokens": 6862,
+        "output_tokens": 810,
+        "total_tokens": 7672
+    },
+    "price_usd": 0.018584,
+    "model_name": "pixtral-large-latest"
+}

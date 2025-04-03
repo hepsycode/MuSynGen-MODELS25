@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="Definitions_1">
+  <rootElements xsi:type="bpmn:Process" id="Process_1">
+    <laneSets id="LaneSet_1">
+      <lanes id="Lane_1" name="Admissions Office">
+        <flowNodeRefs>StartEvent_1 UserTask_1 UserTask_2 ExclusiveGateway_1 UserTask_3 UserTask_4 ExclusiveGateway_2 EndEvent_1 EndEvent_2</flowNodeRefs>
+      </lanes>
+      <lanes id="Lane_2" name="Academic Committee">
+        <flowNodeRefs>UserTask_5 EndEvent_3</flowNodeRefs>
+      </lanes>
+    </laneSets>
+    <flowElements xsi:type="bpmn:StartEvent" id="StartEvent_1" name="Application Started">
+      <outgoing>SequenceFlow_1</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="UserTask_1" name="Fill Online Application">
+      <incoming>SequenceFlow_1</incoming>
+      <outgoing>SequenceFlow_2</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_1" sourceRef="StartEvent_1" targetRef="UserTask_1"/>
+    <flowElements xsi:type="bpmn:UserTask" id="UserTask_2" name="Generate and Send PDF">
+      <incoming>SequenceFlow_2</incoming>
+      <outgoing>SequenceFlow_3</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_2" sourceRef="UserTask_1" targetRef="UserTask_2"/>
+    <flowElements xsi:type="bpmn:UserTask" id="UserTask_3" name="Receive and Review Documents">
+      <incoming>SequenceFlow_3</incoming>
+      <outgoing>SequenceFlow_4</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_3" sourceRef="UserTask_2" targetRef="UserTask_3"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="ExclusiveGateway_1" name="Check Grades">
+      <incoming>SequenceFlow_4</incoming>
+      <outgoing>SequenceFlow_5</outgoing>
+      <outgoing>SequenceFlow_6</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_4" sourceRef="UserTask_3" targetRef="ExclusiveGateway_1"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="EndEvent_1" name="Reject Application">
+      <incoming>SequenceFlow_5</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_5" sourceRef="ExclusiveGateway_1" targetRef="EndEvent_1" name="Insufficient Grades"/>
+    <flowElements xsi:type="bpmn:UserTask" id="UserTask_4" name="Forward to Committee">
+      <incoming>SequenceFlow_6</incoming>
+      <outgoing>SequenceFlow_7</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_6" sourceRef="ExclusiveGateway_1" targetRef="UserTask_4" name="Sufficient Grades"/>
+    <flowElements xsi:type="bpmn:UserTask" id="UserTask_5" name="Evaluate Applications">
+      <incoming>SequenceFlow_7</incoming>
+      <outgoing>SequenceFlow_8</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_7" sourceRef="UserTask_4" targetRef="UserTask_5"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="ExclusiveGateway_2" name="Decide Admission">
+      <incoming>SequenceFlow_8</incoming>
+      <outgoing>SequenceFlow_9</outgoing>
+      <outgoing>SequenceFlow_10</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_8" sourceRef="UserTask_5" targetRef="ExclusiveGateway_2"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="EndEvent_2" name="Send Admission Email">
+      <incoming>SequenceFlow_9</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_9" sourceRef="ExclusiveGateway_2" targetRef="EndEvent_2" name="Admitted"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="EndEvent_3" name="Send Rejection Email">
+      <incoming>SequenceFlow_10</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_10" sourceRef="ExclusiveGateway_2" targetRef="EndEvent_3" name="Rejected"/>
+  </rootElements>
+</bpmn:Definitions>

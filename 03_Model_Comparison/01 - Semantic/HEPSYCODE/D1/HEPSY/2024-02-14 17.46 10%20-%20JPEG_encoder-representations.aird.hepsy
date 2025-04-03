@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hml:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hml="org.univaq.hepsy">
+  <nodes xsi:type="hml:Stimulus">
+    <ports name="st_out">
+      <pChannels name="st_sys_ch" pFrom="//@nodes.0/@ports.0" pTo="//@nodes.2/@ports.1"/>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:Display">
+    <ports name="dis">
+      <pChannels name="sys_dis_ch" pFrom="//@nodes.1/@ports.0" pTo="//@nodes.2/@ports.0"/>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:StructuredNode">
+    <nChannels name="cs_write_ch" nFrom="//@nodes.2/@processes.15" nTo="//@nodes.2/@processes.1" queueSize="8" rendezVous="true">
+      <message name="cs_write_pay">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="readI_CC_ch" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.14" queueSize="8" rendezVous="true">
+      <message name="readI_CC_pay">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="CC_DCT_ch0" nFrom="//@nodes.2/@processes.14" nTo="//@nodes.2/@processes.2" queueSize="8" rendezVous="true">
+      <message name="CC_DCT_pay0">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="CC_DCT_ch1" nFrom="//@nodes.2/@processes.14" nTo="//@nodes.2/@processes.3" queueSize="8" rendezVous="true">
+      <message name="CC_DCT_pay1">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="CC_DCT_ch2" nFrom="//@nodes.2/@processes.14" nTo="//@nodes.2/@processes.4" queueSize="8" rendezVous="true">
+      <message name="CC_DCT_pay2">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="CC_DCT_ch3" nFrom="//@nodes.2/@processes.14" nTo="//@nodes.2/@processes.5" queueSize="8" rendezVous="true">
+      <message name="CC_DCT_pay3">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="CC_DCT_ch4" nFrom="//@nodes.2/@processes.14" nTo="//@nodes.2/@processes.6" queueSize="8" rendezVous="true">
+      <message name="CC_DCT_pay4"/>
+    </nChannels>
+    <nChannels name="CC_DCT_ch5" nFrom="//@nodes.2/@processes.14" nTo="//@nodes.2/@processes.7" queueSize="8" rendezVous="true">
+      <message name="CC_DCT_pay5">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="dct_huff_ch0" nFrom="//@nodes.2/@processes.2" nTo="//@nodes.2/@processes.8" queueSize="8" rendezVous="true">
+      <message name="dct_huff_pay0">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="dct_huff_ch1" nFrom="//@nodes.2/@processes.3" nTo="//@nodes.2/@processes.9" queueSize="8" rendezVous="true">
+      <message name="dct_huff_pay1">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="dct_huff_ch2" nFrom="//@nodes.2/@processes.4" nTo="//@nodes.2/@processes.10" queueSize="8" rendezVous="true">
+      <message name="dct_huff_pay2">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="dct_huff_ch3" nFrom="//@nodes.2/@processes.5" nTo="//@nodes.2/@processes.11" rendezVous="true">
+      <message name="dct_huff_pay3">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="dct_huff_ch4" nFrom="//@nodes.2/@processes.6" nTo="//@nodes.2/@processes.12" queueSize="8" rendezVous="true">
+      <message name="dct_huff_pay4">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="dct_huff_ch5" nFrom="//@nodes.2/@processes.7" nTo="//@nodes.2/@processes.13" queueSize="8" rendezVous="true">
+      <message name="dct_huff_pay5">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="huff_cs_ch0" nFrom="//@nodes.2/@processes.8" nTo="//@nodes.2/@processes.15" queueSize="8" rendezVous="true">
+      <message name="huff_cs_pay0">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="huff_cs_ch1" nFrom="//@nodes.2/@processes.9" nTo="//@nodes.2/@processes.15" queueSize="8" rendezVous="true">
+      <message name="huff_cs_pay1">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="huff_cs_ch2" nFrom="//@nodes.2/@processes.10" nTo="//@nodes.2/@processes.15" rendezVous="true">
+      <message name="huff_cs_pay2">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="huff_cs_ch3" nFrom="//@nodes.2/@processes.11" nTo="//@nodes.2/@processes.15" queueSize="8" rendezVous="true">
+      <message name="huff_cs_pay3">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="huff_cs_ch4" nFrom="//@nodes.2/@processes.12" nTo="//@nodes.2/@processes.15" queueSize="8" rendezVous="true">
+      <message name="huff_cs_pay4">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="huff_cs_ch5" nFrom="//@nodes.2/@processes.13" nTo="//@nodes.2/@processes.15" queueSize="8" rendezVous="true">
+      <message name="huff_cs_pay5">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <ports name="sys_out"/>
+    <ports name="sys_in" portExtension="//@nodes.2/@processes.0"/>
+    <processes name="readimg"/>
+    <processes name="writeimg" processExtension="//@nodes.2/@ports.0"/>
+    <processes name="DCT_0"/>
+    <processes name="DCT_1"/>
+    <processes name="DCT_2"/>
+    <processes name="DCT_3"/>
+    <processes name="DCT_4"/>
+    <processes name="DCT_5"/>
+    <processes name="huffman_0"/>
+    <processes name="huffman_1"/>
+    <processes name="huffman_2"/>
+    <processes name="huffman_3"/>
+    <processes name="huffman_4"/>
+    <processes name="huffman_5"/>
+    <processes name="CC_0"/>
+    <processes name="CS"/>
+  </nodes>
+</hml:BehaviorSpecification>

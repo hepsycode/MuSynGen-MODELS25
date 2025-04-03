@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_KkUYkY8DEe-v648egk3nxQ">
+  <rootElements xsi:type="bpmn:Process" id="_KkUY4I8DEe-v648egk3nxQ">
+    <flowElements xsi:type="bpmn:StartEvent" id="_dDiegI8JEe-v648egk3nxQ" name="Customer submits claim" outgoing="_pkQ0II8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_obWrUI8JEe-v648egk3nxQ" name="Check documents and register claim" outgoing="_tBvnoI8JEe-v648egk3nxQ" incoming="_pkQ0II8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_pkQ0II8JEe-v648egk3nxQ" targetRef="_obWrUI8JEe-v648egk3nxQ" sourceRef="_dDiegI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="_KkUznI8JEe-v648egk3nxQ" name="Documents complete?" outgoing="_M0aWII8KEe-v648egk3nxQ _7OknBI8KEe-v648egk3nxQ" incoming="_tBvnoI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_tBvnoI8JEe-v648egk3nxQ" targetRef="_KkUznI8JEe-v648egk3nxQ" sourceRef="_obWrUI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="_Ljk0I8IEEe-v648egk3nxQ" name="Reject Claim" incoming="_7OknBI8KEe-v648egk3nxQ">
+      <eventDefinitions xsi:type="bpmn:SignalEventDefinition" id="_Ljk0IY8IEEe-v648egk3nxQ"/>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_7OknBI8KEe-v648egk3nxQ" name="No" targetRef="_Ljk0I8IEEe-v648egk3nxQ" sourceRef="_KkUznI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_Lja_II8JEe-v648egk3nxQ" name="Check insurance" outgoing="_S0WEII8JEe-v648egk3nxQ" incoming="_M0aWII8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_M0aWII8KEe-v648egk3nxQ" name="Yes" targetRef="_Lja_II8JEe-v648egk3nxQ" sourceRef="_KkUznI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="_yVN1GI8JEe-v648egk3nxQ" name="Damage assessment?" outgoing="_J3G9II8JEe-v648egk3nxQ _GfP1kI8KEe-v648egk3nxQ" incoming="_S0WEII8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_S0WEII8JEe-v648egk3nxQ" targetRef="_yVN1GI8JEe-v648egk3nxQ" sourceRef="_Lja_II8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="_HaWoEI8KEe-v648egk3nxQ" name="Reject Claim" incoming="_GfP1kI8KEe-v648egk3nxQ">
+      <eventDefinitions xsi:type="bpmn:SignalEventDefinition" id="_HaWoIY8KEe-v648egk3nxQ"/>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_GfP1kI8KEe-v648egk3nxQ" name="No" targetRef="_HaWoEI8KEe-v648egk3nxQ" sourceRef="_yVN1GI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_Dn4CkI8KEe-v648egk3nxQ" name="Phone garage" outgoing="_AR0KII8KEe-v648egk3nxQ" incoming="_J3G9II8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_J3G9II8JEe-v648egk3nxQ" name="Yes" targetRef="_Dn4CkI8KEe-v648egk3nxQ" sourceRef="_yVN1GI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_CnLLkI8KEe-v648egk3nxQ" name="Schedule payment" outgoing="_EYfEkI8KEe-v648egk3nxQ" incoming="_AR0KII8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_AR0KII8KEe-v648egk3nxQ" targetRef="_CnLLkI8KEe-v648egk3nxQ" sourceRef="_Dn4CkI8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_Z-PFBI8KEe-v648egk3nxQ" name="Send letter to customer" outgoing="_lURcII8LEe-v648egk3nxQ" incoming="_EYfEkI8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_EYfEkI8KEe-v648egk3nxQ" targetRef="_Z-PFBI8KEe-v648egk3nxQ" sourceRef="_CnLLkI8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="_jLYxEI8KEe-v648egk3nxQ" name="Process complete" incoming="_lURcII8LEe-v648egk3nxQ">
+      <eventDefinitions xsi:type="bpmn:SignalEventDefinition" id="_jLYxEYY8KEe-v648egk3nxQ"/>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_lURcII8LEe-v648egk3nxQ" targetRef="_jLYxEI8KEe-v648egk3nxQ" sourceRef="_Z-PFBI8KEe-v648egk3nxQ"/>
+    <laneSets id="_L8V1IY8DEe-v648egk3nxQ" name="Insurance Company">
+      <lanes id="_L8W1AI8DEe-v648egk3nxQ" name="Notification Department" flowNodeRefs="_dDiegI8JEe-v648egk3nxQ _obWrUI8JEe-v648egk3nxQ _Ljk0I8IEEe-v648egk3nxQ"/>
+      <lanes id="_O5n0kI8JEe-v648egk3nxQ" name="Handling Department" flowNodeRefs="_Lja_II8JEe-v648egk3nxQ _yVN1GI8JEe-v648egk3nxQ _HaWoEI8KEe-v648egk3nxQ _Dn4CkI8KEe-v648egk3nxQ _CnLLkI8KEe-v648egk3nxQ _Z-PFBI8KEe-v648egk3nxQ _jLYxEI8KEe-v648egk3nxQ"/>
+    </laneSets>
+    <artifacts xsi:type="bpmn:DataObject" id="_qXDtkI8KEe-v648egk3nxQ" name="Documents [submitted]"/>
+    <artifacts xsi:type="bpmn:DataObject" id="_MLqtAY8KEe-v648egk3nxQ" name="Documents [checked]"/>
+    <artifacts xsi:type="bpmn:DataStore" id="_YcTGVY8MEe-v648egk3nxQ" name="Insurance System"/>
+    <artifacts xsi:type="bpmn:Association" id="_8ULkoI8JEe-v648egk3nxQ" sourceRef="_obWrUI8JEe-v648egk3nxQ" targetRef="_qXDtkI8KEe-v648egk3nxQ"/>
+    <artifacts xsi:type="bpmn:Association" id="_BXAUGI8KEe-v648egk3nxQ" sourceRef="_qXDtkI8KEe-v648egk3nxQ" targetRef="_Lja_II8JEe-v648egk3nxQ"/>
+    <artifacts xsi:type="bpmn:Association" id="_E5hjEI8KEe-v648egk3nxQ" sourceRef="_qXDtkI8KEe-v648egk3nxQ" targetRef="_yVN1GI8JEe-v648egk3nxQ"/>
+    <artifacts xsi:type="bpmn:Association" id="_O8J3oI8KEe-v648egk3nxQ" sourceRef="_yVN1GI8JEe-v648egk3nxQ" targetRef="_MLqtAY8KEe-v648egk3nxQ"/>
+    <artifacts xsi:type="bpmn:Association" id="_FR6BYI8KEe-v648egk3nxQ" sourceRef="_Dn4CkI8KEe-v648egk3nxQ" targetRef="_MLqtAY8KEe-v648egk3nxQ"/>
+    <artifacts xsi:type="bpmn:Association" id="_Q3KfEI8KEe-v648egk3nxQ" sourceRef="_CnLLkI8KEe-v648egk3nxQ" targetRef="_MLqtAY8KEe-v648egk3nxQ"/>
+    <artifacts xsi:type="bpmn:Association" id="_uY3WII8KEe-v648egk3nxQ" sourceRef="_Z-PFBI8KEe-v648egk3nxQ" targetRef="_qXDtkI8KEe-v648egk3nxQ"/>
+    <artifacts xsi:type="bpmn:Association" id="_-pDKoI8LEe-v648egk3nxQ" sourceRef="_Lja_II8JEe-v648egk3nxQ" targetRef="_YcTGVY8MEe-v648egk3nxQ"/>
+    <artifacts xsi:type="bpmn:Association" id="_0ESPMI8QEE-v648egk3nxQ" sourceRef="_Dn4CkI8KEe-v648egk3nxQ" targetRef="_YcTGVY8MEe-v648egk3nxQ"/>
+    <artifacts xsi:type="bpmn:Association" id="_1TUvuI8QEE-v648egk3nxQ" sourceRef="_jLYxEI8KEe-v648egk3nxQ" targetRef="_YcTGVY8MEe-v648egk3nxQ"/>
+  </rootElements>
+</bpmn:Definitions>

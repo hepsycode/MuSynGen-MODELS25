@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="Definitions_1">
+  <rootElements xsi:type="bpmn:Process" id="Process_1">
+    <laneSets id="LaneSet_1">
+      <lanes id="Lane_1" name="Tribunal Cashier">
+        <flowNodeRefs>StartEvent_1 UserTask_1 UserTask_2 ExclusiveGateway_1 UserTask_3 UserTask_4 EndEvent_1</flowNodeRefs>
+      </lanes>
+    </laneSets>
+    <flowElements xsi:type="bpmn:StartEvent" id="StartEvent_1" name="Request for compensation received">
+      <outgoing>SequenceFlow_1</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="UserTask_1" name="Retrieve and check the premises file">
+      <incoming>SequenceFlow_1</incoming>
+      <outgoing>SequenceFlow_2</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_1" sourceRef="StartEvent_1" targetRef="UserTask_1"/>
+    <flowElements xsi:type="bpmn:UserTask" id="UserTask_2" name="Set a hearing date">
+      <incoming>SequenceFlow_2</incoming>
+      <outgoing>SequenceFlow_3</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_2" sourceRef="UserTask_1" targetRef="UserTask_2"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="ExclusiveGateway_1" name="Check if fees are paid">
+      <incoming>SequenceFlow_3</incoming>
+      <outgoing>SequenceFlow_4</outgoing>
+      <outgoing>SequenceFlow_5</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_3" sourceRef="UserTask_2" targetRef="ExclusiveGateway_1"/>
+    <flowElements xsi:type="bpmn:UserTask" id="UserTask_3" name="Proceed without fee notice">
+      <incoming>SequenceFlow_4</incoming>
+      <outgoing>SequenceFlow_6</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_4" sourceRef="ExclusiveGateway_1" targetRef="UserTask_3" name="Yes"/>
+    <flowElements xsi:type="bpmn:UserTask" id="UserTask_4" name="Issue fee notice and await payment">
+      <incoming>SequenceFlow_5</incoming>
+      <outgoing>SequenceFlow_7</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_5" sourceRef="ExclusiveGateway_1" targetRef="UserTask_4" name="No"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="EndEvent_1" name="Hearing date set">
+      <incoming>SequenceFlow_6</incoming>
+      <incoming>SequenceFlow_7</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_6" sourceRef="UserTask_3" targetRef="EndEvent_1"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_7" sourceRef="UserTask_4" targetRef="EndEvent_1"/>
+    <artifacts xsi:type="bpmn:TextAnnotation" id="TextAnnotation_1" text="Premises file">
+    </artifacts>
+    <artifacts xsi:type="bpmn:TextAnnotation" id="TextAnnotation_2" text="Fee notice">
+    </artifacts>
+    <artifacts xsi:type="bpmn:TextAnnotation" id="TextAnnotation_3" text="Premises records">
+    </artifacts>
+  </rootElements>
+</bpmn:Definitions>

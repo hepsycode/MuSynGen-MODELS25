@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hml:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hml="org.univaq.hepsy">
+  <nodes xsi:type="hml:Stimulus" name="Stimulus">
+    <ports name="stim_system_out_port">
+      <pChannels name="stim_system_channel" pFrom="//@nodes.0/@ports.0" pTo="//@nodes.1/@ports.0" queueSize="8" rendezVous="true">
+        <message name="stim_system_message">
+          <entry name="raw_image_data" type="sc_int"/>
+        </message>
+      </pChannels>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:Display" name="Display">
+    <ports name="system_display_in_port"/>
+  </nodes>
+  <nodes xsi:type="hml:StructuredNode" name="DigitalCam">
+    <ports name="system_display_out_port"/>
+    <ports name="stim_system_in_port" portExtension="//@nodes.2/@processes.0"/>
+    <ports name="codec_merge_out_port" portExtension="//@nodes.2/@processes.9"/>
+    <processes name="ccdpp">
+      <ports name="stim_ccdpp_in_port" portExtension="//@nodes.2/@processes.0"/>
+    </processes>
+    <processes name="codec0">
+      <ports name="codec0_out_port" portExtension="//@nodes.2/@processes.1"/>
+    </processes>
+    <processes name="codec1">
+      <ports name="codec1_out_port" portExtension="//@nodes.2/@processes.2"/>
+    </processes>
+    <processes name="codec2">
+      <ports name="codec2_out_port" portExtension="//@nodes.2/@processes.3"/>
+    </processes>
+    <processes name="codec3">
+      <ports name="codec3_out_port" portExtension="//@nodes.2/@processes.4"/>
+    </processes>
+    <processes name="codec4">
+      <ports name="codec4_out_port" portExtension="//@nodes.2/@processes.5"/>
+    </processes>
+    <processes name="codec5">
+      <ports name="codec5_out_port" portExtension="//@nodes.2/@processes.6"/>
+    </processes>
+    <processes name="codec6">
+      <ports name="codec6_out_port" portExtension="//@nodes.2/@processes.7"/>
+    </processes>
+    <processes name="codec7">
+      <ports name="codec7_out_port" portExtension="//@nodes.2/@processes.8"/>
+    </processes>
+    <processes name="codec_merge">
+      <ports name="codec_merge_in_port" portExtension="//@nodes.2/@processes.9"/>
+    </processes>
+    <nChannels name="stim_ccdpp_channel" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.0" queueSize="8" rendezVous="true">
+      <message name="stim_ccdpp_message">
+        <entry name="raw_image_data" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="ccdpp_codec0_channel" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.1" queueSize="8" rendezVous="true">
+      <message name="ccdpp_codec0_message">
+        <entry name="processed_image_data" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="ccdpp_codec1_channel" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.2" queueSize="8" rendezVous="true">
+      <message name="ccdpp_codec1_message">
+        <entry name="processed_image_data" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="ccdpp_codec2_channel" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.3" queueSize="8" rendezVous="true">
+      <message name="ccdpp_codec2_message">
+        <entry name="processed_image_data" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="ccdpp_codec3_channel" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.4" queueSize="8" rendezVous="true">
+      <message name="ccdpp_codec3_message">
+        <entry name="processed_image_data" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="ccdpp_codec4_channel" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.5" queueSize="8" rendezVous="true">
+      <message name="ccdpp_codec4_message">
+        <entry name="processed_image_data" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="ccdpp_codec5_channel" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.6" queueSize="8" rendezVous="true">
+      <message name="ccdpp_codec5_message">
+        <entry name="processed_image_data" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="ccdpp_codec6_channel" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.7" queueSize="8" rendezVous="true">
+      <message name="ccdpp_codec6_message">
+        <entry name="processed_image_data" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="ccdpp_codec7_channel" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.8" queueSize="8" rendezVous="true">
+      <message name="ccdpp_codec7_message">
+        <entry name="processed_image_data" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="codec_merge_channel_0" nFrom="//@nodes.2/@processes.1" nTo="//@nodes.2/@processes.9" queueSize="8" rendezVous="true">
+      <message name="codec_merge_message_0">
+        <entry name="encoded_image_data" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="codec_merge_channel_1" nFrom="//@nodes.2/@processes.2" nTo="//@nodes.2/@processes.9" queueSize="8" rendezVous="true">
+      <message name="codec_merge_message_1">
+        <entry name="encoded_image_data" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="codec_merge_channel_2" nFrom="//@nodes.2/@processes.3" nTo="//@nodes.2/@processes.9" queueSize="8" rendezVous="true">
+      <message name="codec_merge_message_2">
+        <entry name="encoded_image_data" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="codec_merge_channel_3" nFrom="//@nodes.2/@processes.4" nTo="//@nodes.2/@processes.9" queueSize="8" rendezVous="true">
+      <message name="codec_merge_message_3">
+        <entry name="encoded_image_data" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="codec_merge_channel_4" nFrom="//@nodes.2/@processes.5" nTo="//@nodes.2/@processes.9" queueSize="8" rendezVous="true">
+      <message name="codec_merge_message_4">
+        <entry name="encoded_image_data" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="codec_merge_channel_5" nFrom="//@nodes.2/@processes.6" nTo="//@nodes.2/@processes.9" queueSize="8" rendezVous="true">
+      <message name="codec_merge_message_5">
+        <entry name="encoded_image_data" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="codec_merge_channel_6" nFrom="//@nodes.2/@processes.7" nTo="//@nodes.2/@processes.9" queueSize="8" rendezVous="true">
+      <message name="codec_merge_message_6">
+        <entry name="encoded_image_data" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="codec_merge_channel_7" nFrom="//@nodes.2/@processes.8" nTo="//@nodes.2/@processes.9" queueSize="8" rendezVous="true">
+      <message name="codec_merge_message_7">
+        <entry name="encoded_image_data" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="display_channel" nFrom="//@nodes.2/@ports.0" nTo="//@nodes.1/@ports.0" queueSize="8" rendezVous="true">
+      <message name="display_message">
+        <entry name="final_image_data" type="sc_int"/>
+      </message>
+    </nChannels>
+  </nodes>
+</hml:BehaviorSpecification>

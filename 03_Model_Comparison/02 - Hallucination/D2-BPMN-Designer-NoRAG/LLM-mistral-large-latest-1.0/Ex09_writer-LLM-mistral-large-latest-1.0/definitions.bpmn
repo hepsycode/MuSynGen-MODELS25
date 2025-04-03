@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_phd-application">
+  <rootElements xsi:type="bpmn:Process" id="_phd-process">
+    <flowElements xsi:type="bpmn:StartEvent" id="_start-event" name="PhD Application Started"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_fill-application" name="Student fills in online application form"/>
+    <flowElements xsi:type="bpmn:Task" id="_generate-pdf" name="Generate PDF document"/>
+    <flowElements xsi:type="bpmn:Task" id="_receive-documents" name="Receive documents by post"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="_initial-assessment" name="Initial Assessment"/>
+    <flowElements xsi:type="bpmn:Task" id="_reject-application" name="Reject application due to insufficient grades"/>
+    <flowElements xsi:type="bpmn:Task" id="_forward-to-committee" name="Forward documents to academic committee"/>
+    <flowElements xsi:type="bpmn:Task" id="_committee-meeting" name="Academic committee meets and decides"/>
+    <flowElements xsi:type="bpmn:Task" id="_notify-outcomes" name="Notify admissions office of selection outcomes"/>
+    <flowElements xsi:type="bpmn:Task" id="_send-notification" name="Send rejection or admission email to candidate"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="_end-event" name="PhD Application Ended"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_flow1" sourceRef="_start-event" targetRef="_fill-application"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_flow2" sourceRef="_fill-application" targetRef="_generate-pdf"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_flow3" sourceRef="_generate-pdf" targetRef="_receive-documents"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_flow4" sourceRef="_receive-documents" targetRef="_initial-assessment"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_flow5" sourceRef="_initial-assessment" targetRef="_reject-application" name="Insufficient Grades"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_flow6" sourceRef="_initial-assessment" targetRef="_forward-to-committee" name="Sufficient Grades"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_flow7" sourceRef="_forward-to-committee" targetRef="_committee-meeting"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_flow8" sourceRef="_committee-meeting" targetRef="_notify-outcomes"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_flow9" sourceRef="_notify-outcomes" targetRef="_send-notification"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_flow10" sourceRef="_send-notification" targetRef="_end-event"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_flow11" sourceRef="_reject-application" targetRef="_end-event"/>
+    <laneSets id="_lane-set">
+      <lanes id="_admissions-office" name="Admissions Office" flowNodeRefs="_receive-documents _initial-assessment _reject-application _forward-to-committee _send-notification">
+      </lanes>
+      <lanes id="_academic-committee" name="Academic Committee" flowNodeRefs="_committee-meeting _notify-outcomes">
+      </lanes>
+      <lanes id="_student" name="Student" flowNodeRefs="_fill-application">
+      </lanes>
+    </laneSets>
+    <artifacts xsi:type="bpmn:DataStore" id="_admission-system" name="Admission Information System"/>
+  </rootElements>
+</bpmn:Definitions>

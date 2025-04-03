@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_Tr6U4O8DEe-v648egk3nxQ">
+  <rootElements xsi:type="bpmn:Process" id="_Tr6U4I8DEe-v648egk3nxQ">
+    <flowElements xsi:type="bpmn:StartEvent" id="_m6kd8I8JEe-v648egk3nxQ" name="Compensation request received" outgoing="_4NQ5sI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_WQCp8I8JEe-v648egk3nxQ" name="Check request for compliance" outgoing="_5Zw7EI8JEe-v648egk3nxQ" incoming="_4NQ5sI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_4NQ5sI8JEe-v648egk3nxQ" targetRef="_WQCp8I8JEe-v648egk3nxQ" sourceRef="_m6kd8I8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="_IoXrcI8JEe-v648egk3nxQ" name="Fees paid?" outgoing="_2JBMkI8JEe-v648egk3nxQ _Q6SpAI8JEe-v648egk3nxQ" incoming="_5Zw7EI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_5Zw7EI8JEe-v648egk3nxQ" targetRef="_IoXrcI8JEe-v648egk3nxQ" sourceRef="_WQCp8I8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_b6_HoI8JEe-v648egk3nxQ" name="Allocate hearing date" outgoing="_06rDI8JEe-v648egk3nxQ" incoming="_2JBMkI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_2JBMkI8JEe-v648egk3nxQ" name="Yes" targetRef="_b6_HoI8JEe-v648egk3nxQ" sourceRef="_IoXrcI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_BpIlYI8JEe-v648egk3nxQ" name="Produce fees notice" outgoing="_f5EgkI8JEe-v648egk3nxQ" incoming="_Q6SpAI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_Q6SpAI8JEe-v648egk3nxQ" name="No" targetRef="_BpIlYI8JEe-v648egk3nxQ" sourceRef="_IoXrcI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_f5EgkI8JEe-v648egk3nxQ" targetRef="_WQCp8I8JEe-v648egk3nxQ" sourceRef="_BpIlYI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="_CWberI8JEe-v648egk3nxQ" name="Hearing date set" incoming="_06rDI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_06rDI8JEe-v648egk3nxQ" targetRef="_CWberI8JEe-v648egk3nxQ" sourceRef="_b6_HoI8JEe-v648egk3nxQ"/>
+    <laneSets id="_4JS8EY8DEe-v648egk3nxQ" name="Tribunal">
+      <lanes id="_4JTAsI8DEe-v648egk3nxQ" name="Cashier" flowNodeRefs="_m6kd8I8JEe-v648egk3nxQ _WQCp8I8JEe-v648egk3nxQ _IoXrcI8JEe-v648egk3nxQ _b6_HoI8JEe-v648egk3nxQ _BpIlYI8JEe-v648egk3nxQ _CWberI8JEe-v648egk3nxQ">
+        <extensionValues id="_6J4iHI8JEe-v648egk3nxQ">
+          <value xsi:type="bpmn:DataObject" id="_frI5UI8JEe-v648egk3nxQ" name="Compensation request"/>
+        </extensionValues>
+        <extensionValues id="_S8QgAI8JEe-v648egk3nxQ">
+          <value xsi:type="bpmn:DataObject" id="_S8Q2EI8JEe-v648egk3nxQ" name="Fees notice"/>
+        </extensionValues>
+        <extensionValues id="_T9RzwI8JEe-v648egk3nxQ">
+          <value xsi:type="bpmn:DataObject" id="_T9RKgI8JEe-v648egk3nxQ" name="Premises file"/>
+        </extensionValues>
+      </lanes>
+    </laneSets>
+    <artifacts xsi:type="bpmn:Association" id="_mBC6kI8JEe-v648egk3nxQ" sourceRef="_m6kd8I8JEe-v648egk3nxQ" targetRef="_frI5UI8JEe-v648egk3nxQ"/>
+    <artifacts xsi:type="bpmn:Association" id="_8JFhkI8JEe-v648egk3nxQ" sourceRef="_WQCp8I8JEe-v648egk3nxQ" targetRef="_T9RKgI8JEe-v648egk3nxQ"/>
+    <artifacts xsi:type="bpmn:Association" id="_dhtXEI8JEe-v648egk3nxQ" sourceRef="_BpIlYI8JEe-v648egk3nxQ" targetRef="_S8Q2EI8JEe-v648egk3nxQ"/>
+  </rootElements>
+</bpmn:Definitions>

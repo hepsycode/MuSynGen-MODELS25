@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="Definitions_1">
+  <rootElements xsi:type="bpmn:Collaboration" id="Collaboration_1" name="Supplier-Retailer Process">
+    <participants xsi:type="bpmn:Participant" id="Participant_Supplier" name="Supplier" processRef="Process_Supplier"/>
+    <participants xsi:type="bpmn:Participant" id="Participant_Retailer" name="Retailer" processRef="Process_Retailer"/>
+  </rootElements>
+  <rootElements xsi:type="bpmn:Process" id="Process_Supplier" isExecutable="false">
+    <laneSets xsi:type="bpmn:LaneSet" id="LaneSet_1">
+      <lanes xsi:type="bpmn:Lane" id="Lane_1" name="Supplier Activities">
+        <flowNodeRefs>StartEvent_1 Task_1 IntermediateThrowEvent_1 IntermediateCatchEvent_1 Task_2 Task_3 Task_4 ExclusiveGateway_1 EndEvent_1 EndEvent_2 EndEvent_3</flowNodeRefs>
+      </lanes>
+    </laneSets>
+    <flowElements xsi:type="bpmn:StartEvent" id="StartEvent_1" name="Request Received">
+      <outgoing>SequenceFlow_1</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:Task" id="Task_1" name="Prepare Offer">
+      <incoming>SequenceFlow_1</incoming>
+      <outgoing>SequenceFlow_2</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:IntermediateThrowEvent" id="IntermediateThrowEvent_1" name="Send Offer">
+      <incoming>SequenceFlow_2</incoming>
+      <outgoing>SequenceFlow_3</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:IntermediateCatchEvent" id="IntermediateCatchEvent_1" name="Wait for Response">
+      <incoming>SequenceFlow_3</incoming>
+      <outgoing>SequenceFlow_4</outgoing>
+      <outgoing>SequenceFlow_5</outgoing>
+      <outgoing>SequenceFlow_6</outgoing>
+      <outgoing>SequenceFlow_7</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:Task" id="Task_2" name="Process Order">
+      <incoming>SequenceFlow_4</incoming>
+      <outgoing>SequenceFlow_8</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:Task" id="Task_3" name="Update Order">
+      <incoming>SequenceFlow_5</incoming>
+      <outgoing>SequenceFlow_9</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:Task" id="Task_4" name="Cancel Order">
+      <incoming>SequenceFlow_6</incoming>
+      <incoming>SequenceFlow_7</incoming>
+      <outgoing>SequenceFlow_10</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="ExclusiveGateway_1" name="Check Order Changes">
+      <incoming>SequenceFlow_9</incoming>
+      <outgoing>SequenceFlow_11</outgoing>
+      <outgoing>SequenceFlow_12</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:EndEvent" id="EndEvent_1" name="Order Processed">
+      <incoming>SequenceFlow_8</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:EndEvent" id="EndEvent_2" name="Order Cancelled">
+      <incoming>SequenceFlow_10</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:EndEvent" id="EndEvent_3" name="Order Change Limit Reached">
+      <incoming>SequenceFlow_12</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_1" sourceRef="StartEvent_1" targetRef="Task_1"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_2" sourceRef="Task_1" targetRef="IntermediateThrowEvent_1"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_3" sourceRef="IntermediateThrowEvent_1" targetRef="IntermediateCatchEvent_1"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_4" sourceRef="IntermediateCatchEvent_1" targetRef="Task_2" name="Order Confirmation"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_5" sourceRef="IntermediateCatchEvent_1" targetRef="Task_3" name="Order Change"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_6" sourceRef="IntermediateCatchEvent_1" targetRef="Task_4" name="Order Cancellation"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_7" sourceRef="IntermediateCatchEvent_1" targetRef="Task_4" name="No Response"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_8" sourceRef="Task_2" targetRef="EndEvent_1"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_9" sourceRef="Task_3" targetRef="ExclusiveGateway_1"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_10" sourceRef="Task_4" targetRef="EndEvent_2"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_11" sourceRef="ExclusiveGateway_1" targetRef="IntermediateThrowEvent_1" name="Under Limit"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_12" sourceRef="ExclusiveGateway_1" targetRef="EndEvent_3" name="Limit Reached"/>
+  </rootElements>
+  <rootElements xsi:type="bpmn:Process" id="Process_Retailer" isExecutable="false">
+    <laneSets xsi:type="bpmn:LaneSet" id="LaneSet_2">
+      <lanes xsi:type="bpmn:Lane" id="Lane_2" name="Retailer Activities">
+        <flowNodeRefs>StartEvent_2 Task_5 IntermediateThrowEvent_2 IntermediateThrowEvent_3 IntermediateThrowEvent_4 IntermediateThrowEvent_5 EndEvent_4</flowNodeRefs>
+      </lanes>
+    </laneSets>
+    <flowElements xsi:type="bpmn:StartEvent" id="StartEvent_2" name="Start Process">
+      <outgoing>SequenceFlow_13</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:Task" id="Task_5" name="Request Offer">
+      <incoming>SequenceFlow_13</incoming>
+      <outgoing>SequenceFlow_14</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:IntermediateThrowEvent" id="IntermediateThrowEvent_2" name="Send Request">
+      <incoming>SequenceFlow_14</incoming>
+      <outgoing>SequenceFlow_15</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:IntermediateThrowEvent" id="IntermediateThrowEvent_3" name="Send Order Confirmation">
+      <outgoing>SequenceFlow_16</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:IntermediateThrowEvent" id="IntermediateThrowEvent_4" name="Send Order Change">
+      <outgoing>SequenceFlow_17</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:IntermediateThrowEvent" id="IntermediateThrowEvent_5" name="Send Order Cancellation">
+      <outgoing>SequenceFlow_18</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:EndEvent" id="EndEvent_4" name="Process Ended">
+      <incoming>SequenceFlow_18</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_13" sourceRef="StartEvent_2" targetRef="Task_5"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_14" sourceRef="Task_5" targetRef="IntermediateThrowEvent_2"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_15" sourceRef="IntermediateThrowEvent_2" targetRef="IntermediateThrowEvent_3"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_16" sourceRef="IntermediateThrowEvent_3" targetRef="IntermediateThrowEvent_4"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_17" sourceRef="IntermediateThrowEvent_4" targetRef="IntermediateThrowEvent_5"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_18" sourceRef="IntermediateThrowEvent_5" targetRef="EndEvent_4"/>
+  </rootElements>
+</bpmn:Definitions>

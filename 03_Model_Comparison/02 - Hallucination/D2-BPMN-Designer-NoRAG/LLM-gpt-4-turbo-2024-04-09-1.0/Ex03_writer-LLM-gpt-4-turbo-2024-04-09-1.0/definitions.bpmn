@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="ClaimHandlingProcess">
+  <rootElements xsi:type="bpmn:Process" id="ProcessClaimHandling" name="Claim Handling Process">
+    <laneSets id="LaneSet_ClaimsHandling">
+      <lanes id="Lane_ClaimsOfficer" name="Claims Officer">
+        <flowNodeRefs>ReceiveClaim</flowNodeRefs>
+        <flowNodeRefs>CheckInsurance</flowNodeRefs>
+        <flowNodeRefs>InformClaimantRejection</flowNodeRefs>
+        <flowNodeRefs>CheckFormCompleteness</flowNodeRefs>
+        <flowNodeRefs>InformToUpdateForms</flowNodeRefs>
+        <flowNodeRefs>CheckUpdatedForms</flowNodeRefs>
+      </lanes>
+      <lanes id="Lane_SeniorClaimsOfficer" name="Senior Claims Officer">
+        <flowNodeRefs>EvaluateClaimSeverity</flowNodeRefs>
+      </lanes>
+    </laneSets>
+    <flowElements xsi:type="bpmn:StartEvent" id="ReceiveClaim" name="Claim Received" />
+    <flowElements xsi:type="bpmn:UserTask" id="CheckInsurance" name="Check if Claimant is Insured">
+      <incoming>ReceiveClaim</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="InsuranceCheckGateway" name="Is Claimant Insured?">
+      <incoming>CheckInsurance</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:EndEvent" id="InformClaimantRejection" name="Inform Claimant - Rejection">
+      <incoming>InsuranceCheckGateway</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="EvaluateClaimSeverity" name="Evaluate Claim Severity">
+      <incoming>InsuranceCheckGateway</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="SeverityEvaluationGateway" name="Claim Severity Level">
+      <incoming>EvaluateClaimSeverity</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="SendForms" name="Send Relevant Forms">
+      <incoming>SeverityEvaluationGateway</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="ReceiveForms" name="Receive Returned Forms">
+      <incoming>SendForms</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="CheckFormCompleteness" name="Check Forms for Completeness">
+      <incoming>ReceiveForms</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="FormCompletenessCheckGateway" name="Are Forms Complete?">
+      <incoming>CheckFormCompleteness</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="InformToUpdateForms" name="Inform Claimant to Update Forms">
+      <incoming>FormCompletenessCheckGateway</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="ReceiveUpdatedForms" name="Receive Updated Forms">
+      <incoming>InformToUpdateForms</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="CheckUpdatedForms" name="Check Updated Forms">
+      <incoming>ReceiveUpdatedForms</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="UpdatedFormsCheckGateway" name="Are Updated Forms Complete?">
+      <incoming>CheckUpdatedForms</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:EndEvent" id="RegisterClaim" name="Register Claim">
+      <incoming>UpdatedFormsCheckGateway</incoming>
+    </flowElements>
+    <artifacts xsi:type="bpmn:DataObject" id="DataObject_ClaimForm" name="Claim Form" />
+    <artifacts xsi:type="bpmn:DataStore" id="DataStore_ClaimsManagementSystem" name="Claims Management System" />
+  </rootElements>
+</bpmn:Definitions>

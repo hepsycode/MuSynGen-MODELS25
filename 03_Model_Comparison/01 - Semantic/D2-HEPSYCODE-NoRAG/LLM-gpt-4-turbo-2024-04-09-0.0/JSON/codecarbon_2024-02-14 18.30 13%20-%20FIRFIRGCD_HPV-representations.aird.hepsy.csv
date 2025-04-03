@@ -1,0 +1,12 @@
+total_emissions,node
+9.102232938466688e-08,generate_query_node
+7.81554598827888e-08,cache_context_node
+0.0013453797901442494,model_generation_node
+0.0015225776688155078,model_validation_node
+0.0010223896869645864,model_validation_node
+0.0011629568877693404,model_validation_node
+1.6995892237299395e-07,model_generation_node
+0.0012940867652940795,model_validation_node
+0.001623748618312721,model_validation_node
+2.1000714396891532e-07,model_validation_node
+0.011743844500011823,FILE_2024-02-14 18.30 13%20-%20FIRFIRGCD_HPV-representations.aird.hepsy

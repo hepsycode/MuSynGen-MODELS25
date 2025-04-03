@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_KkUY4Y8DEe-v648egk3nxQ">
+  <rootElements xsi:type="bpmn:Process" id="_KkUY4I8DEe-v648egk3nxQ">
+    <flowElements xsi:type="bpmn:StartEvent" id="_dDiegI8JEe-v648egk3nxQ" name="New credit request received" outgoing="_pkQ0II8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:Task" id="_obWrUI8JEe-v648egk3nxQ" name="Initial risk assessment" outgoing="_tBvnoI8JEe-v648egk3nxQ" incoming="_pkQ0II8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_pkQ0II8JEe-v648egk3nxQ" targetRef="_obWrUI8JEe-v648egk3nxQ" sourceRef="_dDiegI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="_t0sukI8JEe-v648egk3nxQ" name="Risk above threshold?" outgoing="_yVKpEI8JEe-v648egk3nxQ _3rueEI8JEe-v648egk3nxQ" incoming="_tBvnoI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_tBvnoI8JEe-v648egk3nxQ" targetRef="_t0sukI8JEe-v648egk3nxQ" sourceRef="_obWrUI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:Task" id="_qiungI8JEe-v648egk3nxQ" name="Advanced risk assessment" outgoing="_wYnc0I8JEe-v648egk3nxQ" incoming="_3rueEI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_3rueEI8JEe-v648egk3nxQ" name="Yes" targetRef="_qiungI8JEe-v648egk3nxQ" sourceRef="_t0sukI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:Task" id="_0FCrQI8JEe-v648egk3nxQ" name="Simple risk assessment" outgoing="_J3GCUI8KEe-v648egk3nxQ" incoming="_yVKpEI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_yVKpEI8JEe-v648egk3nxQ" name="No" targetRef="_0FCrQI8JEe-v648egk3nxQ" sourceRef="_t0sukI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:ParallelGateway" id="_0E2BgI8KEe-v648egk3nxQ" outgoing="_7rPLII8KEe-v648egk3nxQ _HTVPoI8LEe-v648egk3nxQ" incoming="_J3GCUI8KEe-v648egk3nxQ _wYnc0I8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_wYnc0I8JEe-v648egk3nxQ" targetRef="_0E2BgI8KEe-v648egk3nxQ" sourceRef="_qiungI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_J3GCUI8KEe-v648egk3nxQ" targetRef="_0E2BgI8KEe-v648egk3nxQ" sourceRef="_0FCrQI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:Task" id="_0865AI8KEe-v648egk3nxQ" name="Notify customer" outgoing="_Tx5pII8LEe-v648egk3nxQ" incoming="_7rPLII8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_7rPLII8KEe-v648egk3nxQ" targetRef="_0865AI8KEe-v648egk3nxQ" sourceRef="_0E2BgI8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:Task" id="_Cal_EI8LEe-v648egk3nxQ" name="Organize disbursement" outgoing="_UatVkI8LEe-v648egk3nxQ" incoming="_HTVPoI8LEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_HTVPoI8LEe-v648egk3nxQ" targetRef="_Cal_EI8LEe-v648egk3nxQ" sourceRef="_0E2BgI8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:ParallelGateway" id="_TSE5kI8LEe-v648egk3nxQ" outgoing="_ZQFJEI8LEe-v648egk3nxQ" incoming="_Tx5pII8LEe-v648egk3nxQ _UatVkI8LEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_Tx5pII8LEe-v648egk3nxQ" targetRef="_TSE5kI8LEe-v648egk3nxQ" sourceRef="_0865AI8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_UatVkI8LEe-v648egk3nxQ" targetRef="_TSE5kI8LEe-v648egk3nxQ" sourceRef="_Cal_EI8LEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="_cENBEI8MEe-v648egk3nxQ" name="Process completed" incoming="_ZQFJEI8LEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_ZQFJEI8LEe-v648egk3nxQ" targetRef="_cENBEI8MEe-v648egk3nxQ" sourceRef="_TSE5kI8LEe-v648egk3nxQ"/>
+  </rootElements>
+</bpmn:Definitions>

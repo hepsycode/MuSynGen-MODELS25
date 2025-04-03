@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hml:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hml="org.univaq.hepsy">
+  <nodes xsi:type="hml:Stimulus" name="Stimulus">
+    <ports name="stim_rt_out_port">
+      <pChannels name="stim_rt_channel" pFrom="//@nodes.0/@ports.0" pTo="//@nodes.1/@ports.0" queueSize="8" rendezVous="true">
+        <message name="stim_rt_payload">
+          <entry name="sample" type="sc_int"/>
+        </message>
+      </pChannels>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:StructuredNode" name="RTApp">
+    <ports name="system_display_out_port"/>
+    <processes name="acquisition">
+      <processExtension name="acquisition_port"/>
+    </processes>
+    <processes name="filtering">
+      <processExtension name="filtering_port"/>
+    </processes>
+    <processes name="decision">
+      <processExtension name="decision_port"/>
+    </processes>
+    <processes name="control">
+      <processExtension name="control_port"/>
+    </processes>
+    <nChannels name="stim_acquisition_channel" nFrom="//@nodes.0" nTo="//@nodes.1/@processes.0" queueSize="8" rendezVous="true">
+      <message name="acquisition_payload">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="acq_filter_channel" nFrom="//@nodes.1/@processes.0" nTo="//@nodes.1/@processes.1" queueSize="8" rendezVous="true">
+      <message name="filtering_payload">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="filter_decision_channel" nFrom="//@nodes.1/@processes.1" nTo="//@nodes.1/@processes.2" queueSize="8" rendezVous="true">
+      <message name="decision_payload">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="decision_control_channel" nFrom="//@nodes.1/@processes.2" nTo="//@nodes.1/@processes.3" queueSize="8" rendezVous="true">
+      <message name="control_payload">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+  </nodes>
+  <nodes xsi:type="hml:Display" name="Display">
+    <ports name="system_display_in_port">
+      <pChannels name="disp_channel" pFrom="//@nodes.1/@ports.0" pTo="//@nodes.2/@ports.0"/>
+    </ports>
+  </nodes>
+</hml:BehaviorSpecification>

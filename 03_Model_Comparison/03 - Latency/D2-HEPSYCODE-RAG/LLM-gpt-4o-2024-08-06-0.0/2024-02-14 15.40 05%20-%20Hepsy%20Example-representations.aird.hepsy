@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hml:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hml="org.univaq.hepsy">
+  <nodes xsi:type="hml:Stimulus" name="Stimulus">
+    <ports name="stim_system_out_port">
+      <pChannels name="stim_acq_channel" queueSize="8" rendezVous="true" pFrom="//@nodes.0/@ports.0" pTo="//@nodes.1/@ports.0">
+        <message name="stim_acq_message">
+          <entry name="rawData" type="sc_int"/>
+        </message>
+      </pChannels>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:StructuredNode" name="HepsyExample">
+    <ports name="system_display_out_port">
+      <pChannels name="main_disp_channel" pFrom="//@nodes.1/@ports.0" pTo="//@nodes.2/@ports.0">
+        <message name="main_disp_message">
+          <entry name="finalData" type="sc_int"/>
+        </message>
+      </pChannels>
+    </ports>
+    <processes name="dataAcquisition">
+      <processExtension name="acq_proc_port"/>
+    </processes>
+    <processes name="dataProcessing">
+      <processExtension name="proc_ctrl_port"/>
+    </processes>
+    <processes name="dataControl"/>
+  </nodes>
+  <nodes xsi:type="hml:Display" name="Display">
+    <ports name="system_display_in_port"/>
+  </nodes>
+</hml:BehaviorSpecification>

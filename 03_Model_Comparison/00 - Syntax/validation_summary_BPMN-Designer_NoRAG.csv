@@ -1,0 +1,13 @@
+filename,error_type,count
+BPMN-Designer-NoRAG-LLM-gpt-4-turbo-2024-04-09-1.0.txt,Feature: outgoing,24
+BPMN-Designer-NoRAG-LLM-gpt-4-turbo-2024-04-09-1.0.txt,Feature: incoming,21
+BPMN-Designer-NoRAG-LLM-gpt-4o-2024-08-06-0.0.txt,Feature: operationRef,5
+BPMN-Designer-NoRAG-LLM-gpt-4o-2024-08-06-0.0.txt,Feature: calledElementRef,1
+BPMN-Designer-NoRAG-LLM-gpt-4o-2024-08-06-0.0.txt,Feature: id,2
+BPMN-Designer-NoRAG-LLM-gpt-4o-2024-08-06-0.0.txt,Feature: body,1
+BPMN-Designer-NoRAG-LLM-gpt-4o-2024-08-06-0.0.txt,Feature: evaluatesToTypeRef,1
+BPMN-Designer-NoRAG-LLM-gpt-4o-2024-08-06-1.0.txt,Feature: id,1
+BPMN-Designer-NoRAG-LLM-mistral-large-latest-0.0.txt,Unknown Validation Exception,1
+BPMN-Designer-NoRAG-LLM-mistral-large-latest-1.0.txt,ID Collision,1
+BPMN-Designer-NoRAG-LLM-mistral-small-latest-0.0.txt,ID Collision,1
+BPMN-Designer-NoRAG-LLM-mistral-small-latest-1.0.txt,ID Collision,1

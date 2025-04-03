@@ -1,0 +1,11 @@
+file,error_type,occurrences,,,,
+HEPSYCODE-RAG-LLM-gpt-4-turbo-2024-04-09-0.0.txt,Type mismatches / Feature assignment errors,19,,,Missing required features,0
+HEPSYCODE-RAG-LLM-gpt-4-turbo-2024-04-09-1.0.txt,Type mismatches / Feature assignment errors,15,,,Unresolved references,0
+HEPSYCODE-RAG-LLM-gpt-4o-2024-08-06-0.0.txt,Type mismatches / Feature assignment errors,21,,,Dangling references,31
+HEPSYCODE-RAG-LLM-gpt-4o-2024-08-06-0.0.txt,Dangling references,19,,,Validation failed with an exception,0
+HEPSYCODE-RAG-LLM-gpt-4o-2024-08-06-1.0.txt,Type mismatches / Feature assignment errors,11,,,General constraint violations,0
+HEPSYCODE-RAG-LLM-mistral-large-latest-0.0.txt,Type mismatches / Feature assignment errors,9,,,Type mismatches / Feature assignment errors,90
+HEPSYCODE-RAG-LLM-mistral-large-latest-1.0.txt,Type mismatches / Feature assignment errors,5,,,,
+HEPSYCODE-RAG-LLM-mistral-small-latest-0.0.txt,Type mismatches / Feature assignment errors,10,,,,
+HEPSYCODE-RAG-LLM-mistral-small-latest-0.0.txt,Dangling references,12,,,,
+HEPSYCODE-RAG-LLM-mistral-small-latest-1.0.txt,Type mismatches / Feature assignment errors,1,,,,

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_FJlBEI4FEd-Kp8XWXgk3nxQ">
+  <rootElements xsi:type="bpmn:Process" id="_FJlBEI4FEd-Kp8XWXgk3nxQ">
+    <flowElements xsi:type="bpmn:StartEvent" id="_0bYWwI4FEd-Kp8XWXgk3nxQ" name="Application Received" outgoing="_S-1XgY8IEd-Kp8XWXgk3nxQ"/>
+    <flowElements xsi:type="bpmn:Task" id="_s-8BgI4FEd-Kp8XWXgk3nxQ" name="Evaluate Application" outgoing="_a_SyAA8IEd-Kp8XWXgk3nxQ"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="_8TNUQA8IEd-Kp8XWXgk3nxQ" name="Approved?" outgoing="_6vINoI4GEd-Kp8XWXgk3nxQ _gMna8I4GEd-Kp8XWXgk3nxQ" incoming="_a_SyAA8IEd-Kp8XWXgk3nxQ"/>
+    <flowElements xsi:type="bpmn:Task" id="_TGCBoI4GEd-Kp8XWXgk3nxQ" name="Notify Customer of Rejection" outgoing="_Ad7ToI4FEd-Kp8XWXgk3nxQ"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="_uyUe4I4FEd-Kp8XWXgk3nxQ" name="Application Process Ends" incoming="_Ad7ToI4FEd-Kp8XWXgk3nxQ"/>
+    <flowElements xsi:type="bpmn:Task" id="_dKSVgI4FEd-Kp8XWXgk3nxQ" name="Create Bank Account" outgoing="_yT9nkI4FEd-Kp8XWXgk3nxQ"/>
+    <flowElements xsi:type="bpmn:Task" id="_RRdsgI4FEd-Kp8XWXgk3nxQ" name="Send Welcome Pack" outgoing="_PeFfAY4FEd-Kp8XWXgk3nxQ"/>
+    <flowElements xsi:type="bpmn:Task" id="_PGjR8I4FEd-Kp8XWXgk3nxQ" name="Send Bank Card" outgoing="_yiJogY4FEd-Kp8XWXgk3nxQ"/>
+    <flowElements xsi:type="bpmn:Task" id="_wcZKYI4FEd-Kp8XWXgk3nxQ" name="Send PIN Number" outgoing="_D4LkAI4FEd-Kp8XWXgk3nxQ"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="_xQW9cI4FEd-Kp8XWXgk3nxQ" name="Bank Account Opened" incoming="_D4LkAI4FEd-Kp8XWXgk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_S-1XgY8IEd-Kp8XWXgk3nxQ" targetRef="_s-8BgI4FEd-Kp8XWXgk3nxQ" sourceRef="_0bYWwI4FEd-Kp8XWXgk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_gMna8I4GEd-Kp8XWXgk3nxQ" name="No" targetRef="_TGCBoI4GEd-Kp8XWXgk3nxQ" sourceRef="_8TNUQA8IEd-Kp8XWXgk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_6vINoI4GEd-Kp8XWXgk3nxQ" name="Yes" targetRef="_dKSVgI4FEd-Kp8XWXgk3nxQ" sourceRef="_8TNUQA8IEd-Kp8XWXgk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_a_SyAA8IEd-Kp8XWXgk3nxQ" targetRef="_8TNUQA8IEd-Kp8XWXgk3nxQ" sourceRef="_s-8BgI4FEd-Kp8XWXgk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_Ad7ToI4FEd-Kp8XWXgk3nxQ" targetRef="_uyUe4I4FEd-Kp8XWXgk3nxQ" sourceRef="_TGCBoI4GEd-Kp8XWXgk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_yT9nkI4FEd-Kp8XWXgk3nxQ" targetRef="_RRdsgI4FEd-Kp8XWXgk3nxQ" sourceRef="_dKSVgI4FEd-Kp8XWXgk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_PeFfAY4FEd-Kp8XWXgk3nxQ" targetRef="_PGjR8I4FEd-Kp8XWXgk3nxQ" sourceRef="_RRdsgI4FEd-Kp8XWXgk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_yiJogY4FEd-Kp8XWXgk3nxQ" targetRef="_wcZKYI4FEd-Kp8XWXgk3nxQ" sourceRef="_PGjR8I4FEd-Kp8XWXgk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_D4LkAI4FEd-Kp8XWXgk3nxQ" targetRef="_xQW9cI4FEd-Kp8XWXgk3nxQ" sourceRef="_wcZKYI4FEd-Kp8XWXgk3nxQ"/>
+  </rootElements>
+</bpmn:Definitions>

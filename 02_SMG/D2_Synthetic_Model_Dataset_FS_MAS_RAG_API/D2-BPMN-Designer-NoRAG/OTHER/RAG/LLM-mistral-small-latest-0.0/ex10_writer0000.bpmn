@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_SupplierRetailerProcess">
+  <rootElements xsi:type="bpmn:Process" id="_SupplierRetailerProcess" name="Supplier-Retailer Process" processType="None" isExecutable="true">
+    <flowElements xsi:type="bpmn:StartEvent" id="_RequestOffer" name="Retailer requests offer" outgoing="_RequestOfferToPrepareOffer">
+      <eventDefinitions xsi:type="bpmn:MessageEventDefinition" id="_RequestOfferEventDefinition" messageRef="_RequestOfferMessage"/>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="_PrepareOffer" name="Supplier prepares offer" incoming="_RequestOfferToPrepareOffer" outgoing="_PrepareOfferToSendOffer">
+      <resources xsi:type="bpmn:ResourceRole" id="_SupplierResourceRole" name="Supplier"/>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_RequestOfferToPrepareOffer" sourceRef="_RequestOffer" targetRef="_PrepareOffer"/>
+    <flowElements xsi:type="bpmn:ServiceTask" id="_SendOfferToRetailer" name="Supplier sends offer" incoming="_PrepareOfferToSendOffer" outgoing="_SendOfferToRetailerToWaitForResponse">
+      <resources xsi:type="bpmn:ResourceRole" id="_SupplierResourceRole" name="Supplier"/>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_PrepareOfferToSendOffer" sourceRef="_PrepareOffer" targetRef="_SendOfferToRetailer"/>
+    <flowElements xsi:type="bpmn:IntermediateCatchEvent" id="_WaitForResponse" name="Wait for response" incoming="_SendOfferToRetailerToWaitForResponse" outgoing="_OrderConfirmation _OrderChange _OrderCancellation _NoResponse">
+      <eventDefinitions xsi:type="bpmn:TimerEventDefinition" id="_WaitForResponseTimer" timeDuration="_48Hours"/>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_SendOfferToRetailerToWaitForResponse" sourceRef="_SendOfferToRetailer" targetRef="_WaitForResponse"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_OrderConfirmation" name="Order confirmation received" sourceRef="_WaitForResponse" targetRef="_ProcessOrder">
+      <conditionExpression xsi:type="bpmn:FormalExpression" id="_OrderConfirmationCondition" language="http://www.w3.org/1999/XPath" body="OrderConfirmation"/>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_OrderChange" name="Order change received" sourceRef="_WaitForResponse" targetRef="_UpdateOrder">
+      <conditionExpression xsi:type="bpmn:FormalExpression" id="_OrderChangeCondition" language="http://www.w3.org/1999/XPath" body="OrderChange"/>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_OrderCancellation" name="Order cancellation received" sourceRef="_WaitForResponse" targetRef="_CancelOrder">
+      <conditionExpression xsi:type="bpmn:FormalExpression" id="_OrderCancellationCondition" language="http://www.w3.org/1999/XPath" body="OrderCancellation"/>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_NoResponse" name="No response received" sourceRef="_WaitForResponse" targetRef="_CancelOrder">
+      <conditionExpression xsi:type="bpmn:FormalExpression" id="_NoResponseCondition" language="http://www.w3.org/1999/XPath" body="NoResponse"/>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="_ProcessOrder" name="Supplier processes order" incoming="_OrderConfirmation" outgoing="_OrderProcessed">
+      <resources xsi:type="bpmn:ResourceRole" id="_SupplierResourceRole" name="Supplier"/>
+    </flowElements>
+    <flowElements xsi:type="bpmn:EndEvent" id="_OrderProcessed" name="Order processed" incoming="_ProcessOrder"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_UpdateOrder" name="Supplier updates order" incoming="_OrderChange" outgoing="_RequestConfirmation">
+      <resources xsi:type="bpmn:ResourceRole" id="_SupplierResourceRole" name="Supplier"/>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_RequestConfirmation" sourceRef="_UpdateOrder" targetRef="_WaitForConfirmation">
+      <conditionExpression xsi:type="bpmn:FormalExpression" id="_RequestConfirmationCondition" language="http://www.w3.org/1999/XPath" body="RequestConfirmation"/>
+    </flowElements>
+    <flowElements xsi:type="bpmn:IntermediateCatchEvent" id="_WaitForConfirmation" name="Wait for confirmation" incoming="_RequestConfirmation" outgoing="_ConfirmationReceived _ConfirmationNotReceived">
+      <eventDefinitions xsi:type="bpmn:TimerEventDefinition" id="_WaitForConfirmationTimer" timeDuration="_48Hours"/>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_ConfirmationReceived" name="Confirmation received" sourceRef="_WaitForConfirmation" targetRef="_ProcessOrder">
+      <conditionExpression xsi:type="bpmn:FormalExpression" id="_ConfirmationReceivedCondition" language="http://www.w3.org/1999/XPath" body="ConfirmationReceived"/>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_ConfirmationNotReceived" name="Confirmation not received" sourceRef="_WaitForConfirmation" targetRef="_CancelOrder">
+      <conditionExpression xsi:type="bpmn:FormalExpression" id="_ConfirmationNotReceivedCondition" language="http://www.w3.org/1999/XPath" body="ConfirmationNotReceived"/>
+    </flowElements>
+    <flowElements xsi:type="bpmn:EndEvent" id="_CancelOrder" name="Order cancelled" incoming="_OrderCancellation _NoResponse _ConfirmationNotReceived">
+      <eventDefinitions xsi:type="bpmn:CancelEventDefinition" id="_CancelOrderEventDefinition"/>
+    </flowElements>
+    <laneSets id="_SupplierLaneSet" name="Supplier">
+      <lanes id="_SupplierLane" name="Supplier" flowNodeRefs="_PrepareOffer _SendOfferToRetailer _ProcessOrder _UpdateOrder _WaitForConfirmation _CancelOrder"/>
+    </laneSets>
+    <laneSets id="_RetailerLaneSet" name="Retailer">
+      <lanes id="_RetailerLane" name="Retailer" flowNodeRefs="_RequestOffer _WaitForResponse"/>
+    </laneSets>
+    <rootElements xsi:type="bpmn:Message" id="_RequestOfferMessage" name="Request Offer Message"/>
+  </rootElements>
+</bpmn:Definitions>

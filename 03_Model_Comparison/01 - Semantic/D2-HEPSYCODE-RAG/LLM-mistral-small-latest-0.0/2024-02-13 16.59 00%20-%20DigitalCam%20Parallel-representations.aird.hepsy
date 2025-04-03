@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hml:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hml="org.univaq.hepsy">
+  <nodes xsi:type="hml:Stimulus" name="Stimulus">
+    <ports name="stim_system_out_port">
+      <pChannels name="stim_system_channel" pFrom="//@nodes.0/@ports.0" pTo="//@nodes.1/@ports.0" queueSize="8" rendezVous="true">
+        <message name="raw_image_data">
+          <entry name="image_data" type="sc_int"/>
+        </message>
+      </pChannels>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:Display" name="Display">
+    <ports name="system_display_in_port"/>
+  </nodes>
+  <nodes xsi:type="hml:StructuredNode" name="DigitalCam">
+    <ports name="system_display_out_port"/>
+    <ports name="stim_ccdpp_port" portExtension="//@nodes.2/@processes.0"/>
+    <ports name="codec_merge_port" portExtension="//@nodes.2/@processes.9"/>
+    <processes name="ccdpp"/>
+    <processes name="codec0"/>
+    <processes name="codec1"/>
+    <processes name="codec2"/>
+    <processes name="codec3"/>
+    <processes name="codec4"/>
+    <processes name="codec5"/>
+    <processes name="codec6"/>
+    <processes name="codec7"/>
+    <processes name="codec_merge"/>
+    <nChannels name="stim_ccdpp_channel" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.0/@ports.0" queueSize="8" rendezVous="true">
+      <message name="stim_ccdpp_message">
+        <entry name="image_data" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="ccdpp_codec0_channel" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.1" queueSize="8" rendezVous="true">
+      <message name="ccdpp_codec0_message">
+        <entry name="image_data" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="ccdpp_codec1_channel" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.2" queueSize="8" rendezVous="true">
+      <message name="ccdpp_codec1_message">
+        <entry name="image_data" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="ccdpp_codec2_channel" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.3" queueSize="8" rendezVous="true">
+      <message name="ccdpp_codec2_message">
+        <entry name="image_data" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="ccdpp_codec3_channel" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.4" queueSize="8" rendezVous="true">
+      <message name="ccdpp_codec3_message">
+        <entry name="image_data" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="ccdpp_codec4_channel" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.5" queueSize="8" rendezVous="true">
+      <message name="ccdpp_codec4_message">
+        <entry name="image_data" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="ccdpp_codec5_channel" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.6" queueSize="8" rendezVous="true">
+      <message name="ccdpp_codec5_message">
+        <entry name="image_data" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="ccdpp_codec6_channel" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.7" queueSize="8" rendezVous="true">
+      <message name="ccdpp_codec6_message">
+        <entry name="image_data" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="ccdpp_codec7_channel" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.8" queueSize="8" rendezVous="true">
+      <message name="ccdpp_codec7_message">
+        <entry name="image_data" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="codec_merge_channel" nFrom="//@nodes.2/@processes.9" nTo="//@nodes.2/@ports.0" queueSize="8" rendezVous="true">
+      <message name="codec_merge_message">
+        <entry name="image_data" type="sc_int"/>
+      </message>
+    </nChannels>
+  </nodes>
+  <nodes xsi:type="hml:Channel" name="display_channel" nFrom="//@nodes.2" nTo="//@nodes.1" pFrom="//@nodes.2/@ports.1" pTo="//@nodes.1/@ports.0" queueSize="8" rendezVous="true">
+    <message name="display_message">
+      <entry name="image_data" type="sc_int"/>
+    </message>
+  </nodes>
+</hml:BehaviorSpecification>

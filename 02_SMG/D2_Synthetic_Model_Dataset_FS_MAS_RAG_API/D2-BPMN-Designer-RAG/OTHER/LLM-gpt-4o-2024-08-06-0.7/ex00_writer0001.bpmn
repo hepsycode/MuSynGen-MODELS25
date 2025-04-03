@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_KkUY4Y8DEe-v648egk3nxQ">
+  <rootElements xsi:type="bpmn:Process" id="_KkUY4I8DEe-v648egk3nxQ">
+    <flowElements xsi:type="bpmn:StartEvent" id="_d1s9gI8JEe-v648egk3nxQ" name="Receive Application" outgoing="_p1Q0II8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_a3WrUI8JEe-v648egk3nxQ" name="Evaluate Application" outgoing="_t2vnoI8JEe-v648egk3nxQ" incoming="_p1Q0II8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_p1Q0II8JEe-v648egk3nxQ" targetRef="_a3WrUI8JEe-v648egk3nxQ" sourceRef="_d1s9gI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="_g0sukI8JEe-v648egk3nxQ" name="Application Approved?" outgoing="_y2KpEI8JEe-v648egk3nxQ _3sueEI8JEe-v648egk3nxQ" incoming="_t2vnoI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_t2vnoI8JEe-v648egk3nxQ" targetRef="_g0sukI8JEe-v648egk3nxQ" sourceRef="_a3WrUI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_b3HOYI8JEe-v648egk3nxQ" name="Notify Rejection" outgoing="_e9fEkI8KEe-v648egk3nxQ" incoming="_3sueEI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_3sueEI8JEe-v648egk3nxQ" name="Rejected" targetRef="_b3HOYI8JEe-v648egk3nxQ" sourceRef="_g0sukI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="_j1YxEI8KEe-v648egk3nxQ" name="Process Ended" incoming="_e9fEkI8KEe-v648egk3nxQ _s1h9oI8MEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_e9fEkI8KEe-v648egk3nxQ" targetRef="_j1YxEI8KEe-v648egk3nxQ" sourceRef="_b3HOYI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_c4CkI8KEe-v648egk3nxQ" name="Create Bank Account" outgoing="_r1TmoI8KEe-v648egk3nxQ" incoming="_y2KpEI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_y2KpEI8JEe-v648egk3nxQ" name="Approved" targetRef="_c4CkI8KEe-v648egk3nxQ" sourceRef="_g0sukI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:ParallelGateway" id="_p2BgI8KEe-v648egk3nxQ" outgoing="_7rPLII8KEe-v648egk3nxQ _HT9PoI8LEe-v648egk3nxQ _yKV4EI8KEe-v648egk3nxQ" incoming="_r1TmoI8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_r1TmoI8KEe-v648egk3nxQ" targetRef="_p2BgI8KEe-v648egk3nxQ" sourceRef="_c4CkI8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_0865TI8KEe-v648egk3nxQ" name="Send Welcome Pack" outgoing="_Tx1pII8LEe-v648egk3nxQ" incoming="_7rPLII8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_7rPLII8KEe-v648egk3nxQ" targetRef="_0865TI8KEe-v648egk3nxQ" sourceRef="_p2BgI8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_Cal_EI8LEe-v648egk3nxQ" name="Send Bank Card" outgoing="_Uat1kI8LEe-v648egk3nxQ" incoming="_HT9PoI8LEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_HT9PoI8LEe-v648egk3nxQ" targetRef="_Cal_EI8LEe-v648egk3nxQ" sourceRef="_p2BgI8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_VGuu1I8LEe-v648egk3nxQ" name="Send PIN Number" outgoing="_neM0oI8LEe-v648egk3nxQ" incoming="_yKV4EI8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_yKV4EI8KEe-v648egk3nxQ" targetRef="_VGuu1I8LEe-v648egk3nxQ" sourceRef="_p2BgI8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:ParallelGateway" id="_TSE5kI8LEe-v648egk3nxQ" outgoing="_s1h9oI8MEe-v648egk3nxQ" incoming="_Tx1pII8LEe-v648egk3nxQ _Uat1kI8LEe-v648egk3nxQ _neM0oI8LEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_Tx1pII8LEe-v648egk3nxQ" targetRef="_TSE5kI8LEe-v648egk3nxQ" sourceRef="_0865TI8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_Uat1kI8LEe-v648egk3nxQ" targetRef="_TSE5kI8LEe-v648egk3nxQ" sourceRef="_Cal_EI8LEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_neM0oI8LEe-v648egk3nxQ" targetRef="_TSE5kI8LEe-v648egk3nxQ" sourceRef="_VGuu1I8LEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_s1h9oI8MEe-v648egk3nxQ" targetRef="_j1YxEI8KEe-v648egk3nxQ" sourceRef="_TSE5kI8LEe-v648egk3nxQ"/>
+  </rootElements>
+</bpmn:Definitions>

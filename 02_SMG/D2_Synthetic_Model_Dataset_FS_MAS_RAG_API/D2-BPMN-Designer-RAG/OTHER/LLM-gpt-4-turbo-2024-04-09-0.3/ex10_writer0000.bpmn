@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="Definitions_1">
+  <rootElements xsi:type="bpmn:Collaboration" id="Collaboration_1" name="Supplier and Retailer Process">
+    <participants xsi:type="bpmn:Participant" id="Participant_Supplier" name="Supplier" processRef="Process_Supplier"/>
+    <participants xsi:type="bpmn:Participant" id="Participant_Retailer" name="Retailer" processRef="Process_Retailer"/>
+  </rootElements>
+  <rootElements xsi:type="bpmn:Process" id="Process_Supplier" name="Supplier Process" isExecutable="false">
+    <laneSets xsi:type="bpmn:LaneSet" id="LaneSet_1">
+      <lanes xsi:type="bpmn:Lane" id="Lane_1" name="Supplier Actions">
+        <flowNodeRefs>StartEvent_1</flowNodeRefs>
+        <flowNodeRefs>UserTask_PrepareOffer</flowNodeRefs>
+        <flowNodeRefs>IntermediateCatchEvent_OrderReceived</flowNodeRefs>
+        <flowNodeRefs>IntermediateCatchEvent_OrderChanged</flowNodeRefs>
+        <flowNodeRefs>IntermediateCatchEvent_OrderCancelled</flowNodeRefs>
+        <flowNodeRefs>IntermediateCatchEvent_NoResponse</flowNodeRefs>
+        <flowNodeRefs>ExclusiveGateway_1</flowNodeRefs>
+        <flowNodeRefs>UserTask_ProcessOrder</flowNodeRefs>
+        <flowNodeRefs>UserTask_UpdateOrder</flowNodeRefs>
+        <flowNodeRefs>UserTask_CancelOrder</flowNodeRefs>
+        <flowNodeRefs>EndEvent_OrderProcessed</flowNodeRefs>
+        <flowNodeRefs>EndEvent_OrderCancelled</flowNodeRefs>
+      </lanes>
+    </laneSets>
+    <flowElements xsi:type="bpmn:StartEvent" id="StartEvent_1" name="Request Offer">
+      <outgoing>SequenceFlow_1</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="UserTask_PrepareOffer" name="Prepare Offer">
+      <incoming>SequenceFlow_1</incoming>
+      <outgoing>SequenceFlow_2</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_1" sourceRef="StartEvent_1" targetRef="UserTask_PrepareOffer"/>
+    <flowElements xsi:type="bpmn:IntermediateCatchEvent" id="IntermediateCatchEvent_OrderReceived" name="Order Confirmation Received">
+      <outgoing>SequenceFlow_3</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:IntermediateCatchEvent" id="IntermediateCatchEvent_OrderChanged" name="Order Change Received">
+      <outgoing>SequenceFlow_4</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:IntermediateCatchEvent" id="IntermediateCatchEvent_OrderCancelled" name="Order Cancellation Received">
+      <outgoing>SequenceFlow_5</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:IntermediateCatchEvent" id="IntermediateCatchEvent_NoResponse" name="No Response Received">
+      <outgoing>SequenceFlow_6</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="ExclusiveGateway_1" name="Check Order Status">
+      <incoming>SequenceFlow_3</incoming>
+      <incoming>SequenceFlow_4</incoming>
+      <incoming>SequenceFlow_5</incoming>
+      <incoming>SequenceFlow_6</incoming>
+      <outgoing>SequenceFlow_7</outgoing>
+      <outgoing>SequenceFlow_8</outgoing>
+      <outgoing>SequenceFlow_9</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="UserTask_ProcessOrder" name="Process Order">
+      <incoming>SequenceFlow_7</incoming>
+      <outgoing>SequenceFlow_10</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="UserTask_UpdateOrder" name="Update Order">
+      <incoming>SequenceFlow_8</incoming>
+      <outgoing>SequenceFlow_11</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="UserTask_CancelOrder" name="Cancel Order">
+      <incoming>SequenceFlow_9</incoming>
+      <outgoing>SequenceFlow_12</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:EndEvent" id="EndEvent_OrderProcessed" name="Order Processed">
+      <incoming>SequenceFlow_10</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:EndEvent" id="EndEvent_OrderCancelled" name="Order Cancelled">
+      <incoming>SequenceFlow_12</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_2" sourceRef="UserTask_PrepareOffer" targetRef="IntermediateCatchEvent_OrderReceived"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_3" sourceRef="IntermediateCatchEvent_OrderReceived" targetRef="ExclusiveGateway_1"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_4" sourceRef="IntermediateCatchEvent_OrderChanged" targetRef="ExclusiveGateway_1"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_5" sourceRef="IntermediateCatchEvent_OrderCancelled" targetRef="ExclusiveGateway_1"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_6" sourceRef="IntermediateCatchEvent_NoResponse" targetRef="ExclusiveGateway_1"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_7" sourceRef="ExclusiveGateway_1" targetRef="UserTask_ProcessOrder"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_8" sourceRef="ExclusiveGateway_1" targetRef="UserTask_UpdateOrder"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_9" sourceRef="ExclusiveGateway_1" targetRef="UserTask_CancelOrder"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_10" sourceRef="UserTask_ProcessOrder" targetRef="EndEvent_OrderProcessed"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_11" sourceRef="UserTask_UpdateOrder" targetRef="IntermediateCatchEvent_OrderReceived"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_12" sourceRef="UserTask_CancelOrder" targetRef="EndEvent_OrderCancelled"/>
+  </rootElements>
+  <rootElements xsi:type="bpmn:Process" id="Process_Retailer" name="Retailer Process" isExecutable="false">
+    <laneSets xsi:type="bpmn:LaneSet" id="LaneSet_2">
+      <lanes xsi:type="bpmn:Lane" id="Lane_2" name="Retailer Actions">
+        <flowNodeRefs>StartEvent_2</flowNodeRefs>
+        <flowNodeRefs>UserTask_RequestOffer</flowNodeRefs>
+        <flowNodeRefs>UserTask_ConfirmOrder</flowNodeRefs>
+        <flowNodeRefs>UserTask_ChangeOrder</flowNodeRefs>
+        <flowNodeRefs>UserTask_CancelOrder</flowNodeRefs>
+      </lanes>
+    </laneSets>
+    <flowElements xsi:type="bpmn:StartEvent" id="StartEvent_2" name="Start">
+      <outgoing>SequenceFlow_13</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="UserTask_RequestOffer" name="Request Offer from Supplier">
+      <incoming>SequenceFlow_13</incoming>
+      <outgoing>SequenceFlow_14</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="UserTask_ConfirmOrder" name="Confirm Order">
+      <incoming>SequenceFlow_14</incoming>
+      <outgoing>SequenceFlow_15</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="UserTask_ChangeOrder" name="Change Order">
+      <incoming>SequenceFlow_14</incoming>
+      <outgoing>SequenceFlow_16</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="UserTask_CancelOrder" name="Cancel Order">
+      <incoming>SequenceFlow_14</incoming>
+      <outgoing>SequenceFlow_17</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_13" sourceRef="StartEvent_2" targetRef="UserTask_RequestOffer"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_14" sourceRef="UserTask_RequestOffer" targetRef="UserTask_ConfirmOrder"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_15" sourceRef="UserTask_ConfirmOrder" targetRef="IntermediateCatchEvent_OrderReceived"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_16" sourceRef="UserTask_ChangeOrder" targetRef="IntermediateCatchEvent_OrderChanged"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_17" sourceRef="UserTask_CancelOrder" targetRef="IntermediateCatchEvent_OrderCancelled"/>
+  </rootElements>
+</bpmn:Definitions>

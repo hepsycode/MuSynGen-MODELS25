@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_KkUY4Y8DEe-v648egk3nxQ">
+  <rootElements xsi:type="bpmn:Process" id="_KkUY4I8DEe-v648egk3nxQ">
+    <flowElements xsi:type="bpmn:StartEvent" id="_dDiegI8JEe-v648egk3nxQ" name="Start Rating Process" outgoing="_pkQ0II8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_obWrUI8JEe-v648egk3nxQ" name="QA Specialist Interview Patients" outgoing="_tBvnoI8JEe-v648egk3nxQ" incoming="_pkQ0II8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_pkQ0II8JEe-v648egk3nxQ" targetRef="_obWrUI8JEe-v648egk3nxQ" sourceRef="_dDiegI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_qiungI8JEe-v648egk3nxQ" name="Director Requests External Expert Review" outgoing="_wYnc0I8JEe-v648egk3nxQ" incoming="_tBvnoI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_tBvnoI8JEe-v648egk3nxQ" targetRef="_qiungI8JEe-v648egk3nxQ" sourceRef="_obWrUI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="_t0sukI8JEe-v648egk3nxQ" name="Expert Responds?" outgoing="_yVKpEI8JEe-v648egk3nxQ _3rueEI8JEe-v648egk3nxQ" incoming="_wYnc0I8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_wYnc0I8JEe-v648egk3nxQ" targetRef="_t0sukI8JEe-v648egk3nxQ" sourceRef="_qiungI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="_w3ntAI8JEe-v648egk3nxQ" outgoing="_AR0KII8KEe-v648egk3nxQ" incoming="_yVKpEI8JEe-v648egk3nxQ _KeNFoI8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_yVKpEI8JEe-v648egk3nxQ" name="Yes" targetRef="_w3ntAI8JEe-v648egk3nxQ" sourceRef="_t0sukI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_0FCrQI8JEe-v648egk3nxQ" name="Director Requests Another Expert" outgoing="_J3GCUI8KEe-v648egk3nxQ" incoming="_3rueEI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_3rueEI8JEe-v648egk3nxQ" name="No" targetRef="_0FCrQI8JEe-v648egk3nxQ" sourceRef="_t0sukI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_9BHOYI8JEe-v648egk3nxQ" name="Director Receives Expertise" outgoing="_EYfEkI8KEe-v648egk3nxQ" incoming="_AR0KII8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_AR0KII8KEe-v648egk3nxQ" targetRef="_9BHOYI8JEe-v648egk3nxQ" sourceRef="_w3ntAI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_Cn4CkI8KEe-v648egk3nxQ" name="Director Forwards Expertise to QA Specialist" outgoing="_RTXmoI8KEe-v648egk3nxQ" incoming="_EYfEkI8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_EYfEkI8KEe-v648egk3nxQ" targetRef="_Cn4CkI8KEe-v648egk3nxQ" sourceRef="_9BHOYI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_S02ngI8KEe-v648egk3nxQ" name="QA Specialist Files Results" outgoing="_ehspII8KEe-v648egk3nxQ" incoming="_RTXmoI8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_RTXmoI8KEe-v648egk3nxQ" targetRef="_S02ngI8KEe-v648egk3nxQ" sourceRef="_Cn4CkI8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_Z-PFAI8KEe-v648egk3nxQ" name="QA Specialist Creates Report" outgoing="_ykV4EI8KEe-v648egk3nxQ" incoming="_ehspII8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_ehspII8KEe-v648egk3nxQ" targetRef="_Z-PFAI8KEe-v648egk3nxQ" sourceRef="_S02ngI8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_vQwAYI8KEe-v648egk3nxQ" name="Director Pays Expert" outgoing="_7O50cI8KEe-v648egk3nxQ" incoming="_ykV4EI8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_ykV4EI8KEe-v648egk3nxQ" targetRef="_vQwAYI8KEe-v648egk3nxQ" sourceRef="_Z-PFAI8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="_jLYxEI8KEe-v648egk3nxQ" name="End Rating Process" incoming="_7O50cI8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_7O50cI8KEe-v648egk3nxQ" targetRef="_jLYxEI8KEe-v648egk3nxQ" sourceRef="_vQwAYI8KEe-v648egk3nxQ"/>
+    <laneSets id="_L9VaQY8DEe-v648egk3nxQ" name="Hospital">
+      <lanes id="_L9WBUI8DEe-v648egk3nxQ" name="Quality Assurance Specialist" flowNodeRefs="_dDiegI8JEe-v648egk3nxQ _obWrUI8JEe-v648egk3nxQ _S02ngI8KEe-v648egk3nxQ _Z-PFAI8KEe-v648egk3nxQ"/>
+      <lanes id="_O5n9gI8JEe-v648egk3nxQ" name="Managing Director" flowNodeRefs="_qiungI8JEe-v648egk3nxQ _0FCrQI8JEe-v648egk3nxQ _9BHOYI8JEe-v648egk3nxQ _Cn4CkI8KEe-v648egk3nxQ _vQwAYI8KEe-v648egk3nxQ _jLYxEI8KEe-v648egk3nxQ"/>
+    </laneSets>
+  </rootElements>
+</bpmn:Definitions>

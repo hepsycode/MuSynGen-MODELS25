@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="DefinitionsID">
+  <rootElements xsi:type="bpmn:Process" id="ProcessID">
+    <laneSets id="Lanes_Secretary" name="Secretary's Office">
+      <lanes id="Lane_Secretary" name="Secretary" flowNodeRefs="Start_Secretary Task_ReceiveCourseDescriptions Task_EnterInfoCBS Task_EnterInfoCIS Task_NotifyTeachersA Task_NotifyTeachersB Task_ReassignStudentsA Task_ReassignStudentsB End_Secretary">
+        <flowElements xsi:type="bpmn:StartEvent" id="Start_Secretary" name="Start Secretary Process"/>
+        <flowElements xsi:type="bpmn:Task" id="Task_ReceiveCourseDescriptions" name="Receive Course Descriptions"/>
+        <flowElements xsi:type="bpmn:Task" id="Task_EnterInfoCBS" name="Enter Info into CBS (Version a)" incoming="SequenceFlow_ReceiveToEnterA" outgoing="SequenceFlow_EnterToNotifyA"/>
+        <flowElements xsi:type="bpmn:Task" id="Task_EnterInfoCIS" name="Enter Info into CIS (Version b)" incoming="SequenceFlow_ReceiveToEnterB" outgoing="SequenceFlow_EnterToNotifyB"/>
+        <flowElements xsi:type="bpmn:Task" id="Task_NotifyTeachersA" name="Notify Teachers (Version a)" outgoing="SequenceFlow_NotifyTeachersToAssignA"/>
+        <flowElements xsi:type="bpmn:Task" id="Task_NotifyTeachersB" name="Notify Teachers (Version b)" outgoing="SequenceFlow_NotifyTeachersToAssignB"/>
+        <flowElements xsi:type="bpmn:Task" id="Task_ReassignStudentsA" name="Reassign Students (Version a)"/>
+        <flowElements xsi:type="bpmn:Task" id="Task_ReassignStudentsB" name="Reassign Students (Version b)"/>
+        <flowElements xsi:type="bpmn:EndEvent" id="End_Secretary" name="End Secretary Process" incoming="SequenceFlow_ReassignToEndA SequenceFlow_ReassignToEndB"/>
+      </lanes>
+      <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_ReceiveToEnterA" name="" sourceRef="Task_ReceiveCourseDescriptions" targetRef="Task_EnterInfoCBS"/>
+      <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_ReceiveToEnterB" name="" sourceRef="Task_ReceiveCourseDescriptions" targetRef="Task_EnterInfoCIS"/>
+      <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_EnterToNotifyA" name="" sourceRef="Task_EnterInfoCBS" targetRef="Task_NotifyTeachersA"/>
+      <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_EnterToNotifyB" name="" sourceRef="Task_EnterInfoCIS" targetRef="Task_NotifyTeachersB"/>
+      <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_NotifyTeachersToAssignA" name="" sourceRef="Task_NotifyTeachersA" targetRef="Task_ReassignStudentsA"/>
+      <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_NotifyTeachersToAssignB" name="" sourceRef="Task_NotifyTeachersB" targetRef="Task_ReassignStudentsB"/>
+      <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_ReassignToEndA" name="" sourceRef="Task_ReassignStudentsA" targetRef="End_Secretary"/>
+      <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_ReassignToEndB" name="" sourceRef="Task_ReassignStudentsB" targetRef="End_Secretary"/>
+    </laneSets>
+    <laneSets id="Lanes_TeacherA" name="Teacher (Version a)">
+      <lanes id="Lane_TeacherA" name="Teacher" flowNodeRefs="Start_TeacherA Task_SubmitCourseDescriptionA Task_SelectStudentsA Task_HandoverListA End_TeacherA">
+        <flowElements xsi:type="bpmn:StartEvent" id="Start_TeacherA" name="Start Teacher Process (Version a)"/>
+        <flowElements xsi:type="bpmn:Task" id="Task_SubmitCourseDescriptionA" name="Submit Course Description" outgoing="SequenceFlow_SubmitToReceiveA"/>
+        <flowElements xsi:type="bpmn:Task" id="Task_SelectStudentsA" name="Select Students" incoming="SequenceFlow_SubmitToReceiveA" outgoing="SequenceFlow_SelectToHandoverA"/>
+        <flowElements xsi:type="bpmn:Task" id="Task_HandoverListA" name="Handover List to Secretary" outgoing="SequenceFlow_HandoverToEndA"/>
+        <flowElements xsi:type="bpmn:EndEvent" id="End_TeacherA" name="End Teacher Process (Version a)" incoming="SequenceFlow_HandoverToEndA"/>
+        <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_SubmitToReceiveA" name="" sourceRef="Task_SubmitCourseDescriptionA" targetRef="Task_SelectStudentsA"/>
+        <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_SelectToHandoverA" name="" sourceRef="Task_SelectStudentsA" targetRef="Task_HandoverListA"/>
+        <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_HandoverToEndA" name="" sourceRef="Task_HandoverListA" targetRef="End_TeacherA"/>
+      </lanes>
+    </laneSets>
+    <laneSets id="Lanes_TeacherB" name="Teacher (Version b)">
+      <lanes id="Lane_TeacherB" name="Teacher" flowNodeRefs="Start_TeacherB Task_SubmitCourseDescriptionB Task_SelectStudentsB Task_HandoverListB End_TeacherB">
+        <flowElements xsi:type="bpmn:StartEvent" id="Start_TeacherB" name="Start Teacher Process (Version b)"/>
+        <flowElements xsi:type="bpmn:Task" id="Task_SubmitCourseDescriptionB" name="Submit Course Description" outgoing="SequenceFlow_SubmitToReceiveB"/>
+        <flowElements xsi:type="bpmn:Task" id="Task_SelectStudentsB" name="Select Students" incoming="SequenceFlow_SubmitToReceiveB" outgoing="SequenceFlow_SelectToHandoverB"/>
+        <flowElements xsi:type="bpmn:Task" id="Task_HandoverListB" name="Handover List to Secretary" outgoing="SequenceFlow_HandoverToEndB"/>
+        <flowElements xsi:type="bpmn:EndEvent" id="End_TeacherB" name="End Teacher Process (Version b)" incoming="SequenceFlow_HandoverToEndB"/>
+        <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_SubmitToReceiveB" name="" sourceRef="Task_SubmitCourseDescriptionB" targetRef="Task_SelectStudentsB"/>
+        <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_SelectToHandoverB" name="" sourceRef="Task_SelectStudentsB" targetRef="Task_HandoverListB"/>
+        <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_HandoverToEndB" name="" sourceRef="Task_HandoverListB" targetRef="End_TeacherB"/>
+      </lanes>
+    </laneSets>
+  </rootElements>
+</bpmn:Definitions>

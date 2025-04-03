@@ -1,0 +1,57 @@
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-mistral-small-latest-1.0/ex00_writer0001.bpmn
+
+Validation Result: Validation error: org.eclipse.emf.ecore.xmi.UnresolvedReferenceException: Unresolved reference '_wYnc0I8JEe-v648egk3nxQ'. (file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-mistral-small-latest-1.0/ex00_writer0001.bpmn, 11, 130)
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-mistral-small-latest-1.0/ex01_writer0001.bpmn
+
+Validation Result: Validation successful: No errors found.
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-mistral-small-latest-1.0/ex02_writer0001.bpmn
+
+Validation Result: Validation successful: No errors found.
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-mistral-small-latest-1.0/ex03_writer0001.bpmn
+
+Validation Result: Validation successful: No errors found.
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-mistral-small-latest-1.0/ex04_writer0008.bpmn
+
+Validation Result: Validation successful: No errors found.
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-mistral-small-latest-1.0/ex05_writer0013.bpmn
+
+Validation Result: Validation errors found:
+Diagnosis of org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#Definitions@48694614{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-mistral-small-latest-1.0/ex05_writer0013.bpmn#_KkUY4Y8DEe-v648egk3nxQ}
+  The ID '_9BHOYI8JEe-v648egk3nxQ' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#DataObject@79cf89f7{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-mistral-small-latest-1.0/ex05_writer0013.bpmn#_9BHOYI8JEe-v648egk3nxQ}' collides with that of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#UserTask@70986d95{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-mistral-small-latest-1.0/ex05_writer0013.bpmn#_9BHOYI8JEe-v648egk3nxQ}'
+  The ID '_Cn4CkI8KEe-v648egk3nxQ' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#DataStore@292b3976{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-mistral-small-latest-1.0/ex05_writer0013.bpmn#_Cn4CkI8KEe-v648egk3nxQ}' collides with that of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#UserTask@5ad82198{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-mistral-small-latest-1.0/ex05_writer0013.bpmn#_Cn4CkI8KEe-v648egk3nxQ}'
+
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-mistral-small-latest-1.0/ex07_writer0000.bpmn
+
+Validation Result: Validation error: org.eclipse.emf.ecore.xmi.FeatureNotFoundException: Feature 'laneSets' not found. (file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-mistral-small-latest-1.0/ex07_writer0000.bpmn, 27, 58)
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-mistral-small-latest-1.0/ex08_writer0000.bpmn
+
+Validation Result: Validation error: org.eclipse.emf.ecore.xmi.FeatureNotFoundException: Feature 'laneSets' not found. (file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-mistral-small-latest-1.0/ex08_writer0000.bpmn, 43, 36)
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-mistral-small-latest-1.0/ex09_writer0002.bpmn
+
+Validation Result: Validation error: org.eclipse.emf.ecore.xmi.FeatureNotFoundException: Feature 'laneSets' not found. (file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-mistral-small-latest-1.0/ex09_writer0002.bpmn, 32, 60)
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-mistral-small-latest-1.0/ex10_writer0000.bpmn
+
+Validation Result: Validation error: org.eclipse.emf.ecore.xmi.ClassNotFoundException: Class 'tExpression' is not found or is abstract. (file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-mistral-small-latest-1.0/ex10_writer0000.bpmn, 18, 63)
+
+
+Validation Summary:
+Valid models: 4
+Models with errors: 6

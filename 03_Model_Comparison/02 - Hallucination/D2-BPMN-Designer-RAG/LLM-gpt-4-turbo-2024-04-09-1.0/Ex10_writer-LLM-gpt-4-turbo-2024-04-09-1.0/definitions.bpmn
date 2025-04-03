@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="Definitions_1">
+  <rootElements xsi:type="bpmn:Collaboration" id="Collaboration_1" name="Supplier-Retailer Process Collaboration">
+    <participants xsi:type="bpmn:Participant" id="Participant_Supplier" name="Supplier" processRef="Process_Supplier"/>
+    <participants xsi:type="bpmn:Participant" id="Participant_Retailer" name="Retailer" processRef="Process_Retailer"/>
+  </rootElements>
+  <rootElements xsi:type="bpmn:Process" id="Process_Supplier" isExecutable="true">
+    <laneSets xsi:type="bpmn:LaneSet" id="LaneSet_1">
+      <lanes xsi:type="bpmn:Lane" id="Lane_Supplier" name="Supplier Responsibilities">
+        <flowNodeRefs>StartEvent_RequestReceived</flowNodeRefs>
+        <flowNodeRefs>Task_PrepareOffer</flowNodeRefs>
+        <flowNodeRefs>Task_SendOffer</flowNodeRefs>
+        <flowNodeRefs>IntermediateCatchEvent_OrderReceived</flowNodeRefs>
+        <flowNodeRefs>EventBasedGateway_OrderResponseGateway</flowNodeRefs>
+        <flowNodeRefs>Event_ConfirmationReceived</flowNodeRefs>
+        <flowNodeRefs>Event_ChangeReceived</flowNodeRefs>
+        <flowNodeRefs>Event_CancelReceived</flowNodeRefs>
+        <flowNodeRefs>IntermediateThrowEvent_NoResponse</flowNodeRefs>
+        <flowNodeRefs>Task_ProcessOrder</flowNodeRefs>
+        <flowNodeRefs>Task_UpdateOrder</flowNodeRefs>
+        <flowNodeRefs>EndEvent_OrderProcessed</flowNodeRefs>
+        <flowNodeRefs>EndEvent_OrderUpdated</flowNodeRefs>
+        <flowNodeRefs>EndEvent_OrderCancelled</flowNodeRefs>
+      </lanes>
+    </laneSets>
+    <flowElements xsi:type="bpmn:StartEvent" id="StartEvent_RequestReceived" name="Request Received">
+      <outgoing>SequenceFlow_RequestToPrepare</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:Task" id="Task_PrepareOffer" name="Prepare Offer">
+      <incoming>SequenceFlow_RequestToPrepare</incoming>
+      <outgoing>SequenceFlow_PrepareToSend</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_RequestToPrepare" sourceRef="StartEvent_RequestReceived" targetRef="Task_PrepareOffer"/>
+    <flowElements xsi:type="bpmn:Task" id="Task_SendOffer" name="Send Offer to Retailer">
+      <incoming>SequenceFlow_PrepareToSend</incoming>
+      <outgoing>SequenceFlow_SendToWait</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_PrepareToSend" sourceRef="Task_PrepareOffer" targetRef="Task_SendOffer"/>
+    <flowElements xsi:type="bpmn:IntermediateCatchEvent" id="IntermediateCatchEvent_OrderReceived" name="Wait for Response">
+      <incoming>SequenceFlow_SendToWait</incoming>
+      <outgoing>SequenceFlow_WaitToGateway</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_SendToWait" sourceRef="Task_SendOffer" targetRef="IntermediateCatchEvent_OrderReceived"/>
+    <flowElements xsi:type="bpmn:EventBasedGateway" id="EventBasedGateway_OrderResponseGateway" name="Evaluate Response">
+      <incoming>SequenceFlow_WaitToGateway</incoming>
+      <outgoing>SequenceFlow_ToConfirmationReceived</outgoing>
+      <outgoing>SequenceFlow_ToChangeReceived</outgoing>
+      <outgoing>SequenceFlow_ToCancelReceived</outgoing>
+      <outgoing>SequenceFlow_ToNoResponse</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_WaitToGateway" sourceRef="IntermediateCatchEvent_OrderReceived" targetRef="EventBasedGateway_OrderResponseGateway"/>
+    <flowElements xsi:type="bpmn:IntermediateCatchEvent" id="Event_ConfirmationReceived" name="Order Confirmation Received">
+      <incoming>SequenceFlow_ToConfirmationReceived</incoming>
+      <outgoing>SequenceFlow_ConfirmationToProcessOrder</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_ToConfirmationReceived" sourceRef="EventBasedGateway_OrderResponseGateway" targetRef="Event_ConfirmationReceived"/>
+    <flowElements xsi:type="bpmn:Task" id="Task_ProcessOrder" name="Process Order">
+      <incoming>SequenceFlow_ConfirmationToProcessOrder</incoming>
+      <outgoing>SequenceFlow_ProcessToOrderProcessed</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_ConfirmationToProcessOrder" sourceRef="Event_ConfirmationReceived" targetRef="Task_ProcessOrder"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="EndEvent_OrderProcessed" name="Order Processed">
+      <incoming>SequenceFlow_ProcessToOrderProcessed</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_ProcessToOrderProcessed" sourceRef="Task_ProcessOrder" targetRef="EndEvent_OrderProcessed"/>
+    <flowElements xsi:type="bpmn:IntermediateCatchEvent" id="Event_ChangeReceived" name="Order Change Received">
+      <incoming>SequenceFlow_ToChangeReceived</incoming>
+      <outgoing>SequenceFlow_ChangeToUpdateOrder</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_ToChangeReceived" sourceRef="EventBasedGateway_OrderResponseGateway" targetRef="Event_ChangeReceived"/>
+    <flowElements xsi:type="bpmn:Task" id="Task_UpdateOrder" name="Update Order and Require Reconfirmation">
+      <incoming>SequenceFlow_ChangeToUpdateOrder</incoming>
+      <outgoing>SequenceFlow_UpdateToOrderUpdated</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_ChangeToUpdateOrder" sourceRef="Event_ChangeReceived" targetRef="Task_UpdateOrder"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="EndEvent_OrderUpdated" name="Order Updated">
+      <incoming>SequenceFlow_UpdateToOrderUpdated</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_UpdateToOrderUpdated" sourceRef="Task_UpdateOrder" targetRef="EndEvent_OrderUpdated"/>
+	</rootElements>
+</bpmn:Definitions>

@@ -1,0 +1,74 @@
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-gpt-4o-2024-08-06-0.0/ex00_writer0001.bpmn
+
+Validation Result: Validation successful: No errors found.
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-gpt-4o-2024-08-06-0.0/ex01_writer0001.bpmn
+
+Validation Result: Validation successful: No errors found.
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-gpt-4o-2024-08-06-0.0/ex02_writer0001.bpmn
+
+Validation Result: Validation successful: No errors found.
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-gpt-4o-2024-08-06-0.0/ex03_writer0001.bpmn
+
+Validation Result: Validation errors found:
+Diagnosis of org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#Definitions@62e6ff23{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-gpt-4o-2024-08-06-0.0/ex03_writer0001.bpmn#_InsurerProcess}
+  Validation failed with an exception for 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#UserTask@45d3fea8{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-gpt-4o-2024-08-06-0.0/ex03_writer0001.bpmn#_CheckInsurance}'
+  The feature 'operationRef' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#ServiceTask@20c5e6f6{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-gpt-4o-2024-08-06-0.0/ex03_writer0001.bpmn#_NotifyRejection}' contains a dangling reference 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#Operation@702c7a5a{#_SAPNotification}'
+  Validation failed with an exception for 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#ServiceTask@20c5e6f6{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-gpt-4o-2024-08-06-0.0/ex03_writer0001.bpmn#_NotifyRejection}'
+  Validation failed with an exception for 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#UserTask@523ab25d{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-gpt-4o-2024-08-06-0.0/ex03_writer0001.bpmn#_EvaluateClaim}'
+  The feature 'operationRef' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#ServiceTask@846300c{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-gpt-4o-2024-08-06-0.0/ex03_writer0001.bpmn#_SendSimpleForms}' contains a dangling reference 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#Operation@73b85a4{#_SAPSendForms}'
+  The feature 'operationRef' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#ServiceTask@1456d1b3{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-gpt-4o-2024-08-06-0.0/ex03_writer0001.bpmn#_SendComplexForms}' contains a dangling reference 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#Operation@13f9313e{#_SAPSendFormsComplex}'
+  Validation failed with an exception for 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#UserTask@2a86b51d{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-gpt-4o-2024-08-06-0.0/ex03_writer0001.bpmn#_CheckForms}'
+  The feature 'operationRef' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#ServiceTask@714b034c{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-gpt-4o-2024-08-06-0.0/ex03_writer0001.bpmn#_NotifyUpdateForms}' contains a dangling reference 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#Operation@53b28f9f{#_SAPUpdateNotification}'
+  Validation failed with an exception for 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#UserTask@9982416{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-gpt-4o-2024-08-06-0.0/ex03_writer0001.bpmn#_RecheckForms}'
+  The feature 'operationRef' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#ServiceTask@16a94665{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-gpt-4o-2024-08-06-0.0/ex03_writer0001.bpmn#_RegisterClaim}' contains a dangling reference 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#Operation@3f51669f{#_ClaimsManagementSystem}'
+
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-gpt-4o-2024-08-06-0.0/ex04_writer0008.bpmn
+
+Validation Result: Validation successful: No errors found.
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-gpt-4o-2024-08-06-0.0/ex05_writer0013.bpmn
+
+Validation Result: Validation successful: No errors found.
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-gpt-4o-2024-08-06-0.0/ex07_writer0000.bpmn
+
+Validation Result: Validation errors found:
+Diagnosis of org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#Definitions@2b073ff9{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-gpt-4o-2024-08-06-0.0/ex07_writer0000.bpmn#_HospitalDoctorRatingProcess}
+  The feature 'calledElementRef' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#CallActivity@7f2f42b3{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-gpt-4o-2024-08-06-0.0/ex07_writer0000.bpmn#_InterviewPatients}' contains a dangling reference 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#Process@25bc325c{#_PatientInterviewWorkflow}'
+
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-gpt-4o-2024-08-06-0.0/ex08_writer0000.bpmn
+
+Validation Result: Validation successful: No errors found.
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-gpt-4o-2024-08-06-0.0/ex09_writer0002.bpmn
+
+Validation Result: Validation successful: No errors found.
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-gpt-4o-2024-08-06-0.0/ex10_writer0000.bpmn
+
+Validation Result: Validation errors found:
+Diagnosis of org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#Definitions@5da7a350{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-gpt-4o-2024-08-06-0.0/ex10_writer0000.bpmn#_SupplierRetailerProcess}
+  The required feature 'id' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#TimerEventDefinition@5a125217{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-gpt-4o-2024-08-06-0.0/ex10_writer0000.bpmn#//@rootElements.0/@flowElements.19/@eventDefinitions.0}' must be set
+  The required feature 'id' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#FormalExpression@757f294b{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-gpt-4o-2024-08-06-0.0/ex10_writer0000.bpmn#//@rootElements.0/@flowElements.19/@eventDefinitions.0/@timeDuration}' must be set
+  The required feature 'body' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#FormalExpression@757f294b{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-gpt-4o-2024-08-06-0.0/ex10_writer0000.bpmn#//@rootElements.0/@flowElements.19/@eventDefinitions.0/@timeDuration}' must be set
+  The required feature 'evaluatesToTypeRef' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#FormalExpression@757f294b{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-gpt-4o-2024-08-06-0.0/ex10_writer0000.bpmn#//@rootElements.0/@flowElements.19/@eventDefinitions.0/@timeDuration}' must be set
+
+
+
+Validation Summary:
+Valid models: 7
+Models with errors: 3

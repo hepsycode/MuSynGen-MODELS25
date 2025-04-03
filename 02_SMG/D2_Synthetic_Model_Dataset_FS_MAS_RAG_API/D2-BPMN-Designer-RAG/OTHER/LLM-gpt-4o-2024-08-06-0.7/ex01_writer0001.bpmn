@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_ModelForCreditRiskAssessment">
+  <rootElements xsi:type="bpmn:Process" id="_ProcessForCreditRiskAssessment">
+    <flowElements xsi:type="bpmn:StartEvent" id="_StartEvent_NewCreditRequest" name="New Credit Request Received" outgoing="_SequenceFlow_ToRiskAssessment"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_UserTask_RiskAssessment" name="Assess Risk" outgoing="_SequenceFlow_ToRiskThresholdDecision" incoming="_SequenceFlow_ToRiskAssessment"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_SequenceFlow_ToRiskAssessment" targetRef="_UserTask_RiskAssessment" sourceRef="_StartEvent_NewCreditRequest"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="_Gateway_RiskThresholdDecision" name="Risk Above Threshold?" outgoing="_SequenceFlow_ToAdvancedRiskAssessment _SequenceFlow_ToSimpleRiskAssessment" incoming="_SequenceFlow_ToRiskThresholdDecision"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_SequenceFlow_ToRiskThresholdDecision" targetRef="_Gateway_RiskThresholdDecision" sourceRef="_UserTask_RiskAssessment"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_UserTask_AdvancedRiskAssessment" name="Perform Advanced Risk Assessment" outgoing="_SequenceFlow_ToNotifyCustomer" incoming="_SequenceFlow_ToAdvancedRiskAssessment"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_SequenceFlow_ToAdvancedRiskAssessment" name="Yes" targetRef="_UserTask_AdvancedRiskAssessment" sourceRef="_Gateway_RiskThresholdDecision"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_UserTask_SimpleRiskAssessment" name="Perform Simple Risk Assessment" outgoing="_SequenceFlow_ToNotifyCustomer" incoming="_SequenceFlow_ToSimpleRiskAssessment"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_SequenceFlow_ToSimpleRiskAssessment" name="No" targetRef="_UserTask_SimpleRiskAssessment" sourceRef="_Gateway_RiskThresholdDecision"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_UserTask_NotifyCustomer" name="Notify Customer" outgoing="_SequenceFlow_ToOrganizeDisbursement" incoming="_SequenceFlow_ToNotifyCustomer"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_SequenceFlow_ToNotifyCustomer" targetRef="_UserTask_NotifyCustomer" sourceRef="_UserTask_AdvancedRiskAssessment _UserTask_SimpleRiskAssessment"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_UserTask_OrganizeDisbursement" name="Organize Disbursement" outgoing="_SequenceFlow_ToEndEvent" incoming="_SequenceFlow_ToOrganizeDisbursement"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_SequenceFlow_ToOrganizeDisbursement" targetRef="_UserTask_OrganizeDisbursement" sourceRef="_UserTask_NotifyCustomer"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="_EndEvent_ProcessCompleted" name="Process Completed" incoming="_SequenceFlow_ToEndEvent"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_SequenceFlow_ToEndEvent" targetRef="_EndEvent_ProcessCompleted" sourceRef="_UserTask_OrganizeDisbursement"/>
+  </rootElements>
+</bpmn:Definitions>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" xmlns:xmi="http://www.omg.org/XMI" xmi:version="2.0" id="CreditRiskAssessment">
+  <rootElements xsi:type="bpmn:Process" id="CreditProcess">
+    <flowElements xsi:type="bpmn:StartEvent" id="startEvent" name="Receive Credit Request"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="riskAssessmentDecision" name="Risk Above Threshold?"/>
+    <flowElements xsi:type="bpmn:UserTask" id="advancedRiskAssessment" name="Perform Advanced Risk Assessment"/>
+    <flowElements xsi:type="bpmn:UserTask" id="simpleRiskAssessment" name="Perform Simple Risk Assessment"/>
+    <flowElements xsi:type="bpmn:UserTask" id="notifyCustomer" name="Notify Customer"/>
+    <flowElements xsi:type="bpmn:UserTask" id="organizeDisbursement" name="Organize Disbursement"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="endEvent" name="End Process"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="toDecision" sourceRef="startEvent" targetRef="riskAssessmentDecision"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="toAdvancedAssessment" name="Yes" sourceRef="riskAssessmentDecision" targetRef="advancedRiskAssessment"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="toSimpleAssessment" name="No" sourceRef="riskAssessmentDecision" targetRef="simpleRiskAssessment"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="advancedToNotify" sourceRef="advancedRiskAssessment" targetRef="notifyCustomer"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="simpleToNotify" sourceRef="simpleRiskAssessment" targetRef="notifyCustomer"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="notifyToEnd" sourceRef="notifyCustomer" targetRef="endEvent"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="organizeToNotify" sourceRef="organizeDisbursement" targetRef="notifyCustomer"/>
+  </rootElements>
+</bpmn:Definitions>

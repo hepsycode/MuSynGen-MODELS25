@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_KkUY4Y8DEe-v648egk3nxQ">
+  <rootElements xsi:type="bpmn:Process" id="_KkUY4I8DEe-v648egk3nxQ" name="Damage Compensation Process" isExecutable="true">
+    <flowElements xsi:type="bpmn:StartEvent" id="_dDiegI8JEe-v648egk3nxQ" name="Receive Compensation Request" outgoing="_pkQ0II8JEe-v648egk3nxQ">
+      <eventDefinitions xsi:type="bpmn:MessageEventDefinition" id="_dDiegI8JEe-v648egk3nxQ_MessageEventDefinition"/>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="_obWrUI8JEe-v648egk3nxQ" name="Retrieve Premises File" outgoing="_tBvnoI8JEe-v648egk3nxQ" incoming="_pkQ0II8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_pkQ0II8JEe-v648egk3nxQ" targetRef="_obWrUI8JEe-v648egk3nxQ" sourceRef="_dDiegI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_qiungI8JEe-v648egk3nxQ" name="Check Request Compliance" outgoing="_wYnc0I8JEe-v648egk3nxQ" incoming="_tBvnoI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_tBvnoI8JEe-v648egk3nxQ" targetRef="_qiungI8JEe-v648egk3nxQ" sourceRef="_obWrUI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_t0sukI8JEe-v648egk3nxQ" name="Set Hearing Date" outgoing="_yVKpEI8JEe-v648egk3nxQ" incoming="_wYnc0I8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_wYnc0I8JEe-v648egk3nxQ" targetRef="_t0sukI8JEe-v648egk3nxQ" sourceRef="_qiungI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="_w3ntAI8JEe-v648egk3nxQ" name="Fees Paid?" outgoing="_AR0KII8KEe-v648egk3nxQ _KeNFoI8KEe-v648egk3nxQ" incoming="_yVKpEI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_yVKpEI8JEe-v648egk3nxQ" targetRef="_w3ntAI8JEe-v648egk3nxQ" sourceRef="_t0sukI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_0FCrQI8JEe-v648egk3nxQ" name="Allocate Hearing Date" outgoing="_J3GCUI8KEe-v648egk3nxQ" incoming="_AR0KII8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_AR0KII8KEe-v648egk3nxQ" targetRef="_0FCrQI8JEe-v648egk3nxQ" sourceRef="_w3ntAI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="_9BHOYI8JEe-v648egk3nxQ" name="Process Completed" incoming="_J3GCUI8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_J3GCUI8KEe-v648egk3nxQ" targetRef="_9BHOYI8JEe-v648egk3nxQ" sourceRef="_0FCrQI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_Cn4CkI8KEe-v648egk3nxQ" name="Produce Fees Notice" outgoing="_RTXmoI8KEe-v648egk3nxQ" incoming="_KeNFoI8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_KeNFoI8KEe-v648egk3nxQ" targetRef="_Cn4CkI8KEe-v648egk3nxQ" sourceRef="_w3ntAI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:IntermediateCatchEvent" id="_Gf0kgI8KEe-v648egk3nxQ" name="Wait for Fees Payment" outgoing="_J3GCUI8KEe-v648egk3nxQ" incoming="_RTXmoI8KEe-v648egk3nxQ">
+      <eventDefinitions xsi:type="bpmn:MessageEventDefinition" id="_Gf0kgI8KEe-v648egk3nxQ_MessageEventDefinition"/>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_RTXmoI8KEe-v648egk3nxQ" targetRef="_Gf0kgI8KEe-v648egk3nxQ" sourceRef="_Cn4CkI8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_J3GCUI8KEe-v648egk3nxQ" targetRef="_9BHOYI8JEe-v648egk3nxQ" sourceRef="_Gf0kgI8KEe-v648egk3nxQ"/>
+    <laneSets id="_L9VaQY8DEe-v648egk3nxQ" name="Tribunal">
+      <lanes id="_L9WBUI8DEe-v648egk3nxQ" name="Cashier" flowNodeRefs="_dDiegI8JEe-v648egk3nxQ _obWrUI8JEe-v648egk3nxQ _qiungI8JEe-v648egk3nxQ _t0sukI8JEe-v648egk3nxQ _w3ntAI8JEe-v648egk3nxQ _0FCrQI8JEe-v648egk3nxQ _Cn4CkI8KEe-v648egk3nxQ _Gf0kgI8KEe-v648egk3nxQ _9BHOYI8JEe-v648egk3nxQ">
+        <extensionValues id="_5J3QAI8JEe-v648egk3nxQ">
+          <value xsi:type="bpmn:DataObject" id="_5J33EI8JEe-v648egk3nxQ" name="Compensation Request"/>
+        </extensionValues>
+        <extensionValues id="_MLqtAI8KEe-v648egk3nxQ">
+          <value xsi:type="bpmn:DataObject" id="_MLqtAY8KEe-v648egk3nxQ" name="Premises File"/>
+        </extensionValues>
+        <extensionValues id="_qXDGgI8KEe-v648egk3nxQ">
+          <value xsi:type="bpmn:DataObject" id="_qXDtkI8KEe-v648egk3nxQ" name="Fees Notice"/>
+        </extensionValues>
+        <extensionValues id="_3ZTb4I8KEe-v648egk3nxQ">
+          <value xsi:type="bpmn:DataStore" id="_3ZUC8I8KEe-v648egk3nxQ" name="Tribunal Records"/>
+        </extensionValues>
+      </lanes>
+    </laneSets>
+    <artifacts xsi:type="bpmn:Association" id="_8FLxoI8JEe-v648egk3nxQ" sourceRef="_dDiegI8JEe-v648egk3nxQ" targetRef="_5J33EI8JEe-v648egk3nxQ"/>
+    <artifacts xsi:type="bpmn:Association" id="_BEBDII8KEe-v648egk3nxQ" sourceRef="_5J33EI8JEe-v648egk3nxQ" targetRef="_obWrUI8JEe-v648egk3nxQ"/>
+    <artifacts xsi:type="bpmn:Association" id="_BxaUoI8KEe-v648egk3nxQ" sourceRef="_obWrUI8JEe-v648egk3nxQ" targetRef="_MLqtAY8KEe-v648egk3nxQ"/>
+    <artifacts xsi:type="bpmn:Association" id="_E5hVEI8KEe-v648egk3nxQ" sourceRef="_MLqtAY8KEe-v648egk3nxQ" targetRef="_qiungI8JEe-v648egk3nxQ"/>
+    <artifacts xsi:type="bpmn:Association" id="_O8J3oI8KEe-v648egk3nxQ" sourceRef="_qiungI8JEe-v648egk3nxQ" targetRef="_t0sukI8JEe-v648egk3nxQ"/>
+    <artifacts xsi:type="bpmn:Association" id="_WP6ZII8KEe-v648egk3nxQ" sourceRef="_t0sukI8JEe-v648egk3nxQ" targetRef="_w3ntAI8JEe-v648egk3nxQ"/>
+    <artifacts xsi:type="bpmn:Association" id="_c38dEI8KEe-v648egk3nxQ" sourceRef="_w3ntAI8JEe-v648egk3nxQ" targetRef="_0FCrQI8JEe-v648egk3nxQ"/>
+    <artifacts xsi:type="bpmn:Association" id="_uY3WII8KEe-v648egk3nxQ" sourceRef="_w3ntAI8JEe-v648egk3nxQ" targetRef="_Cn4CkI8KEe-v648egk3nxQ"/>
+    <artifacts xsi:type="bpmn:Association" id="_xik5EI8KEe-v648egk3nxQ" sourceRef="_Cn4CkI8KEe-v648egk3nxQ" targetRef="_qXDtkI8KEe-v648egk3nxQ"/>
+    <artifacts xsi:type="bpmn:Association" id="_8SxsQI8KEe-v648egk3nxQ" sourceRef="_qXDtkI8KEe-v648egk3nxQ" targetRef="_Gf0kgI8KEe-v648egk3nxQ"/>
+  </rootElements>
+</bpmn:Definitions>

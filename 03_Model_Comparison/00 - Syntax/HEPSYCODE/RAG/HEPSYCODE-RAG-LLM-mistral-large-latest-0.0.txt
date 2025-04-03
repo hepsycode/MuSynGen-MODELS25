@@ -1,0 +1,78 @@
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-mistral-large-latest-0.0/2024-02-13 16.44 00%20-%20DigitalCam%20Nominal-representations.aird.hepsy
+
+Validation Result: Validation successful: No errors found.
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-mistral-large-latest-0.0/2024-02-13 16.59 00%20-%20DigitalCam%20Parallel-representations.aird.hepsy
+
+Validation Result: Validation successful: No errors found.
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-mistral-large-latest-0.0/2024-02-13 17.34 01%20-%20FIRFIRGCD-representations.aird.hepsy
+
+Validation Result: Validation error: org.eclipse.emf.ecore.xmi.IllegalValueException: Value 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl@50992aa (eClass: org.eclipse.emf.ecore.impl.EClassImpl@12a01655 (name: Port) (instanceClassName: null) (abstract: false, interface: false))' is not legal. (file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-mistral-large-latest-0.0/2024-02-13%2017.34%2001%2520-%2520FIRFIRGCD-representations.aird.hepsy, 28, 138)
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-mistral-large-latest-0.0/2024-02-14 14.40 02%20-%20RT%20App-representations.aird.hepsy
+
+Validation Result: Validation error: org.eclipse.emf.ecore.xmi.IllegalValueException: Value 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl@18ad0577 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@4aea0065 (name: Port) (instanceClassName: null) (abstract: false, interface: false))' is not legal. (file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-mistral-large-latest-0.0/2024-02-14%2014.40%2002%2520-%2520RT%2520App-representations.aird.hepsy, 25, 165)
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-mistral-large-latest-0.0/2024-02-14 14.50 03%20-%20RT%20App%20Paper-representations.aird.hepsy
+
+Validation Result: Validation successful: No errors found.
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-mistral-large-latest-0.0/2024-02-14 15.04 04%20-%20RT%20App%20Paper%202-representations.aird.hepsy
+
+Validation Result: Validation error: org.eclipse.emf.ecore.xmi.IllegalValueException: Value 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl@68a0f98a (eClass: org.eclipse.emf.ecore.impl.EClassImpl@7c7a5cef (name: Port) (instanceClassName: null) (abstract: false, interface: false))' is not legal. (file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-mistral-large-latest-0.0/2024-02-14%2015.04%2004%2520-%2520RT%2520App%2520Paper%25202-representations.aird.hepsy, 14, 136)
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-mistral-large-latest-0.0/2024-02-14 15.40 05%20-%20Hepsy%20Example-representations.aird.hepsy
+
+Validation Result: Validation successful: No errors found.
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-mistral-large-latest-0.0/2024-02-14 15.51 06%20-%20Sobel-representations.aird.hepsy
+
+Validation Result: Validation successful: No errors found.
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-mistral-large-latest-0.0/2024-02-14 15.52 07%20-%20Roberts-representations.aird.hepsy
+
+Validation Result: Validation successful: No errors found.
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-mistral-large-latest-0.0/2024-02-14 16.25 08%20-%20RASTA-PLP-representations.aird.hepsy
+
+Validation Result: Validation error: org.eclipse.emf.ecore.xmi.IllegalValueException: Value 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl@2f346972 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@663099ed (name: Port) (instanceClassName: null) (abstract: false, interface: false))' is not legal. (file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-mistral-large-latest-0.0/2024-02-14%2016.25%2008%2520-%2520RASTA-PLP-representations.aird.hepsy, -1, -1)
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-mistral-large-latest-0.0/2024-02-14 17.00 09%20-%20Susan-representations.aird.hepsy
+
+Validation Result: Validation error: org.eclipse.emf.ecore.xmi.IllegalValueException: Value 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl@29e73522 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@594373f7 (name: Port) (instanceClassName: null) (abstract: false, interface: false))' is not legal. (file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-mistral-large-latest-0.0/2024-02-14%2017.00%2009%2520-%2520Susan-representations.aird.hepsy, 35, 127)
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-mistral-large-latest-0.0/2024-02-14 17.46 10%20-%20JPEG_encoder-representations.aird.hepsy
+
+Validation Result: Validation successful: No errors found.
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-mistral-large-latest-0.0/2024-02-14 17.58 11%20-%20JPEG%20Reduced-representations.aird.hepsy
+
+Validation Result: Validation successful: No errors found.
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-mistral-large-latest-0.0/2024-02-14 18.17 12%20-%20FIRFIRGCD_ext-representations.aird.hepsy
+
+Validation Result: Validation error: org.eclipse.emf.ecore.xmi.IllegalValueException: Value 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl@d2f3d34 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@150be69 (name: Process) (instanceClassName: null) (abstract: false, interface: false))' is not legal. (file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-mistral-large-latest-0.0/2024-02-14%2018.17%2012%2520-%2520FIRFIRGCD_ext-representations.aird.hepsy, 45, 104)
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-mistral-large-latest-0.0/2024-02-14 18.30 13%20-%20FIRFIRGCD_HPV-representations.aird.hepsy
+
+Validation Result: Validation error: org.eclipse.emf.ecore.xmi.UnresolvedReferenceException: Unresolved reference '//@nodes.1/@ports.5'. (file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-mistral-large-latest-0.0/2024-02-14%2018.30%2013%2520-%2520FIRFIRGCD_HPV-representations.aird.hepsy, 19, 96)
+
+
+Validation Summary:
+Valid models: 8
+Models with errors: 7

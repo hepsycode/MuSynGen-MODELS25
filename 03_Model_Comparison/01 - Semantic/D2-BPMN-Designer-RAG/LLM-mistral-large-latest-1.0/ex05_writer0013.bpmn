@@ -1,0 +1,52 @@
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_ID0">
+  <rootElements xsi:type="bpmn:Process" id="_ID1">
+    <flowElements xsi:type="bpmn:StartEvent" id="_ID2" name="Customer submits a claim" outgoing="_ID3"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_ID4" name="Check documents for completeness" outgoing="_ID5" incoming="_ID3"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_ID3" targetRef="_ID4" sourceRef="_ID2"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_ID6" name="Register claim" outgoing="_ID7" incoming="_ID5"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_ID5" targetRef="_ID6" sourceRef="_ID4"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_ID8" name="Check insurance" outgoing="_ID9" incoming="_ID7"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_ID7" targetRef="_ID8" sourceRef="_ID6"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_ID10" name="Perform assessment" outgoing="_ID11 _ID16" incoming="_ID9"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_ID9" targetRef="_ID10" sourceRef="_ID8"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="_ID12" name="Assessment positive?" outgoing="_ID13 _ID15" incoming="_ID11"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_ID11" targetRef="_ID12" sourceRef="_ID10"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_ID14" name="Phone garage to authorize repairs" outgoing="_ID17" incoming="_ID13"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_ID13" name="Yes" targetRef="_ID14" sourceRef="_ID12"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_ID18" name="Schedule payment" outgoing="_ID19" incoming="_ID17"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_ID17" targetRef="_ID18" sourceRef="_ID14"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_ID19"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_ID20" name="Reject claim" incoming="_ID15 _ID16 _ID21"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_ID15" name="No" targetRef="_ID20" sourceRef="_ID12"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_ID16" name="Checks failed" targetRef="_ID20" sourceRef="_ID10"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_ID21" targetRef="_ID20"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="_ID24" incoming="_ID19 _ID22"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_ID22" targetRef="_ID24" sourceRef="_ID20"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_ID23" targetRef="_ID24" sourceRef="_ID19"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_ID26" name="Send letter to customer" outgoing="_ID27" incoming="_ID25"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_ID25" targetRef="_ID26" sourceRef="_ID24"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="_ID28" name="Process complete" incoming="_ID27"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_ID27" targetRef="_ID28" sourceRef="_ID26"/>
+    <laneSets id="_ID29" name="Car Insurer">
+      <lanes id="_ID30" name="Notification Department" flowNodeRefs="_ID4 _ID6"/>
+      <lanes id="_ID31" name="Handling Department" flowNodeRefs="_ID8 _ID10 _ID12 _ID14 _ID18 _ID20 _ID24 _ID26 _ID28"/>
+    </laneSets>
+    <artifacts xsi:type="bpmn:Association" id="_ID32" sourceRef="_ID4" targetRef="_ID33"/>
+    <artifacts xsi:type="bpmn:Association" id="_ID34" sourceRef="_ID6" targetRef="_ID35"/>
+    <artifacts xsi:type="bpmn:Association" id="_ID36" sourceRef="_ID8" targetRef="_ID37"/>
+    <artifacts xsi:type="bpmn:Association" id="_ID38" sourceRef="_ID10" targetRef="_ID39"/>
+    <artifacts xsi:type="bpmn:Association" id="_ID40" sourceRef="_ID14" targetRef="_ID41"/>
+    <artifacts xsi:type="bpmn:Association" id="_ID42" sourceRef="_ID18" targetRef="_ID43"/>
+    <artifacts xsi:type="bpmn:Association" id="_ID44" sourceRef="_ID20" targetRef="_ID45"/>
+    <artifacts xsi:type="bpmn:Association" id="_ID46" sourceRef="_ID26" targetRef="_ID47"/>
+    <artifacts xsi:type="bpmn:DataObject" id="_ID33" name="Claim documents [submitted]"/>
+    <artifacts xsi:type="bpmn:DataObject" id="_ID35" name="Claim documents [checked]"/>
+    <artifacts xsi:type="bpmn:DataObject" id="_ID37" name="Insurance details [checked]"/>
+    <artifacts xsi:type="bpmn:DataObject" id="_ID39" name="Assessment results"/>
+    <artifacts xsi:type="bpmn:DataObject" id="_ID41" name="Repair authorization"/>
+    <artifacts xsi:type="bpmn:DataObject" id="_ID43" name="Payment schedule"/>
+    <artifacts xsi:type="bpmn:DataObject" id="_ID45" name="Rejection details"/>
+    <artifacts xsi:type="bpmn:DataObject" id="_ID47" name="Notification letter"/>
+    <artifacts xsi:type="bpmn:DataStore" id="_ID49" name="Customer Data"/>
+  </rootElements>
+</bpmn:Definitions>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:Definitions xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" xmi:version="2.0" id="_1">
+  <rootElements xsi:type="bpmn:Process" id="_2">
+    <laneSets id="_3" name="Car Insurance Company">
+      <lanes id="_4" name="Notification Department">
+        <flowNodeRefs>_5 _7 _9</flowNodeRefs>
+      </lanes>
+      <lanes id="_6" name="Handling Department">
+        <flowNodeRefs>_10 _12</flowNodeRefs>
+      </lanes>
+    </laneSets>
+    <flowElements xsi:type="bpmn:StartEvent" id="_5" name="Claim Submitted">
+      <outgoing>_8</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="_7" name="Check Documents">
+      <incoming>_8</incoming>
+      <outgoing>_11</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_8" sourceRef="_5" targetRef="_7" />
+    <flowElements xsi:type="bpmn:UserTask" id="_9" name="Register Claim">
+      <incoming>_11</incoming>
+      <outgoing>_13</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_11" sourceRef="_7" targetRef="_9" />
+    <flowElements xsi:type="bpmn:UserTask" id="_10" name="Check Insurance">
+      <incoming>_13</incoming>
+      <outgoing>_15</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_13" sourceRef="_9" targetRef="_10" />
+    <flowElements xsi:type="bpmn:UserTask" id="_12" name="Assess Damage">
+      <incoming>_15</incoming>
+      <outgoing>_17</outgoing>
+      <outgoing>_16</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_15" sourceRef="_10" targetRef="_12" />
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="_14" name="Assessment Positive?">
+      <incoming>_17</incoming>
+      <outgoing>_19</outgoing>
+      <outgoing>_20</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_17" sourceRef="_12" targetRef="_14" />
+    <flowElements xsi:type="bpmn:UserTask" id="_18" name="Phone Garage">
+      <incoming>_19</incoming>
+      <outgoing>_21</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_19" sourceRef="_14" targetRef="_18" />
+    <flowElements xsi:type="bpmn:UserTask" id="_22" name="Schedule Payment">
+      <incoming>_21</incoming>
+      <outgoing>_23</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_21" sourceRef="_18" targetRef="_22" />
+    <flowElements xsi:type="bpmn:EndEvent" id="_24" name="Claim Completed">
+      <incoming>_23</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_23" sourceRef="_22" targetRef="_24" />
+    <flowElements xsi:type="bpmn:UserTask" id="_25" name="Reject Claim">
+      <incoming>_16</incoming>
+      <outgoing>_26</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_16" sourceRef="_12" targetRef="_25" />
+    <flowElements xsi:type="bpmn:EndEvent" id="_27" name="Claim Rejected">
+      <incoming>_26</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_26" sourceRef="_25" targetRef="_27" />
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="_28" name="Outcome Positive?">
+      <incoming>_20</incoming>
+      <outgoing>_29</outgoing>
+      <outgoing>_30</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_20" sourceRef="_14" targetRef="_28" />
+    <flowElements xsi:type="bpmn:UserTask" id="_31" name="Send Letter to Customer">
+      <incoming>_29</incoming>
+      <outgoing>_32</outgoing>
+    </flowElements>
+  </rootElements>
+</bpmn:Definitions>

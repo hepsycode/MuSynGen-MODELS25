@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_KkUY4Y8DEe-v648egk3nxQ">
+  <rootElements xsi:type="bpmn:Process" id="_KkUY4I8DEe-v648egk3nxQ">
+    <laneSets id="_L9VaQY8DEe-v648egk3nxQ" name="Process">
+      <lanes id="_s9WBUI8DEe-v648egk3nxQ" name="Secretary Office" flowNodeRefs="_dDiegI8JEe-v648egk3nxQ _obWrUI8JEe-v648egk3nxQ _qiungI8JEe-v648egk3nxQ _9BHOYI8JEe-v648egk3nxQ _vQwAYI8KEe-v648egk3nxQ"/>
+      <lanes id="_tRUZAI8JEe-v648egk3nxQ" name="Teacher" flowNodeRefs="_gEGeBI8JEe-v648egk3nxQ _iFcxAI8JEe-v648egk3nxQ _PQWnAY8JEe-v648egk3nxQ"/>
+    </laneSets>
+    <flowElements xsi:type="bpmn:StartEvent" id="_dDiegI8JEe-v648egk3nxQ" name="Start of elective course selection process" outgoing="_pkQ0II8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" outgoing="_tBvnoI8JEe-v648egk3nxQ" id="_obWrUI8JEe-v648egk3nxQ" name="Collect course descriptions from teachers" incoming="_pkQ0II8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_pkQ0II8JEe-v648egk3nxQ" targetRef="_obWrUI8JEe-v648egk3nxQ" sourceRef="_dDiegI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_qiungI8JEe-v648egk3nxQ" name="Enter course information into Course Booking System (CBS)/Course Information System (CIS)" outgoing="_wYnc0I8JEe-v648egk3nxQ" incoming="_tBvnoI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_tBvnoI8JEe-v648egk3nxQ" targetRef="_qiungI8JEe-v648egk3nxQ" sourceRef="_obWrUI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_gEGeBI8JEe-v648egk3nxQ" name="Receive student registration list" outgoing="_Ty0kAJ8JEe-v648egk3nxQ" incoming="_gUFnjI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_iFcxAI8JEe-v648egk3nxQ" name="Choose which students can participate" outgoing="_iXb0ZI8JEe-v648egk3nxQ" incoming="_Ty0kAJ8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_PQWnAY8JEe-v648egk3nxQ" name="Hand over list of non-accepted students to secretary's office" outgoing="_Y2qT4J8JEe-v648egk3nxQ" incoming="_iXb0ZI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_9BHOYI8JEe-v648egk3nxQ" name="Assign non-accepted students to courses with free places" outgoing="_EYfEkI8KEe-v648egk3nxQ" incoming="_Y2qT4J8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_vQwAYI8KEe-v648egk3nxQ" name="Rebook students in the CBS/CIS" outgoing="_HTVPoI8LEe-v648egk3nxQ" incoming="_EYfEkI8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="_TSe5kI8LEe-v648egk3nxQ" name="Process End" incoming="_HTVPoI8LEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_wYnc0I8JEe-v648egk3nxQ" targetRef="_gUFnjI8JEe-v648egk3nxQ" sourceRef="_qiungI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_gUFnjI8JEe-v648egk3nxQ" targetRef="_gEGeBI8JEe-v648egk3nxQ" sourceRef="_TYCZJI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_Ty0kAJ8JEe-v648egk3nxQ" targetRef="_iFcxAI8JEe-v648egk3nxQ" sourceRef="_gEGeBI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_iXb0ZI8JEe-v648egk3nxQ" targetRef="_PQWnAY8JEe-v648egk3nxQ" sourceRef="_iFcxAI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_Y2qT4J8JEe-v648egk3nxQ" targetRef="_9BHOYI8JEe-v648egk3nxQ" sourceRef="_PQWnAY8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_EYfEkI8KEe-v648egk3nxQ" targetRef="_vQwAYI8KEe-v648egk3nxQ" sourceRef="_9BHOYI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_HTVPoI8LEe-v648egk3nxQ" targetRef="_TSe5kI8LEe-v648egk3nxQ" sourceRef="_vQwAYI8KEe-v648egk3nxQ"/>
+  </rootElements>
+</bpmn:Definitions>

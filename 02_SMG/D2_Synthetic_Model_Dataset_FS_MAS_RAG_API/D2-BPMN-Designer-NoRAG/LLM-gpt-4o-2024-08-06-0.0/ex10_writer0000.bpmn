@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_SupplierRetailerProcess">
+  <rootElements xsi:type="bpmn:Process" id="_SupplierRetailerProcessId" isExecutable="true">
+    <flowElements xsi:type="bpmn:StartEvent" id="_StartEvent" name="Retailer requests offer" outgoing="_toPrepareOffer"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_PrepareOffer" name="Prepare Offer" outgoing="_toSendOffer" incoming="_toPrepareOffer"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_toPrepareOffer" targetRef="_PrepareOffer" sourceRef="_StartEvent"/>
+    <flowElements xsi:type="bpmn:SendTask" id="_SendOffer" name="Send Offer" outgoing="_toReceiveResponse" incoming="_toSendOffer"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_toSendOffer" targetRef="_SendOffer" sourceRef="_PrepareOffer"/>
+    <flowElements xsi:type="bpmn:ReceiveTask" id="_ReceiveResponse" name="Receive Response" outgoing="_toDecision" incoming="_toReceiveResponse" instantiate="true"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_toReceiveResponse" targetRef="_ReceiveResponse" sourceRef="_SendOffer"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="_Decision" name="Response Decision" outgoing="_toCancelOrder _toProcessOrder _toUpdateOrder _toWaitForResponse" incoming="_toDecision"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_toDecision" targetRef="_Decision" sourceRef="_ReceiveResponse"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_toCancelOrder" name="Order Cancellation" targetRef="_CancelOrder" sourceRef="_Decision"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_toProcessOrder" name="Order Confirmation" targetRef="_ProcessOrder" sourceRef="_Decision"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_toUpdateOrder" name="Order Change" targetRef="_UpdateOrder" sourceRef="_Decision"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_toWaitForResponse" name="No Response" targetRef="_WaitForResponse" sourceRef="_Decision"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_CancelOrder" name="Cancel Order" incoming="_toCancelOrder"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_ProcessOrder" name="Process Order" incoming="_toProcessOrder"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_UpdateOrder" name="Update Order" outgoing="_toAskForConfirmation" incoming="_toUpdateOrder"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_toAskForConfirmation" targetRef="_AskForConfirmation" sourceRef="_UpdateOrder"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_AskForConfirmation" name="Ask for Confirmation" outgoing="_toReceiveResponseAgain" incoming="_toAskForConfirmation"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_toReceiveResponseAgain" targetRef="_ReceiveResponse" sourceRef="_AskForConfirmation"/>
+    <flowElements xsi:type="bpmn:IntermediateCatchEvent" id="_WaitForResponse" name="Wait for 48h" outgoing="_toCancelOrderAfterWait" incoming="_toWaitForResponse">
+      <eventDefinitions xsi:type="bpmn:TimerEventDefinition">
+        <timeDuration xsi:type="bpmn:FormalExpression" language="http://www.w3.org/1999/XPath">PT48H</timeDuration>
+      </eventDefinitions>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_toCancelOrderAfterWait" targetRef="_CancelOrder" sourceRef="_WaitForResponse"/>
+    <laneSets id="_LaneSet" name="Supplier and Retailer">
+      <lanes id="_SupplierLane" name="Supplier" flowNodeRefs="_PrepareOffer _SendOffer _ReceiveResponse _Decision _CancelOrder _ProcessOrder _UpdateOrder _AskForConfirmation _WaitForResponse"/>
+      <lanes id="_RetailerLane" name="Retailer" flowNodeRefs="_StartEvent"/>
+    </laneSets>
+  </rootElements>
+</bpmn:Definitions>

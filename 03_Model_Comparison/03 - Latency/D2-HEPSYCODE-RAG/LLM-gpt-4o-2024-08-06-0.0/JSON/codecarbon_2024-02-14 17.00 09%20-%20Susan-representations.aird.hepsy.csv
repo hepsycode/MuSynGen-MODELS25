@@ -1,0 +1,12 @@
+node,total_emissions
+generate_query_node,1.1663675339201248e-07
+cache_context_node,5.3913889256716367e-08
+model_generation_node,4.5022541127232036e-05
+model_validation_node,3.641879303612064e-05
+model_validation_node,3.38807512018375e-05
+model_validation_node,3.534714114988632e-05
+model_generation_node,2.8480951292427123e-07
+model_validation_node,3.324751254743422e-05
+model_validation_node,3.771006412889815e-05
+model_validation_node,2.074960536449826e-07
+FILE_2024-02-14 17.00 09%20-%20Susan-representations.aird.hepsy,0.0005020677972976306

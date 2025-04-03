@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hml:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hml="org.univaq.hepsy">
+  <nodes xsi:type="hml:Stimulus" name="Stimulus">
+    <ports name="st_out">
+      <pChannels name="st_sys_ch" pFrom="//@nodes.0/@ports.0" pTo="//@nodes.2/@ports.1"/>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:Display" name="display">
+    <ports name="dis_in">
+      <pChannels name="sys_dis_ch" pFrom="//@nodes.1/@ports.0" pTo="//@nodes.2/@ports.0"/>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:StructuredNode">
+    <nChannels name="split_sobel_ch" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.1" queueSize="64" rendezVous="true">
+      <message name="split_sobel_payload">
+        <entry name="img" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <nChannels name="sobel_gx_ch" nFrom="//@nodes.2/@processes.1" nTo="//@nodes.2/@processes.3" queueSize="8" rendezVous="true">
+      <message name="sobel_gx_payload">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="gx_sobel_ch" nFrom="//@nodes.2/@processes.1" nTo="//@nodes.2/@processes.3" queueSize="8" rendezVous="true">
+      <message name="gx_sobel_payload">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="sobel_gy_ch" nFrom="//@nodes.2/@processes.1" nTo="//@nodes.2/@processes.4" queueSize="8" rendezVous="true">
+      <message name="sobel_gy_payload">
+        <entry name="sample" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <nChannels name="gy_sobel_ch" nFrom="//@nodes.2/@processes.4" nTo="//@nodes.2/@processes.1" queueSize="8" rendezVous="true">
+      <message name="gy_sobel_payload">
+        <entry name="sample" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <nChannels name="sobel_merge_ch" nFrom="//@nodes.2/@processes.1" nTo="//@nodes.2/@processes.2" queueSize="64" rendezVous="true">
+      <message name="sobel_merge_payload">
+        <entry name="sample" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <ports name="sys_out"/>
+    <ports name="sys_in" portExtension="//@nodes.2/@processes.0"/>
+    <processes name="split"/>
+    <processes name="sobel"/>
+    <processes name="merge" processExtension="//@nodes.2/@ports.0"/>
+    <processes name="gx"/>
+    <processes name="gy"/>
+  </nodes>
+</hml:BehaviorSpecification>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_eXampleID1">
+  <rootElements xsi:type="bpmn:Process" id="_eXampleProcessID2">
+    <flowElements xsi:type="bpmn:StartEvent" id="_eXampleStartEventID3" name="Receive claim" outgoing="_eXampleSequenceFlowID4"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_eXampleUserTaskID5" name="Register claim" outgoing="_eXampleSequenceFlowID6" incoming="_eXampleSequenceFlowID4"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_eXampleSequenceFlowID4" targetRef="_eXampleUserTaskID5" sourceRef="_eXampleStartEventID3"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_eXampleUserTaskID7" name="Examine claim" outgoing="_eXampleSequenceFlowID8" incoming="_eXampleSequenceFlowID6"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_eXampleSequenceFlowID6" targetRef="_eXampleUserTaskID7" sourceRef="_eXampleUserTaskID5"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_eXampleUserTaskID9" name="Write settlement recommendation" outgoing="_eXampleSequenceFlowID10" incoming="_eXampleSequenceFlowID8"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_eXampleSequenceFlowID8" targetRef="_eXampleUserTaskID9" sourceRef="_eXampleUserTaskID7"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_eXampleUserTaskID11" name="Check recommendation" outgoing="_eXampleSequenceFlowID12" incoming="_eXampleSequenceFlowID10"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_eXampleSequenceFlowID10" targetRef="_eXampleUserTaskID11" sourceRef="_eXampleUserTaskID9"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="_eXampleExclusiveGatewayID14" name="Recommendation OK?" outgoing="_eXampleSequenceFlowID15 _eXampleSequenceFlowID16" incoming="_eXampleSequenceFlowID12"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_eXampleSequenceFlowID12" targetRef="_eXampleExclusiveGatewayID14" sourceRef="_eXampleUserTaskID11"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_eXampleSequenceFlowID15" name="OK" targetRef="_eXampleUserTaskID17" sourceRef="_eXampleExclusiveGatewayID14"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_eXampleSequenceFlowID16" name="Not OK" targetRef="_eXampleUserTaskID9" sourceRef="_eXampleExclusiveGatewayID14"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_eXampleUserTaskID17" name="Proceed with claim handling" incoming="_eXampleSequenceFlowID15"/>
+    <laneSets id="_eXampleLaneSetID18" name="Insurance Company">
+      <lanes id="_eXampleLaneID19" name="Claims Officer" flowNodeRefs="_eXampleUserTaskID5 _eXampleUserTaskID7 _eXampleUserTaskID9"/>
+      <lanes id="_eXampleLaneID20" name="Senior Claims Officer" flowNodeRefs="_eXampleUserTaskID11"/>
+    </laneSets>
+    <artifacts xsi:type="bpmn:DataObject" id="_eXampleDataObjectID21" name="Claim data"/>
+    <artifacts xsi:type="bpmn:DataStore" id="_eXampleDataStoreID22" name="Registered Claims"/>
+  </rootElements>
+</bpmn:Definitions>

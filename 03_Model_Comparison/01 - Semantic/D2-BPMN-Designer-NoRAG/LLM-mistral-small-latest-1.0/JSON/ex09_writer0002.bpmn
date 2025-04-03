@@ -1,0 +1,12 @@
+{
+    "response_length": 5406,
+    "execution_time": 0.0009999275207519531,
+    "temperature": 1.0,
+    "usage": {
+        "input_tokens": 9435,
+        "output_tokens": 2605,
+        "total_tokens": 12040
+    },
+    "price_usd": 0.001725,
+    "model_name": "mistral-small-latest"
+}

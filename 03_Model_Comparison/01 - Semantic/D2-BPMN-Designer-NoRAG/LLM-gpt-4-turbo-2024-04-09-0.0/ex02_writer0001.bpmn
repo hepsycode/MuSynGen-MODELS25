@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="Definitions_1">
+  <rootElements xsi:type="bpmn:Process" id="Process_1">
+    <laneSets id="LaneSet_1">
+      <lanes id="Lane_1" name="Claims Officer">
+        <flowNodeRefs>StartEvent_1 UserTask_1 ExclusiveGateway_1 UserTask_2</flowNodeRefs>
+      </lanes>
+      <lanes id="Lane_2" name="Senior Claims Officer">
+        <flowNodeRefs>ExclusiveGateway_1 UserTask_3</flowNodeRefs>
+      </lanes>
+    </laneSets>
+    <flowElements xsi:type="bpmn:StartEvent" id="StartEvent_1" name="Receive Claim" outgoing="SequenceFlow_1"/>
+    <flowElements xsi:type="bpmn:UserTask" id="UserTask_1" name="Register and Examine Claim" incoming="SequenceFlow_1" outgoing="SequenceFlow_2"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_1" sourceRef="StartEvent_1" targetRef="UserTask_1"/>
+    <flowElements xsi:type="bpmn:UserTask" id="UserTask_2" name="Write Settlement Recommendation" incoming="SequenceFlow_2" outgoing="SequenceFlow_3"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_2" sourceRef="UserTask_1" targetRef="UserTask_2"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="ExclusiveGateway_1" name="Check Recommendation" incoming="SequenceFlow_3" outgoing="SequenceFlow_4 SequenceFlow_5"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_3" sourceRef="UserTask_2" targetRef="ExclusiveGateway_1"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_4" name="Not OK" targetRef="UserTask_2" sourceRef="ExclusiveGateway_1"/>
+    <flowElements xsi:type="bpmn:UserTask" id="UserTask_3" name="Mark Claim OK" incoming="SequenceFlow_5" outgoing="SequenceFlow_6"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_5" name="OK" targetRef="UserTask_3" sourceRef="ExclusiveGateway_1"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="EndEvent_1" name="Claim Handling Proceeds" incoming="SequenceFlow_6"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_6" sourceRef="UserTask_3" targetRef="EndEvent_1"/>
+    <artifacts xsi:type="bpmn:DataObject" id="DataObject_1" name="Claim Form"/>
+    <artifacts xsi:type="bpmn:DataStore" id="DataStore_1" name="Claims Database"/>
+    <artifacts xsi:type="bpmn:Association" id="Association_1" sourceRef="UserTask_1" targetRef="DataObject_1"/>
+    <artifacts xsi:type="bpmn:Association" id="Association_2" sourceRef="UserTask_2" targetRef="DataStore_1"/>
+  </rootElements>
+</bpmn:Definitions>

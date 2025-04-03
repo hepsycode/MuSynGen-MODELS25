@@ -1,0 +1,6 @@
+total_emissions,node
+6.694980073328543e-08,generate_query_node
+2.055007188673807e-07,cache_context_node
+0.0006372667372175753,model_generation_node
+3.733320605701526e-07,model_validation_node
+0.0019859723122973823,FILE_2024-02-13 16.44 00%20-%20DigitalCam%20Nominal-representations.aird.hepsy

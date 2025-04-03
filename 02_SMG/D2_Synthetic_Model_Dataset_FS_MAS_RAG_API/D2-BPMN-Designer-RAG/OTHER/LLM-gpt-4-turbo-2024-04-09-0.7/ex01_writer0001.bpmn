@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="Definitions_1">
+  <rootElements xsi:type="bpmn:Process" id="Process_1">
+    <flowElements xsi:type="bpmn:StartEvent" id="StartEvent_1" name="Receive Credit Request" outgoing="SequenceFlow_1"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="ExclusiveGateway_1" name="Risk Above Threshold?" incoming="SequenceFlow_1" outgoing="SequenceFlow_2 SequenceFlow_3"/>
+    <flowElements xsi:type="bpmn:Task" id="Task_1" name="Perform Simple Risk Assessment" incoming="SequenceFlow_2" outgoing="SequenceFlow_4"/>
+    <flowElements xsi:type="bpmn:Task" id="Task_2" name="Perform Advanced Risk Assessment" incoming="SequenceFlow_3" outgoing="SequenceFlow_4"/>
+    <flowElements xsi:type="bpmn:Task" id="Task_3" name="Notify Customer" incoming="SequenceFlow_4" outgoing="SequenceFlow_5"/>
+    <flowElements xsi:type="bpmn:Task" id="Task_4" name="Organize Disbursement" incoming="SequenceFlow_4" outgoing="SequenceFlow_6"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="EndEvent_1" name="End Process" incoming="SequenceFlow_5 SequenceFlow_6"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_1" sourceRef="StartEvent_1" targetRef="ExclusiveGateway_1"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_2" name="No" sourceRef="ExclusiveGateway_1" targetRef="Task_1"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_3" name="Yes" sourceRef="ExclusiveGateway_1" targetRef="Task_2"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_4" sourceRef="Task_1" targetRef="Task_3"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_5" sourceRef="Task_3" targetRef="EndEvent_1"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_6" sourceRef="Task_4" targetRef="EndEvent_1"/>
+  </rootElements>
+</bpmn:Definitions>

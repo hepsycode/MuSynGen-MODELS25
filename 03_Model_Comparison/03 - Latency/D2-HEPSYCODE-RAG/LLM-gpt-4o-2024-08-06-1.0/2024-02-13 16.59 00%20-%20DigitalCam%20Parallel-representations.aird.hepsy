@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hml:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hml="org.univaq.hepsy">
+  <nodes xsi:type="hml:Stimulus" name="Stimulus">
+    <ports name="stim_system_out_port">
+      <pChannels name="stim_system_channel" pFrom="//@nodes.0/@ports.0" pTo="//@nodes.2/@ports.0">
+        <message name="stim_system_message">
+          <entry name="raw_image_data" type="sc_bv"/>
+        </message>
+      </pChannels>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:StructuredNode" name="DigitalCam">
+    <ports name="system_display_out_port"/>
+    <ports name="digitalcam_in" portExtension="//@nodes.1/@processes.0">
+      <pChannels name="stim_ccdpp_channel" pFrom="//@nodes.0/@ports.0" pTo="//@nodes.1/@processes.0">
+        <message name="raw_to_preprocess">
+          <entry name="pre_processed_data" type="sc_lv"/>
+        </message>
+      </pChannels>
+    </ports>
+    <processes name="ccdpp"/>
+    <processes name="codec0"/>
+    <processes name="codec1"/>
+    <processes name="codec2"/>
+    <processes name="codec3"/>
+    <processes name="codec4"/>
+    <processes name="codec5"/>
+    <processes name="codec6"/>
+    <processes name="codec7"/>
+    <nChannels name="ccdpp_codec0_channel" nFrom="//@nodes.1/@processes.0" nTo="//@nodes.1/@processes.1" queueSize="8" rendezVous="true">
+      <message name="preprocess_to_codec0">
+        <entry name="data_chunk0" type="sc_logic"/>
+      </message>
+    </nChannels>
+    <nChannels name="ccdpp_codec1_channel" nFrom="//@nodes.1/@processes.0" nTo="//@nodes.1/@processes.2" queueSize="8" rendezVous="true">
+      <message name="preprocess_to_codec1">
+        <entry name="data_chunk1" type="sc_logic"/>
+      </message>
+    </nChannels>
+    <nChannels name="ccdpp_codec2_channel" nFrom="//@nodes.1/@processes.0" nTo="//@nodes.1/@processes.3" queueSize="8" rendezVous="true">
+      <message name="preprocess_to_codec2">
+        <entry name="data_chunk2" type="sc_logic"/>
+      </message>
+    </nChannels>
+    <nChannels name="ccdpp_codec3_channel" nFrom="//@nodes.1/@processes.0" nTo="//@nodes.1/@processes.4" queueSize="8" rendezVous="true">
+      <message name="preprocess_to_codec3">
+        <entry name="data_chunk3" type="sc_logic"/>
+      </message>
+    </nChannels>
+    <nChannels name="ccdpp_codec4_channel" nFrom="//@nodes.1/@processes.0" nTo="//@nodes.1/@processes.5" queueSize="8" rendezVous="true">
+      <message name="preprocess_to_codec4">
+        <entry name="data_chunk4" type="sc_logic"/>
+      </message>
+    </nChannels>
+    <nChannels name="ccdpp_codec5_channel" nFrom="//@nodes.1/@processes.0" nTo="//@nodes.1/@processes.6" queueSize="8" rendezVous="true">
+      <message name="preprocess_to_codec5">
+        <entry name="data_chunk5" type="sc_logic"/>
+      </message>
+    </nChannels>
+    <nChannels name="ccdpp_codec6_channel" nFrom="//@nodes.1/@processes.0" nTo="//@nodes.1/@processes.7" queueSize="8" rendezVous="true">
+      <message name="preprocess_to_codec6">
+        <entry name="data_chunk6" type="sc_logic"/>
+      </message>
+    </nChannels>
+    <nChannels name="ccdpp_codec7_channel" nFrom="//@nodes.1/@processes.0" nTo="//@nodes.1/@processes.8" queueSize="8" rendezVous="true">
+      <message name="preprocess_to_codec7">
+        <entry name="data_chunk7" type="sc_logic"/>
+      </message>
+    </nChannels>
+    <nChannels name="codec_merge_channel" nFrom="//@nodes.1/@processes.1" nTo="//@nodes.1/@ports.0">
+      <message name="merged_image_message">
+        <entry name="merged_data" type="sc_uint"/>
+      </message>
+    </nChannels>
+  </nodes>
+  <nodes xsi:type="hml:Display" name="Display">
+    <ports name="system_display_in_port">
+      <pChannels name="display_channel" pFrom="//@nodes.2/@ports.0" pTo="//@nodes.2/@ports.0">
+        <message name="display_data_message">
+          <entry name="final_image" type="sc_uint"/>
+        </message>
+      </pChannels>
+    </ports>
+  </nodes>
+</hml:BehaviorSpecification>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hml:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hml="org.univaq.hepsy">
+  <nodes xsi:type="hml:Stimulus" name="Stimulus">
+    <ports name="stim_rtPaper2_out_port">
+      <pChannels name="stim_rtPaper2_channel" pFrom="//@nodes.0/@ports.0" pTo="//@nodes.1/@ports.0" queueSize="10" rendezVous="true">
+        <direction>Unidirectional</direction>
+      </pChannels>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:StructuredNode" name="RT_App_Paper_2">
+    <ports name="system_display_out_port" portExtension="//@nodes.1/@ports.1"/>
+    <processes name="capture"/>
+    <processes name="filter"/>
+    <processes name="preprocess"/>
+    <processes name="analyze"/>
+    <processes name="control" processExtension="//@nodes.0/@ports.0"/>
+  </nodes>
+  <nodes xsi:type="hml:Display" name="Display">
+    <ports name="system_display_in_port">
+      <pChannels name="disp_rtPaper2_channel" pFrom="//@nodes.1/@ports.1" pTo="//@nodes.2/@ports.0" queueSize="5" rendezVous="true">
+        <direction>Unidirectional</direction>
+      </pChannels>
+    </ports>
+  </nodes>
+</hml:BehaviorSpecification>

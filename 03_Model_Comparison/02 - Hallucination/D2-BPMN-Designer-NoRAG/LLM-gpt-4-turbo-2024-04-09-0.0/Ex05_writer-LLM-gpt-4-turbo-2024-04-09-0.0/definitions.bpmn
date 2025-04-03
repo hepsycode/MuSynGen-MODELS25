@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="CarDamageClaimsProcess">
+  <rootElements xsi:type="bpmn:Process" id="CarClaimsProcess" name="Car Damage Claims Processing">
+    <laneSets id="laneSet1">
+      <lanes id="lane1" name="Notification Department">
+        <flowNodeRefs>documentCheckTask registerClaimTask</flowNodeRefs>
+      </lanes>
+      <lanes id="lane2" name="Handling Department">
+        <flowNodeRefs>checkInsuranceTask performAssessmentTask phoneGarageTask schedulePaymentTask</flowNodeRefs>
+      </lanes>
+    </laneSets>
+    <flowElements xsi:type="bpmn:StartEvent" id="startEvent" name="Claim Submitted">
+      <outgoing>flow1</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="documentCheckTask" name="Check Documents">
+      <incoming>flow1</incoming>
+      <outgoing>flow2</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="registerClaimTask" name="Register Claim">
+      <incoming>flow2</incoming>
+      <outgoing>flow3</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="checkInsuranceTask" name="Check Insurance">
+      <incoming>flow3</incoming>
+      <outgoing>flow4</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="performAssessmentTask" name="Perform Assessment">
+      <incoming>flow4</incoming>
+      <outgoing>flow5</outgoing>
+      <outgoing>flow6</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="assessmentGateway" name="Assessment Positive?">
+      <incoming>flow5</incoming>
+      <outgoing>flow7</outgoing>
+      <outgoing>flow8</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="phoneGarageTask" name="Phone Garage to Authorize Repairs">
+      <incoming>flow7</incoming>
+      <outgoing>flow9</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="schedulePaymentTask" name="Schedule Payment">
+      <incoming>flow9</incoming>
+      <outgoing>flow10</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:EndEvent" id="endEventPositive" name="Process Completed">
+      <incoming>flow10</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="rejectClaimTask" name="Reject Claim">
+      <incoming>flow6</incoming>
+      <incoming>flow8</incoming>
+      <outgoing>flow11</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:EndEvent" id="endEventNegative" name="Claim Rejected">
+      <incoming>flow11</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flow1" sourceRef="startEvent" targetRef="documentCheckTask"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flow2" sourceRef="documentCheckTask" targetRef="registerClaimTask"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flow3" sourceRef="registerClaimTask" targetRef="checkInsuranceTask"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flow4" sourceRef="checkInsuranceTask" targetRef="performAssessmentTask"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flow5" sourceRef="performAssessmentTask" targetRef="assessmentGateway"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flow6" sourceRef="performAssessmentTask" targetRef="rejectClaimTask" name="Assessment Negative"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flow7" sourceRef="assessmentGateway" targetRef="phoneGarageTask" name="Yes"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flow8" sourceRef="assessmentGateway" targetRef="rejectClaimTask" name="No"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flow9" sourceRef="phoneGarageTask" targetRef="schedulePaymentTask"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flow10" sourceRef="schedulePaymentTask" targetRef="endEventPositive"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flow11" sourceRef="rejectClaimTask" targetRef="endEventNegative"/>
+  </rootElements>
+</bpmn:Definitions>

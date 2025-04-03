@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_1">
+  <rootElements xsi:type="bpmn:Process" id="_2" name="Open Bank Account">
+    <flowElements xsi:type="bpmn:StartEvent" id="_3" name="Receive Online Application" outgoing="_4"/>
+    <flowElements xsi:type="bpmn:Task" id="_5" name="Evaluate Application" outgoing="_6" incoming="_4"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="_7" name="Application Status" outgoing="_8 _9" incoming="_6"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_4" targetRef="_5" sourceRef="_3"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_6" targetRef="_7" sourceRef="_5"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_8" name="Approved" targetRef="_10" sourceRef="_7"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_9" name="Rejected" targetRef="_11" sourceRef="_7"/>
+    <flowElements xsi:type="bpmn:Task" id="_10" name="Create Bank Account" outgoing="_12" incoming="_8"/>
+    <flowElements xsi:type="bpmn:Task" id="_11" name="Notify Customer by Email" outgoing="_13" incoming="_9"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_12" targetRef="_14" sourceRef="_10"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_13" targetRef="_15" sourceRef="_11"/>
+    <flowElements xsi:type="bpmn:ParallelGateway" id="_14" name="Send Welcome Pack" outgoing="_16 _17 _18" incoming="_12"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_16" targetRef="_16" sourceRef="_14"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_17" targetRef="_17" sourceRef="_14"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_18" targetRef="_18" sourceRef="_14"/>
+    <flowElements xsi:type="bpmn:Task" id="_16" name="Send Welcome Pack" incoming="_16"/>
+    <flowElements xsi:type="bpmn:Task" id="_17" name="Send Bank Card" incoming="_17"/>
+    <flowElements xsi:type="bpmn:Task" id="_18" name="Send PIN Number" incoming="_18"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="_15" name="Process End" incoming="_13"/>
+  </rootElements>
+</bpmn:Definitions>

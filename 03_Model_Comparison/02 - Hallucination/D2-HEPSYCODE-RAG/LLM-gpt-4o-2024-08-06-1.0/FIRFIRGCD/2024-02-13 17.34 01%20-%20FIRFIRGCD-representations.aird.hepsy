@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hml:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hml="org.univaq.hepsy">
+  <nodes xsi:type="hml:Stimulus" name="Stimulus">
+    <ports name="stim_rt_out_port">
+      <pChannels name="stim_rt_channel" queueSize="8" rendezVous="true" pFrom="//@nodes.0/@ports.0" pTo="//@nodes.2/@ports.0">
+        <message name="stim_rt_payload"/>
+      </pChannels>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:StructuredNode" name="RTApp">
+    <ports name="system_display_out_port" portExtension="//@nodes.2/@ports.0"/>
+    <processes name="acquisition">
+      <processExtension xsi:nil="true"/>
+    </processes>
+    <processes name="filtering">
+      <nChannels name="stim_acquisition_channel" queueSize="8" rendezVous="true" nFrom="//@nodes.0/@ports.0" nTo="//@nodes.2/@processes.0">
+        <message name="acquisition_payload"/>
+      </nChannels>
+    </processes>
+    <processes name="decision">
+      <nChannels name="acq_filter_channel" queueSize="8" rendezVous="true" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.1">
+        <message name="filtering_payload"/>
+      </nChannels>
+    </processes>
+    <processes name="control">
+      <nChannels name="filter_decision_channel" queueSize="8" rendezVous="true" nFrom="//@nodes.2/@processes.1" nTo="//@nodes.2/@processes.2">
+        <message name="decision_payload"/>
+      </nChannels>
+    </processes>
+    <nChannels name="decision_control_channel" queueSize="8" rendezVous="true" nFrom="//@nodes.2/@processes.2" nTo="//@nodes.2/@ports.1">
+      <message name="control_payload"/>
+    </nChannels>
+  </nodes>
+  <nodes xsi:type="hml:Display" name="Display">
+    <ports name="system_display_in_port">
+      <pChannels name="disp_channel" pFrom="//@nodes.1/@ports.0" pTo="//@nodes.2/@ports.0">
+        <message name="control_payload"/>
+      </pChannels>
+    </ports>
+  </nodes>
+</hml:BehaviorSpecification>

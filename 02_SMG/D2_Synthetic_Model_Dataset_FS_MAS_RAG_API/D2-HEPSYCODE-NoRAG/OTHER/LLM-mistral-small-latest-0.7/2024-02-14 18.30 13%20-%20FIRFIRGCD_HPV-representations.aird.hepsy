@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hml:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hml="org.univaq.hepsy">
+  <nodes xsi:type="hml:Stimulus" name="stimulus">
+    <ports name="stim_fir1_out_port">
+      <pChannels name="stim_fir1_channel" pFrom="//@nodes.0/@ports.0" pTo="//@nodes.2/@ports.0" queueSize="8" rendezVous="true">
+        <message name="stim_fir1_message">
+          <entry name="raw_data" type="sc_int"/>
+        </message>
+      </pChannels>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:Display" name="display">
+    <ports name="system_display_in_port"/>
+  </nodes>
+  <nodes xsi:type="hml:StructuredNode" name="FIRFIRGCD_HPV">
+    <nChannels name="fir1_fir2_channel" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.1" queueSize="8" rendezVous="true">
+      <message name="fir1_fir2_message">
+        <entry name="filtered_data_1" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="fir2_hpv_channel" nFrom="//@nodes.2/@processes.1" nTo="//@nodes.2/@processes.2" queueSize="8" rendezVous="true">
+      <message name="fir2_hpv_message">
+        <entry name="filtered_data_2" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="hpv_gcd_channel" nFrom="//@nodes.2/@processes.2" nTo="//@nodes.2/@processes.3" queueSize="8" rendezVous="true">
+      <message name="hpv_gcd_message">
+        <entry name="enhanced_data" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="gcd_display_channel" nFrom="//@nodes.2/@processes.3" nTo="//@nodes.1/@ports.0" queueSize="8" rendezVous="true">
+      <message name="gcd_display_message">
+        <entry name="gcd_display_payload" type="sc_int"/>
+      </message>
+    </nChannels>
+    <ports name="fir1_in_port" portExtension="//@nodes.2/@processes.0"/>
+    <ports name="fir2_in_port" portExtension="//@nodes.2/@processes.1"/>
+    <ports name="hpv_in_port" portExtension="//@nodes.2/@processes.2"/>
+    <ports name="gcd_in_port" portExtension="//@nodes.2/@processes.3"/>
+    <ports name="system_display_out_port"/>
+    <processes name="fir1"/>
+    <processes name="fir2"/>
+    <processes name="hpv"/>
+    <processes name="gcd"/>
+  </nodes>
+</hml:BehaviorSpecification>

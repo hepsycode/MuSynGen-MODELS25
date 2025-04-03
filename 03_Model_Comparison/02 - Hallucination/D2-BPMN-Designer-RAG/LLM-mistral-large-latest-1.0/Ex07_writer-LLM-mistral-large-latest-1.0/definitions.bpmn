@@ -1,0 +1,41 @@
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_E1fDUI8DEe-v876egk3nxQ">
+  <bpmn:Collaboration id="_E1fDUI8DEe-v876egk3nxQ" name="Doctor Rating Workflow">
+    <participant id="_E1fDUY8DEe-v876egk3nxQ" name="QA Specialist" processRef="_E1fDVI8DEe-v876egk3nxQ"/>
+    <participant id="_E1fDWY8DEe-v876egk3nxQ" name="Managing Director" processRef="_E1fDWQI8DEe-v876egk3nxQ"/>
+    <participant id="_E1fDXY8DEe-v876egk3nxQ" name="External Expert" processRef="_E1fDXQI8DEe-v876egk3nxQ"/>
+    <messageFlow id="_E1fDWZ8DEe-v876egk3nxQ" name="Forward Expertise" sourceRef="_E1fDWQI8DEe-v876egk3nxQ" targetRef="_E1fDUY8DEe-v876egk3nxQ"/>
+    <messageFlow id="_E1fDXa8DEe-v876egk3nxQ" name="Request Expert Review" sourceRef="_E1fDWQI8DEe-v876egk3nxQ" targetRef="_E1fDXY8DEe-v876egk3nxQ"/>
+    <messageFlow id="_E1fDXb8DEe-v876egk3nxQ" name="Receive Expertise" sourceRef="_E1fDXY8DEe-v876egk3nxQ" targetRef="_E1fDWQI8DEe-v876egk3nxQ"/>
+    <bpmn:Process id="_E1fDVI8DEe-v876egk3nxQ">
+      <flowElements xsi:type="bpmn:StartEvent" id="_E1fDVY8DEe-v876egk3nxQ" name="Start Doctor Rating" outgoing="_E1fDWa8DEe-v876egk3nxQ"/>
+      <flowElements xsi:type="bpmn:UserTask" id="_E1fDWa8DEe-v876egk3nxQ" name="Interview Patients" outgoing="_E1fDWb8DEe-v876egk3nxQ" incoming="_E1fDVY8DEe-v876egk3nxQ"/>
+      <flowElements xsi:type="bpmn:SequenceFlow" id="_E1fDWb8DEe-v876egk3nxQ" targetRef="_E1fDWc8DEe-v876egk3nxQ" sourceRef="_E1fDWa8DEe-v876egk3nxQ"/>
+      <flowElements xsi:type="bpmn:IntermediateCatchEvent" id="_E1fDWc8DEe-v876egk3nxQ" name="Receive Expertise" incoming="_E1fDWb8DEe-v876egk3nxQ" outgoing="_E1fDWd8DEe-v876egk3nxQ"/>
+      <flowElements xsi:type="bpmn:UserTask" id="_E1fDWd8DEe-v876egk3nxQ" name="File Results" outgoing="_E1fDWe8DEe-v876egk3nxQ" incoming="_E1fDWc8DEe-v876egk3nxQ"/>
+      <flowElements xsi:type="bpmn:SequenceFlow" id="_E1fDWe8DEe-v876egk3nxQ" targetRef="_E1fDWf8DEe-v876egk3nxQ" sourceRef="_E1fDWd8DEe-v876egk3nxQ"/>
+      <flowElements xsi:type="bpmn:UserTask" id="_E1fDWf8DEe-v876egk3nxQ" name="Create Report" outgoing="_E1fDWg8DEe-v876egk3nxQ" incoming="_E1fDWe8DEe-v876egk3nxQ"/>
+      <flowElements xsi:type="bpmn:SequenceFlow" id="_E1fDWg8DEe-v876egk3nxQ" targetRef="_E1fDWh8DEe-v876egk3nxQ" sourceRef="_E1fDWf8DEe-v876egk3nxQ"/>
+      <flowElements xsi:type="bpmn:EndEvent" id="_E1fDWh8DEe-v876egk3nxQ" name="End Doctor Rating" incoming="_E1fDWg8DEe-v876egk3nxQ"/>
+    </bpmn:Process>
+    <bpmn:Process id="_E1fDWQI8DEe-v876egk3nxQ">
+      <flowElements xsi:type="bpmn:StartEvent" id="_E1fDWq8DEe-v876egk3nxQ" name="Start Expert Review" outgoing="_E1fDWr8DEe-v876egk3nxQ"/>
+      <flowElements xsi:type="bpmn:UserTask" id="_E1fDWr8DEe-v876egk3nxQ" name="Request Expert Review" outgoing="_E1fDWs8DEe-v876egk3nxQ" incoming="_E1fDWq8DEe-v876egk3nxQ"/>
+      <flowElements xsi:type="bpmn:IntermediateThrowEvent" id="_E1fDWs8DEe-v876egk3nxQ" incoming="_E1fDWr8DEe-v876egk3nxQ" outgoing="_E1fDWt8DEe-v876egk3nxQ"/>
+      <flowElements xsi:type="bpmn:SequenceFlow" id="_E1fDWt8DEe-v876egk3nxQ" targetRef="_E1fDWu8DEe-v876egk3nxQ" sourceRef="_E1fDWs8DEe-v876egk3nxQ"/>
+      <flowElements xsi:type="bpmn:IntermediateCatchEvent" id="_E1fDWu8DEe-v876egk3nxQ" name="Receive Expertise" incoming="_E1fDWt8DEe-v876egk3nxQ" outgoing="_E1fDWv8DEe-v876egk3nxQ"/>
+      <flowElements xsi:type="bpmn:IntermediateThrowEvent" id="_E1fDWv8DEe-v876egk3nxQ" name="Forward Expertise" incoming="_E1fDWu8DEe-v876egk3nxQ" outgoing="_E1fDW_Y8DEe-v876egk3nxQ"/>
+      <flowElements xsi:type="bpmn:SequenceFlow" id="_E1fDW_Y8DEe-v876egk3nxQ" targetRef="_E1fDWx8DEe-v876egk3nxQ" sourceRef="_E1fDWv8DEe-v876egk3nxQ"/>
+      <flowElements xsi:type="bpmn:UserTask" id="_E1fDWx8DEe-v876egk3nxQ" name="Pay Expert" outgoing="_E1fDXQw8DEe-v876egk3nxQ" incoming="_E1fDW_Y8DEe-v876egk3nxQ"/>
+      <flowElements xsi:type="bpmn:SequenceFlow" id="_E1fDXQw8DEe-v876egk3nxQ" targetRef="_E1fDXRI8DEe-v876egk3nxQ" sourceRef="_E1fDWx8DEe-v876egk3nxQ"/>
+      <flowElements xsi:type="bpmn:EndEvent" id="_E1fDXRI8DEe-v876egk3nxQ" name="End Payment Process" incoming="_E1fDXQw8DEe-v876egk3nxQ"/>
+    </bpmn:Process>
+    <bpmn:Process id="_E1fDXQI8DEe-v876egk3nxQ">
+      <flowElements xsi:type="bpmn:StartEvent" id="_E1fDXSY8DEe-v876egk3nxQ" name="Start Expert" outgoing="_E1fDXSZ8DEe-v876egk3nxQ"/>
+      <flowElements xsi:type="bpmn:UserTask" id="_E1fDXSZ8DEe-v876egk3nxQ" name="Review Doctor" outgoing="_E1fDXS18DEe-v876egk3nxQ" incoming="_E1fDXSY8DEe-v876egk3nxQ"/>
+      <flowElements xsi:type="bpmn:SequenceFlow" id="_E1fDXS18DEe-v876egk3nxQ" targetRef="_E1fDXS28DEe-v876egk3nxQ" sourceRef="_E1fDXSZ8DEe-v876egk3nxQ"/>
+      <flowElements xsi:type="bpmn:IntermediateThrowEvent" id="_E1fDXS28DEe-v876egk3nxQ" name="Send Expertise" incoming="_E1fDXS18DEe-v876egk3nxQ" outgoing="_E1fDXS38DEe-v876egk3nxQ"/>
+      <flowElements xsi:type="bpmn:SequenceFlow" id="_E1fDXS38DEe-v876egk3nxQ" targetRef="_E1fDXS48DEe-v876egk3nxQ" sourceRef="_E1fDXS28DEe-v876egk3nxQ"/>
+      <flowElements xsi:type="bpmn:EndEvent" id="_E1fDXS48DEe-v876egk3nxQ" name="End Review" incoming="_E1fDXS38DEe-v876egk3nxQ"/>
+    </bpmn:Process>
+  </bpmn:Collaboration>
+</bpmn:Definitions>

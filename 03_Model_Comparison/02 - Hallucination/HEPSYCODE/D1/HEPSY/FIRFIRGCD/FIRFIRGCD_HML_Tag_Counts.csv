@@ -1,0 +1,21 @@
+File,Tag,Occurrences,Category,CategoryEMF
+2024-02-13 17.34 01%20-%20FIRFIRGCD-representations.aird.hepsy,name,55,Uncategorized,Uncategorized
+2024-02-13 17.34 01%20-%20FIRFIRGCD-representations.aird.hepsy,queuesize,13,Uncategorized,Attributes
+2024-02-13 17.34 01%20-%20FIRFIRGCD-representations.aird.hepsy,rendezvous,13,Uncategorized,Attributes
+2024-02-13 17.34 01%20-%20FIRFIRGCD-representations.aird.hepsy,nchannels,12,Uncategorized,Relations
+2024-02-13 17.34 01%20-%20FIRFIRGCD-representations.aird.hepsy,nfrom,12,Uncategorized,Attributes
+2024-02-13 17.34 01%20-%20FIRFIRGCD-representations.aird.hepsy,nto,12,Uncategorized,Attributes
+2024-02-13 17.34 01%20-%20FIRFIRGCD-representations.aird.hepsy,message,12,Uncategorized,Classes
+2024-02-13 17.34 01%20-%20FIRFIRGCD-representations.aird.hepsy,entry,12,Uncategorized,Classes
+2024-02-13 17.34 01%20-%20FIRFIRGCD-representations.aird.hepsy,type,12,Uncategorized,Attributes
+2024-02-13 17.34 01%20-%20FIRFIRGCD-representations.aird.hepsy,processes,8,Uncategorized,Classes
+2024-02-13 17.34 01%20-%20FIRFIRGCD-representations.aird.hepsy,ports,6,Uncategorized,Classes
+2024-02-13 17.34 01%20-%20FIRFIRGCD-representations.aird.hepsy,nodes,3,Uncategorized,Classes
+2024-02-13 17.34 01%20-%20FIRFIRGCD-representations.aird.hepsy,{http://www.w3.org/2001/xmlschema-instance}type,3,Uncategorized,Uncategorized
+2024-02-13 17.34 01%20-%20FIRFIRGCD-representations.aird.hepsy,pchannels,3,Uncategorized,Relations
+2024-02-13 17.34 01%20-%20FIRFIRGCD-representations.aird.hepsy,pfrom,3,Uncategorized,Attributes
+2024-02-13 17.34 01%20-%20FIRFIRGCD-representations.aird.hepsy,pto,3,Uncategorized,Attributes
+2024-02-13 17.34 01%20-%20FIRFIRGCD-representations.aird.hepsy,portextension,2,Uncategorized,Attributes
+2024-02-13 17.34 01%20-%20FIRFIRGCD-representations.aird.hepsy,behaviorspecification,1,Uncategorized,Uncategorized
+2024-02-13 17.34 01%20-%20FIRFIRGCD-representations.aird.hepsy,{http://www.omg.org/xmi}version,1,Uncategorized,Uncategorized
+2024-02-13 17.34 01%20-%20FIRFIRGCD-representations.aird.hepsy,processextension,1,Uncategorized,Uncategorized

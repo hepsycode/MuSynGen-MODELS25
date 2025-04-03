@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hml:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hml="org.univaq.hepsy">
+  <nodes xsi:type="hml:Stimulus" name="stimulus">
+    <ports name="stim1">
+      <pChannels name="stim1_sys1_ch" pFrom="//@nodes.0/@ports.0" pTo="//@nodes.2/@ports.0"/>
+    </ports>
+    <ports name="stim2">
+      <pChannels name="stim2_sys2_ch" pFrom="//@nodes.0/@ports.1" pTo="//@nodes.2/@ports.1"/>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:Display" name="display">
+    <ports name="dis">
+      <pChannels name="sys_dis_ch" pFrom="//@nodes.1/@ports.0" pTo="//@nodes.2/@ports.2"/>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:StructuredNode">
+    <nChannels name="t1_t2_ch" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.1" queueSize="8" rendezVous="true">
+      <message name="t1_t2_pay">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="t1_t3_ch" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.2" queueSize="8" rendezVous="true">
+      <message name="t1_t3_pay">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="t2_t3_ch" nFrom="//@nodes.2/@processes.1" nTo="//@nodes.2/@processes.2" queueSize="8" rendezVous="true">
+      <message name="t2_t3_pay">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="t3_t4_ch" nFrom="//@nodes.2/@processes.2" nTo="//@nodes.2/@processes.3" queueSize="8" rendezVous="true">
+      <message name="t3_t4_">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="t3_t5_ch" nFrom="//@nodes.2/@processes.2" nTo="//@nodes.2/@processes.4" queueSize="8" rendezVous="true">
+      <message name="t3_t5_pay">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="t4_t5_ch" nFrom="//@nodes.2/@processes.3" nTo="//@nodes.2/@processes.4" queueSize="8" rendezVous="true">
+      <message name="t4_t5_pay">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="t6_t7_ch" nFrom="//@nodes.2/@processes.5" nTo="//@nodes.2/@processes.6" queueSize="8" rendezVous="true">
+      <message name="t6_t7_pay">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="t6_t8_ch" nFrom="//@nodes.2/@processes.5" nTo="//@nodes.2/@processes.7" queueSize="8" rendezVous="true">
+      <message name="t6_t8_pay">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="t7_t8_ch" nFrom="//@nodes.2/@processes.6" nTo="//@nodes.2/@processes.7" queueSize="8" rendezVous="true">
+      <message name="t7_t8_pay">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="t8_t9_ch" nFrom="//@nodes.2/@processes.7" nTo="//@nodes.2/@processes.8" queueSize="8" rendezVous="true">
+      <message name="t8_t9_pay">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="t9_t10_ch" nFrom="//@nodes.2/@processes.8" nTo="//@nodes.2/@processes.9" queueSize="8" rendezVous="true">
+      <message name="t9_t10_pay">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="t8_t10_ch" nFrom="//@nodes.2/@processes.7" nTo="//@nodes.2/@processes.9" queueSize="8" rendezVous="true">
+      <message name="t8_t10_pay">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="t10_t11_ch" nFrom="//@nodes.2/@processes.9" nTo="//@nodes.2/@processes.10" queueSize="8" rendezVous="true">
+      <message name="t10_t11_pay">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="t5_t11_ch" nFrom="//@nodes.2/@processes.4" nTo="//@nodes.2/@processes.10" queueSize="8" rendezVous="true">
+      <message name="t5_t11_pay">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="t11_t12_ch" nFrom="//@nodes.2/@processes.10" nTo="//@nodes.2/@processes.11" queueSize="8" rendezVous="true">
+      <message name="t11_t12_pay">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="t11_t13_ch" nFrom="//@nodes.2/@processes.10" nTo="//@nodes.2/@processes.12" queueSize="8" rendezVous="true">
+      <message name="t11_t13_pay">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="t12_t13_ch" nFrom="//@nodes.2/@processes.11" nTo="//@nodes.2/@processes.12" queueSize="8" rendezVous="true">
+      <message name="t12_t13_">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <ports name="sys1_in" portExtension="//@nodes.2/@processes.0"/>
+    <ports name="sys2_in" portExtension="//@nodes.2/@processes.5"/>
+    <ports name="sys_out"/>
+    <processes name="t1"/>
+    <processes name="t2"/>
+    <processes name="t3"/>
+    <processes name="t4"/>
+    <processes name="t5"/>
+    <processes name="t6"/>
+    <processes name="t7"/>
+    <processes name="t8"/>
+    <processes name="t9"/>
+    <processes name="t10"/>
+    <processes name="t11"/>
+    <processes name="t12"/>
+    <processes name="t13" processExtension="//@nodes.2/@ports.2"/>
+  </nodes>
+</hml:BehaviorSpecification>

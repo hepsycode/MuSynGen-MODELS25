@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="Definitions_1">
+  <rootElements xsi:type="bpmn:Process" id="Process_1">
+    <laneSets id="LaneSet_1">
+      <lanes id="Lane_1" name="Secretary">
+        <flowNodeRefs>Task_1 Task_2 Task_3 Task_4 Task_5 Task_6</flowNodeRefs>
+      </lanes>
+      <lanes id="Lane_2" name="Teachers">
+        <flowNodeRefs>Task_7 Task_8 Task_9 Task_10 Task_11 Task_12</flowNodeRefs>
+      </lanes>
+      <lanes id="Lane_3" name="Students">
+        <flowNodeRefs>Task_13 Task_14</flowNodeRefs>
+      </lanes>
+    </laneSets>
+    <flowElements xsi:type="bpmn:StartEvent" id="StartEvent_1" name="Start of School Year">
+      <outgoing>SequenceFlow_1</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="Task_1" name="Collect Course Descriptions">
+      <incoming>SequenceFlow_1</incoming>
+      <outgoing>SequenceFlow_2</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="Task_2" name="Enter Descriptions into CBS">
+      <incoming>SequenceFlow_2</incoming>
+      <outgoing>SequenceFlow_3</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="Task_3" name="Distribute Student Lists">
+      <incoming>SequenceFlow_3</incoming>
+      <outgoing>SequenceFlow_4</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="Task_4" name="Collect Rejected Students">
+      <incoming>SequenceFlow_4</incoming>
+      <outgoing>SequenceFlow_5</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="Task_5" name="Reassign Students">
+      <incoming>SequenceFlow_5</incoming>
+      <outgoing>SequenceFlow_6</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:EndEvent" id="EndEvent_1" name="End of Allocation">
+      <incoming>SequenceFlow_6</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_1" sourceRef="StartEvent_1" targetRef="Task_1"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_2" sourceRef="Task_1" targetRef="Task_2"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_3" sourceRef="Task_2" targetRef="Task_3"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_4" sourceRef="Task_3" targetRef="Task_4"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_5" sourceRef="Task_4" targetRef="Task_5"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_6" sourceRef="Task_5" targetRef="EndEvent_1"/>
+    <flowElements xsi:type="bpmn:UserTask" id="Task_7" name="Select Students">
+      <incoming>SequenceFlow_3</incoming>
+      <outgoing>SequenceFlow_4</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="Task_8" name="Hand Over Rejected Students">
+      <incoming>SequenceFlow_4</incoming>
+      <outgoing>SequenceFlow_5</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="Task_9" name="Collect Course Descriptions">
+      <incoming>SequenceFlow_1</incoming>
+      <outgoing>SequenceFlow_2</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="Task_10" name="Enter Descriptions into CIS">
+      <incoming>SequenceFlow_2</incoming>
+      <outgoing>SequenceFlow_3</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="Task_11" name="Distribute Student Lists">
+      <incoming>SequenceFlow_3</incoming>
+      <outgoing>SequenceFlow_4</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="Task_12" name="Collect Rejected Students">
+      <incoming>SequenceFlow_4</incoming>
+      <outgoing>SequenceFlow_5</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="Task_13" name="Register for Courses">
+      <outgoing>SequenceFlow_3</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="Task_14" name="Receive Course Allocation">
+      <incoming>SequenceFlow_5</incoming>
+    </flowElements>
+  </rootElements>
+</bpmn:Definitions>

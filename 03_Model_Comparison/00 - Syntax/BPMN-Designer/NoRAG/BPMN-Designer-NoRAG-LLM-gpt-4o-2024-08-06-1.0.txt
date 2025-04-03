@@ -1,0 +1,56 @@
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-gpt-4o-2024-08-06-1.0/ex00_writer0001.bpmn
+
+Validation Result: Validation successful: No errors found.
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-gpt-4o-2024-08-06-1.0/ex01_writer0001.bpmn
+
+Validation Result: Validation successful: No errors found.
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-gpt-4o-2024-08-06-1.0/ex02_writer0001.bpmn
+
+Validation Result: Validation successful: No errors found.
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-gpt-4o-2024-08-06-1.0/ex03_writer0001.bpmn
+
+Validation Result: Validation successful: No errors found.
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-gpt-4o-2024-08-06-1.0/ex04_writer0008.bpmn
+
+Validation Result: Validation successful: No errors found.
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-gpt-4o-2024-08-06-1.0/ex05_writer0013.bpmn
+
+Validation Result: Validation successful: No errors found.
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-gpt-4o-2024-08-06-1.0/ex07_writer0000.bpmn
+
+Validation Result: Validation error: org.eclipse.emf.ecore.xmi.UnresolvedReferenceException: Unresolved reference '_preExistingInterviewWorkflow'. (file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-gpt-4o-2024-08-06-1.0/ex07_writer0000.bpmn, 17, 149)
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-gpt-4o-2024-08-06-1.0/ex08_writer0000.bpmn
+
+Validation Result: Validation successful: No errors found.
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-gpt-4o-2024-08-06-1.0/ex09_writer0002.bpmn
+
+Validation Result: Validation errors found:
+Diagnosis of org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#Definitions@30144b3e{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-gpt-4o-2024-08-06-1.0/ex09_writer0002.bpmn#universityPhDAdmissionProcess}
+  The required feature 'id' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#LaneSet@7ef0f33{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-gpt-4o-2024-08-06-1.0/ex09_writer0002.bpmn#//@rootElements.0/@laneSets.0}' must be set
+
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-gpt-4o-2024-08-06-1.0/ex10_writer0000.bpmn
+
+Validation Result: Validation error: org.eclipse.emf.ecore.xmi.ClassNotFoundException: Class 'FlowNode' is not found or is abstract. (file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-gpt-4o-2024-08-06-1.0/ex10_writer0000.bpmn, 6, 23)
+
+
+Validation Summary:
+Valid models: 7
+Models with errors: 3

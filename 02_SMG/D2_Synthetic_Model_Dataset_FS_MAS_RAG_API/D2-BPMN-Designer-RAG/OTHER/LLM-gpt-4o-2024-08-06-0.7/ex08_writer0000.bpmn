@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_schoolProcess">
+  <rootElements xsi:type="bpmn:Process" id="_electiveCoursesProcess" name="Elective Courses Allocation">
+    <flowElements xsi:type="bpmn:StartEvent" id="_startEvent" name="Start Process" outgoing="_flow1"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_collectDescriptions" name="Collect Course Descriptions" outgoing="_flow2" incoming="_flow1"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_flow1" sourceRef="_startEvent" targetRef="_collectDescriptions"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_enterDescriptions" name="Enter Descriptions into System" outgoing="_flow3" incoming="_flow2"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_flow2" sourceRef="_collectDescriptions" targetRef="_enterDescriptions"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_sendStudentLists" name="Send Student Lists to Teachers" outgoing="_flow4" incoming="_flow3"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_flow3" sourceRef="_enterDescriptions" targetRef="_sendStudentLists"/>
+    <flowElements xsi:type="bpmn:ParallelGateway" id="_parallelGateway1" outgoing="_flow5 _flow6" incoming="_flow4"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_flow4" sourceRef="_sendStudentLists" targetRef="_parallelGateway1"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_decideStudents" name="Decide Students for Courses" outgoing="_flow7" incoming="_flow5"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_flow5" sourceRef="_parallelGateway1" targetRef="_decideStudents"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_reassignStudents" name="Reassign Students" outgoing="_flow8" incoming="_flow6"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_flow6" sourceRef="_parallelGateway1" targetRef="_reassignStudents"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="_decisionPoint" outgoing="_flow10 _flow8" incoming="_flow7"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_flow7" sourceRef="_decideStudents" targetRef="_decisionPoint"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_finalizeAssignments" name="Finalize Assignments in System" outgoing="_flow11" incoming="_flow10"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_flow10" sourceRef="_decisionPoint" targetRef="_finalizeAssignments"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="_endEvent" name="End Process" incoming="_flow11"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_flow11" sourceRef="_finalizeAssignments" targetRef="_endEvent"/>
+    <laneSets id="_laneSet" name="School Process">
+      <lanes id="_teachersLane" name="Teachers" flowNodeRefs="_decideStudents"/>
+      <lanes id="_secretaryLane" name="Secretary" flowNodeRefs="_collectDescriptions _enterDescriptions _sendStudentLists _reassignStudents _finalizeAssignments"/>
+    </laneSets>
+  </rootElements>
+</bpmn:Definitions>

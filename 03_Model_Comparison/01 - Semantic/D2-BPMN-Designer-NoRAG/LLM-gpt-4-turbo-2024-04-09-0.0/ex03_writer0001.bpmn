@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="Definitions_1">
+  <rootElements xsi:type="bpmn:Process" id="Process_1">
+    <laneSets id="LaneSet_1">
+      <lanes id="Lane_1" name="Claims Officer">
+        <flowNodeRefs>StartEvent_1 Task_1 ExclusiveGateway_1 Task_2 Task_3 ExclusiveGateway_2 Task_4 EndEvent_1</flowNodeRefs>
+      </lanes>
+      <lanes id="Lane_2" name="Senior Claims Officer">
+        <flowNodeRefs>Task_5</flowNodeRefs>
+      </lanes>
+    </laneSets>
+    <flowElements xsi:type="bpmn:StartEvent" id="StartEvent_1" name="Claim Received">
+      <outgoing>SequenceFlow_1</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:Task" id="Task_1" name="Check if Claimant is Insured">
+      <incoming>SequenceFlow_1</incoming>
+      <outgoing>SequenceFlow_2</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_1" sourceRef="StartEvent_1" targetRef="Task_1"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="ExclusiveGateway_1" name="Is Claimant Insured?">
+      <incoming>SequenceFlow_2</incoming>
+      <outgoing>SequenceFlow_3</outgoing>
+      <outgoing>SequenceFlow_4</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_2" sourceRef="Task_1" targetRef="ExclusiveGateway_1"/>
+    <flowElements xsi:type="bpmn:Task" id="Task_2" name="Inform Claimant - Rejection">
+      <incoming>SequenceFlow_3</incoming>
+      <outgoing>SequenceFlow_5</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_3" sourceRef="ExclusiveGateway_1" targetRef="Task_2" name="No"/>
+    <flowElements xsi:type="bpmn:Task" id="Task_5" name="Evaluate Claim Severity">
+      <incoming>SequenceFlow_4</incoming>
+      <outgoing>SequenceFlow_6</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_4" sourceRef="ExclusiveGateway_1" targetRef="Task_5" name="Yes"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="ExclusiveGateway_2" name="Claim Severity Evaluated">
+      <incoming>SequenceFlow_6</incoming>
+      <outgoing>SequenceFlow_7</outgoing>
+      <outgoing>SequenceFlow_8</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_6" sourceRef="Task_5" targetRef="ExclusiveGateway_2"/>
+    <flowElements xsi:type="bpmn:Task" id="Task_3" name="Send Forms to Claimant">
+      <incoming>SequenceFlow_7</incoming>
+      <outgoing>SequenceFlow_9</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_7" sourceRef="ExclusiveGateway_2" targetRef="Task_3" name="Simple"/>
+    <flowElements xsi:type="bpmn:Task" id="Task_4" name="Check Forms Completeness">
+      <incoming>SequenceFlow_9</incoming>
+      <outgoing>SequenceFlow_10</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_9" sourceRef="Task_3" targetRef="Task_4"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="ExclusiveGateway_3" name="Are Forms Complete?">
+      <incoming>SequenceFlow_10</incoming>
+      <outgoing>SequenceFlow_11</outgoing>
+      <outgoing>SequenceFlow_12</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_10" sourceRef="Task_4" targetRef="ExclusiveGateway_3"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="EndEvent_1" name="Claim Registered">
+      <incoming>SequenceFlow_11</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_11" sourceRef="ExclusiveGateway_3" targetRef="EndEvent_1" name="Yes"/>
+    <flowElements xsi:type="bpmn:Task" id="Task_6" name="Inform Claimant to Update Forms">
+      <incoming>SequenceFlow_12</incoming>
+      <outgoing>SequenceFlow_13</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_12" sourceRef="ExclusiveGateway_3" targetRef="Task_6" name="No"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_13" sourceRef="Task_6" targetRef="Task_4"/>
+    <artifacts xsi:type="bpmn:DataObject" id="DataObject_1" name="Claim Form"/>
+    <artifacts xsi:type="bpmn:DataStore" id="DataStore_1" name="Claims Management System"/>
+  </rootElements>
+</bpmn:Definitions>

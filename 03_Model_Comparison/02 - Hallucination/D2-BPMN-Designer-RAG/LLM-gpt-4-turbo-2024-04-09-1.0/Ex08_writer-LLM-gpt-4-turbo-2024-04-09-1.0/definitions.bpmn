@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_definitionsId">
+  <rootElements xsi:type="bpmn:Process" id="_processId1" name="Elective Course Selection and Allocation - Version A">
+    <laneSets id="_laneSetId1">
+      <lanes id="_laneId1" name="Secretary">
+        <flowNodeRefs>_taskCollectDescriptionsIdA</flowNodeRefs>
+        <flowNodeRefs>_taskEnterInfoCBSIdA</flowNodeRefs>
+        <flowNodeRefs>_taskSendListIdA</flowNodeRefs>
+        <flowNodeRefs>_taskAssignStudentsIdA</flowNodeRefs>
+      </lanes>
+      <lanes id="_laneId2" name="Teachers">
+        <flowNodeRefs>_taskCreateListIdA</flowNodeRefs>
+        <flowNodeRefs>_taskDecideParticipationIdA</flowNodeRefs>
+        <flowNodeRefs>_taskHandOverListIdA</flowNodeRefs>
+      </lanes>
+    </laneSets>
+    <flowElements xsi:type="bpmn:StartEvent" id="_startEventIdA" name="Start of School Year">
+      <outgoing>_toCollectDescriptionsIdA</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:Task" id="_taskCollectDescriptionsIdA" name="Collect Elective Course Descriptions">
+      <incoming>_toCollectDescriptionsIdA</incoming>
+      <outgoing>_toEnterCourseInfoIdA</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:Task" id="_taskEnterInfoCBSIdA" name="Enter Descriptions into CBS">
+      <incoming>_toEnterCourseInfoIdA</incoming>
+      <outgoing>_toSendListIdA</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:Task" id="_taskSendListIdA" name="Send Registered Student List to Teachers">
+      <incoming>_toSendListIdA</incoming>
+      <outgoing>_toCreateListIdA</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:Task" id="_taskCreateListIdA" name="Receive and Create Student List">
+      <incoming>_toCreateListIdA</incoming>
+      <outgoing>_toDecideParticipationIdA</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:Task" id="_taskDecideParticipationIdA" name="Decide Student Participation">
+      <incoming>_toDecideParticipationIdA</incoming>
+      <outgoing>_toHandOverListIdA</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:Task" id="_taskHandOverListIdA" name="Hand Over Not Accepted Student List">
+      <incoming>_toHandOverListIdA</incoming>
+      <outgoing>_toAssignStudentsIdA</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:Task" id="_taskAssignStudentsIdA" name="Assign Students to Available Courses">
+      <incoming>_toAssignStudentsIdA</incoming>
+      <outgoing>_toEndEventIdA</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:EndEvent" id="_endEventIdA" name="End of Process">
+      <incoming>_toEndEventIdA</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_toCollectDescriptionsIdA" sourceRef="_startEventIdA" targetRef="_taskCollectDescriptionsIdA"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_toEnterCourseInfoIdA" sourceRef="_taskCollectDescriptionsIdA" targetRef="_taskEnterInfoCBSIdA"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_toSendListIdA" sourceRef="_taskEnterInfoCBSIdA" targetRef="_taskSendListIdA"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_toCreateListIdA" sourceRef="_taskSendListIdA" targetRef="_taskCreateListIdA"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_toDecideParticipationIdA" sourceRef="_taskCreateListIdA" targetRef="_taskDecideParticipationIdA"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_toHandOverListIdA" sourceRef="_taskDecideParticipationIdA" targetRef="_taskHandOverListIdA"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_toAssignStudentsIdA" sourceRef="_taskHandOverListIdA" targetRef="_taskAssignStudentsIdA"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_toEndEventIdA" sourceRef="_taskAssignStudentsIdA" targetRef="_endEventIdA"/>
+  </rootElements>
+  <rootElements xsi:type="bpmn:Process" id="_processId2" name="Elective Course Selection and Allocation - Version B">
+    <!-- Similar flow elements are included here for Version B with different IDs and names where needed -->
+  </rootElements>
+</bpmn:Definitions>

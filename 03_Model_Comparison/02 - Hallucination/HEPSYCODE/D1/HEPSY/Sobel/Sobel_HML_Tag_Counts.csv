@@ -1,0 +1,21 @@
+File,Tag,Occurrences,Category,CategoryEMF
+2024-02-14 15.51 06%20-%20Sobel-representations.aird.hepsy,name,31,Uncategorized,Uncategorized
+2024-02-14 15.51 06%20-%20Sobel-representations.aird.hepsy,nchannels,6,Uncategorized,Relations
+2024-02-14 15.51 06%20-%20Sobel-representations.aird.hepsy,nfrom,6,Uncategorized,Attributes
+2024-02-14 15.51 06%20-%20Sobel-representations.aird.hepsy,nto,6,Uncategorized,Attributes
+2024-02-14 15.51 06%20-%20Sobel-representations.aird.hepsy,queuesize,6,Uncategorized,Attributes
+2024-02-14 15.51 06%20-%20Sobel-representations.aird.hepsy,rendezvous,6,Uncategorized,Attributes
+2024-02-14 15.51 06%20-%20Sobel-representations.aird.hepsy,message,6,Uncategorized,Classes
+2024-02-14 15.51 06%20-%20Sobel-representations.aird.hepsy,entry,6,Uncategorized,Classes
+2024-02-14 15.51 06%20-%20Sobel-representations.aird.hepsy,type,6,Uncategorized,Attributes
+2024-02-14 15.51 06%20-%20Sobel-representations.aird.hepsy,processes,5,Uncategorized,Classes
+2024-02-14 15.51 06%20-%20Sobel-representations.aird.hepsy,ports,4,Uncategorized,Classes
+2024-02-14 15.51 06%20-%20Sobel-representations.aird.hepsy,nodes,3,Uncategorized,Classes
+2024-02-14 15.51 06%20-%20Sobel-representations.aird.hepsy,{http://www.w3.org/2001/xmlschema-instance}type,3,Uncategorized,Uncategorized
+2024-02-14 15.51 06%20-%20Sobel-representations.aird.hepsy,pchannels,2,Uncategorized,Relations
+2024-02-14 15.51 06%20-%20Sobel-representations.aird.hepsy,pfrom,2,Uncategorized,Attributes
+2024-02-14 15.51 06%20-%20Sobel-representations.aird.hepsy,pto,2,Uncategorized,Attributes
+2024-02-14 15.51 06%20-%20Sobel-representations.aird.hepsy,behaviorspecification,1,Uncategorized,Uncategorized
+2024-02-14 15.51 06%20-%20Sobel-representations.aird.hepsy,{http://www.omg.org/xmi}version,1,Uncategorized,Uncategorized
+2024-02-14 15.51 06%20-%20Sobel-representations.aird.hepsy,portextension,1,Uncategorized,Attributes
+2024-02-14 15.51 06%20-%20Sobel-representations.aird.hepsy,processextension,1,Uncategorized,Uncategorized

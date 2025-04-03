@@ -3,7 +3,7 @@
     "llm": "mistral-large-latest",
     "price_per_input_token": 0.000002,
     "price_per_output_token": 0.000006,
-    "temperature": 1.0,
+    "temperature": 0.7,
     "max_retries": 2,
     "api_keys": {
         "mistral-large-latest": ""

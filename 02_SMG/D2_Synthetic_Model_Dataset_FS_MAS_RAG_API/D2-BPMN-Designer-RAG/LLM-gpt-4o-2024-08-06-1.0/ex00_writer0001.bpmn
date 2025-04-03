@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_newBankAccountProcess">
+  <rootElements xsi:type="bpmn:Process" id="_onlineApplicationProcess">
+    <flowElements xsi:type="bpmn:StartEvent" id="_startEvent" name="Receive online application" outgoing="_toEvaluateApplication"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_evaluateApplication" name="Evaluate Application" outgoing="_toDecisionGateway" incoming="_toEvaluateApplication"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_toEvaluateApplication" sourceRef="_startEvent" targetRef="_evaluateApplication"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="_decisionGateway" name="Application Decision" outgoing="_toRejectApplication _toApproveApplication" incoming="_toDecisionGateway"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_toDecisionGateway" sourceRef="_evaluateApplication" targetRef="_decisionGateway"/>
+    <flowElements xsi:type="bpmn:Task" id="_rejectApplication" name="Notify customer via email" outgoing="_toEndEvent" incoming="_toRejectApplication"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_toRejectApplication" name="Rejected" sourceRef="_decisionGateway" targetRef="_rejectApplication"/>
+    <flowElements xsi:type="bpmn:Task" id="_approveApplication" name="Create Bank Account" outgoing="_toSendWelcomePack" incoming="_toApproveApplication"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_toApproveApplication" name="Approved" sourceRef="_decisionGateway" targetRef="_approveApplication"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_sendWelcomePack" name="Send Welcome Pack" outgoing="_toSendBankCard" incoming="_toSendWelcomePack"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_toSendWelcomePack" sourceRef="_approveApplication" targetRef="_sendWelcomePack"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_sendBankCard" name="Send Bank Card" outgoing="_toSendPIN" incoming="_toSendBankCard"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_toSendBankCard" sourceRef="_sendWelcomePack" targetRef="_sendBankCard"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_sendPIN" name="Send PIN Number" outgoing="_toEndEvent" incoming="_toSendPIN"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_toSendPIN" sourceRef="_sendBankCard" targetRef="_sendPIN"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="_endEvent" name="Process Complete" incoming="_toEndEvent"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_toEndEvent" sourceRef="_sendPIN" targetRef="_endEvent"/>
+  </rootElements>
+</bpmn:Definitions>

@@ -1,0 +1,47 @@
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_lMHvgQw2EeW9FhRHzzJMog">
+  <process xsi:type="bpmn:Process" id="_lMHvoQw2EeW9FhRHzzJMog" name="Insurance Claim Handling">
+    <flowElements xsi:type="bpmn:StartEvent" id="_Pcm-0Uw2EeW9FhRHzzJMog" name="Customer files claim"/>
+    <flowElements xsi:type="bpmn:Task" id="_R10mQUw2EeW9FhRHzzJMog" name="Register and examine claim" outgoing="_UT4KwUw2EeW9FhRHzzJMog" incoming="_FV7vAUw2EeW9FhRHzzJMog"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_0GlJkUw2EeW9FhRHzzJMog" name="Write settlement recommendation" outgoing="_RAHybIw3EeW9FhRHzzJMog" incoming="_UT4KwUw2EeW9FhRHzzJMog"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_FV7vAUw2EeW9FhRHzzJMog" sourceRef="_Pcm-0Uw2EeW9FhRHzzJMog" targetRef="_R10mQUw2EeW9FhRHzzJMog"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_UT4KwUw2EeW9FhRHzzJMog" sourceRef="_R10mQUw2EeW9FhRHzzJMog" targetRef="_0GlJkUw2EeW9FhRHzzJMog"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_8my9Azw3EeW9FhRHzzJMog" name="Check settlement recommendation" outgoing="_KiMSDUw3EeW9FhRHzzJMog _F6_4LUw5EeW9FhRHzzJMog" incoming="_RAHybIw3EeW9FhRHzzJMog"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_RAHybIw3EeW9FhRHzzJMog" sourceRef="_0GlJkUw2EeW9FhRHzzJMog" targetRef="_8my9Azw3EeW9FhRHzzJMog"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="_35GYuYw3EeW9FhRHzzJMog" name="Claim marked as OK or Not OK?" outgoing="_3aqNuAw5EeW9FhRHzzJMog _EwI4Jkw5EeW9FhRHzzJMog" incoming="_KiMSDUw3EeW9FhRHzzJMog"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_KiMSDUw3EeW9FhRHzzJMog" sourceRef="_8my9Azw3EeW9FhRHzzJMog" targetRef="_35GYuYw3EeW9FhRHzzJMog"/>
+    <flowElements xsi:type="bpmn:Task" id="_vvLRHYw5EeW9FhRHzzJMog" name="Claim handling process proceeds" incoming="_3aqNuAw5EeW9FhRHzzJMog" outgoing="_hsr6bAw5EeW9FhRHzzJMog"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_3aqNuAw5EeW9FhRHzzJMog" sourceRef="_35GYuYw3EeW9FhRHzzJMog" targetRef="_vvLRHYw5EeW9FhRHzzJMog"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_F6_4LUw5EeW9FhRHzzJMog" name="Send back for re-evaluation" targetRef="_0GlJkUw2EeW9FhRHzzJMog" sourceRef="_35GYuYw3EeW9FhRHzzJMog"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="_QsnGcIw5EeW9FhRHzzJMog" name="Move to finalize claim" incoming="_hsr6bAw5EeW9FhRHzzJMog"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_EwI4Jkw5EeW9FhRHzzJMog" name="No" targetRef="_0GlJkUw2EeW9FhRHzzJMog" sourceRef="_35GYuYw3EeW9FhRHzzJMog"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_hsr6bAw5EeW9FhRHzzJMog" sourceRef="_vvLRHYw5EeW9FhRHzzJMog" targetRef="_QsnGcIw5EeW9FhRHzzJMog"/>
+  </process>
+
+  <laneSets xsi:type="bpmn:LaneSet" id="_MmDGQIw2EeW9FhRHzzJMog" name="Insurance Company">
+    <lanes xsi:type="bpmn:Lane" id="_N0smLIw2EeW9FhRHzzJMog" name="Claims Officer">
+      <flowNodeRefs>_R10mQUw2EeW9FhRHzzJMog _0GlJkUw2EeW9FhRHzzJMog</flowNodeRefs>
+    </lanes>
+    <lanes xsi:type="bpmn:Lane" id="_QGHzRcw2EeW9FhRHzzJMog" name="Senior Claims Officer">
+      <flowNodeRefs>_8my9Azw3EeW9FhRHzzJMog _vvLRHYw5EeW9FhRHzzJMog _35GYuYw3EeW9FhRHzzJMog</flowNodeRefs>
+    </lanes>
+  </laneSets>
+
+  <bpmndi:BPMNDiagram>
+    <bpmndi:BPMNPlane>
+      <bpmndi:BPMNShape bpmnElement="_R10mQUw2EeW9FhRHzzJMog"/>
+      <bpmndi:BPMNShape bpmnElement="_0GlJkUw2EeW9FhRHzzJMog"/>
+      <bpmndi:BPMNShape bpmnElement="_8my9Azw3EeW9FhRHzzJMog"/>
+      <bpmndi:BPMNShape bpmnElement="_35GYuYw3EeW9FhRHzzJMog"/>
+      <bpmndi:BPMNShape bpmnElement="_vvLRHYw5EeW9FhRHzzJMog"/>
+      <bpmndi:BPMNShape bpmnElement="_QsnGcIw5EeW9FhRHzzJMog"/>
+      <bpmndi:BPMNEdge bpmnElement="_FV7vAUw2EeW9FhRHzzJMog"/>
+      <bpmndi:BPMNEdge bpmnElement="_UT4KwUw2EeW9FhRHzzJMog"/>
+      <bpmndi:BPMNEdge bpmnElement="_RAHybIw3EeW9FhRHzzJMog"/>
+      <bpmndi:BPMNEdge bpmnElement="_KiMSDUw3EeW9FhRHzzJMog"/>
+      <bpmndi:BPMNEdge bpmnElement="_3aqNuAw5EeW9FhRHzzJMog"/>
+      <bpmndi:BPMNEdge bpmnElement="_F6_4LUw5EeW9FhRHzzJMog"/>
+      <bpmndi:BPMNEdge bpmnElement="_EwI4Jkw5EeW9FhRHzzJMog"/>
+      <bpmndi:BPMNEdge bpmnElement="_hsr6bAw5EeW9FhRHzzJMog"/>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:Definitions>

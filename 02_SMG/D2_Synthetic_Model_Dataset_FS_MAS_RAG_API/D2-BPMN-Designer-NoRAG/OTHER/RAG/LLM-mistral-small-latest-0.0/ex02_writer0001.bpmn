@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_KkUY4Y8DEe-v648egk3nxQ">
+  <rootElements xsi:type="bpmn:Process" id="_KkUY4I8DEe-v648egk3nxQ" name="Insurance Claims Process">
+    <flowElements xsi:type="bpmn:StartEvent" id="_dDiegI8JEe-v648egk3nxQ" name="Claim Received" outgoing="_pkQ0II8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_obWrUI8JEe-v648egk3nxQ" name="Register Claim" outgoing="_tBvnoI8JEe-v648egk3nxQ" incoming="_pkQ0II8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_pkQ0II8JEe-v648egk3nxQ" targetRef="_obWrUI8JEe-v648egk3nxQ" sourceRef="_dDiegI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_qiungI8JEe-v648egk3nxQ" name="Examine Claim" outgoing="_wYnc0I8JEe-v648egk3nxQ" incoming="_tBvnoI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_tBvnoI8JEe-v648egk3nxQ" targetRef="_qiungI8JEe-v648egk3nxQ" sourceRef="_obWrUI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_0FCrQI8JEe-v648egk3nxQ" name="Write Settlement Recommendation" outgoing="_J3GCUI8KEe-v648egk3nxQ" incoming="_wYnc0I8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_wYnc0I8JEe-v648egk3nxQ" targetRef="_0FCrQI8JEe-v648egk3nxQ" sourceRef="_qiungI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="_t0sukI8JEe-v648egk3nxQ" name="Check Recommendation" outgoing="_yVKpEI8JEe-v648egk3nxQ _3rueEI8JEe-v648egk3nxQ" incoming="_J3GCUI8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_J3GCUI8KEe-v648egk3nxQ" targetRef="_t0sukI8JEe-v648egk3nxQ" sourceRef="_0FCrQI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_yVKpEI8JEe-v648egk3nxQ" name="OK" targetRef="_w3ntAI8JEe-v648egk3nxQ" sourceRef="_t0sukI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_3rueEI8JEe-v648egk3nxQ" name="Not OK" targetRef="_grUBAI8KEe-v648egk3nxQ" sourceRef="_t0sukI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_grUBAI8KEe-v648egk3nxQ" name="Repeat Recommendation" outgoing="_iTdqkI8KEe-v648egk3nxQ" incoming="_3rueEI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_iTdqkI8KEe-v648egk3nxQ" targetRef="_0FCrQI8JEe-v648egk3nxQ" sourceRef="_grUBAI8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_w3ntAI8JEe-v648egk3nxQ" name="Proceed with Claim Handling" outgoing="_AR0KII8KEe-v648egk3nxQ" incoming="_yVKpEI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_AR0KII8KEe-v648egk3nxQ" targetRef="_9BHOYI8JEe-v648egk3nxQ" sourceRef="_w3ntAI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="_9BHOYI8JEe-v648egk3nxQ" name="Claim Handling Completed" incoming="_AR0KII8KEe-v648egk3nxQ"/>
+    <laneSets id="_L9VaQY8DEe-v648egk3nxQ" name="Insurance Company">
+      <lanes id="_L9WBUI8DEe-v648egk3nxQ" name="Claims Officer" flowNodeRefs="_dDiegI8JEe-v648egk3nxQ _obWrUI8JEe-v648egk3nxQ _qiungI8JEe-v648egk3nxQ _0FCrQI8JEe-v648egk3nxQ _grUBAI8KEe-v648egk3nxQ"/>
+      <lanes id="_O5n9gI8JEe-v648egk3nxQ" name="Senior Claims Officer" flowNodeRefs="_t0sukI8JEe-v648egk3nxQ _w3ntAI8JEe-v648egk3nxQ"/>
+    </laneSets>
+    <artifacts xsi:type="bpmn:DataObject" id="_5J33EI8JEe-v648egk3nxQ" name="Claim Details"/>
+    <artifacts xsi:type="bpmn:DataObject" id="_MLqtAY8KEe-v648egk3nxQ" name="Settlement Recommendation"/>
+    <artifacts xsi:type="bpmn:DataStore" id="_3ZUC8I8KEe-v648egk3nxQ" name="Claims Database"/>
+    <artifacts xsi:type="bpmn:Association" id="_8FLxoI8JEe-v648egk3nxQ" sourceRef="_dDiegI8JEe-v648egk3nxQ" targetRef="_5J33EI8JEe-v648egk3nxQ"/>
+    <artifacts xsi:type="bpmn:Association" id="_BEBDII8KEe-v648egk3nxQ" sourceRef="_5J33EI8JEe-v648egk3nxQ" targetRef="_0FCrQI8JEe-v648egk3nxQ"/>
+    <artifacts xsi:type="bpmn:Association" id="_BxaUoI8KEe-v648egk3nxQ" sourceRef="_0FCrQI8JEe-v648egk3nxQ" targetRef="_MLqtAY8KEe-v648egk3nxQ"/>
+    <artifacts xsi:type="bpmn:Association" id="_E5hVEI8KEe-v648egk3nxQ" sourceRef="_MLqtAY8KEe-v648egk3nxQ" targetRef="_t0sukI8JEe-v648egk3nxQ"/>
+    <artifacts xsi:type="bpmn:Association" id="_O8J3oI8KEe-v648egk3nxQ" sourceRef="_t0sukI8JEe-v648egk3nxQ" targetRef="_3ZUC8I8KEe-v648egk3nxQ"/>
+  </rootElements>
+</bpmn:Definitions>

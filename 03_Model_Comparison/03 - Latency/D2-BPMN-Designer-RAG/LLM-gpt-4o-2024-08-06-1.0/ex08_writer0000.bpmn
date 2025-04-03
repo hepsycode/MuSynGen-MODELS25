@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="school_course_selection">
+  <rootElements xsi:type="bpmn:Process" id="process_v1" name="Course Selection and Allocation - Version A">
+    <flowElements xsi:type="bpmn:StartEvent" id="start_v1" name="Start of Course Selection Process" outgoing="seq_flow1_v1"/>
+    <flowElements xsi:type="bpmn:UserTask" id="collect_descriptions_v1" name="Collect Course Descriptions" incoming="seq_flow1_v1" outgoing="seq_flow2_v1"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="seq_flow1_v1" sourceRef="start_v1" targetRef="collect_descriptions_v1"/>
+    <flowElements xsi:type="bpmn:UserTask" id="enter_cbs_v1" name="Enter Descriptions into CBS" incoming="seq_flow2_v1" outgoing="seq_flow3_v1"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="seq_flow2_v1" sourceRef="collect_descriptions_v1" targetRef="enter_cbs_v1"/>
+    <flowElements xsi:type="bpmn:UserTask" id="send_student_list_v1" name="Send Student List to Teachers" incoming="seq_flow3_v1" outgoing="seq_flow4_v1"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="seq_flow3_v1" sourceRef="enter_cbs_v1" targetRef="send_student_list_v1"/>
+    <flowElements xsi:type="bpmn:UserTask" id="select_students_v1" name="Select Students for Course" incoming="seq_flow4_v1" outgoing="seq_flow5_v1"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="seq_flow4_v1" sourceRef="send_student_list_v1" targetRef="select_students_v1"/>
+    <flowElements xsi:type="bpmn:UserTask" id="return_unaccepted_v1" name="Return Unaccepted List" incoming="seq_flow5_v1" outgoing="seq_flow6_v1"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="seq_flow5_v1" sourceRef="select_students_v1" targetRef="return_unaccepted_v1"/>
+    <flowElements xsi:type="bpmn:UserTask" id="assign_and_rebook_v1" name="Assign and Rebook Unaccepted Students" incoming="seq_flow6_v1" outgoing="end_v1"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="seq_flow6_v1" sourceRef="return_unaccepted_v1" targetRef="assign_and_rebook_v1"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="end_v1" name="End of Process"/>
+    <laneSets>
+      <lanes id="lane_secretary_office_v1" name="Secretary's Office" flowNodeRefs="collect_descriptions_v1 enter_cbs_v1 send_student_list_v1 return_unaccepted_v1 assign_and_rebook_v1"/>
+      <lanes id="lane_teachers_v1" name="Teachers" flowNodeRefs="select_students_v1"/>
+    </laneSets>
+  </rootElements>
+  <rootElements xsi:type="bpmn:Process" id="process_v2" name="Course Selection and Allocation - Version B">
+    <flowElements xsi:type="bpmn:StartEvent" id="start_v2" name="Start of Course Selection Process" outgoing="seq_flow1_v2"/>
+    <flowElements xsi:type="bpmn:UserTask" id="collect_descriptions_v2" name="Collect Course Descriptions" incoming="seq_flow1_v2" outgoing="seq_flow2_v2"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="seq_flow1_v2" sourceRef="start_v2" targetRef="collect_descriptions_v2"/>
+    <flowElements xsi:type="bpmn:UserTask" id="enter_cis_v2" name="Enter Descriptions into CIS" incoming="seq_flow2_v2" outgoing="seq_flow3_v2"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="seq_flow2_v2" sourceRef="collect_descriptions_v2" targetRef="enter_cis_v2"/>
+    <flowElements xsi:type="bpmn:UserTask" id="send_student_list_v2" name="Send Student List to Teachers" incoming="seq_flow3_v2" outgoing="seq_flow4_v2"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="seq_flow3_v2" sourceRef="enter_cis_v2" targetRef="send_student_list_v2"/>
+    <flowElements xsi:type="bpmn:UserTask" id="select_students_v2" name="Select Students for Course" incoming="seq_flow4_v2" outgoing="seq_flow5_v2"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="seq_flow4_v2" sourceRef="send_student_list_v2" targetRef="select_students_v2"/>
+    <flowElements xsi:type="bpmn:UserTask" id="return_unaccepted_v2" name="Return Unaccepted List" incoming="seq_flow5_v2" outgoing="seq_flow6_v2"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="seq_flow5_v2" sourceRef="select_students_v2" targetRef="return_unaccepted_v2"/>
+    <flowElements xsi:type="bpmn:UserTask" id="assign_and_rebook_v2" name="Assign and Rebook Unaccepted Students" incoming="seq_flow6_v2" outgoing="end_v2"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="seq_flow6_v2" sourceRef="return_unaccepted_v2" targetRef="assign_and_rebook_v2"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="end_v2" name="End of Process"/>
+    <laneSets>
+      <lanes id="lane_secretary_office_v2" name="Secretary's Office" flowNodeRefs="collect_descriptions_v2 enter_cis_v2 send_student_list_v2 return_unaccepted_v2 assign_and_rebook_v2"/>
+      <lanes id="lane_teachers_v2" name="Teachers" flowNodeRefs="select_students_v2"/>
+    </laneSets>
+  </rootElements>
+</bpmn:Definitions>

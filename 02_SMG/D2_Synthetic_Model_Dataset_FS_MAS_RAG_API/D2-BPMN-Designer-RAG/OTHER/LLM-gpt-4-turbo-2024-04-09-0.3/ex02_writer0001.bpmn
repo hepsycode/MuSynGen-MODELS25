@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:Definitions xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" xmi:version="2.0" id="Definitions_1">
+  <rootElements xsi:type="bpmn:Process" id="Process_1">
+    <laneSets id="LaneSet_1">
+      <lanes id="Lane_1" name="Claims Officer">
+        <flowNodeRefs>StartEvent_1 UserTask_1 ExclusiveGateway_1 UserTask_2</flowNodeRefs>
+      </lanes>
+      <lanes id="Lane_2" name="Senior Claims Officer">
+        <flowNodeRefs>ExclusiveGateway_1 ExclusiveGateway_2 EndEvent_1 EndEvent_2</flowNodeRefs>
+      </lanes>
+    </laneSets>
+    <flowElements xsi:type="bpmn:StartEvent" id="StartEvent_1" name="Receive Claim">
+      <outgoing>SequenceFlow_1</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="UserTask_1" name="Register and Examine Claim">
+      <incoming>SequenceFlow_1</incoming>
+      <outgoing>SequenceFlow_2</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_1" sourceRef="StartEvent_1" targetRef="UserTask_1"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="ExclusiveGateway_1" name="Check Recommendation">
+      <incoming>SequenceFlow_2</incoming>
+      <outgoing>SequenceFlow_3</outgoing>
+      <outgoing>SequenceFlow_4</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_2" sourceRef="UserTask_1" targetRef="ExclusiveGateway_1"/>
+    <flowElements xsi:type="bpmn:UserTask" id="UserTask_2" name="Write Settlement Recommendation">
+      <incoming>SequenceFlow_3</incoming>
+      <outgoing>SequenceFlow_5</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_3" sourceRef="ExclusiveGateway_1" targetRef="UserTask_2" name="Not OK"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_4" sourceRef="ExclusiveGateway_1" targetRef="ExclusiveGateway_2" name="OK"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="ExclusiveGateway_2">
+      <incoming>SequenceFlow_4</incoming>
+      <incoming>SequenceFlow_5</incoming>
+      <outgoing>SequenceFlow_6</outgoing>
+      <outgoing>SequenceFlow_7</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_5" sourceRef="UserTask_2" targetRef="ExclusiveGateway_2"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="EndEvent_1" name="Claim Processed">
+      <incoming>SequenceFlow_6</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_6" sourceRef="ExclusiveGateway_2" targetRef="EndEvent_1" name="OK"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="EndEvent_2" name="Claim Rejected">
+      <incoming>SequenceFlow_7</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_7" sourceRef="ExclusiveGateway_2" targetRef="EndEvent_2" name="Not OK"/>
+  </rootElements>
+  <rootElements xsi:type="bpmn:DataObject" id="DataObject_1" name="Claim Form"/>
+  <rootElements xsi:type="bpmn:DataStore" id="DataStore_1" name="Claims Database"/>
+</bpmn:Definitions>

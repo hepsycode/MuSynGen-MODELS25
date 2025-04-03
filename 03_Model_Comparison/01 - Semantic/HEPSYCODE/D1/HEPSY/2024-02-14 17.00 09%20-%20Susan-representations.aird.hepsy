@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hml:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hml="org.univaq.hepsy">
+  <nodes xsi:type="hml:Stimulus" name="Stimulus">
+    <ports name="st">
+      <pChannels name="st_sys_ch" pFrom="//@nodes.0/@ports.0" pTo="//@nodes.2/@ports.0"/>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:Display" name="Display">
+    <ports name="dis">
+      <pChannels name="sys_dis_ch" pFrom="//@nodes.1/@ports.0" pTo="//@nodes.2/@ports.1"/>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:StructuredNode">
+    <nChannels name="getI_susan_ch" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.1" queueSize="8" rendezVous="true">
+      <message name="getI_susan_payload">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="susan_dir_ch" nFrom="//@nodes.2/@processes.1" nTo="//@nodes.2/@processes.2" queueSize="8" rendezVous="true">
+      <message name="susan_dir_payload">
+        <entry name="sample" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <nChannels name="dir_thin_ch" nFrom="//@nodes.2/@processes.2" nTo="//@nodes.2/@processes.3" queueSize="8" rendezVous="true">
+      <message name="dir_thin_payload">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="thin_put_ch" nFrom="//@nodes.2/@processes.3" nTo="//@nodes.2/@processes.4" queueSize="64" rendezVous="true">
+      <message name="thin_put_payload">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <ports name="sys" portExtension="//@nodes.2/@processes.0"/>
+    <ports name="sys_out"/>
+    <processes name="getimage"/>
+    <processes name="susan"/>
+    <processes name="direction"/>
+    <processes name="thin"/>
+    <processes name="putimage" processExtension="//@nodes.2/@ports.1"/>
+  </nodes>
+</hml:BehaviorSpecification>

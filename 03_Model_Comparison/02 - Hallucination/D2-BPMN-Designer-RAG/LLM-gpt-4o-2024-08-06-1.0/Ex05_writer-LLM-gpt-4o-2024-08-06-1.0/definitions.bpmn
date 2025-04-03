@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_CarClaimProcess">
+  <rootElements xsi:type="bpmn:Process" id="_CarClaimHandlingProcess">
+    <flowElements xsi:type="bpmn:StartEvent" id="_StartEvent" name="Customer submits claim" outgoing="_Flow1"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_CheckDocumentsTask" name="Check documents for completeness" outgoing="_Flow2" incoming="_Flow1"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_Flow1" targetRef="_CheckDocumentsTask" sourceRef="_StartEvent"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_RegisterClaimTask" name="Register claim" outgoing="_Flow3" incoming="_Flow2"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_Flow2" targetRef="_RegisterClaimTask" sourceRef="_CheckDocumentsTask"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_CheckInsuranceTask" name="Check insurance" outgoing="_Flow4" incoming="_Flow3"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_Flow3" targetRef="_CheckInsuranceTask" sourceRef="_RegisterClaimTask"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_AssessmentTask" name="Perform assessment" outgoing="_Flow5" incoming="_Flow4"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_Flow4" targetRef="_AssessmentTask" sourceRef="_CheckInsuranceTask"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="_AssessmentGateway" name="Assessment positive?" outgoing="_Flow6 _FlowReject1" incoming="_Flow5"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_Flow5" targetRef="_AssessmentGateway" sourceRef="_AssessmentTask"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_AuthorizeRepairsTask" name="Authorize repairs" outgoing="_Flow7" incoming="_Flow6"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_Flow6" name="Yes" targetRef="_AuthorizeRepairsTask" sourceRef="_AssessmentGateway"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_SchedulePaymentTask" name="Schedule payment" outgoing="_Flow8" incoming="_Flow7"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_Flow7" targetRef="_SchedulePaymentTask" sourceRef="_AuthorizeRepairsTask"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="_PositiveOutcomeEnd" name="Send letter and complete process" incoming="_Flow8 _FlowReject2 _FlowReject3"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_Flow8" targetRef="_PositiveOutcomeEnd" sourceRef="_SchedulePaymentTask"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_FlowReject1" name="No" targetRef="_PositiveOutcomeEnd" sourceRef="_AssessmentGateway"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_FlowReject2" targetRef="_PositiveOutcomeEnd" sourceRef="_CheckDocumentsTask"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_FlowReject3" targetRef="_PositiveOutcomeEnd" sourceRef="_CheckInsuranceTask"/>
+    <laneSets id="_LaneSet" name="Car Insurer">
+      <lanes id="_NotificationDept" name="Notification Department" flowNodeRefs="_StartEvent _CheckDocumentsTask _RegisterClaimTask _CheckInsuranceTask"/>
+      <lanes id="_HandlingDept" name="Handling Department" flowNodeRefs="_CheckInsuranceTask _AssessmentTask _AuthorizeRepairsTask _SchedulePaymentTask _PositiveOutcomeEnd"/>
+    </laneSets>
+    <artifacts xsi:type="bpmn:DataObject" id="_ClaimDocuments" name="Claim Documents"/>
+    <artifacts xsi:type="bpmn:DataObject" id="_InsuranceDetails" name="Insurance Details"/>
+    <artifacts xsi:type="bpmn:DataStore" id="_ClaimDataStore" name="Claim Data Store"/>
+  </rootElements>
+</bpmn:Definitions>

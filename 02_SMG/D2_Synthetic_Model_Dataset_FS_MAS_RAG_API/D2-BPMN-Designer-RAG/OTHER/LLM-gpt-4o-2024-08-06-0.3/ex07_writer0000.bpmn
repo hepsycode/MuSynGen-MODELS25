@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_DoctorRatingProcess">
+  <rootElements xsi:type="bpmn:Process" id="_DoctorRatingWorkflow">
+    <flowElements xsi:type="bpmn:StartEvent" id="_StartInterview" name="Start Interview" outgoing="_Flow1"/>
+    <flowElements xsi:type="bpmn:CallActivity" id="_PatientInterviewWorkflow" name="Patient Interview Workflow" outgoing="_Flow2" incoming="_Flow1"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_Flow1" targetRef="_PatientInterviewWorkflow" sourceRef="_StartInterview"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_RequestExpertReview" name="Request Expert Review" outgoing="_Flow3" incoming="_Flow2"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_Flow2" targetRef="_RequestExpertReview" sourceRef="_PatientInterviewWorkflow"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="_ExpertResponseGateway" name="Expert Responded?" outgoing="_Flow4 _Flow5" incoming="_Flow3"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_Flow3" targetRef="_ExpertResponseGateway" sourceRef="_RequestExpertReview"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_Flow4" name="Yes" targetRef="_ReceiveExpertise" sourceRef="_ExpertResponseGateway"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_Flow5" name="No" targetRef="_RequestAnotherExpert" sourceRef="_ExpertResponseGateway"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_ReceiveExpertise" name="Receive Expertise" outgoing="_Flow6" incoming="_Flow4"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_RequestAnotherExpert" name="Request Another Expert" outgoing="_Flow3" incoming="_Flow5"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_Flow6" targetRef="_ForwardExpertise" sourceRef="_ReceiveExpertise"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_ForwardExpertise" name="Forward Expertise" outgoing="_Flow7" incoming="_Flow6"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_FileResults" name="File Results" outgoing="_Flow8" incoming="_Flow7"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_Flow7" targetRef="_FileResults" sourceRef="_ForwardExpertise"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_CreateReport" name="Create Report" outgoing="_Flow9" incoming="_Flow8"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_Flow8" targetRef="_CreateReport" sourceRef="_FileResults"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_PayExpenses" name="Pay Expenses" outgoing="_Flow10" incoming="_Flow3"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_Flow9" targetRef="_EndProcess" sourceRef="_CreateReport"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="_EndProcess" name="End Process" incoming="_Flow9"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_Flow10" targetRef="_EndProcess" sourceRef="_PayExpenses"/>
+    <laneSets id="_LaneSet1" name="Hospital">
+      <lanes id="_QASpecialistLane" name="QA Specialist" flowNodeRefs="_StartInterview _PatientInterviewWorkflow _ForwardExpertise _FileResults _CreateReport"/>
+      <lanes id="_DirectorLane" name="Managing Director" flowNodeRefs="_RequestExpertReview _ExpertResponseGateway _ReceiveExpertise _RequestAnotherExpert _PayExpenses"/>
+    </laneSets>
+  </rootElements>
+</bpmn:Definitions>

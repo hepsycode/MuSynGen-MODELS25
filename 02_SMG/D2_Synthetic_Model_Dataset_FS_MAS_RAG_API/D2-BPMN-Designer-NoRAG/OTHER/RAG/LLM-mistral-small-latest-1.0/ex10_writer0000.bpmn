@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_supplier_retailer_process">
+  <rootElements xsi:type="bpmn:Collaboration" id="_collaboration" name="Supplier-Retailer Process">
+    <participants xsi:type="bpmn:Participant" id="_supplier" name="Supplier">
+      <processRef xsi:type="bpmn:Process" id="_supplier_process" name="Supplier Process" processType="Private" isExecutable="true">
+        <flowElements xsi:type="bpmn:StartEvent" id="_start_event" name="Request Offer">
+          <outgoing>_start_event_outgoing</outgoing>
+        </flowElements>
+        <flowElements xsi:type="bpmn:UserTask" id="_prepare_offer" name="Prepare Offer">
+          <incoming>_start_event_outgoing</incoming>
+          <outgoing>_prepare_offer_outgoing</outgoing>
+        </flowElements>
+        <flowElements xsi:type="bpmn:ServiceTask" id="_send_offer" name="Send Offer">
+          <incoming>_prepare_offer_outgoing</incoming>
+          <outgoing>_send_offer_outgoing</outgoing>
+        </flowElements>
+        <flowElements xsi:type="bpmn:IntermediateCatchEvent" id="_receive_response" name="Receive Response">
+          <incoming>_send_offer_outgoing</incoming>
+          <outgoing>_receive_response_outgoing</outgoing>
+          <eventDefinitions xsi:type="bpmn:MessageEventDefinition" id="_receive_confirmation" name="Order Confirmation"/>
+          <eventDefinitions xsi:type="bpmn:MessageEventDefinition" id="_receive_change" name="Order Change"/>
+          <eventDefinitions xsi:type="bpmn:MessageEventDefinition" id="_receive_cancellation" name="Order Cancellation"/>
+        </flowElements>
+        <flowElements xsi:type="bpmn:ExclusiveGateway" id="_response_gateway" name="Response Handling">
+          <incoming>_receive_response_outgoing</incoming>
+          <outgoing>_no_response_outgoing _confirmation_outgoing _change_outgoing _cancellation_outgoing</outgoing>
+        </flowElements>
+        <flowElements xsi:type="bpmn:IntermediateCatchEvent" id="_no_response_handler" name="No Response Handler">
+          <incoming>_no_response_outgoing</incoming>
+          <outgoing>_timer_event_outgoing</outgoing>
+          <eventDefinitions xsi:type="bpmn:TimerEventDefinition" id="_timer_event" name="48 Hours Timer"/>
+        </flowElements>
+        <flowElements xsi:type="bpmn:EndEvent" id="_cancel_order" name="Cancel Order">
+          <incoming>_cancellation_outgoing _timer_event_outgoing</incoming>
+        </flowElements>
+        <flowElements xsi:type="bpmn:UserTask" id="_process_order" name="Process Order">
+          <incoming>_confirmation_outgoing</incoming>
+        </flowElements>
+        <flowElements xsi:type="bpmn:UserTask" id="_update_order" name="Update Order">
+          <incoming>_change_outgoing</incoming>
+          <outgoing>_update_order_outgoing</outgoing>
+        </flowElements>
+        <flowElements xsi:type="bpmn:IntermediateCatchEvent" id="_receive_confirmation_update" name="Receive Confirmation">
+          <incoming>_update_order_outgoing</incoming>
+          <outgoing>_confirmation_update_outgoing</outgoing>
+          <eventDefinitions xsi:type="bpmn:MessageEventDefinition" id="_confirmation_update" name="Order Confirmation Update"/>
+        </flowElements>
+        <flowElements xsi:type="bpmn:ExclusiveGateway" id="_confirmation_gateway" name="Confirmation Handling">
+          <incoming>_confirmation_update_outgoing</incoming>
+          <outgoing>_confirmation_outgoing_update _change_outgoing_update</outgoing>
+        </flowElements>
+        <flowElements xsi:type="bpmn:IntermediateCatchEvent" id="_order_change_counter" name="Order Change Counter">
+          <incoming>_change_outgoing_update</incoming>
+          <outgoing>_change_counter_condition_outgoing</outgoing>
+          <eventDefinitions xsi:type="bpmn:ConditionalEventDefinition" id="_change_counter_condition" name="Change Count Condition"/>
+        </flowElements>
+        <flowElements xsi:type="bpmn:EndEvent" id="_cancel_after_three_changes" name="Cancel Order After Three Changes">
+          <incoming>_change_counter_condition_outgoing</incoming>
+        </flowElements>
+      </processRef>
+    </participants>
+    <participants xsi:type="bpmn:Participant" id="_retailer" name="Retailer">
+      <processRef xsi:type="bpmn:Process" id="_retailer_process" name="Retailer Process" processType="Private" isExecutable="true">
+        <flowElements xsi:type="bpmn:StartEvent" id="_request_offer" name="Request Offer">
+          <outgoing>_request_offer_outgoing</outgoing>
+        </flowElements>
+        <flowElements xsi:type="bpmn:IntermediateThrowEvent" id="_send_response" name="Send Response">
+          <incoming>_request_offer_outgoing</incoming>
+          <eventDefinitions xsi:type="bpmn:MessageEventDefinition" id="_send_confirmation" name="Send Order Confirmation"/>
+          <eventDefinitions xsi:type="bpmn:MessageEventDefinition" id="_send_change" name="Send Order Change"/>
+          <eventDefinitions xsi:type="bpmn:MessageEventDefinition" id="_send_cancellation" name="Send Order Cancellation"/>
+        </flowElements>
+      </processRef>
+    </participants>
+    <messageFlows xsi:type="bpmn:MessageFlow" id="_start_event_outgoing" name="Request Offer" sourceRef="_start_event" targetRef="_request_offer"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_prepare_offer_outgoing" name="Prepare Offer" sourceRef="_prepare_offer" targetRef="_send_offer"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_send_offer_outgoing" name="Send Offer" sourceRef="_send_offer" targetRef="_receive_response"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_receive_response_outgoing" name="Receive Response" sourceRef="_receive_response" targetRef="_response_gateway"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_no_response_outgoing" name="No Response" sourceRef="_response_gateway" targetRef="_no_response_handler"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_confirmation_outgoing" name="Order Confirmation" sourceRef="_response_gateway" targetRef="_process_order"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_change_outgoing" name="Order Change" sourceRef="_response_gateway" targetRef="_update_order"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_cancellation_outgoing" name="Order Cancellation" sourceRef="_response_gateway" targetRef="_cancel_order"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_timer_event_outgoing" name="48 Hours Timer" sourceRef="_no_response_handler" targetRef="_cancel_order"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_update_order_outgoing" name="Request Confirmation" sourceRef="_update_order" targetRef="_receive_confirmation_update"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_confirmation_update_outgoing" name="Order Confirmation Update" sourceRef="_receive_confirmation_update" targetRef="_confirmation_gateway"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_change_outgoing_update" name="Order Change" sourceRef="_confirmation_gateway" targetRef="_order_change_counter"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_change_counter_condition_outgoing" name="Change Count Condition" sourceRef="_order_change_counter" targetRef="_cancel_after_three_changes"/>
+    <messageFlows xsi:type="bpmn:MessageFlow" id="_request_offer_outgoing" name="Request Offer" sourceRef="_request_offer" targetRef="_send_response"/>
+  </rootElements>
+</bpmn:Definitions>

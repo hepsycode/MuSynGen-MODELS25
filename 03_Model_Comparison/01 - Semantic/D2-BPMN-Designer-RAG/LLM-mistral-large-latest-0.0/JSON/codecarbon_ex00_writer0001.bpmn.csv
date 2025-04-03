@@ -1,0 +1,11 @@
+total_emissions,node
+7.281705044327583e-06,generate_query_node
+5.492169096296153e-06,retrieve
+0.00014331594354311574,grade_documents
+5.5388836108640337e-05,grade_generation_v_documents_and_question
+0.00011394481282112478,evaluate_rag_output
+0.00023866505771383202,evaluate_bert_score
+0.0011806203888237146,cache_context_node
+0.002767662028334182,model_generation_node
+3.778205980896217e-05,model_validation_node
+0.008840890436913853,FILE_ex00_writer0001.bpmn

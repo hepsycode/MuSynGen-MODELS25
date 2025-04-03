@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hml:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hml="org.univaq.hepsy">
+  <nodes xsi:type="hml:Stimulus" name="stimulus">
+    <ports name="stim_system_out_port"/>
+  </nodes>
+  <nodes xsi:type="hml:StructuredNode" name="RastaPlp">
+    <nChannels name="stim_preproc_channel" nFrom="//@nodes.0" nTo="//@nodes.1" queueSize="10" rendezVous="true">
+      <message name="stim_preproc_msg">
+        <entry name="raw_audio_data" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="preproc_rasta_channel" nFrom="//@nodes.1/@processes.0" nTo="//@nodes.1/@processes.1" queueSize="10" rendezVous="true">
+      <message name="preproc_rasta_msg">
+        <entry name="processed_audio" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="rasta_plp_channel" nFrom="//@nodes.1/@processes.1" nTo="//@nodes.1/@processes.2" queueSize="10" rendezVous="true">
+      <message name="rasta_plp_msg">
+        <entry name="spectral_features" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="plp_postproc_channel" nFrom="//@nodes.1/@processes.2" nTo="//@nodes.1/@processes.3" queueSize="10" rendezVous="true">
+      <message name="plp_postproc_msg">
+        <entry name="cepstral_coefficients" type="sc_int"/>
+      </message>
+    </nChannels>
+    <ports name="system_display_out_port" portExtension="//@nodes.1/@processes.3"/>
+    <processes name="preproc"/>
+    <processes name="rasta"/>
+    <processes name="plp"/>
+    <processes name="postproc"/>
+  </nodes>
+  <nodes xsi:type="hml:Display" name="display">
+    <ports name="system_display_in_port"/>
+  </nodes>
+  <nodes xsi:type="hml:StructuredNode" name="display_channel_node">
+    <nChannels name="display_channel" nFrom="//@nodes.1" nTo="//@nodes.2" queueSize="10" rendezVous="true">
+      <message name="display_msg">
+        <entry name="display_data" type="sc_int"/>
+      </message>
+    </nChannels>
+  </nodes>
+</hml:BehaviorSpecification>

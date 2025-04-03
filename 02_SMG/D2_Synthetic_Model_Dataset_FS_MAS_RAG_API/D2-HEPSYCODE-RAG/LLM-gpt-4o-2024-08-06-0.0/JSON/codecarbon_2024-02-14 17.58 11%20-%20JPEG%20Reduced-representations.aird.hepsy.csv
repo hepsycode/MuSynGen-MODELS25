@@ -1,0 +1,12 @@
+node,total_emissions
+generate_query_node,6.410139975964147e-08
+cache_context_node,7.308326546725597e-08
+model_generation_node,5.024674493558563e-05
+model_validation_node,3.65719992026209e-05
+model_validation_node,7.939994483119202e-05
+model_validation_node,4.918599423685173e-05
+model_generation_node,1.5942329191849718e-07
+model_validation_node,1.8284920156669917e-07
+model_validation_node,3.0365998241578423e-05
+model_validation_node,1.6827239741782624e-07
+FILE_2024-02-14 17.58 11%20-%20JPEG%20Reduced-representations.aird.hepsy,0.0005274789290953402

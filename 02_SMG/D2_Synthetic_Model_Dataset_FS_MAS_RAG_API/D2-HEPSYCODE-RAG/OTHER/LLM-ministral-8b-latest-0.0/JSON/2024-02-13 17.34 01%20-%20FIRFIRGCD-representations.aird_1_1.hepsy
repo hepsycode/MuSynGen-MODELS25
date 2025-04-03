@@ -1,0 +1,12 @@
+{
+    "response_length": 2277,
+    "execution_time": 5.9308764934539795,
+    "temperature": 0.0,
+    "usage": {
+        "input_tokens": 4433,
+        "output_tokens": 700,
+        "total_tokens": 5133
+    },
+    "price_usd": 0.013065999999999998,
+    "model_name": "ministral-8b-latest"
+}

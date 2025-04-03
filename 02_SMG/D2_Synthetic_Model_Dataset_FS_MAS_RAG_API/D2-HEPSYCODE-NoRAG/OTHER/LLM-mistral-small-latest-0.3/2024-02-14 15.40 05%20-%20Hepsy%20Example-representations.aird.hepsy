@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hml:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hml="org.univaq.hepsy">
+  <nodes xsi:type="hml:Stimulus" name="stimulus">
+    <ports name="stim_system_out_port">
+      <pChannels name="stim_acq_channel" pFrom="//@nodes.0/@ports.0" pTo="//@nodes.2/@ports.0" queueSize="8" rendezVous="true">
+        <message name="stim_acq_message">
+          <entry name="rawData" type="sc_int"/>
+        </message>
+      </pChannels>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:Display" name="display">
+    <ports name="system_display_in_port">
+      <pChannels name="main_disp_channel" pFrom="//@nodes.1/@ports.0" pTo="//@nodes.2/@ports.1" queueSize="8" rendezVous="true">
+        <message name="display_message">
+          <entry name="processedData" type="sc_int"/>
+        </message>
+      </pChannels>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:StructuredNode" name="HepsyExample">
+    <nChannels name="acq_proc_channel" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.1" queueSize="8" rendezVous="true">
+      <message name="acq_proc_message">
+        <entry name="conditionedData" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="proc_ctrl_channel" nFrom="//@nodes.2/@processes.1" nTo="//@nodes.2/@processes.2" queueSize="8" rendezVous="true">
+      <message name="proc_ctrl_message">
+        <entry name="refinedData" type="sc_int"/>
+      </message>
+    </nChannels>
+    <ports name="system_display_out_port" portExtension="//@nodes.2/@processes.2"/>
+    <processes name="dataAcquisition"/>
+    <processes name="dataProcessing"/>
+    <processes name="dataControl"/>
+  </nodes>
+</hml:BehaviorSpecification>

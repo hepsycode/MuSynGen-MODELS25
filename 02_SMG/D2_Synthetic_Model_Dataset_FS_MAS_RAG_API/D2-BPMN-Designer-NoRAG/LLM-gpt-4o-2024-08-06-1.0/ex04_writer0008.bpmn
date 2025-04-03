@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_TribunalProcess_001">
+  <rootElements xsi:type="bpmn:Process" id="_EvictionCompensationProcess_001" isExecutable="true">
+    <flowElements xsi:type="bpmn:StartEvent" id="_StartEvent_001" name="Receive Compensation Request" outgoing="_SequenceFlow_001"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_RetrieveFileTask_001" name="Retrieve File" incoming="_SequenceFlow_001" outgoing="_SequenceFlow_002"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_SequenceFlow_001" sourceRef="_StartEvent_001" targetRef="_RetrieveFileTask_001"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_CheckRequestTask_001" name="Check Request" incoming="_SequenceFlow_002" outgoing="_SequenceFlow_003"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_SequenceFlow_002" sourceRef="_RetrieveFileTask_001" targetRef="_CheckRequestTask_001"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="_FeesPaidGateway_001" name="Fees Paid?" incoming="_SequenceFlow_003" outgoing="_SequenceFlow_004 _SequenceFlow_005"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_SequenceFlow_003" sourceRef="_CheckRequestTask_001" targetRef="_FeesPaidGateway_001"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_SetHearingDateTask_001" name="Set Hearing Date" incoming="_SequenceFlow_004" outgoing="_SequenceFlow_006"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_SequenceFlow_004" sourceRef="_FeesPaidGateway_001" targetRef="_SetHearingDateTask_001"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="_EndEvent_001" name="Process Complete" incoming="_SequenceFlow_006"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_SequenceFlow_006" sourceRef="_SetHearingDateTask_001" targetRef="_EndEvent_001"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_ProduceFeesNoticeTask_001" name="Produce Fees Notice" incoming="_SequenceFlow_005" outgoing="_SequenceFlow_007"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_SequenceFlow_005" sourceRef="_FeesPaidGateway_001" targetRef="_ProduceFeesNoticeTask_001"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_WaitForFeesTask_001" name="Wait for Fees Payment" incoming="_SequenceFlow_007" outgoing="_SequenceFlow_008"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_SequenceFlow_007" sourceRef="_ProduceFeesNoticeTask_001" targetRef="_WaitForFeesTask_001"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_SequenceFlow_008" sourceRef="_WaitForFeesTask_001" targetRef="_CheckRequestTask_001"/>
+    <laneSets id="_LaneSet_001" name="Lanes">
+      <lanes id="_CashierLane_001" name="Cashier" flowNodeRefs="_StartEvent_001 _RetrieveFileTask_001 _CheckRequestTask_001 _SetHearingDateTask_001 _ProduceFeesNoticeTask_001 _WaitForFeesTask_001 _FeesPaidGateway_001 _EndEvent_001"/>
+    </laneSets>
+    <artifacts xsi:type="bpmn:DataObject" id="_CompensationRequest_001" name="Compensation Request"/>
+    <artifacts xsi:type="bpmn:DataStore" id="_PremisesFile_001" name="Premises File"/>
+    <artifacts xsi:type="bpmn:Association" id="_Association_001" sourceRef="_RetrieveFileTask_001" targetRef="_PremisesFile_001"/>
+    <artifacts xsi:type="bpmn:Association" id="_Association_002" sourceRef="_CheckRequestTask_001" targetRef="_PremisesFile_001"/>
+    <artifacts xsi:type="bpmn:Association" id="_Association_003" sourceRef="_StartEvent_001" targetRef="_CompensationRequest_001"/>
+  </rootElements>
+</bpmn:Definitions>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_KkUY4Y8DEe-v648egk3nxQ">
+  <bpmn:Collaboration id="_Collaboration_1" name="Supplier-Retailer Collaboration">
+    <bpmn:participant id="_Supplier" name="Supplier" processRef="_SupplierProcess"/>
+    <bpmn:participant id="_Retailer" name="Retailer" processRef="_RetailerProcess"/>
+    <bpmn:messageFlow id="_MessageFlow_1" sourceRef="_Activity_RetailerRequestOffer" targetRef="_Event_SupplierReceiveRequest"/>
+    <bpmn:messageFlow id="_MessageFlow_2" sourceRef="_Activity_SupplierSendOffer" targetRef="_Event_RetailerReceiveOffer"/>
+    <bpmn:messageFlow id="_MessageFlow_3" sourceRef="_Event_RetailerSendConfirmation" targetRef="_Event_SupplierReceiveConfirmation"/>
+    <bpmn:messageFlow id="_MessageFlow_4" sourceRef="_Event_RetailerSendChange" targetRef="_Event_SupplierReceiveChange"/>
+    <bpmn:messageFlow id="_MessageFlow_5" sourceRef="_Event_RetailerSendCancellation" targetRef="_Event_SupplierReceiveCancellation"/>
+  </bpmn:Collaboration>
+  <bpmn:Process id="_SupplierProcess" name="Supplier Process" processType="Private" isExecutable="true">
+    <bpmn:startEvent id="_Event_SupplierReceiveRequest" name="Receive Request from Retailer"/>
+    <bpmn:task id="_Activity_SupplierPrepareOffer" name="Prepare Offer"/>
+    <bpmn:task id="_Activity_SupplierSendOffer" name="Send Offer to Retailer"/>
+    <bpmn:intermediateCatchEvent id="_Event_SupplierReceiveConfirmation" name="Receive Order Confirmation"/>
+    <bpmn:intermediateCatchEvent id="_Event_SupplierReceiveChange" name="Receive Order Change"/>
+    <bpmn:intermediateCatchEvent id="_Event_SupplierReceiveCancellation" name="Receive Order Cancellation"/>
+    <bpmn:task id="_Activity_SupplierProcessOrder" name="Process Order"/>
+    <bpmn:task id="_Activity_SupplierUpdateOrder" name="Update Order"/>
+    <bpmn:task id="_Activity_SupplierCancelOrder" name="Cancel Order"/>
+    <bpmn:endEvent id="_Event_SupplierEnd" name="End"/>
+    <bpmn:sequenceFlow id="_Flow_1" sourceRef="_Event_SupplierReceiveRequest" targetRef="_Activity_SupplierPrepareOffer"/>
+    <bpmn:sequenceFlow id="_Flow_2" sourceRef="_Activity_SupplierPrepareOffer" targetRef="_Activity_SupplierSendOffer"/>
+    <bpmn:sequenceFlow id="_Flow_3" sourceRef="_Activity_SupplierSendOffer" targetRef="_Gateway_Decision"/>
+    <bpmn:exclusiveGateway id="_Gateway_Decision" name="Decision Point"/>
+    <bpmn:sequenceFlow id="_Flow_4" sourceRef="_Gateway_Decision" targetRef="_Event_SupplierReceiveConfirmation"/>
+    <bpmn:sequenceFlow id="_Flow_5" sourceRef="_Gateway_Decision" targetRef="_Event_SupplierReceiveChange"/>
+    <bpmn:sequenceFlow id="_Flow_6" sourceRef="_Gateway_Decision" targetRef="_Event_SupplierReceiveCancellation"/>
+    <bpmn:sequenceFlow id="_Flow_7" sourceRef="_Event_SupplierReceiveConfirmation" targetRef="_Activity_SupplierProcessOrder"/>
+    <bpmn:sequenceFlow id="_Flow_8" sourceRef="_Event_SupplierReceiveChange" targetRef="_Activity_SupplierUpdateOrder"/>
+    <bpmn:sequenceFlow id="_Flow_9" sourceRef="_Event_SupplierReceiveCancellation" targetRef="_Activity_SupplierCancelOrder"/>
+    <bpmn:sequenceFlow id="_Flow_10" sourceRef="_Activity_SupplierProcessOrder" targetRef="_Event_SupplierEnd"/>
+    <bpmn:sequenceFlow id="_Flow_11" sourceRef="_Activity_SupplierUpdateOrder" targetRef="_Activity_SupplierSendOffer"/>
+    <bpmn:sequenceFlow id="_Flow_12" sourceRef="_Activity_SupplierCancelOrder" targetRef="_Event_SupplierEnd"/>
+  </bpmn:Process>
+  <bpmn:Process id="_RetailerProcess" name="Retailer Process" processType="Private" isExecutable="true">
+    <bpmn:startEvent id="_Event_RetailerStart" name="Start"/>
+    <bpmn:task id="_Activity_RetailerRequestOffer" name="Request Offer from Supplier"/>
+    <bpmn:intermediateCatchEvent id="_Event_RetailerReceiveOffer" name="Receive Offer from Supplier"/>
+    <bpmn:task id="_Activity_RetailerSendConfirmation" name="Send Order Confirmation"/>
+    <bpmn:task id="_Activity_RetailerSendChange" name="Send Order Change"/>
+    <bpmn:task id="_Activity_RetailerSendCancellation" name="Send Order Cancellation"/>
+    <bpmn:endEvent id="_Event_RetailerEnd" name="End"/>
+    <bpmn:sequenceFlow id="_Flow_13" sourceRef="_Event_RetailerStart" targetRef="_Activity_RetailerRequestOffer"/>
+    <bpmn:sequenceFlow id="_Flow_14" sourceRef="_Activity_RetailerRequestOffer" targetRef="_Event_RetailerReceiveOffer"/>
+    <bpmn:sequenceFlow id="_Flow_15" sourceRef="_Event_RetailerReceiveOffer" targetRef="_Gateway_RetailerDecision"/>
+    <bpmn:exclusiveGateway id="_Gateway_RetailerDecision" name="Decision Point"/>
+    <bpmn:sequenceFlow id="_Flow_16" sourceRef="_Gateway_RetailerDecision" targetRef="_Activity_RetailerSendConfirmation"/>
+    <bpmn:sequenceFlow id="_Flow_17" sourceRef="_Gateway_RetailerDecision" targetRef="_Activity_RetailerSendChange"/>
+    <bpmn:sequenceFlow id="_Flow_18" sourceRef="_Gateway_RetailerDecision" targetRef="_Activity_RetailerSendCancellation"/>
+    <bpmn:sequenceFlow id="_Flow_19" sourceRef="_Activity_RetailerSendConfirmation" targetRef="_Event_RetailerEnd"/>
+    <bpmn:sequenceFlow id="_Flow_20" sourceRef="_Activity_RetailerSendChange" targetRef="_Event_RetailerEnd"/>
+    <bpmn:sequenceFlow id="_Flow_21" sourceRef="_Activity_RetailerSendCancellation" targetRef="_Event_RetailerEnd"/>
+  </bpmn:Process>
+</bpmn:Definitions>

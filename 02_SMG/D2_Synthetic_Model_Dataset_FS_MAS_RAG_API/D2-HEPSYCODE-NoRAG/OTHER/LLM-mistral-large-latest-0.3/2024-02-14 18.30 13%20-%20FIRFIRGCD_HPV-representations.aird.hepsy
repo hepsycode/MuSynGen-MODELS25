@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hml:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hml="org.univaq.hepsy">
+  <nodes xsi:type="hml:Stimulus" name="stimulus">
+    <ports name="stim_fir1_out_port">
+      <pChannels name="stim_fir1_channel" pFrom="//@nodes.0/@ports.0" pTo="//@nodes.1/@ports.0" queueSize="8" rendezVous="true"/>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:StructuredNode" name="FIRFIRGCD_HPV">
+    <ports name="fir1_in_port">
+      <pChannels name="stim_fir1_channel" pFrom="//@nodes.0/@ports.0" pTo="//@nodes.1/@ports.0" queueSize="8" rendezVous="true"/>
+    </ports>
+    <ports name="fir1_fir2_port">
+      <pChannels name="fir1_fir2_channel" pFrom="//@nodes.1/@ports.1" pTo="//@nodes.1/@ports.2" queueSize="8" rendezVous="true"/>
+    </ports>
+    <ports name="fir2_hpv_port">
+      <pChannels name="fir2_hpv_channel" pFrom="//@nodes.1/@ports.3" pTo="//@nodes.1/@ports.4" queueSize="8" rendezVous="true"/>
+    </ports>
+    <ports name="hpv_gcd_port">
+      <pChannels name="hpv_gcd_channel" pFrom="//@nodes.1/@ports.5" pTo="//@nodes.1/@ports.7" queueSize="8" rendezVous="true"/>
+    </ports>
+    <ports name="gcd_display_port">
+      <pChannels name="gcd_display_channel" pFrom="//@nodes.1/@ports.7" pTo="//@nodes.2/@ports.0" queueSize="8" rendezVous="true"/>
+    </ports>
+    <ports name="hpv_gcd_port_2">
+      <pChannels name="hpv_gcd_channel_2" pFrom="//@nodes.1/@ports.6" pTo="//@nodes.1/@ports.7" queueSize="8" rendezVous="true"/>
+    </ports>
+    <processes name="fir1" processExtension="//@nodes.1/@ports.0"/>
+    <processes name="fir2" processExtension="//@nodes.1/@ports.2"/>
+    <processes name="hpv" processExtension="//@nodes.1/@ports.4"/>
+    <processes name="gcd" processExtension="//@nodes.1/@ports.7"/>
+  </nodes>
+  <nodes xsi:type="hml:Display" name="display">
+    <ports name="system_display_in_port">
+      <pChannels name="gcd_display_channel" pFrom="//@nodes.1/@ports.7" pTo="//@nodes.2/@ports.0" queueSize="8" rendezVous="true"/>
+    </ports>
+  </nodes>
+</hml:BehaviorSpecification>

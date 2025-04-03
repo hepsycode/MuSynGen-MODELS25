@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="PhDAdmissionProcess">
+  <rootElements xsi:type="bpmn:Process" id="PhDAdmissionProcessDefinition" isExecutable="true">
+    <laneSets id="LaneSet_University" name="University">
+      <lanes id="Lane_AdminOffice" name="Administration Office">
+        <flowNodeRefs>StartEvent_OnlineApplication</flowNodeRefs>
+        <flowNodeRefs>Task_InitialAssessment</flowNodeRefs>
+        <flowNodeRefs>Task_SendToCommittee</flowNodeRefs>
+        <flowNodeRefs>Task_CheckOutcomes</flowNodeRefs>
+      </lanes>
+      <lanes id="Lane_AcademicCommittee" name="Academic Committee">
+        <flowNodeRefs>Task_CommitteeReview</flowNodeRefs>
+        <flowNodeRefs>Task_NotifyOutcomes</flowNodeRefs>
+      </lanes>
+    </laneSets>
+    <flowElements xsi:type="bpmn:StartEvent" id="StartEvent_OnlineApplication" name="Start Online Application" outgoing="Flow_SubmittedApplication"/>
+    <flowElements xsi:type="bpmn:UserTask" id="Task_InitialAssessment" name="Initial Assessment" incoming="Flow_SubmittedApplication" outgoing="Flow_AssessmentDecision"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="Gateway_AssessmentDecision" name="Assessment Decision" incoming="Flow_AssessmentDecision" outgoing="Flow_RejectApplication Flow_ForwardToCommittee"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="EndEvent_RejectApplication" name="Reject Application" incoming="Flow_RejectApplication"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="Flow_SubmittedApplication" sourceRef="StartEvent_OnlineApplication" targetRef="Task_InitialAssessment"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="Flow_AssessmentDecision" sourceRef="Task_InitialAssessment" targetRef="Gateway_AssessmentDecision"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="Flow_RejectApplication" sourceRef="Gateway_AssessmentDecision" targetRef="EndEvent_RejectApplication"/>
+    <flowElements xsi:type="bpmn:UserTask" id="Task_SendToCommittee" name="Send to Committee" incoming="Flow_ForwardToCommittee" outgoing="Flow_ToCommitteeReview"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="Flow_ForwardToCommittee" sourceRef="Gateway_AssessmentDecision" targetRef="Task_SendToCommittee"/>
+    <flowElements xsi:type="bpmn:SubProcess" id="SubProcess_CommitteeReview" name="Committee Review" incoming="Flow_ToCommitteeReview" outgoing="Flow_CommitteeDecision">
+      <flowElements xsi:type="bpmn:UserTask" id="Task_CommitteeReview" name="Conduct Review" outgoing="Flow_ReviewOutcome"/>
+      <flowElements xsi:type="bpmn:ExclusiveGateway" id="Gateway_CommitteeOutcome" name="Review Outcome" incoming="Flow_ReviewOutcome" outgoing="Flow_AdmissionGranted Flow_AdmissionDenied"/>
+      <flowElements xsi:type="bpmn:SequenceFlow" id="Flow_ToCommitteeReview" sourceRef="Task_SendToCommittee" targetRef="Task_CommitteeReview"/>
+      <flowElements xsi:type="bpmn:SequenceFlow" id="Flow_ReviewOutcome" sourceRef="Task_CommitteeReview" targetRef="Gateway_CommitteeOutcome"/>
+      <flowElements xsi:type="bpmn:SequenceFlow" id="Flow_AdmissionGranted" sourceRef="Gateway_CommitteeOutcome" targetRef="Task_NotifyOutcomes"/>
+      <flowElements xsi:type="bpmn:SequenceFlow" id="Flow_AdmissionDenied" sourceRef="Gateway_CommitteeOutcome" targetRef="Task_NotifyOutcomes"/>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="Flow_CommitteeDecision" sourceRef="SubProcess_CommitteeReview" targetRef="Task_CheckOutcomes"/>
+    <flowElements xsi:type="bpmn:UserTask" id="Task_CheckOutcomes" name="Check Selection Outcomes" outgoing="Flow_FinalNotification"/>
+    <flowElements xsi:type="bpmn:UserTask" id="Task_NotifyOutcomes" name="Notify Outcomes" incoming="Flow_CommitteeDecision" outgoing="Flow_FinalNotification"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="EndEvent_FinalNotification" name="Final Notification" incoming="Flow_FinalNotification"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="Flow_FinalNotification" sourceRef="Task_NotifyOutcomes" targetRef="EndEvent_FinalNotification"/>
+  </rootElements>
+</bpmn:Definitions>

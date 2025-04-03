@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="Definitions_1">
+  <rootElements xsi:type="bpmn:Process" id="Process_1">
+    <laneSets id="LaneSet_1">
+      <lanes id="Lane_1" name="Secretary">
+        <flowNodeRefs>Task_CollectDescriptions</flowNodeRefs>
+        <flowNodeRefs>Task_EnterIntoSystem</flowNodeRefs>
+        <flowNodeRefs>Task_AssignStudents</flowNodeRefs>
+        <flowNodeRefs>Task_RebookStudents</flowNodeRefs>
+      </lanes>
+      <lanes id="Lane_2" name="Teachers">
+        <flowNodeRefs>Task_ReceiveStudentList</flowNodeRefs>
+        <flowNodeRefs>Task_SelectStudents</flowNodeRefs>
+        <flowNodeRefs>Task_HandOverList</flowNodeRefs>
+      </lanes>
+      <lanes id="Lane_3" name="Students">
+        <flowNodeRefs>StartEvent_1</flowNodeRefs>
+        <flowNodeRefs>EndEvent_1</flowNodeRefs>
+      </lanes>
+    </laneSets>
+    <flowElements xsi:type="bpmn:StartEvent" id="StartEvent_1" name="Start of School Year"/>
+    <flowElements xsi:type="bpmn:UserTask" id="Task_CollectDescriptions" name="Collect Course Descriptions"/>
+    <flowElements xsi:type="bpmn:UserTask" id="Task_EnterIntoSystem" name="Enter Descriptions into System"/>
+    <flowElements xsi:type="bpmn:UserTask" id="Task_ReceiveStudentList" name="Receive Student Registrations"/>
+    <flowElements xsi:type="bpmn:UserTask" id="Task_SelectStudents" name="Select Students for Course"/>
+    <flowElements xsi:type="bpmn:UserTask" id="Task_HandOverList" name="Hand Over Unaccepted Students"/>
+    <flowElements xsi:type="bpmn:UserTask" id="Task_AssignStudents" name="Assign Students to Courses"/>
+    <flowElements xsi:type="bpmn:UserTask" id="Task_RebookStudents" name="Rebook Students in System"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="EndEvent_1" name="End of Registration Process"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="Flow_1" sourceRef="StartEvent_1" targetRef="Task_CollectDescriptions"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="Flow_2" sourceRef="Task_CollectDescriptions" targetRef="Task_EnterIntoSystem"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="Flow_3" sourceRef="Task_EnterIntoSystem" targetRef="Task_ReceiveStudentList"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="Flow_4" sourceRef="Task_ReceiveStudentList" targetRef="Task_SelectStudents"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="Flow_5" sourceRef="Task_SelectStudents" targetRef="Task_HandOverList"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="Flow_6" sourceRef="Task_HandOverList" targetRef="Task_AssignStudents"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="Flow_7" sourceRef="Task_AssignStudents" targetRef="Task_RebookStudents"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="Flow_8" sourceRef="Task_RebookStudents" targetRef="EndEvent_1"/>
+  </rootElements>
+</bpmn:Definitions>

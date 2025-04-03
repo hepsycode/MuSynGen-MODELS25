@@ -1,0 +1,54 @@
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-mistral-large-latest-1.0/ex00_writer0001.bpmn
+
+Validation Result: Validation error: org.eclipse.emf.ecore.xmi.FeatureNotFoundException: Feature 'Process' not found. (file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-mistral-large-latest-1.0/ex00_writer0001.bpmn, 2, 156)
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-mistral-large-latest-1.0/ex01_writer0001.bpmn
+
+Validation Result: Validation error: org.xml.sax.SAXParseExceptionpublicId: file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-mistral-large-latest-1.0/ex01_writer0001.bpmn; systemId: file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-mistral-large-latest-1.0/ex01_writer0001.bpmn; lineNumber: 24; columnNumber: 3; Il markup nel documento che segue l'elemento radice deve avere un formato corretto.
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-mistral-large-latest-1.0/ex02_writer0001.bpmn
+
+Validation Result: Validation error: org.eclipse.emf.ecore.xmi.UnresolvedReferenceException: Unresolved reference '_tBvnoI8JEe-v648egk3nxQ'. (file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-mistral-large-latest-1.0/ex02_writer0001.bpmn, 5, 185)
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-mistral-large-latest-1.0/ex03_writer0001.bpmn
+
+Validation Result: Validation error: org.eclipse.emf.ecore.xmi.UnresolvedReferenceException: Unresolved reference '_Cn4CkI8KEe-v648egk3nxQ'. (file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-mistral-large-latest-1.0/ex03_writer0001.bpmn, 35, 273)
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-mistral-large-latest-1.0/ex04_writer0008.bpmn
+
+Validation Result: Validation error: org.xml.sax.SAXParseExceptionpublicId: file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-mistral-large-latest-1.0/ex04_writer0008.bpmn; systemId: file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-mistral-large-latest-1.0/ex04_writer0008.bpmn; lineNumber: 1; columnNumber: 1; Il contenuto non è consentito nel prologo.
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-mistral-large-latest-1.0/ex05_writer0013.bpmn
+
+Validation Result: Validation successful: No errors found.
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-mistral-large-latest-1.0/ex07_writer0000.bpmn
+
+Validation Result: Validation error: org.eclipse.emf.ecore.xmi.FeatureNotFoundException: Feature 'collaboration' not found. (file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-mistral-large-latest-1.0/ex07_writer0000.bpmn, 3, 72)
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-mistral-large-latest-1.0/ex08_writer0000.bpmn
+
+Validation Result: Validation error: org.eclipse.emf.ecore.xmi.FeatureNotFoundException: Feature 'Collaboration' not found. (file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-mistral-large-latest-1.0/ex08_writer0000.bpmn, 3, 105)
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-mistral-large-latest-1.0/ex09_writer0002.bpmn
+
+Validation Result: Validation error: org.eclipse.emf.ecore.xmi.FeatureNotFoundException: Feature 'Process' not found. (file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-mistral-large-latest-1.0/ex09_writer0002.bpmn, 3, 111)
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-mistral-large-latest-1.0/ex10_writer0000.bpmn
+
+Validation Result: Validation error: org.eclipse.emf.ecore.xmi.FeatureNotFoundException: Feature 'Collaboration' not found. (file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-mistral-large-latest-1.0/ex10_writer0000.bpmn, 3, 90)
+
+
+Validation Summary:
+Valid models: 1
+Models with errors: 9
+

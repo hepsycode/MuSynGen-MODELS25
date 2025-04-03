@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_KkUY4Y8DEe-v648egk3nxQ" name="Elective Course Allocation Process" targetNamespace="http://www.omg.org/bpmn20" expressionLanguage="http://www.w3.org/1999/XPath" typeLanguage="http://www.w3.org/2001/XMLSchema">
+  <bpmn:Process id="_KkUY4I8DEe-v648egk3nxQ" name="Elective Course Allocation Process" processType="Private" isClosed="false" isExecutable="true">
+    <bpmn:laneSet id="_L9VaQY8DEe-v648egk3nxQ" name="LaneSet">
+      <bpmn:lane id="_L9WBUI8DEe-v648egk3nxQ" name="Teacher Lane">
+        <bpmn:flowNodeRef>_dDiegI8JEe-v648egk3nxQ</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>_obWrUI8JEe-v648egk3nxQ</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>_qiungI8JEe-v648egk3nxQ</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="_O5n9gI8JEe-v648egk3nxQ" name="Secretary Lane">
+        <bpmn:flowNodeRef>_0FCrQI8JEe-v648egk3nxQ</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>_Gf0kgI8KEe-v648egk3nxQ</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>_grUBAI8KEe-v648egk3nxQ</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:flowElements>
+      <bpmn:startEvent id="_dDiegI8JEe-v648egk3nxQ" name="Start"/>
+      <bpmn:userTask id="_obWrUI8JEe-v648egk3nxQ" name="Provide Course Description"/>
+      <bpmn:userTask id="_qiungI8JEe-v648egk3nxQ" name="Submit Course Description to Secretary"/>
+      <bpmn:userTask id="_0FCrQI8JEe-v648egk3nxQ" name="Collect and Enter Course Descriptions into CBS"/>
+      <bpmn:userTask id="_Gf0kgI8KEe-v648egk3nxQ" name="Send Student List to Teachers"/>
+      <bpmn:userTask id="_grUBAI8KEe-v648egk3nxQ" name="Receive Student List and Choose Participants"/>
+      <bpmn:userTask id="_9BHOYI8JEe-v648egk3nxQ" name="Hand Over Non-Accepted Students List to Secretary"/>
+      <bpmn:userTask id="_Cn4CkI8KEe-v648egk3nxQ" name="Assign Students to Available Courses"/>
+      <bpmn:userTask id="_RQ7rwI8MEe-v648egk3nxQ" name="Rebook Students in CBS"/>
+      <bpmn:endEvent id="_jLYxEI8KEe-v648egk3nxQ" name="End"/>
+      <bpmn:sequenceFlow id="_pkQ0II8JEe-v648egk3nxQ" sourceRef="_dDiegI8JEe-v648egk3nxQ" targetRef="_obWrUI8JEe-v648egk3nxQ"/>
+      <bpmn:sequenceFlow id="_tBvnoI8JEe-v648egk3nxQ" sourceRef="_obWrUI8JEe-v648egk3nxQ" targetRef="_qiungI8JEe-v648egk3nxQ"/>
+      <bpmn:sequenceFlow id="_wYnc0I8JEe-v648egk3nxQ" sourceRef="_qiungI8JEe-v648egk3nxQ" targetRef="_0FCrQI8JEe-v648egk3nxQ"/>
+      <bpmn:sequenceFlow id="_AR0KII8KEe-v648egk3nxQ" sourceRef="_0FCrQI8JEe-v648egk3nxQ" targetRef="_Gf0kgI8KEe-v648egk3nxQ"/>
+      <bpmn:sequenceFlow id="_EYfEkI8KEe-v648egk3nxQ" sourceRef="_Gf0kgI8KEe-v648egk3nxQ" targetRef="_grUBAI8KEe-v648egk3nxQ"/>
+      <bpmn:sequenceFlow id="_RTXmoI8KEe-v648egk3nxQ" sourceRef="_grUBAI8KEe-v648egk3nxQ" targetRef="_9BHOYI8JEe-v648egk3nxQ"/>
+      <bpmn:sequenceFlow id="_J3GCUI8KEe-v648egk3nxQ" sourceRef="_9BHOYI8JEe-v648egk3nxQ" targetRef="_Cn4CkI8KEe-v648egk3nxQ"/>
+      <bpmn:sequenceFlow id="_C_hboI8MEe-v648egk3nxQ" sourceRef="_Cn4CkI8KEe-v648egk3nxQ" targetRef="_RQ7rwI8MEe-v648egk3nxQ"/>
+      <bpmn:sequenceFlow id="_LFVFII8MEe-v648egk3nxQ" sourceRef="_RQ7rwI8MEe-v648egk3nxQ" targetRef="_jLYxEI8KEe-v648egk3nxQ"/>
+    </bpmn:flowElements>
+  </bpmn:Process>
+</bpmn:Definitions>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_creditRiskAssessmentProcess">
+  <rootElements xsi:type="bpmn:Process" id="_creditRiskAssessment">
+    <flowElements xsi:type="bpmn:StartEvent" id="_startEvent" name="Credit Request Received" outgoing="_toRiskAssessment"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_riskAssessment" name="Assess Risk" outgoing="_toRiskDecision" incoming="_toRiskAssessment"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_toRiskAssessment" sourceRef="_startEvent" targetRef="_riskAssessment"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="_riskDecision" name="Risk Above Threshold?" outgoing="_toAdvancedRiskAssessment _toSimpleRiskAssessment" incoming="_toRiskDecision"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_toRiskDecision" sourceRef="_riskAssessment" targetRef="_riskDecision"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_advancedRiskAssessment" name="Perform Advanced Risk Assessment" outgoing="_toNotifyCustomer" incoming="_toAdvancedRiskAssessment"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_toAdvancedRiskAssessment" name="Yes" sourceRef="_riskDecision" targetRef="_advancedRiskAssessment"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_simpleRiskAssessment" name="Perform Simple Risk Assessment" outgoing="_toNotifyCustomer" incoming="_toSimpleRiskAssessment"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_toSimpleRiskAssessment" name="No" sourceRef="_riskDecision" targetRef="_simpleRiskAssessment"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_notifyCustomer" name="Notify Customer" outgoing="_toDisbursement" incoming="_toNotifyCustomer"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_toNotifyCustomer" sourceRef="_advancedRiskAssessment" targetRef="_notifyCustomer"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_toNotifyCustomerSimple" sourceRef="_simpleRiskAssessment" targetRef="_notifyCustomer"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_organizeDisbursement" name="Organize Disbursement" outgoing="_toEndEvent" incoming="_toDisbursement"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_toDisbursement" sourceRef="_notifyCustomer" targetRef="_organizeDisbursement"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="_endEvent" name="Process Completed" incoming="_toEndEvent"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_toEndEvent" sourceRef="_organizeDisbursement" targetRef="_endEvent"/>
+  </rootElements>
+</bpmn:Definitions>

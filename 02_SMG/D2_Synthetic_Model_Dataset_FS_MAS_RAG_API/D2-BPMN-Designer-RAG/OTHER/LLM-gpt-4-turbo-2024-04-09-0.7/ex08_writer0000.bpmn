@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="ElectiveCoursesProcess">
+  <rootElements xsi:type="bpmn:Process" id="VersionAProcess">
+    <flowElements xsi:type="bpmn:StartEvent" id="startA" name="Start of School Year Version A"/>
+    <flowElements xsi:type="bpmn:Task" id="collectDescriptionsA" name="Collect 10 Course Descriptions">
+      <incoming>flow1A</incoming>
+      <outgoing>flow2A</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flow1A" sourceRef="startA" targetRef="collectDescriptionsA"/>
+    <flowElements xsi:type="bpmn:Task" id="enterCBSA" name="Enter Information into CBS">
+      <incoming>flow2A</incoming>
+      <outgoing>flow3A</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flow2A" sourceRef="collectDescriptionsA" targetRef="enterCBSA"/>
+    <flowElements xsi:type="bpmn:Task" id="sendListA" name="Send List to Teachers">
+      <incoming>flow3A</incoming>
+      <outgoing>flow4A</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flow3A" sourceRef="enterCBSA" targetRef="sendListA"/>
+    <flowElements xsi:type="bpmn:Task" id="selectStudentsA" name="Select Students">
+      <incoming>flow4A</incoming>
+      <outgoing>flow5A</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flow4A" sourceRef="sendListA" targetRef="selectStudentsA"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="endA" name="End Process A">
+      <incoming>flow5A</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flow5A" sourceRef="selectStudentsA" targetRef="endA"/>
+  </rootElements>
+  <rootElements xsi:type="bpmn:Process" id="VersionBProcess">
+    <flowElements xsi:type="bpmn:StartEvent" id="startB" name="Start of School Year Version B"/>
+    <flowElements xsi:type="bpmn:Task" id="collectDescriptionsB" name="Collect 12 Course Descriptions">
+      <incoming>flow1B</incoming>
+      <outgoing>flow2B</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flow1B" sourceRef="startB" targetRef="collectDescriptionsB"/>
+    <flowElements xsi:type="bpmn:Task" id="enterCISB" name="Enter Information into CIS">
+      <incoming>flow2B</incoming>
+      <outgoing>flow3B</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flow2B" sourceRef="collectDescriptionsB" targetRef="enterCISB"/>
+    <flowElements xsi:type="bpmn:Task" id="sendListB" name="Send List to Teachers">
+      <incoming>flow3B</incoming>
+      <outgoing>flow4B</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flow3B" sourceRef="enterCISB" targetRef="sendListB"/>
+    <flowElements xsi:type="bpmn:Task" id="selectStudentsB" name="Select Students">
+      <incoming>flow4B</incoming>
+      <outgoing>flow5B</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flow4B" sourceRef="sendListB" targetRef="selectStudentsB"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="endB" name="End Process B">
+      <incoming>flow5B</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flow5B" sourceRef="selectStudentsB" targetRef="endB"/>
+  </rootElements>
+</bpmn:Definitions>

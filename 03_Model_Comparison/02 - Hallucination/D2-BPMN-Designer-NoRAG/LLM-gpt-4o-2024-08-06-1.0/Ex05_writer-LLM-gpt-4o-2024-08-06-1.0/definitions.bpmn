@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_nEWY4Y8DEe-v648egk3nxQ">
+  <rootElements xsi:type="bpmn:Process" id="_nEZY4I8DEe-v648egk3nxQ">
+    <flowElements xsi:type="bpmn:StartEvent" id="_aDasdI8JEe-v648egk3nxQ" name="Claim submission" outgoing="_claimReceivedFlow"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_notificationDeptTask" name="Check and register claim" outgoing="_registerFlow" incoming="_claimReceivedFlow"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_claimReceivedFlow" targetRef="_notificationDeptTask" sourceRef="_aDasdI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="_checkCompleteGateway" name="Documents complete?" outgoing="_registerFlow _rejectFlow" incoming="_registerFlow"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_registerFlow" targetRef="_checkCompleteGateway" sourceRef="_notificationDeptTask"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_handlingDeptTask" name="Check insurance" outgoing="_insuranceCheckFlow" incoming="_registerFlow"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_insuranceCheckFlow" targetRef="_handlingDeptTask" sourceRef="_checkCompleteGateway"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_assessmentTask" name="Perform assessment" outgoing="_assessmentFlow" incoming="_insuranceCheckFlow"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_assessmentFlow" targetRef="_assessmentTask" sourceRef="_handlingDeptTask"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="_assessmentResultGateway" name="Assessment positive?" outgoing="_authorizeRepairFlow _rejectFlow" incoming="_assessmentFlow"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_authorizeRepairFlow" targetRef="_garageTask" sourceRef="_assessmentResultGateway"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_garageTask" name="Authorize repairs" outgoing="_schedulePaymentFlow" incoming="_authorizeRepairFlow"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_schedulePaymentFlow" targetRef="_schedulePaymentTask" sourceRef="_garageTask"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_schedulePaymentTask" name="Schedule payment" outgoing="_sendLetterFlow" incoming="_schedulePaymentFlow"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_sendLetterFlow" targetRef="_sendLetterTask" sourceRef="_schedulePaymentTask"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_rejectFlow" name="Reject" targetRef="_sendLetterTask" sourceRef="_assessmentResultGateway"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_sendLetterTask" name="Send letter to customer" outgoing="_completeProcessFlow" incoming="_sendLetterFlow _rejectFlow"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="_processEndEvent" name="Process complete" incoming="_completeProcessFlow"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_completeProcessFlow" targetRef="_processEndEvent" sourceRef="_sendLetterTask"/>
+    <artifacts xsi:type="bpmn:DataObjectReference" id="_claimDocumentRef" dataObjectRef="_claimDocument"/>
+    <artifacts xsi:type="bpmn:DataObject" id="_claimDocument" name="Claim Document" isCollection="false"/>
+    <artifacts xsi:type="bpmn:DataStoreReference" id="_insuranceDataStoreRef" dataStoreRef="_insuranceDataStore"/>
+    <artifacts xsi:type="bpmn:DataStore" id="_insuranceDataStore" name="Insurance Data" capacity="100" isUnlimited="true"/>
+    <artifacts xsi:type="bpmn:DataStoreReference" id="_claimDataStoreRef" dataStoreRef="_claimDataStore"/>
+    <artifacts xsi:type="bpmn:DataStore" id="_claimDataStore" name="Claim Data" capacity="100" isUnlimited="true"/>
+    <laneSets id="_laneSetId" name="Car Insurer">
+      <lanes id="_notificationLane" name="Notification Department" flowNodeRefs="_aDasdI8JEe-v648egk3nxQ _notificationDeptTask _checkCompleteGateway"/>
+      <lanes id="_handlingLane" name="Handling Department" flowNodeRefs="_handlingDeptTask _assessmentTask _assessmentResultGateway _garageTask _schedulePaymentTask"/>
+    </laneSets>
+  </rootElements>
+</bpmn:Definitions>

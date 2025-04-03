@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="definitions1">
+  <rootElements xsi:type="bpmn:Process" id="process1">
+    <flowElements xsi:type="bpmn:StartEvent" id="startEvent1" name="Claim Submitted">
+      <outgoing>flow1</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:Task" id="task1" name="Check Documents">
+      <incoming>flow1</incoming>
+      <outgoing>flow2</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flow1" sourceRef="startEvent1" targetRef="task1"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="gateway1">
+      <incoming>flow2</incoming>
+      <outgoing>flow3</outgoing>
+      <outgoing>flow8</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flow2" sourceRef="task1" targetRef="gateway1"/>
+    <flowElements xsi:type="bpmn:Task" id="task2" name="Register Claim">
+      <incoming>flow3</incoming>
+      <outgoing>flow4</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flow3" sourceRef="gateway1" targetRef="task2"/>
+    <flowElements xsi:type="bpmn:Task" id="task3" name="Check Insurance">
+      <incoming>flow4</incoming>
+      <outgoing>flow5</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flow4" sourceRef="task2" targetRef="task3"/>
+    <flowElements xsi:type="bpmn:Task" id="task4" name="Assess Damage">
+      <incoming>flow5</incoming>
+      <outgoing>flow6</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flow5" sourceRef="task3" targetRef="task4"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="gateway2">
+      <incoming>flow6</incoming>
+      <outgoing>flow7</outgoing>
+      <outgoing>flow9</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flow6" sourceRef="task4" targetRef="gateway2"/>
+    <flowElements xsi:type="bpmn:Task" id="task5" name="Authorize Repair">
+      <incoming>flow7</incoming>
+      <outgoing>flow10</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flow7" sourceRef="gateway2" targetRef="task5"/>
+    <flowElements xsi:type="bpmn:Task" id="task6" name="Schedule Payment">
+      <incoming>flow10</incoming>
+      <outgoing>flow11</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flow10" sourceRef="task5" targetRef="task6"/>
+    <flowElements xsi:type="bpmn:Task" id="task7" name="Send Letter">
+      <incoming>flow11</incoming>
+      <incoming>flow9</incoming>
+      <incoming>flow8</incoming>
+      <outgoing>flow12</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flow11" sourceRef="task6" targetRef="task7"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="endEvent1" name="Process Complete">
+      <incoming>flow12</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flow12" sourceRef="task7" targetRef="endEvent1"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flow8" sourceRef="gateway1" targetRef="task7"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flow9" sourceRef="gateway2" targetRef="task7"/>
+  </rootElements>
+  <rootElements xsi:type="bpmn:DataObject" id="dataObject1" name="Claim Documentation"/>
+  <rootElements xsi:type="bpmn:DataStore" id="dataStore1" name="Claims Register"/>
+</bpmn:Definitions>

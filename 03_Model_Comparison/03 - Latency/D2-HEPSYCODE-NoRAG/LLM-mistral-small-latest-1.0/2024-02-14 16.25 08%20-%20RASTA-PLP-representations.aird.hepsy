@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hml:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hml="org.univaq.hepsy">
+  <nodes xsi:type="hml:Stimulus" name="stimulus">
+    <ports name="stim_system_out_port">
+      <pChannels name="stim_preproc_channel" pFrom="//@nodes.0/@ports.0" pTo="//@nodes.2/@ports.1" queueSize="8" rendezVous="true">
+        <message name="raw_audio_message">
+          <entry name="raw_audio_data" type="sc_int"/>
+        </message>
+      </pChannels>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:Display" name="display">
+    <ports name="system_display_in_port">
+      <pChannels name="display_channel" pFrom="//@nodes.1/@ports.0" pTo="//@nodes.2/@ports.0" queueSize="8" rendezVous="true">
+        <message name="processed_audio_message">
+          <entry name="processed_audio_data" type="sc_int"/>
+        </message>
+      </pChannels>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:StructuredNode" name="RastaPlp">
+    <nChannels name="preproc_rasta_channel" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.1" queueSize="8" rendezVous="true">
+      <message name="preproc_rasta_message">
+        <entry name="conditioned_audio_data" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="rasta_plp_channel" nFrom="//@nodes.2/@processes.1" nTo="//@nodes.2/@processes.2" queueSize="8" rendezVous="true">
+      <message name="rasta_plp_message">
+        <entry name="filtered_audio_data" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="plp_postproc_channel" nFrom="//@nodes.2/@processes.2" nTo="//@nodes.2/@ports.0" queueSize="8" rendezVous="true">
+      <message name="plp_postproc_message">
+        <entry name="processed_audio_data" type="sc_int"/>
+      </message>
+    </nChannels>
+    <ports name="system_display_out_port" portExtension="//@nodes.2/@processes.2"/>
+    <ports name="sys_out"/>
+    <processes name="preproc"/>
+    <processes name="rasta"/>
+    <processes name="plp"/>
+  </nodes>
+</hml:BehaviorSpecification>

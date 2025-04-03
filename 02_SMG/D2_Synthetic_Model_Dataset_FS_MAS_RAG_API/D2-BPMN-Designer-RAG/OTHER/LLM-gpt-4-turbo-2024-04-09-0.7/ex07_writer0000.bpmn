@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="DoctorRatingWorkflow">
+  <rootElements xsi:type="bpmn:Process" id="ratingProcess" name="Doctor Rating Process">
+    <laneSets id="laneSet1">
+      <lanes id="lane1" name="Quality Assurance Specialist">
+        <flowNodeRefs>startInterviewTask receiveExpertiseTask fileResultsTask createReportTask</flowNodeRefs>
+      </lanes>
+      <lanes id="lane2" name="Managing Director">
+        <flowNodeRefs>requestExpertReviewTask receiveExpertiseTask payExpensesTask</flowNodeRefs>
+      </lanes>
+    </laneSets>
+    <flowElements xsi:type="bpmn:UserTask" id="startInterviewTask" name="Interview Patients"/>
+    <flowElements xsi:type="bpmn:UserTask" id="requestExpertReviewTask" name="Request Expert Review"/>
+    <flowElements xsi:type="bpmn:UserTask" id="receiveExpertiseTask" name="Receive Expertise"/>
+    <flowElements xsi:type="bpmn:UserTask" id="fileResultsTask" name="File Results"/>
+    <flowElements xsi:type="bpmn:UserTask" id="createReportTask" name="Create Report"/>
+    <flowElements xsi:type="bpmn:UserTask" id="payExpensesTask" name="Pay Expert Expenses"/>
+  </rootElements>
+</bpmn:Definitions>

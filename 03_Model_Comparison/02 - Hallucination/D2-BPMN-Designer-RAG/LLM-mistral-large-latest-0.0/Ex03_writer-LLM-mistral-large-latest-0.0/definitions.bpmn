@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_KkUY4Y8DEe-v648egk3nxQ">
+  <rootElements xsi:type="bpmn:Process" id="_KkUY4I8DEe-v648egk3nxQ">
+    <flowElements xsi:type="bpmn:StartEvent" id="_dDiegI8JEe-v648egk3nxQ" name="Claim Submitted" outgoing="_pkQ0II8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_obWrUI8JEe-v648egk3nxQ" name="Check if Claimant is Insured" outgoing="_tBvnoI8JEe-v648egk3nxQ _3rueEI8JEe-v648egk3nxQ" incoming="_pkQ0II8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_pkQ0II8JEe-v648egk3nxQ" targetRef="_obWrUI8JEe-v648egk3nxQ" sourceRef="_dDiegI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="_t0sukI8JEe-v648egk3nxQ" name="Is Claimant Insured?" outgoing="_yVKpEI8JEe-v648egk3nxQ _wYnc0I8JEe-v648egk3nxQ" incoming="_tBvnoI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_tBvnoI8JEe-v648egk3nxQ" targetRef="_t0sukI8JEe-v648egk3nxQ" sourceRef="_obWrUI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_0FCrQI8JEe-v648egk3nxQ" name="Inform Claimant of Rejection via SAP" outgoing="_J3GCUI8KEe-v648egk3nxQ" incoming="_yVKpEI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_yVKpEI8JEe-v648egk3nxQ" name="No" targetRef="_0FCrQI8JEe-v648egk3nxQ" sourceRef="_t0sukI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="_jLYxEI8KEe-v648egk3nxQ" name="Process Ends" incoming="_J3GCUI8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_J3GCUI8KEe-v648egk3nxQ" targetRef="_jLYxEI8KEe-v648egk3nxQ" sourceRef="_0FCrQI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_9BHOYI8JEe-v648egk3nxQ" name="Evaluate Claim Severity" outgoing="_EYfEkI8KEe-v648egk3nxQ _AR0KII8KEe-v648egk3nxQ" incoming="_wYnc0I8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_wYnc0I8JEe-v648egk3nxQ" name="Yes" targetRef="_9BHOYI8JEe-v648egk3nxQ" sourceRef="_t0sukI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="_w3ntAI8JEe-v648egk3nxQ" name="Claim Severity" outgoing="_KeNFoI8KEe-v648egk3nxQ _3rueEI8JEe-v648egk3nxQ" incoming="_EYfEkI8KEe-v648egk3nxQ _AR0KII8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_EYfEkI8KEe-v648egk3nxQ" name="Simple Claim" targetRef="_w3ntAI8JEe-v648egk3nxQ" sourceRef="_9BHOYI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_AR0KII8KEe-v648egk3nxQ" name="Complex Claim" targetRef="_w3ntAI8JEe-v648egk3nxQ" sourceRef="_9BHOYI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_Cn4CkI8KEe-v648egk3nxQ" name="Send Relevant Forms via SAP" outgoing="_RTXmoI8KEe-v648egk3nxQ" incoming="_KeNFoI8KEe-v648egk3nxQ _3rueEI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_KeNFoI8KEe-v648egk3nxQ" name="Simple Forms" targetRef="_Cn4CkI8KEe-v648egk3nxQ" sourceRef="_w3ntAI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_3rueEI8JEe-v648egk3nxQ" name="Complex Forms" targetRef="_Cn4CkI8KEe-v648egk3nxQ" sourceRef="_w3ntAI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_S02ngI8KEe-v648egk3nxQ" name="Check Forms for Completeness" outgoing="_VeProI8KEe-v648egk3nxQ _YVC5oI8KEe-v648egk3nxQ" incoming="_RTXmoI8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_RTXmoI8KEe-v648egk3nxQ" targetRef="_S02ngI8KEe-v648egk3nxQ" sourceRef="_Cn4CkI8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="_PiDaAI8KEe-v648egk3nxQ" name="Are Forms Complete?" outgoing="_X1QmUI8KEe-v648egk3nxQ _ehspII8KEe-v648egk3nxQ" incoming="_VeProI8KEe-v648egk3nxQ _YVC5oI8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_VeProI8KEe-v648egk3nxQ" name="No" targetRef="_PiDaAI8KEe-v648egk3nxQ" sourceRef="_S02ngI8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_Z-PFAI8KEe-v648egk3nxQ" name="Register Claim in Management System" outgoing="_fHKtsI8KEe-v648egk3nxQ" incoming="_X1QmUI8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_X1QmUI8KEe-v648egk3nxQ" name="Yes" targetRef="_Z-PFAI8KEe-v648egk3nxQ" sourceRef="_PiDaAI8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="_HVZ2wI8MEe-v648egk3nxQ" name="Process Ends" incoming="_fHKtsI8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_fHKtsI8KEe-v648egk3nxQ" targetRef="_HVZ2wI8MEe-v648egk3nxQ" sourceRef="_Z-PFAI8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_yW_jII8LEe-v648egk3nxQ" name="Inform Claimant to Update Forms via SAP" outgoing="_0cIqsI8LEe-v648egk3nxQ" incoming="_ehspII8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_ehspII8KEe-v648egk3nxQ" name="Yes" targetRef="_yW_jII8LEe-v648egk3nxQ" sourceRef="_PiDaAI8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_YVC5oI8KEe-v648egk3nxQ" name="Recheck Forms" targetRef="_PiDaAI8KEe-v648egk3nxQ" sourceRef="_S02ngI8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_0cIqsI8LEe-v648egk3nxQ" targetRef="_S02ngI8KEe-v648egk3nxQ" sourceRef="_yW_jII8LEe-v648egk3nxQ"/>
+    <laneSets id="_L9VaQY8DEe-v648egk3nxQ" name="Insurer">
+      <lanes id="_L9WBUI8DEe-v648egk3nxQ" name="Claims Officer" flowNodeRefs="_dDiegI8JEe-v648egk3nxQ _obWrUI8JEe-v648egk3nxQ _t0sukI8JEe-v648egk3nxQ _0FCrQI8JEe-v648egk3nxQ _jLYxEI8KEe-v648egk3nxQ _Cn4CkI8KEe-v648egk3nxQ _S02ngI8KEe-v648egk3nxQ _PiDaAI8KEe-v648egk3nxQ _Z-PFAI8KEe-v648egk3nxQ _HVZ2wI8MEe-v648egk3nxQ"/>
+      <lanes id="_O5n9gI8JEe-v648egk3nxQ" name="Senior Claims Officer" flowNodeRefs="_9BHOYI8JEe-v648egk3nxQ _w3ntAI8JEe-v648egk3nxQ"/>
+    </laneSets>
+    <artifacts xsi:type="bpmn:DataObject" id="_5J33EI8JEe-v648egk3nxQ" name="Claim Submission"/>
+    <artifacts xsi:type="bpmn:DataObject" id="_MLqtAY8KEe-v648egk3nxQ" name="Insured Status"/>
+    <artifacts xsi:type="bpmn:DataObject" id="_qXDtkI8KEe-v648egk3nxQ" name="Claim Severity"/>
+    <artifacts xsi:type="bpmn:DataObject" id="_3ZUC8I8KEe-v648egk3nxQ" name="Relevant Forms"/>
+    <artifacts xsi:type="bpmn:DataObject" id="_9yytgY8KEe-v648egk3nxQ" name="Completed Forms"/>
+    <artifacts xsi:type="bpmn:DataStore" id="_WEL_YY8MEe-v648egk3nxQ" name="Claims Management System"/>
+    <artifacts xsi:type="bpmn:DataStore" id="_YcTGQY8MEe-v648egk3nxQ" name="SAP System"/>
+    <artifacts xsi:type="bpmn:Association" id="_8FLxoI8JEe-v648egk3nxQ" sourceRef="_dDiegI8JEe-v648egk3nxQ" targetRef="_5J33EI8JEe-v648egk3nxQ"/>
+    <artifacts xsi:type="bpmn:Association" id="_BEBDII8KEe-v648egk3nxQ" sourceRef="_obWrUI8JEe-v648egk3nxQ" targetRef="_MLqtAY8KEe-v648egk3nxQ"/>
+    <artifacts xsi:type="bpmn:Association" id="_BxaUoI8KEe-v648egk3nxQ" sourceRef="_9BHOYI8JEe-v648egk3nxQ" targetRef="_qXDtkI8KEe-v648egk3nxQ"/>
+    <artifacts xsi:type="bpmn:Association" id="_E5hVEI8KEe-v648egk3nxQ" sourceRef="_Cn4CkI8KEe-v648egk3nxQ" targetRef="_3ZUC8I8KEe-v648egk3nxQ"/>
+    <artifacts xsi:type="bpmn:Association" id="_O8J3oI8KEe-v648egk3nxQ" sourceRef="_S02ngI8KEe-v648egk3nxQ" targetRef="_9yytgY8KEe-v648egk3nxQ"/>
+    <artifacts xsi:type="bpmn:Association" id="_WP6ZII8KEe-v648egk3nxQ" sourceRef="_Z-PFAI8KEe-v648egk3nxQ" targetRef="_WEL_YY8MEe-v648egk3nxQ"/>
+    <artifacts xsi:type="bpmn:Association" id="_c38dEI8KEe-v648egk3nxQ" sourceRef="_0FCrQI8JEe-v648egk3nxQ" targetRef="_YcTGQY8MEe-v648egk3nxQ"/>
+  </rootElements>
+</bpmn:Definitions>

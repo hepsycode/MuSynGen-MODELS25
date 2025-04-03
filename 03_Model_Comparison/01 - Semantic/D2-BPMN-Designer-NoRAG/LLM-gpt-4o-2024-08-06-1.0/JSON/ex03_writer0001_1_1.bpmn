@@ -1,0 +1,20 @@
+{
+    "response_length": 5546,
+    "execution_time": 83.5414662361145,
+    "temperature": 1.0,
+    "usage": {
+        "input_tokens": 29653,
+        "output_tokens": 2371,
+        "total_tokens": 32024,
+        "input_token_details": {
+            "audio": 0,
+            "cache_read": 0
+        },
+        "output_token_details": {
+            "audio": 0,
+            "reasoning": 0
+        }
+    },
+    "price_usd": 0.0978425,
+    "model_name": "gpt-4o-2024-08-06"
+}

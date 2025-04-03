@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="Definitions_HospitalDoctorRating">
+  <rootElements xsi:type="bpmn:Process" id="Process_DoctorRating">
+    <flowElements xsi:type="bpmn:StartEvent" id="StartEvent_InterviewPatients" name="Start Patient Interview" outgoing="SequenceFlow_InterviewToPatientWorkflow"/>
+    <flowElements xsi:type="bpmn:CallActivity" id="CallActivity_PatientInterviewWorkflow" name="Patient Interview Workflow" incoming="SequenceFlow_InterviewToPatientWorkflow" outgoing="SequenceFlow_ToReviewRequest"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_InterviewToPatientWorkflow" sourceRef="StartEvent_InterviewPatients" targetRef="CallActivity_PatientInterviewWorkflow"/>
+    <flowElements xsi:type="bpmn:ParallelGateway" id="ParallelGateway_Fork" name="Parallel Tasks for Review and Payment" incoming="SequenceFlow_ToReviewRequest" outgoing="SequenceFlow_ToRequestReview SequenceFlow_ToPayExpenses"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_ToReviewRequest" sourceRef="CallActivity_PatientInterviewWorkflow" targetRef="ParallelGateway_Fork"/>
+    <flowElements xsi:type="bpmn:Task" id="Task_RequestExternalReview" name="Request External Review" incoming="SequenceFlow_ToRequestReview" outgoing="SequenceFlow_ToExpertRespond"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_ToRequestReview" sourceRef="ParallelGateway_Fork" targetRef="Task_RequestExternalReview"/>
+    <flowElements xsi:type="bpmn:IntermediateCatchEvent" id="IntermediateCatchEvent_WaitForExpertResponse" name="Wait for Expert Response" incoming="SequenceFlow_ToExpertRespond" outgoing="SequenceFlow_ExpertResponded SequenceFlow_ExpertDidNotRespond"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_ToExpertRespond" sourceRef="Task_RequestExternalReview" targetRef="IntermediateCatchEvent_WaitForExpertResponse"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_ExpertResponded" sourceRef="IntermediateCatchEvent_WaitForExpertResponse" targetRef="Task_ReceiveExpertReview"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_ExpertDidNotRespond" sourceRef="IntermediateCatchEvent_WaitForExpertResponse" targetRef="Task_RequestAnotherExpert"/>
+    <flowElements xsi:type="bpmn:Task" id="Task_RequestAnotherExpert" name="Request Another Expert" incoming="SequenceFlow_ExpertDidNotRespond" outgoing="SequenceFlow_ToExpertRespondCopy"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_ToExpertRespondCopy" sourceRef="Task_RequestAnotherExpert" targetRef="IntermediateCatchEvent_WaitForExpertResponse"/>
+    <flowElements xsi:type="bpmn:Task" id="Task_ReceiveExpertReview" name="Receive Expert Review" incoming="SequenceFlow_ExpertResponded" outgoing="SequenceFlow_ToForwardReview"/>
+    <flowElements xsi:type="bpmn:Task" id="Task_ForwardReviewToQA" name="Forward Review to QA Specialist" incoming="SequenceFlow_ToForwardReview" outgoing="SequenceFlow_ToFileResults"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_ToForwardReview" sourceRef="Task_ReceiveExpertReview" targetRef="Task_ForwardReviewToQA"/>
+    <flowElements xsi:type="bpmn:Task" id="Task_FileResults" name="File Results" incoming="SequenceFlow_ToFileResults" outgoing="SequenceFlow_ToCreateReport"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_ToFileResults" sourceRef="Task_ForwardReviewToQA" targetRef="Task_FileResults"/>
+    <flowElements xsi:type="bpmn:Task" id="Task_CreateReport" name="Create Report" incoming="SequenceFlow_ToCreateReport"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_ToCreateReport" sourceRef="Task_FileResults" targetRef="Task_CreateReport"/>
+    <flowElements xsi:type="bpmn:Task" id="Task_PayExpenses" name="Pay Expert's Expenses" incoming="SequenceFlow_ToPayExpenses" outgoing="SequenceFlow_CompletePayment"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_ToPayExpenses" sourceRef="ParallelGateway_Fork" targetRef="Task_PayExpenses"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="EndEvent_CompleteProcess" name="Process Complete" incoming="SequenceFlow_CompleteReport SequenceFlow_CompletePayment"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_CompleteReport" sourceRef="Task_CreateReport" targetRef="EndEvent_CompleteProcess"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_CompletePayment" sourceRef="Task_PayExpenses" targetRef="EndEvent_CompleteProcess"/>
+    <laneSets id="LaneSet_Hospital" name="Hospital Roles">
+      <lanes id="Lane_QualityAssurance" name="QA Specialist" flowNodeRefs="StartEvent_InterviewPatients CallActivity_PatientInterviewWorkflow ParallelGateway_Fork Task_FileResults Task_CreateReport Task_ForwardReviewToQA"/>
+      <lanes id="Lane_ManagingDirector" name="Managing Director" flowNodeRefs="Task_RequestExternalReview IntermediateCatchEvent_WaitForExpertResponse Task_ReceiveExpertReview Task_RequestAnotherExpert Task_PayExpenses"/>
+    </laneSets>
+  </rootElements>
+</bpmn:Definitions>

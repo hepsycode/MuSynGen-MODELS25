@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_1">
+  <rootElements xsi:type="bpmn:Process" id="_2" name="Doctor Rating Workflow" processType="None" isExecutable="true">
+    <flowElements xsi:type="bpmn:StartEvent" id="_3" name="Start Doctor Rating" outgoing="_4"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_5" name="Interview Patients" outgoing="_6" incoming="_4"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_4" sourceRef="_3" targetRef="_5"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_7" name="Request Expert Review" outgoing="_8" incoming="_6"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_6" sourceRef="_5" targetRef="_7"/>
+    <flowElements xsi:type="bpmn:IntermediateThrowEvent" id="_9" name="Send Expert Request" outgoing="_10" incoming="_8">
+      <eventDefinitions xsi:type="bpmn:MessageEventDefinition" id="_16"/>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_8" sourceRef="_7" targetRef="_9"/>
+    <flowElements xsi:type="bpmn:BoundaryEvent" id="_11" name="Expert Not Responding" attachedToRef="_12" cancelActivity="true">
+      <eventDefinitions xsi:type="bpmn:TimerEventDefinition" id="_13"/>
+    </flowElements>
+    <flowElements xsi:type="bpmn:IntermediateCatchEvent" id="_14" name="Receive Expert Response" outgoing="_15" incoming="_10">
+      <eventDefinitions xsi:type="bpmn:MessageEventDefinition" id="_16"/>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_10" sourceRef="_9" targetRef="_14"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_12" name="Request Another Expert" outgoing="_17" incoming="_11">
+      <loopCharacteristics xsi:type="bpmn:MultiInstanceLoopCharacteristics" id="_18" loopCardinality="_19" isSequential="true" behavior="One">
+        <loopCardinality xsi:type="bpmn:FormalExpression" id="_19" body="1"/>
+      </loopCharacteristics>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_11" sourceRef="_14" targetRef="_12"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_20" name="Forward Expertise to QA" outgoing="_21" incoming="_15"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_15" sourceRef="_14" targetRef="_20"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_22" name="File Results" outgoing="_23" incoming="_21"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_21" sourceRef="_20" targetRef="_22"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_24" name="Create Report" outgoing="_25" incoming="_23"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_23" sourceRef="_22" targetRef="_24"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_26" name="Pay Expert Expenses" outgoing="_27" incoming="_21"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_27" sourceRef="_26" targetRef="_28"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="_28" name="End Doctor Rating" incoming="_25 _27">
+      <eventDefinitions xsi:type="bpmn:SignalEventDefinition" id="_29"/>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_25" sourceRef="_24" targetRef="_28"/>
+    <laneSets id="_30" name="Hospital">
+      <lanes id="_31" name="Quality Assurance Specialist" flowNodeRefs="_5 _22 _24"/>
+      <lanes id="_32" name="Managing Director" flowNodeRefs="_7 _9 _14 _20 _26"/>
+    </laneSets>
+  </rootElements>
+</bpmn:Definitions>

@@ -1,0 +1,40 @@
+<hml:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hml="org.univaq.hepsy">
+  <nodes xsi:type="hml:Stimulus" name="stimulus">
+    <ports name="stim_system_out_port">
+      <pChannels name="stim_acq_channel" pFrom="//@nodes.0/@ports.0" pTo="//@nodes.1/@ports.0"/>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:StructuredNode" name="SUSAN">
+    <nChannels name="preproc_susan_channel" nFrom="//@nodes.1/@processes.0" nTo="//@nodes.1/@processes.1" queueSize="8" rendezVous="true">
+      <message name="preproc_susan_pay">
+        <entry name="imageData" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="nucleus_channel" nFrom="//@nodes.1/@processes.1" nTo="//@nodes.1/@processes.2" queueSize="8" rendezVous="true">
+      <message name="nucleus_pay">
+        <entry name="imageData" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="mask_channel" nFrom="//@nodes.1/@processes.2" nTo="//@nodes.1/@processes.3" queueSize="8" rendezVous="true">
+      <message name="mask_pay">
+        <entry name="imageData" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="edge_channel" nFrom="//@nodes.1/@processes.3" nTo="//@nodes.1/@ports.1" queueSize="8" rendezVous="true">
+      <message name="edge_pay">
+        <entry name="imageData" type="sc_int"/>
+      </message>
+    </nChannels>
+    <ports name="system_acq_in_port"/>
+    <ports name="system_display_out_port">
+      <pChannels name="disp_channel" pFrom="//@nodes.1/@ports.1" pTo="//@nodes.2/@ports.0"/>
+    </ports>
+    <processes name="preproc"/>
+    <processes name="nucleus"/>
+    <processes name="masking"/>
+    <processes name="edgeDetect"/>
+  </nodes>
+  <nodes xsi:type="hml:Display" name="display">
+    <ports name="system_display_in_port"/>
+  </nodes>
+</hml:BehaviorSpecification>

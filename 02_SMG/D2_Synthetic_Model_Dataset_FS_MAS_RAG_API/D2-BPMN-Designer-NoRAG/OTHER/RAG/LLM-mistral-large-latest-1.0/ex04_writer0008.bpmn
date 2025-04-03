@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_1">
+  <rootElements xsi:type="bpmn:Process" id="_2" name="Damage Compensation Process" processType="None" isClosed="false">
+    <flowElements xsi:type="bpmn:StartEvent" id="_3" name="Compensation Request Received" outgoing="_11"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_4" name="Retrieve Premises File" incoming="_11" outgoing="_12"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_5" name="Check Request Acceptability" incoming="_12" outgoing="_13"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_6" name="Check Request Compliance" incoming="_13" outgoing="_14"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="_7" name="Fees Paid?" incoming="_14" outgoing="_15 _16"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_8" name="Allocate Hearing Date" incoming="_15" outgoing="_17"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_9" name="Produce Fees Notice" incoming="_16" outgoing="_18"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="_10" name="Process Complete" incoming="_17"/>
+    <sequenceFlow id="_11" sourceRef="_3" targetRef="_4"/>
+    <sequenceFlow id="_12" sourceRef="_4" targetRef="_5"/>
+    <sequenceFlow id="_13" sourceRef="_5" targetRef="_6"/>
+    <sequenceFlow id="_14" sourceRef="_6" targetRef="_7"/>
+    <sequenceFlow id="_15" name="Yes" sourceRef="_7" targetRef="_8"/>
+    <sequenceFlow id="_16" name="No" sourceRef="_7" targetRef="_9"/>
+    <sequenceFlow id="_17" sourceRef="_8" targetRef="_10"/>
+    <sequenceFlow id="_18" sourceRef="_9" targetRef="_4"/>
+  </rootElements>
+  <laneSets id="_19">
+    <lanes id="_20" name="Tribunal Cashier">
+      <flowNodeRefs>_3 _4 _5 _6 _7 _8 _9 _10</flowNodeRefs>
+    </lanes>
+    <lanes id="_21" name="Tribunal Clerk">
+    </lanes>
+  </laneSets>
+  <bpmn:DataObject id="_22" name="Compensation Request"/>
+  <bpmn:DataObject id="_23" name="Premises File"/>
+  <bpmn:DataObject id="_24" name="Fees Notice"/>
+  <bpmn:DataStore id="_25" name="Premises Records"/>
+  <bpmn:Association id="_26" sourceRef="_3" targetRef="_22"/>
+  <bpmn:Association id="_27" sourceRef="_4" targetRef="_23"/>
+  <bpmn:Association id="_28" sourceRef="_4" targetRef="_25"/>
+  <bpmn:Association id="_29" sourceRef="_9" targetRef="_24"/>
+</bpmn:Definitions>

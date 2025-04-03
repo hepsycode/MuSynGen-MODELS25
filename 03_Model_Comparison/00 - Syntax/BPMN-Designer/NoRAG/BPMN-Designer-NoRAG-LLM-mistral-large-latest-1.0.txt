@@ -1,0 +1,56 @@
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-mistral-large-latest-1.0/ex00_writer0001.bpmn
+
+Validation Result: Validation errors found:
+Diagnosis of org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#Definitions@534650a{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-mistral-large-latest-1.0/ex00_writer0001.bpmn#_FJlBEI4FEd-Kp8XWXgk3nxQ}
+  The ID '_FJlBEI4FEd-Kp8XWXgk3nxQ' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#Process@54b839dc{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-mistral-large-latest-1.0/ex00_writer0001.bpmn#_FJlBEI4FEd-Kp8XWXgk3nxQ}' collides with that of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#Definitions@534650a{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-mistral-large-latest-1.0/ex00_writer0001.bpmn#_FJlBEI4FEd-Kp8XWXgk3nxQ}'
+
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-mistral-large-latest-1.0/ex01_writer0001.bpmn
+
+Validation Result: Validation successful: No errors found.
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-mistral-large-latest-1.0/ex02_writer0001.bpmn
+
+Validation Result: Validation successful: No errors found.
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-mistral-large-latest-1.0/ex03_writer0001.bpmn
+
+Validation Result: Validation successful: No errors found.
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-mistral-large-latest-1.0/ex04_writer0008.bpmn
+
+Validation Result: Validation successful: No errors found.
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-mistral-large-latest-1.0/ex05_writer0013.bpmn
+
+Validation Result: Validation error: org.eclipse.emf.ecore.xmi.UnresolvedReferenceException: Unresolved reference '_schedulePaymentOut'. (file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-mistral-large-latest-1.0/ex05_writer0013.bpmn, 13, 162)
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-mistral-large-latest-1.0/ex07_writer0000.bpmn
+
+Validation Result: Validation successful: No errors found.
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-mistral-large-latest-1.0/ex08_writer0000.bpmn
+
+Validation Result: Validation error: org.eclipse.emf.ecore.xmi.FeatureNotFoundException: Feature 'flowElements' not found. (file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-mistral-large-latest-1.0/ex08_writer0000.bpmn, 6, 103)
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-mistral-large-latest-1.0/ex09_writer0002.bpmn
+
+Validation Result: Validation successful: No errors found.
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-mistral-large-latest-1.0/ex10_writer0000.bpmn
+
+Validation Result: Validation error: org.eclipse.emf.ecore.xmi.PackageNotFoundException: Package with uri 'http://www.omg.org/spec/BPMN/20100524/MODEL' not found. (file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-NoRAG/LLM-mistral-large-latest-1.0/ex10_writer0000.bpmn, 1, 341)
+
+
+Validation Summary:
+Valid models: 6
+Models with errors: 4

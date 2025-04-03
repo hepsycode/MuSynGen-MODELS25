@@ -1,0 +1,12 @@
+total_emissions,node
+4.042212143629383e-08,generate_query_node
+1.7006164764199506e-07,cache_context_node
+0.00029841479932471817,model_generation_node
+0.00020841213973968914,model_validation_node
+0.00028623027122725686,model_validation_node
+0.0002619160273016184,model_validation_node
+2.2299974883670662e-07,model_generation_node
+1.9257505836451744e-07,model_validation_node
+1.9778397864566978e-07,model_validation_node
+9.174956608265766e-08,model_validation_node
+0.0013372767828009557,FILE_ex05_writer0013.bpmn

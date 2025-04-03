@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_ExampleProcessID">
+  <rootElements xsi:type="bpmn:Process" id="_ProcessID">
+    <flowElements xsi:type="bpmn:StartEvent" id="_StartEventID" name="Start of School Year Preparations" outgoing="_FirstSequenceFlowID"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_GatherDescriptionsTaskID" name="Gather Course Descriptions" outgoing="_SecondSequenceFlowID" incoming="_FirstSequenceFlowID"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_FirstSequenceFlowID" targetRef="_GatherDescriptionsTaskID" sourceRef="_StartEventID"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_EnterInfoTaskID" name="Enter Course Info into CBS/CIS" outgoing="_ThirdSequenceFlowID" incoming="_SecondSequenceFlowID"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_SecondSequenceFlowID" targetRef="_EnterInfoTaskID" sourceRef="_GatherDescriptionsTaskID"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_SendStudentListsTaskID" name="Send Student Lists to Teachers" outgoing="_FourthSequenceFlowID" incoming="_ThirdSequenceFlowID"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_ThirdSequenceFlowID" targetRef="_SendStudentListsTaskID" sourceRef="_EnterInfoTaskID"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_SelectStudentsTaskID" name="Select Students for Courses" outgoing="_FifthSequenceFlowID" incoming="_FourthSequenceFlowID"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_FourthSequenceFlowID" targetRef="_SelectStudentsTaskID" sourceRef="_SendStudentListsTaskID"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_AssignNonAcceptedStudentsTaskID" name="Assign Non-Accepted Students" outgoing="_SixthSequenceFlowID" incoming="_FifthSequenceFlowID"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_FifthSequenceFlowID" targetRef="_AssignNonAcceptedStudentsTaskID" sourceRef="_SelectStudentsTaskID"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="_EndEventID" name="Course Allocation Complete" incoming="_SixthSequenceFlowID"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_SixthSequenceFlowID" targetRef="_EndEventID" sourceRef="_AssignNonAcceptedStudentsTaskID"/>
+    <laneSets id="_LaneSetID" name="Process Roles">
+      <lanes id="_TeachersLaneID" name="Teachers" flowNodeRefs="_SelectStudentsTaskID"/>
+      <lanes id="_SecretaryLaneID" name="Secretary's Office" flowNodeRefs="_GatherDescriptionsTaskID _EnterInfoTaskID _SendStudentListsTaskID _AssignNonAcceptedStudentsTaskID"/>
+    </laneSets>
+  </rootElements>
+</bpmn:Definitions>

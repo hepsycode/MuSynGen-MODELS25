@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hml:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hml="org.univaq.hepsy" name="RTSystem">
+  <nodes xsi:type="hml:Stimulus" name="stimulus">
+    <ports name="stim_rt_out_port">
+      <pChannels name="stim_rt_channel" pFrom="//@nodes.0/@ports.0" pTo="//@nodes.2/@ports.0"/>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:Display" name="display">
+    <ports name="system_display_in_port">
+      <pChannels name="disp_channel" pFrom="//@nodes.2/@ports.1" pTo="//@nodes.1/@ports.0"/>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:StructuredNode" name="RTApp">
+    <ports name="system_display_out_port" portExtension="//@nodes.2/@processes.3"/>
+    <ports name="acquisition_in_port"/>
+    <processes name="acquisition" processExtension="//@nodes.2/@ports.1"/>
+    <processes name="filtering"/>
+    <processes name="decision"/>
+    <processes name="control"/>
+  </nodes>
+</hml:BehaviorSpecification>

@@ -1,0 +1,21 @@
+File,Tag,Occurrences,Category,CategoryEMF
+2024-02-14 15.40 05%20-%20Hepsy%20Example-representations.aird.hepsy,name,61,Uncategorized,Uncategorized
+2024-02-14 15.40 05%20-%20Hepsy%20Example-representations.aird.hepsy,ports,12,Uncategorized,Classes
+2024-02-14 15.40 05%20-%20Hepsy%20Example-representations.aird.hepsy,nchannels,11,Uncategorized,Relations
+2024-02-14 15.40 05%20-%20Hepsy%20Example-representations.aird.hepsy,nfrom,11,Uncategorized,Attributes
+2024-02-14 15.40 05%20-%20Hepsy%20Example-representations.aird.hepsy,nto,11,Uncategorized,Attributes
+2024-02-14 15.40 05%20-%20Hepsy%20Example-representations.aird.hepsy,processes,11,Uncategorized,Classes
+2024-02-14 15.40 05%20-%20Hepsy%20Example-representations.aird.hepsy,queuesize,10,Uncategorized,Attributes
+2024-02-14 15.40 05%20-%20Hepsy%20Example-representations.aird.hepsy,rendezvous,10,Uncategorized,Attributes
+2024-02-14 15.40 05%20-%20Hepsy%20Example-representations.aird.hepsy,message,10,Uncategorized,Classes
+2024-02-14 15.40 05%20-%20Hepsy%20Example-representations.aird.hepsy,entry,10,Uncategorized,Classes
+2024-02-14 15.40 05%20-%20Hepsy%20Example-representations.aird.hepsy,type,10,Uncategorized,Attributes
+2024-02-14 15.40 05%20-%20Hepsy%20Example-representations.aird.hepsy,pchannels,6,Uncategorized,Relations
+2024-02-14 15.40 05%20-%20Hepsy%20Example-representations.aird.hepsy,pfrom,6,Uncategorized,Attributes
+2024-02-14 15.40 05%20-%20Hepsy%20Example-representations.aird.hepsy,pto,6,Uncategorized,Attributes
+2024-02-14 15.40 05%20-%20Hepsy%20Example-representations.aird.hepsy,nodes,3,Uncategorized,Classes
+2024-02-14 15.40 05%20-%20Hepsy%20Example-representations.aird.hepsy,{http://www.w3.org/2001/xmlschema-instance}type,3,Uncategorized,Uncategorized
+2024-02-14 15.40 05%20-%20Hepsy%20Example-representations.aird.hepsy,portextension,3,Uncategorized,Attributes
+2024-02-14 15.40 05%20-%20Hepsy%20Example-representations.aird.hepsy,processextension,3,Uncategorized,Uncategorized
+2024-02-14 15.40 05%20-%20Hepsy%20Example-representations.aird.hepsy,behaviorspecification,1,Uncategorized,Uncategorized
+2024-02-14 15.40 05%20-%20Hepsy%20Example-representations.aird.hepsy,{http://www.omg.org/xmi}version,1,Uncategorized,Uncategorized

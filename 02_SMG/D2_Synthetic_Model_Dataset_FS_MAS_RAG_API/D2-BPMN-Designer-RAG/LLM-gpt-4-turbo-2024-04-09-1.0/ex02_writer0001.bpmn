@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="Definitions_1">
+  <rootElements xsi:type="bpmn:Process" id="Process_1">
+    <flowElements xsi:type="bpmn:StartEvent" id="StartEvent_1" name="Receive Claim" outgoing="SequenceFlow_1"/>
+    <flowElements xsi:type="bpmn:UserTask" id="UserTask_1" name="Register Claim" incoming="SequenceFlow_1" outgoing="SequenceFlow_2"/>
+    <flowElements xsi:type="bpmn:UserTask" id="UserTask_2" name="Examine Claim" incoming="SequenceFlow_2" outgoing="SequenceFlow_3"/>
+    <flowElements xsi:type="bpmn:UserTask" id="UserTask_3" name="Write Recommendation" incoming="SequenceFlow_3" outgoing="SequenceFlow_4"/>
+    <flowElements xsi:type="bpmn:UserTask" id="UserTask_4" name="Check Recommendation" incoming="SequenceFlow_4" outgoing="SequenceFlow_5"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_1" sourceRef="StartEvent_1" targetRef="UserTask_1"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_2" sourceRef="UserTask_1" targetRef="UserTask_2"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_3" sourceRef="UserTask_2" targetRef="UserTask_3"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_4" sourceRef="UserTask_3" targetRef="UserTask_4"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_8" sourceRef="ExclusiveGateway_1" targetRef="UserTask_3" name="Not OK"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="ExclusiveGateway_1" name="Claim OK?" incoming="SequenceFlow_5" outgoing="SequenceFlow_7 SequenceFlow_8"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_5" sourceRef="UserTask_4" targetRef="ExclusiveGateway_1" name="Review Outcome"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_7" sourceRef="ExclusiveGateway_1" targetRef="EndEvent_1" name="OK"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="EndEvent_1" name="Claim Handled"/>
+  </rootElements>
+  <rootElements xsi:type="bpmn:Collaboration" id="Collaboration_1">
+    <participants xsi:type="bpmn:Participant" id="Participant_1" name="Insurer" processRef="Process_1"/>
+    <messageFlows xsi:type="bpmn:MessageFlow" id="MessageFlow_1" name="Claim Notification" sourceRef="Participant_2" targetRef="StartEvent_1"/>
+    <participants xsi:type="bpmn:Participant" id="Participant_2" name="Customer"/>
+  </rootElements>
+</bpmn:Definitions>

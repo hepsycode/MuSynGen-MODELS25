@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="docRatingProcess">
+  <rootElements xsi:type="bpmn:Process" id="doctorRatingProcess">
+    <laneSets id="laneSet1">
+      <lanes id="lane1" name="QA Specialist">
+        <flowNodeRefs>startEvent1 task1 task2 task3 endEvent1</flowNodeRefs>
+      </lanes>
+      <lanes id="lane2" name="Managing Director">
+        <flowNodeRefs>task4 exclusiveGateway1 task5 task6 endEvent2</flowNodeRefs>
+      </lanes>
+    </laneSets>
+    <flowElements xsi:type="bpmn:StartEvent" id="startEvent1" name="Start Doctor Rating">
+      <outgoing>flow1</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="task1" name="Interview Patients">
+      <incoming>flow1</incoming>
+      <outgoing>flow2</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flow1" sourceRef="startEvent1" targetRef="task1"/>
+    <flowElements xsi:type="bpmn:UserTask" id="task2" name="File Results">
+      <incoming>flow2</incoming>
+      <outgoing>flow3</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flow2" sourceRef="task1" targetRef="task2"/>
+    <flowElements xsi:type="bpmn:UserTask" id="task3" name="Create Report">
+      <incoming>flow3</incoming>
+      <outgoing>flow4</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flow3" sourceRef="task2" targetRef="task3"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="endEvent1" name="End Process">
+      <incoming>flow4</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flow4" sourceRef="task3" targetRef="endEvent1"/>
+    <flowElements xsi:type="bpmn:UserTask" id="task4" name="Request Expert Review">
+      <outgoing>flow5</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="exclusiveGateway1" name="Expert Responded?">
+      <incoming>flow5</incoming>
+      <outgoing>flow6</outgoing>
+      <outgoing>flow7</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flow5" sourceRef="task4" targetRef="exclusiveGateway1"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flow6" name="Yes" sourceRef="exclusiveGateway1" targetRef="task5"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flow7" name="No" sourceRef="exclusiveGateway1" targetRef="task4"/>
+    <flowElements xsi:type="bpmn:UserTask" id="task5" name="Receive Expertise">
+      <incoming>flow6</incoming>
+      <outgoing>flow8</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="task6" name="Pay Expert">
+      <incoming>flow8</incoming>
+      <outgoing>flow9</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flow8" sourceRef="task5" targetRef="task6"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="endEvent2" name="End Payment">
+      <incoming>flow9</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flow9" sourceRef="task6" targetRef="endEvent2"/>
+  </rootElements>
+</bpmn:Definitions>

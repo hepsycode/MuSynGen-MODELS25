@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hml:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hml="org.univaq.hepsy" name="SystemBehavior">
+  <nodes xsi:type="hml:Stimulus" name="stimulus">
+    <ports name="stim_system_out_port"/>
+  </nodes>
+  <nodes xsi:type="hml:StructuredNode" name="JPEG Reduced">
+    <nChannels name="stim_acq_channel" nFrom="//@nodes.0" nTo="//@nodes.1/@processes.0" queueSize="16" rendezVous="true" direction="Unidirectional"/>
+    <nChannels name="preproc_dct_channel" nFrom="//@nodes.1/@processes.0" nTo="//@nodes.1/@processes.1" queueSize="16" rendezVous="true" direction="Unidirectional"/>
+    <nChannels name="dct_quant_channel" nFrom="//@nodes.1/@processes.1" nTo="//@nodes.1/@processes.2" queueSize="16" rendezVous="true" direction="Unidirectional"/>
+    <nChannels name="quant_zigzag_channel" nFrom="//@nodes.1/@processes.2" nTo="//@nodes.1/@processes.3" queueSize="16" rendezVous="true" direction="Unidirectional"/>
+    <nChannels name="zigzag_entropy_channel" nFrom="//@nodes.1/@processes.3" nTo="//@nodes.1/@processes.4" queueSize="16" rendezVous="true" direction="Unidirectional"/>
+    <processes name="preproc"/>
+    <processes name="DCT"/>
+    <processes name="quantization"/>
+    <processes name="zigzag"/>
+    <processes name="entropy"/>
+    <ports name="system_display_out_port"/>
+  </nodes>
+  <nodes xsi:type="hml:Display" name="display">
+    <ports name="system_display_in_port"/>
+  </nodes>
+  <nodes xsi:type="hml:Channel" name="jpeg_reduced_disp_channel" nFrom="//@nodes.1" nTo="//@nodes.2" queueSize="16" rendezVous="true" direction="Unidirectional"/>
+</hml:BehaviorSpecification>

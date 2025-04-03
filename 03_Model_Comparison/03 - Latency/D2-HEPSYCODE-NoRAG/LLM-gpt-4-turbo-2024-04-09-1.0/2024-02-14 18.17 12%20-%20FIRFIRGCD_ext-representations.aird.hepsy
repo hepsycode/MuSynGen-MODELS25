@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hml:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hml="org.univaq.hepsy">
+  <nodes xsi:type="hml:Stimulus" name="Stimulus">
+    <ports name="stim_fir1_out_port">
+      <pChannels name="stim_fir1_channel" pFrom="//@nodes.0/@ports.0" pTo="//@nodes.1/@ports.0" queueSize="10" rendezVous="true"/>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:StructuredNode" name="FIRFIRGCD_ext">
+    <processes name="fir1"/>
+    <processes name="fir2"/>
+    <processes name="fir_ext"/>
+    <processes name="gcd"/>
+    <ports name="fir1_in"/>
+    <ports name="fir1_out">
+      <pChannels name="fir1_fir2_channel" pFrom="//@nodes.1/@ports.1" pTo="//@nodes.1/@ports.2" queueSize="10" rendezVous="true"/>
+    </ports>
+    <ports name="fir2_in"/>
+    <ports name="fir2_out">
+      <pChannels name="fir2_firext_channel" pFrom="//@nodes.1/@ports.3" pTo="//@nodes.1/@ports.4" queueSize="10" rendezVous="true"/>
+    </ports>
+    <ports name="firext_in"/>
+    <ports name="firext_out">
+      <pChannels name="firext_gcd_channel" pFrom="//@nodes.1/@ports.5" pTo="//@nodes.1/@ports.6" queueSize="10" rendezVous="true"/>
+    </ports>
+    <ports name="gcd_in"/>
+    <ports name="gcd_out">
+      <pChannels name="gcd_display_channel" pFrom="//@nodes.1/@ports.7" pTo="//@nodes.2/@ports.0" queueSize="10" rendezVous="true">
+        <message name="gcd_display_payload">
+          <entry name="result" type="sc_int"/>
+        </message>
+      </pChannels>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:Display" name="Display">
+    <ports name="system_display_in_port"/>
+  </nodes>
+</hml:BehaviorSpecification>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hml:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hml="org.univaq.hepsy">
+  <nodes xsi:type="hml:Stimulus" name="Stimulus">
+    <ports name="stim_out_port">
+      <pChannels name="stim_system_channel" pFrom="//@nodes.0/@ports.0" pTo="//@nodes.2/@ports.0"/>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:Display" name="Display">
+    <ports name="display_in_port">
+      <pChannels name="system_display_channel" pFrom="//@nodes.1/@ports.0" pTo="//@nodes.2/@ports.1"/>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:StructuredNode" name="RT_app">
+    <nChannels name="t1_t4_channel" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.1" queueSize="8" rendezVous="true">
+      <message name="t1_t4_payload">
+        <entry name="sample2" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="t1_t2_channel" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.2" queueSize="8" rendezVous="true">
+      <message name="t1_t2_payload">
+        <entry name="sample1" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="t2_t3_channel" nFrom="//@nodes.2/@processes.2" nTo="//@nodes.2/@processes.3" queueSize="8" rendezVous="true">
+      <message name="t2_t3_payload">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels nFrom="//@nodes.2/@processes.1" nTo="//@nodes.2/@processes.3"/>
+    <ports name="system_in_port" portExtension="//@nodes.2/@processes.0"/>
+    <ports name="system_out_port"/>
+    <processes name="t1"/>
+    <processes name="t4"/>
+    <processes name="t2"/>
+    <processes name="t3" processExtension="//@nodes.2/@ports.1"/>
+  </nodes>
+</hml:BehaviorSpecification>

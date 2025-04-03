@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_JkUY4Y8DEe-v648egk3nxQ">
+  <rootElements xsi:type="bpmn:Process" id="_JkUY4I8DEe-v648egk3nxQ">
+    <flowElements xsi:type="bpmn:StartEvent" id="_JIEgI8JEe-v648egk3nxQ" name="Customer submits claim" outgoing="_pkQ0sI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_onWrUI8JEe-v648egk3nxQ" name="Check documents and Register Claim" outgoing="_tBvqsI8JEe-v648egk3nxQ" incoming="_pkQ0sI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_pkQ0sI8JEe-v648egk3nxQ" targetRef="_onWrUI8JEe-v648egk3nxQ" sourceRef="_JIEgI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_qingI8JEe-v648egk3nxQ" name="Check insurance" outgoing="_wYncsI8JEe-v648egk3nxQ _faultPath" incoming="_tBvqsI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_tBvqsI8JEe-v648egk3nxQ" targetRef="_qingI8JEe-v648egk3nxQ" sourceRef="_onWrUI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="_w3ntsI8JEe-v648egk3nxQ" name="Insurance valid?" outgoing="_AR0KsI8JEe-v648egk3nxQ _rejectPath"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_wYncsI8JEe-v648egk3nxQ" targetRef="_w3ntsI8JEe-v648egk3nxQ" sourceRef="_qingI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_9BHOYI8JEe-v648egk3nxQ" name="Perform assessment" outgoing="_assessPositive _assessNegative" incoming="_AR0KsI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_AR0KsI8JEe-v648egk3nxQ" targetRef="_9BHOYI8JEe-v648egk3nxQ" sourceRef="_w3ntsI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_phoneGarage" name="Phone garage to authorize repairs" outgoing="_schedulePaymentOut" incoming="_assessPositive"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_assessPositive" targetRef="_phoneGarage" sourceRef="_9BHOYI8JEe-v648egk3nxQ" name="Positive"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_schedulePayment" name="Schedule payment" outgoing="_sendLetter" incoming="_phoneGarageOut"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_phoneGarageOut" targetRef="_schedulePayment" sourceRef="_phoneGarage"/>
+    <flowElements xsi:type="bpmn:Task" id="_rejectClaim" name="Reject claim" outgoing="_sendLetter" incoming="_assessNegative _rejectPath _faultPath"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_assessNegative" targetRef="_rejectClaim" sourceRef="_9BHOYI8JEe-v648egk3nxQ" name="Negative"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_rejectPath" targetRef="_rejectClaim" sourceRef="_w3ntsI8JEe-v648egk3nxQ" name="No"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_faultPath" targetRef="_rejectClaim" sourceRef="_qingI8JEe-v648egk3nxQ" name="Fault"/>
+    <flowElements xsi:type="bpmn:Task" id="_sendLetter" name="Send letter to customer" outgoing="_endEvent" incoming="_schedulePayment _rejectClaim"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_schedulePayment" targetRef="_sendLetter" sourceRef="_schedulePayment"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_rejectClaimOut" targetRef="_sendLetter" sourceRef="_rejectClaim"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="_endEvent" name="Process complete" incoming="_sendLetter"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_sendLetterOut" targetRef="_endEvent" sourceRef="_sendLetter"/>
+    <laneSets id="_L9VsqY8DEe-v648egk3nxQ" name="Car Insurer">
+      <lanes id="_L9WBusI8DEe-v648egk3nxQ" name="Notification Department" flowNodeRefs="_JIEgI8JEe-v648egk3nxQ _onWrUI8JEe-v648egk3nxQ"/>
+      <lanes id="_HdpartI8JEe-v648egk3nxQ" name="Handling Department" flowNodeRefs="_qingI8JEe-v648egk3nxQ _w3ntsI8JEe-v648egk3nxQ _9BHOYI8JEe-v648egk3nxQ _phoneGarage _schedulePayment _rejectClaim _sendLetter _endEvent"/>
+    </laneSets>
+    <artifacts xsi:type="bpmn:DataObject" id="_docDataObject" name="Claim documents"/>
+    <artifacts xsi:type="bpmn:DataStore" id="_claimDataStore" name="Claim Data Store"/>
+    <artifacts xsi:type="bpmn:Association" id="_docAssoc1" sourceRef="_JIEgI8JEe-v648egk3nxQ" targetRef="_docDataObject"/>
+    <artifacts xsi:type="bpmn:Association" id="_docAssoc2" sourceRef="_onWrUI8JEe-v648egk3nxQ" targetRef="_docDataObject"/>
+    <artifacts xsi:type="bpmn:Association" id="_docAssoc3" sourceRef="_qingI8JEe-v648egk3nxQ" targetRef="_docDataObject"/>
+    <artifacts xsi:type="bpmn:Association" id="_docAssoc4" sourceRef="_9BHOYI8JEe-v648egk3nxQ" targetRef="_docDataObject"/>
+    <artifacts xsi:type="bpmn:Association" id="_storeAssoc1" sourceRef="_onWrUI8JEe-v648egk3nxQ" targetRef="_claimDataStore"/>
+    <artifacts xsi:type="bpmn:Association" id="_storeAssoc2" sourceRef="_9BHOYI8JEe-v648egk3nxQ" targetRef="_claimDataStore"/>
+    <artifacts xsi:type="bpmn:Association" id="_storeAssoc3" sourceRef="_sendLetter" targetRef="_claimDataStore"/>
+  </rootElements>
+</bpmn:Definitions>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_MxkSgI8KEdO0CdpE4Hz2Mw">
+  <bpmn:Collaboration id="_GDBqwI8KEdO0CdpE4Hz2Mw">
+    <participant id="_84-dMg8KEdO0CdpE4Hz2Mw" name="Supplier" processRef="process_supplier"/>
+    <participant id="_xKCNE8JDEd-dEursi6zJtrw" name="Retailer" processRef="process_retailer"/>
+    <messageFlow id="_hBprUY8JEdO0CdpE4Hz2Mw" name="RequestOffer" sourceRef="process_retailer" targetRef="process_supplier"/>
+    <messageFlow id="_hireAY8JEdO0CdpE4Hz2Mw" name="SendOffer" sourceRef="process_supplier" targetRef="process_retailer"/>
+    <messageFlow id="_jireoY8JEdO0CdpE4Hz2Mw" name="OrderConfirmation" sourceRef="process_retailer" targetRef="process_supplier"/>
+    <messageFlow id="_kireUY8JEdO0CdpE4Hz2Mw" name="OrderChange" sourceRef="process_retailer" targetRef="process_supplier"/>
+    <messageFlow id="_2u4TYJ8KEdO0CdpE4Hz2Mw" name="OrderCancellation" sourceRef="process_retailer" targetRef="process_supplier"/>
+  </bpmn:Collaboration>
+  <bpmn:Process id="process_supplier" isClosed="false" isExecutable="true" name="Supplier Process" processType="None">
+    <laneSet id="laneset_supplier">
+      <lane id="lane_supplier" name="Supplier Lane">
+        <flowNodeRef>_BsMKwI8KEdO0CdpE4Hz2Mw</flowNodeRef>
+        <flowNodeRef>_CsMKEI8KEdO0CdpE4Hz2Mw</flowNodeRef>
+        <flowNodeRef>_F1e6AI8LEdO0CdpE4Hz2Mw</flowNodeRef>
+      </lane>
+    </laneSet>
+    <flowElements>
+      <startEvent id="_BsMKwI8KEdO0CdpE4Hz2Mw" name="Retailer Request Received"/>
+      <task id="_CsMKEI8KEdO0CdpE4Hz2Mw" name="Prepare Offer"/>
+      <endEvent id="_F1e6AI8LEdO0CdpE4Hz2Mw" name="Order Finalized"/>
+    </flowElements>
+  </bpmn:Process>
+  <bpmn:Process id="process_retailer" isClosed="false" isExecutable="true" name="Retailer Process" processType="None">
+    <laneSet id="laneset_retailer">
+      <lane id="lane_retailer" name="Retailer Lane">
+        <flowNodeRef>_GsMjgI8KEdO0CdpE4Hz2Mw</flowNodeRef>
+        <flowNodeRef>_IsML0I8LEdO0CdpE4Hz2Mw</flowNodeRef>
+      </lane>
+    </laneSet>
+    <flowElements>
+      <startEvent id="_GsMjgI8KEdO0CdpE4Hz2Mw" name="Request Offer"/>
+      <endEvent id="_IsML0I8LEdO0CdpE4Hz2Mw" name="Order Handled"/>
+    </flowElements>
+  </bpmn:Process>
+</bpmn:Definitions>

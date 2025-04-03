@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_PhDAdmissionProcess">
+  <rootElements xsi:type="bpmn:Process" id="_PhDAdmissionProcess_1">
+    <flowElements xsi:type="bpmn:StartEvent" id="_StartEvent_1" name="Student submits online application" outgoing="_SequenceFlow_1"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_UserTask_1" name="Generate PDF and request student to send documents" outgoing="_SequenceFlow_2" incoming="_SequenceFlow_1"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_SequenceFlow_1" targetRef="_UserTask_1" sourceRef="_StartEvent_1"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_UserTask_2" name="Receive documents by post" outgoing="_SequenceFlow_3" incoming="_SequenceFlow_2"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_SequenceFlow_2" targetRef="_UserTask_2" sourceRef="_UserTask_1"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="_ExclusiveGateway_1" name="Initial assessment" outgoing="_SequenceFlow_4 _SequenceFlow_5" incoming="_SequenceFlow_3"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_SequenceFlow_3" targetRef="_ExclusiveGateway_1" sourceRef="_UserTask_2"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_UserTask_3" name="Reject application due to insufficient grades" outgoing="_SequenceFlow_6" incoming="_SequenceFlow_4"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_SequenceFlow_4" name="Insufficient grades" targetRef="_UserTask_3" sourceRef="_ExclusiveGateway_1"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="_EndEvent_1" name="Send rejection email" incoming="_SequenceFlow_6"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_SequenceFlow_6" targetRef="_EndEvent_1" sourceRef="_UserTask_3"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_UserTask_4" name="Forward documents to academic committee" outgoing="_SequenceFlow_7" incoming="_SequenceFlow_5"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_SequenceFlow_5" name="Sufficient grades" targetRef="_UserTask_4" sourceRef="_ExclusiveGateway_1"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_UserTask_5" name="Committee reviews applications" outgoing="_SequenceFlow_8" incoming="_SequenceFlow_7"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_SequenceFlow_7" targetRef="_UserTask_5" sourceRef="_UserTask_4"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_UserTask_6" name="Notify admissions office of selection outcomes" outgoing="_SequenceFlow_9" incoming="_SequenceFlow_8"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_SequenceFlow_8" targetRef="_UserTask_6" sourceRef="_UserTask_5"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_UserTask_7" name="Check selection outcomes" outgoing="_SequenceFlow_10" incoming="_SequenceFlow_9"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_SequenceFlow_9" targetRef="_UserTask_7" sourceRef="_UserTask_6"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="_ExclusiveGateway_2" name="Send decision to candidate" outgoing="_SequenceFlow_11 _SequenceFlow_12" incoming="_SequenceFlow_10"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_SequenceFlow_10" targetRef="_ExclusiveGateway_2" sourceRef="_UserTask_7"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_UserTask_8" name="Send rejection email" outgoing="_SequenceFlow_13" incoming="_SequenceFlow_11"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_SequenceFlow_11" name="Reject" targetRef="_UserTask_8" sourceRef="_ExclusiveGateway_2"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="_EndEvent_2" name="Process completed" incoming="_SequenceFlow_13"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_SequenceFlow_13" targetRef="_EndEvent_2" sourceRef="_UserTask_8"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_UserTask_9" name="Send admission email" outgoing="_SequenceFlow_14" incoming="_SequenceFlow_12"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_SequenceFlow_12" name="Admit" targetRef="_UserTask_9" sourceRef="_ExclusiveGateway_2"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="_EndEvent_3" name="Process completed" incoming="_SequenceFlow_14"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_SequenceFlow_14" targetRef="_EndEvent_3" sourceRef="_UserTask_9"/>
+    <laneSets id="_LaneSet_1" name="University">
+      <lanes id="_Lane_1" name="Admissions Office" flowNodeRefs="_UserTask_2 _ExclusiveGateway_1 _UserTask_3 _EndEvent_1 _UserTask_4 _UserTask_6 _UserTask_7 _ExclusiveGateway_2 _UserTask_8 _EndEvent_2 _UserTask_9 _EndEvent_3"/>
+      <lanes id="_Lane_2" name="Academic Committee" flowNodeRefs="_UserTask_5"/>
+    </laneSets>
+  </rootElements>
+</bpmn:Definitions>

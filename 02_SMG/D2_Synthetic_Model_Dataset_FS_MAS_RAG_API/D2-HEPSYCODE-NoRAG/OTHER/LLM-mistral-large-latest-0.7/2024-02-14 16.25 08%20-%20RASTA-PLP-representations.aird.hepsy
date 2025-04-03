@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hml:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hml="org.univaq.hepsy">
+  <nodes xsi:type="hml:Stimulus" name="stimulus">
+    <ports name="stim_system_out_port">
+      <pChannels name="stim_preproc_channel" pFrom="//@nodes.0/@ports.0" pTo="//@nodes.1/@ports.0" queueSize="8" rendezVous="true"/>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:StructuredNode" name="RastaPlp">
+    <ports name="preproc_in_port">
+      <pChannels name="stim_preproc_channel" pFrom="//@nodes.0/@ports.0" pTo="//@nodes.1/@ports.0" queueSize="8" rendezVous="true"/>
+    </ports>
+    <ports name="preproc_out_port">
+      <pChannels name="preproc_rasta_channel" pFrom="//@nodes.1/@ports.1" pTo="//@nodes.1/@ports.2" queueSize="8" rendezVous="true"/>
+    </ports>
+    <ports name="rasta_in_port">
+      <pChannels name="preproc_rasta_channel" pFrom="//@nodes.1/@ports.1" pTo="//@nodes.1/@ports.2" queueSize="8" rendezVous="true"/>
+    </ports>
+    <ports name="rasta_out_port">
+      <pChannels name="rasta_plp_channel" pFrom="//@nodes.1/@ports.3" pTo="//@nodes.1/@ports.4" queueSize="8" rendezVous="true"/>
+    </ports>
+    <ports name="plp_in_port">
+      <pChannels name="rasta_plp_channel" pFrom="//@nodes.1/@ports.3" pTo="//@nodes.1/@ports.4" queueSize="8" rendezVous="true"/>
+    </ports>
+    <ports name="plp_out_port">
+      <pChannels name="plp_postproc_channel" pFrom="//@nodes.1/@ports.5" pTo="//@nodes.1/@ports.6" queueSize="8" rendezVous="true"/>
+    </ports>
+    <ports name="system_display_out_port">
+      <pChannels name="display_channel" pFrom="//@nodes.1/@ports.6" pTo="//@nodes.2/@ports.0" queueSize="8" rendezVous="true"/>
+    </ports>
+    <processes name="preproc" processExtension="//@nodes.1/@ports.1"/>
+    <processes name="rasta" processExtension="//@nodes.1/@ports.3"/>
+    <processes name="plp" processExtension="//@nodes.1/@ports.5"/>
+  </nodes>
+  <nodes xsi:type="hml:Display" name="display">
+    <ports name="system_display_in_port">
+      <pChannels name="display_channel" pFrom="//@nodes.1/@ports.6" pTo="//@nodes.2/@ports.0" queueSize="8" rendezVous="true"/>
+    </ports>
+  </nodes>
+</hml:BehaviorSpecification>

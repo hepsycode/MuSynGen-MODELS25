@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="doctor_rating_process">
+  <rootElements xsi:type="bpmn:Process" id="doctor_rating_process">
+    <flowElements xsi:type="bpmn:StartEvent" id="start" name="Start rating process" outgoing="to_qa_interview"/>
+    <flowElements xsi:type="bpmn:UserTask" id="qa_interview_patients" name="QA specialist interviews patients" outgoing="to_director_ask_expert" incoming="to_qa_interview"/>
+    <flowElements xsi:type="bpmn:UserTask" id="director_ask_expert" name="Director asks external expert for review" outgoing="to_wait_for_expertise" incoming="to_director_ask_expert"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="check_expert_response" name="Expert responds in time?" outgoing="to_ask_another_expert to_receive_expertise" incoming="from_wait_for_expertise"/>
+    <flowElements xsi:type="bpmn:UserTask" id="ask_another_expert" name="Director asks another expert" outgoing="to_wait_for_expertise" incoming="to_ask_another_expert"/>
+    <flowElements xsi:type="bpmn:IntermediateCatchEvent" id="wait_for_expertise" name="Wait for expert to respond" outgoing="from_wait_for_expertise" incoming="to_wait_for_expertise"/>
+    <flowElements xsi:type="bpmn:UserTask" id="receive_expertise" name="Director receives expertise" outgoing="to_forward_expertise" incoming="to_receive_expertise"/>
+    <flowElements xsi:type="bpmn:UserTask" id="forward_expertise" name="Director forwards expertise to QA specialist" outgoing="to_file_results" incoming="to_forward_expertise"/>
+    <flowElements xsi:type="bpmn:UserTask" id="file_results" name="QA specialist files results" outgoing="to_create_report" incoming="to_file_results"/>
+    <flowElements xsi:type="bpmn:UserTask" id="create_report" name="QA specialist creates report" outgoing="to_pay_expenses" incoming="to_create_report"/>
+    <flowElements xsi:type="bpmn:UserTask" id="pay_expenses" name="Director pays expert expenses" outgoing="to_end" incoming="to_pay_expenses"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="end" name="End rating process" incoming="to_end"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="to_qa_interview" targetRef="qa_interview_patients" sourceRef="start"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="to_director_ask_expert" targetRef="director_ask_expert" sourceRef="qa_interview_patients"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="to_wait_for_expertise" targetRef="wait_for_expertise" sourceRef="director_ask_expert"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="from_wait_for_expertise" targetRef="check_expert_response" sourceRef="wait_for_expertise"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="to_ask_another_expert" targetRef="ask_another_expert" sourceRef="check_expert_response"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="to_receive_expertise" targetRef="receive_expertise" sourceRef="check_expert_response"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="to_forward_expertise" targetRef="forward_expertise" sourceRef="receive_expertise"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="to_file_results" targetRef="file_results" sourceRef="forward_expertise"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="to_create_report" targetRef="create_report" sourceRef="file_results"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="to_pay_expenses" targetRef="pay_expenses" sourceRef="create_report"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="to_end" targetRef="end" sourceRef="pay_expenses"/>
+  </rootElements>
+  <laneSets id="_XiUDcI8DEe-v648egk3nxQ" name="Hospital">
+    <lanes id="_XiUDgI8DEe-v648egk3nxQ" name="Quality Assurance Department" flowNodeRefs="qa_interview_patients file_results create_report"/>
+    <lanes id="_XiUDiI8DEe-v648egk3nxQ" name="Managing Director" flowNodeRefs="director_ask_expert ask_another_expert receive_expertise forward_expertise pay_expenses"/>
+  </laneSets>
+</bpmn:Definitions>

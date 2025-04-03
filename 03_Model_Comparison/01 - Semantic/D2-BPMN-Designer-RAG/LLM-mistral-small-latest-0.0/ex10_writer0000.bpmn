@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_1">
+  <rootElements xsi:type="bpmn:Collaboration" id="_2">
+    <participants xsi:type="bpmn:Participant" id="_3" name="Supplier" processRef="_4"/>
+    <participants xsi:type="bpmn:Participant" id="_5" name="Retailer" processRef="_6"/>
+  </rootElements>
+  <rootElements xsi:type="bpmn:Process" id="_4" name="Supplier Process" isExecutable="true">
+    <flowElements xsi:type="bpmn:StartEvent" id="_7" name="Request Offer">
+      <outgoing>_8</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:Task" id="_9" name="Prepare Offer">
+      <incoming>_8</incoming>
+      <outgoing>_10</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SendTask" id="_11" name="Send Offer">
+      <incoming>_10</incoming>
+      <outgoing>_12</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:IntermediateCatchEvent" id="_13" name="Receive Response">
+      <incoming>_12</incoming>
+      <outgoing>_14</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="_15" name="Response Type">
+      <incoming>_14</incoming>
+      <outgoing>_16 _17 _18 _19</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_16" name="Order Confirmation" targetRef="_20" sourceRef="_15"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_17" name="Order Change" targetRef="_21" sourceRef="_15"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_18" name="Order Cancellation" targetRef="_22" sourceRef="_15"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_19" name="No Response" targetRef="_23" sourceRef="_15"/>
+    <flowElements xsi:type="bpmn:Task" id="_20" name="Process Order">
+      <incoming>_16</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:Task" id="_21" name="Update Order">
+      <incoming>_17</incoming>
+      <outgoing>_24</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:Task" id="_22" name="Cancel Order">
+      <incoming>_18</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:Task" id="_23" name="Cancel Order">
+      <incoming>_19</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SendTask" id="_24" name="Request Confirmation">
+      <incoming>_24</incoming>
+      <outgoing>_25</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:IntermediateCatchEvent" id="_26" name="Receive Confirmation">
+      <incoming>_25</incoming>
+      <outgoing>_27</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="_28" name="Confirmation Received">
+      <incoming>_27</incoming>
+      <outgoing>_29 _30</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_29" name="Yes" targetRef="_31" sourceRef="_28"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_30" name="No" targetRef="_32" sourceRef="_28"/>
+    <flowElements xsi:type="bpmn:Task" id="_31" name="Process Order">
+      <incoming>_29</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:Task" id="_32" name="Cancel Order">
+      <incoming>_30</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_8" sourceRef="_7" targetRef="_9"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_10" sourceRef="_9" targetRef="_11"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_12" sourceRef="_11" targetRef="_13"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_14" sourceRef="_13" targetRef="_15"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_25" sourceRef="_24" targetRef="_26"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_27" sourceRef="_26" targetRef="_28"/>
+  </rootElements>
+  <rootElements xsi:type="bpmn:Process" id="_6" name="Retailer Process" isExecutable="true">
+    <flowElements xsi:type="bpmn:IntermediateCatchEvent" id="_33" name="Receive Offer">
+      <outgoing>_34</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="_35" name="Response Type">
+      <incoming>_34</incoming>
+      <outgoing>_36 _37 _38 _39</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_36" name="Order Confirmation" targetRef="_40" sourceRef="_35"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_37" name="Order Change" targetRef="_41" sourceRef="_35"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_38" name="Order Cancellation" targetRef="_42" sourceRef="_35"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_39" name="No Response" targetRef="_43" sourceRef="_35"/>
+    <flowElements xsi:type="bpmn:SendTask" id="_40" name="Send Order Confirmation">
+      <incoming>_36</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SendTask" id="_41" name="Send Order Change">
+      <incoming>_37</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SendTask" id="_42" name="Send Order Cancellation">
+      <incoming>_38</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:Task" id="_43" name="Wait for 48 hours">
+      <incoming>_39</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:IntermediateCatchEvent" id="_44" name="Receive Confirmation Request">
+      <incoming>_45</incoming>
+      <outgoing>_46</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="_47" name="Confirmation Sent">
+      <incoming>_46</incoming>
+      <outgoing>_48 _49</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_48" name="Yes" targetRef="_50" sourceRef="_47"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_49" name="No" targetRef="_51" sourceRef="_47"/>
+    <flowElements xsi:type="bpmn:SendTask" id="_50" name="Send Confirmation">
+      <incoming>_48</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:Task" id="_51" name="Cancel Order">
+      <incoming>_49</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_34" sourceRef="_33" targetRef="_35"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_45" sourceRef="_24" targetRef="_44"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_46" sourceRef="_44" targetRef="_47"/>
+  </rootElements>
+  <rootElements xsi:type="bpmn:MessageFlow" id="_52" sourceRef="_11" targetRef="_33" name="Offer"/>
+  <rootElements xsi:type="bpmn:MessageFlow" id="_53" sourceRef="_40" targetRef="_13" name="Order Confirmation"/>
+  <rootElements xsi:type="bpmn:MessageFlow" id="_54" sourceRef="_41" targetRef="_13" name="Order Change"/>
+  <rootElements xsi:type="bpmn:MessageFlow" id="_55" sourceRef="_42" targetRef="_13" name="Order Cancellation"/>
+  <rootElements xsi:type="bpmn:MessageFlow" id="_56" sourceRef="_24" targetRef="_44" name="Confirmation Request"/>
+  <rootElements xsi:type="bpmn:MessageFlow" id="_57" sourceRef="_50" targetRef="_26" name="Confirmation"/>
+</bpmn:Definitions>

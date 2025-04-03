@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hml:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hml="org.univaq.hepsy">
+  <nodes xsi:type="hml:Stimulus" name="Stimulus">
+    <ports name="stim_system_out_port">
+      <pChannels name="stim_acq_channel" pFrom="//@nodes.0/@ports.0" pTo="//@nodes.1/@ports.0" queueSize="10" rendezVous="true">
+        <message name="raw_image_data">
+          <entry name="image_data" type="sc_bv"/>
+        </message>
+      </pChannels>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:StructuredNode" name="JPEGEncoder">
+    <ports name="system_display_out_port"/>
+    <processes name="preproc">
+      <processExtension name="preproc_port"/>
+    </processes>
+    <processes name="DCT">
+      <processExtension name="dct_port"/>
+    </processes>
+    <processes name="quantization">
+      <processExtension name="quant_port"/>
+    </processes>
+    <processes name="zigzag">
+      <processExtension name="zigzag_port"/>
+    </processes>
+    <processes name="entropy">
+      <processExtension name="entropy_port"/>
+    </processes>
+    <nChannels name="preproc_dct_channel" nFrom="//@nodes.1/@processes.0" nTo="//@nodes.1/@processes.1" queueSize="8" rendezVous="true">
+      <message name="preproc_dct_message">
+        <entry name="preproc_data" type="sc_bv"/>
+      </message>
+    </nChannels>
+    <nChannels name="dct_quant_channel" nFrom="//@nodes.1/@processes.1" nTo="//@nodes.1/@processes.2" queueSize="8" rendezVous="true">
+      <message name="dct_quant_message">
+        <entry name="dct_data" type="sc_bv"/>
+      </message>
+    </nChannels>
+    <nChannels name="quant_zigzag_channel" nFrom="//@nodes.1/@processes.2" nTo="//@nodes.1/@processes.3" queueSize="8" rendezVous="true">
+      <message name="quant_zigzag_message">
+        <entry name="quant_data" type="sc_bv"/>
+      </message>
+    </nChannels>
+    <nChannels name="zigzag_entropy_channel" nFrom="//@nodes.1/@processes.3" nTo="//@nodes.1/@processes.4" queueSize="8" rendezVous="true">
+      <message name="zigzag_entropy_message">
+        <entry name="zigzag_data" type="sc_bv"/>
+      </message>
+    </nChannels>
+  </nodes>
+  <nodes xsi:type="hml:Display" name="Display">
+    <ports name="system_display_in_port">
+      <pChannels name="jpeg_disp_channel" pFrom="//@nodes.1/@ports.0" pTo="//@nodes.2/@ports.0" queueSize="10" rendezVous="true">
+        <message name="compressed_data">
+          <entry name="compressed_bitstream" type="sc_bv"/>
+        </message>
+      </pChannels>
+    </ports>
+  </nodes>
+</hml:BehaviorSpecification>

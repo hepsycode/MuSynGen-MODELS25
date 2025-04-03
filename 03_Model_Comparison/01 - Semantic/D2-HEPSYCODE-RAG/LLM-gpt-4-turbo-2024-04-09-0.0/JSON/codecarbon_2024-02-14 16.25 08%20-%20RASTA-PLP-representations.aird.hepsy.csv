@@ -1,0 +1,12 @@
+node,total_emissions
+generate_query_node,8.232079430639182e-08
+cache_context_node,7.192591342595062e-08
+model_generation_node,0.00010333417153523085
+model_validation_node,9.644450567883064e-05
+model_validation_node,9.760671441578056e-05
+model_validation_node,0.00011375702416972113
+model_generation_node,3.172048556631553e-06
+model_validation_node,0.00011128343174969434
+model_validation_node,0.00010800257750408574
+model_validation_node,1.088929463977388e-07
+FILE_2024-02-14 16.25 08%20-%20RASTA-PLP-representations.aird.hepsy,0.0010588782129785322

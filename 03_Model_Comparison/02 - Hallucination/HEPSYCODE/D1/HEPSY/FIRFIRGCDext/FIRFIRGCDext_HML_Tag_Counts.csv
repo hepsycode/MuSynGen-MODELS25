@@ -1,0 +1,21 @@
+File,Tag,Occurrences,Category,CategoryEMF
+2024-02-14 18.17 12%20-%20FIRFIRGCD_ext-representations.aird.hepsy,name,97,Uncategorized,Uncategorized
+2024-02-14 18.17 12%20-%20FIRFIRGCD_ext-representations.aird.hepsy,nchannels,24,Uncategorized,Relations
+2024-02-14 18.17 12%20-%20FIRFIRGCD_ext-representations.aird.hepsy,nfrom,24,Uncategorized,Attributes
+2024-02-14 18.17 12%20-%20FIRFIRGCD_ext-representations.aird.hepsy,nto,24,Uncategorized,Attributes
+2024-02-14 18.17 12%20-%20FIRFIRGCD_ext-representations.aird.hepsy,rendezvous,24,Uncategorized,Attributes
+2024-02-14 18.17 12%20-%20FIRFIRGCD_ext-representations.aird.hepsy,message,24,Uncategorized,Classes
+2024-02-14 18.17 12%20-%20FIRFIRGCD_ext-representations.aird.hepsy,entry,24,Uncategorized,Classes
+2024-02-14 18.17 12%20-%20FIRFIRGCD_ext-representations.aird.hepsy,type,24,Uncategorized,Attributes
+2024-02-14 18.17 12%20-%20FIRFIRGCD_ext-representations.aird.hepsy,queuesize,23,Uncategorized,Attributes
+2024-02-14 18.17 12%20-%20FIRFIRGCD_ext-representations.aird.hepsy,processes,14,Uncategorized,Classes
+2024-02-14 18.17 12%20-%20FIRFIRGCD_ext-representations.aird.hepsy,ports,6,Uncategorized,Classes
+2024-02-14 18.17 12%20-%20FIRFIRGCD_ext-representations.aird.hepsy,nodes,3,Uncategorized,Classes
+2024-02-14 18.17 12%20-%20FIRFIRGCD_ext-representations.aird.hepsy,{http://www.w3.org/2001/xmlschema-instance}type,3,Uncategorized,Uncategorized
+2024-02-14 18.17 12%20-%20FIRFIRGCD_ext-representations.aird.hepsy,pchannels,3,Uncategorized,Relations
+2024-02-14 18.17 12%20-%20FIRFIRGCD_ext-representations.aird.hepsy,pfrom,3,Uncategorized,Attributes
+2024-02-14 18.17 12%20-%20FIRFIRGCD_ext-representations.aird.hepsy,pto,3,Uncategorized,Attributes
+2024-02-14 18.17 12%20-%20FIRFIRGCD_ext-representations.aird.hepsy,portextension,2,Uncategorized,Attributes
+2024-02-14 18.17 12%20-%20FIRFIRGCD_ext-representations.aird.hepsy,behaviorspecification,1,Uncategorized,Uncategorized
+2024-02-14 18.17 12%20-%20FIRFIRGCD_ext-representations.aird.hepsy,{http://www.omg.org/xmi}version,1,Uncategorized,Uncategorized
+2024-02-14 18.17 12%20-%20FIRFIRGCD_ext-representations.aird.hepsy,processextension,1,Uncategorized,Uncategorized

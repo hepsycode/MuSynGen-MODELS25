@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hml:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hml="org.univaq.hepsy">
+  <nodes xsi:type="hml:Stimulus" name="Stimulus">
+    <ports name="stim_rt_out_port">
+      <pChannels name="stim_rt_channel" pFrom="//@nodes.0/@ports.0" pTo="//@nodes.2/@ports.0"/>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:Display" name="Display">
+    <ports name="system_display_in_port">
+      <pChannels name="disp_channel" pFrom="//@nodes.1/@ports.0" pTo="//@nodes.2/@ports.1"/>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:StructuredNode" name="RTApp">
+    <ports name="system_rtapp_in_port"/>
+    <ports name="system_display_out_port"/>
+    <processes name="acquisition">
+      <ports name="stim_acquisition_in_port">
+        <pChannels name="stim_acquisition_channel" pFrom="//@nodes.0/@ports.0" pTo="//@nodes.2/@processes.0/@ports.0"/>
+      </ports>
+    </processes>
+    <processes name="filtering">
+      <ports name="acq_filter_in_port">
+        <pChannels name="acq_filter_channel" pFrom="//@nodes.2/@processes.0/@ports.0" pTo="//@nodes.2/@processes.1/@ports.0"/>
+      </ports>
+    </processes>
+    <processes name="decision">
+      <ports name="filter_decision_in_port">
+        <pChannels name="filter_decision_channel" pFrom="//@nodes.2/@processes.1/@ports.0" pTo="//@nodes.2/@processes.2/@ports.0"/>
+      </ports>
+    </processes>
+    <processes name="control">
+      <ports name="decision_control_in_port">
+        <pChannels name="decision_control_channel" pFrom="//@nodes.2/@processes.2/@ports.0" pTo="//@nodes.2/@processes.3/@ports.0"/>
+      </ports>
+      <ports name="control_display_out_port">
+        <pChannels name="disp_channel" pFrom="//@nodes.2/@processes.3/@ports.0" pTo="//@nodes.2/@ports.1"/>
+      </ports>
+    </processes>
+  </nodes>
+</hml:BehaviorSpecification>

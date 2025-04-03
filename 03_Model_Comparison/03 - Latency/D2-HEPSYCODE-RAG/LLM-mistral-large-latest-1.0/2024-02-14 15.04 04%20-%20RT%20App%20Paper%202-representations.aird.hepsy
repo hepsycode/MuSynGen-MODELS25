@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hml:BehaviorSpecification xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hml="org.univaq.hepsy" xmi:version="2.0" name="RT App Paper 2">
+  	<nodes xsi:type="hml:Stimulus" name="Stimulus">
+  		<ports name="stim_rtPaper2_out_port">
+  			<pChannels name="stim_rtPaper2_channel" pFrom="//@nodes.1/@ports.0" pTo="//@nodes.2/@ports.2" />
+  		</ports>
+  	</nodes>
+  	<nodes xsi:type="hml:Display" name="Display">
+  		<ports name="system_display_in_port">
+  			<pChannels name="disp_rtPaper2_channel" pFrom="//@nodes.2/@ports.3" pTo="//@nodes.1/@ports.0" />
+  		</ports>
+  	</nodes>
+  	<nodes xsi:type="hml:StructuredNode" name="RT App Paper 2">
+            <processes  name="control">
+                <portExtension type="Port"></portExtension>
+        </processes>
+  	    <processes name="capture" priority="0" criticality="0">
+            <portExtension type="Port"></portExtension>
+        </processes>
+  		<processes name="filter" priority="0" criticality="0">
+            <portExtension type="Port"></portExtension>
+        </processes>
+  		<processes name="preprocess" priority="0" criticality="0">
+            <portExtension type="Port"></portExtension>
+        </processes>
+  		<processes name="analyze" priority="0" criticality="0">
+            <portExtension type="Port"></portExtension>
+        </processes>
+        <portExtension type="Port"></portExtension>
+  		<ports name="system_in_port" />
+  		<ports name="system_out_port" />
+  		<nChannels name="capture_filter_channel_2" nFrom="//@nodes.2/@processes.1" nTo="//@nodes.2/@processes.2" queueSize="8" rendezVous="true" />
+  		<nChannels name="filter_preprocess_channel_2" nFrom="//@nodes.2/@processes.2" nTo="//@nodes.2/@processes.3" queueSize="8" rendezVous="true" />
+  		<nChannels name="preprocess_analyze_channel_2" nFrom="//@nodes.2/@processes.3" nTo="//@nodes.2/@processes.4" queueSize="8" rendezVous="true"/>
+  		<nChannels name="analyze_control_channel_2" nFrom="//@nodes.2/@processes.4" nTo="//@nodes.2/@processes.0" queueSize="8" rendezVous="true"/>
+  	</nodes>
+</hml:BehaviorSpecification>

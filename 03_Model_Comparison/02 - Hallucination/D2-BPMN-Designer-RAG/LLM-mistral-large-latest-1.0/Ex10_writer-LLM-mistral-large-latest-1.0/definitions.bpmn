@@ -1,0 +1,48 @@
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI-XMI" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC-XMI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI-XMI" id="_1" name="Definitions" targetNamespace="http://bpmn.io/schema/bpmn">
+  <bpmn:process id="SupplierProcess" name="Supplier Process" isExecutable="true">
+    <bpmn:startEvent id="_8" name="Offer Request Received"/>
+    <bpmn:task id="_9" name="Prepare Offer"/>
+    <bpmn:sendTask id="_11" name="Send Offer"/>
+    <bpmn:intermediateCatchEvent id="_13" name="Order Confirmation Received"/>
+    <bpmn:intermediateCatchEvent id="_14" name="Order Change Received"/>
+    <bpmn:intermediateCatchEvent id="_15" name="Order Cancellation Received"/>
+    <bpmn:boundaryEvent id="_16" name="48 Hours Timer" attachedToRef="_17" cancelActivity="false">
+      <bpmn:timerEventDefinition id="_18">
+        <bpmn:timeDuration id="_19" expression="PT48H"/>
+      </bpmn:timerEventDefinition>
+    </bpmn:boundaryEvent>
+    <bpmn:task id="_20" name="Process Order"/>
+    <bpmn:task id="_21" name="Update Order"/>
+    <bpmn:task id="_22" name="Cancel Order"/>
+    <bpmn:endEvent id="_23" name="Order Processed"/>
+    <bpmn:endEvent id="_24" name="Order Cancelled"/>
+    <bpmn:exclusiveGateway id="_17" name="Decision on Order Status"/>
+    <bpmn:sequenceFlow id="_25" sourceRef="_8" targetRef="_9"/>
+    <bpmn:sequenceFlow id="_26" sourceRef="_9" targetRef="_17"/>
+    <bpmn:sequenceFlow id="_27" sourceRef="_13" targetRef="_20"/>
+    <bpmn:sequenceFlow id="_28" sourceRef="_14" targetRef="_21"/>
+    <bpmn:sequenceFlow id="_29" sourceRef="_15" targetRef="_22"/>
+    <bpmn:sequenceFlow id="_30" sourceRef="_16" targetRef="_22"/>
+    <bpmn:sequenceFlow id="_31" sourceRef="_20" targetRef="_23"/>
+    <bpmn:sequenceFlow id="_32" sourceRef="_21" targetRef="_17"/>
+    <bpmn:sequenceFlow id="_33" sourceRef="_22" targetRef="_24"/>
+  </bpmn:process>
+  <bpmn:process id="RetailerProcess" name="Retailer Process" isExecutable="true">
+    <bpmn:startEvent id="_7" name="Request Offer"/>
+    <bpmn:receiveTask id="_12" name="Receive Offer"/>
+    <bpmn:sendTask id="_34" name="Send Order Confirmation"/>
+    <bpmn:sendTask id="_36" name="Send Order Change"/>
+    <bpmn:sendTask id="_38" name="Send Order Cancellation"/>
+    <bpmn:endEvent id="_40" name="Order Process Complete"/>
+    <bpmn:sequenceFlow id="_41" sourceRef="_7" targetRef="_12"/>
+    <bpmn:sequenceFlow id="_35" sourceRef="_34" targetRef="_40"/>
+    <bpmn:sequenceFlow id="_37" sourceRef="_36" targetRef="_40"/>
+    <bpmn:sequenceFlow id="_39" sourceRef="_38" targetRef="_40"/>
+  </bpmn:process>
+  <bpmn:collaboration id="_2" name="Supplier Retailer Collaboration">
+    <bpmn:participant id="_3" name="Supplier" processRef="SupplierProcess"/>
+    <bpmn:participant id="_4" name="Retailer" processRef="RetailerProcess"/>
+    <bpmn:messageFlow id="_5" name="Request Offer" sourceRef="_7" targetRef="_8"/>
+    <bpmn:messageFlow id="_6" name="Send Offer" sourceRef="_11" targetRef="_12"/>
+  </bpmn:collaboration>
+</bpmn:Definitions>

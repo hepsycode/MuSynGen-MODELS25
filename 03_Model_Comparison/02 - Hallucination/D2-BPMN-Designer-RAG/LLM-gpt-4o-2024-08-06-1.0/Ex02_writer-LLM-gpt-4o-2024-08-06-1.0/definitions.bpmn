@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_dZXVQY8DEe-v648egk3nxQ">
+  <rootElements xsi:type="bpmn:Process" id="_dZXXYI8DEe-v648egk3nxQ">
+    <flowElements xsi:type="bpmn:StartEvent" id="_rxWeQI8JEe-v648egk3nxQ" name="Claim Received" outgoing="_qKR0II8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_hxDDII8JEe-v648egk3nxQ" name="Register Claim" outgoing="_pSS2oI8JEe-v648egk3nxQ" incoming="_qKR0II8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_qKR0II8JEe-v648egk3nxQ" targetRef="_hxDDII8JEe-v648egk3nxQ" sourceRef="_rxWeQI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_uxHgAI8JEe-v648egk3nxQ" name="Examine Claim" outgoing="_ljRoEI8JEe-v648egk3nxQ" incoming="_pSS2oI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_pSS2oI8JEe-v648egk3nxQ" targetRef="_uxHgAI8JEe-v648egk3nxQ" sourceRef="_hxDDII8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_mtPYQI8JEe-v648egk3nxQ" name="Write Settlement Recommendation" outgoing="_pqmToI8JEe-v648egk3nxQ" incoming="_ljRoEI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_ljRoEI8JEe-v648egk3nxQ" targetRef="_mtPYQI8JEe-v648egk3nxQ" sourceRef="_uxHgAI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_mcUVYI8JEe-v648egk3nxQ" name="Check Recommendation" outgoing="_afBQ8oI8JEe-v648egk3nxQ _w0Rg8I8JEe-v648egk3nxQ" incoming="_pqmToI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_pqmToI8JEe-v648egk3nxQ" targetRef="_mcUVYI8JEe-v648egk3nxQ" sourceRef="_mtPYQI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="_sm8gEI8JEe-v648egk3nxQ" name="Recommendation OK?" outgoing="_afBQ8oI8JEe-v648egk3nxQ _w0Rg8I8JEe-v648egk3nxQ" incoming="_pqmToI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_afBQ8oI8JEe-v648egk3nxQ" name="Not OK" targetRef="_uxHgAI8JEe-v648egk3nxQ" sourceRef="_sm8gEI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_w0Rg8I8JEe-v648egk3nxQ" name="OK" targetRef="_x8PeYI8JEe-v648egk3nxQ" sourceRef="_sm8gEI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="_x8PeYI8JEe-v648egk3nxQ" name="Claim Processed" incoming="_w0Rg8I8JEe-v648egk3nxQ"/>
+    <laneSets id="_J9H_gY8DEe-v648egk3nxQ" name="Insurance Company">
+      <lanes id="_J9I8gI8DEe-v648egk3nxQ" name="Claims Officer" flowNodeRefs="_hxDDII8JEe-v648egk3nxQ _uxHgAI8JEe-v648egk3nxQ _mtPYQI8JEe-v648egk3nxQ _sm8gEI8JEe-v648egk3nxQ">
+        <extensionValues id="_jDGGgI8JEe-v648ek3nxQ">
+          <value xsi:type="bpmn:DataObject" id="_jDGGgY8JEe-v648ek3nxQ" name="Claim Document"/>
+        </extensionValues>
+      </lanes>
+      <lanes id="_J9JsgI8DEe-v648egk3nxQ" name="Senior Claims Officer" flowNodeRefs="_mcUVYI8JEe-v648egk3nxQ"/>
+    </laneSets>
+  </rootElements>
+</bpmn:Definitions>

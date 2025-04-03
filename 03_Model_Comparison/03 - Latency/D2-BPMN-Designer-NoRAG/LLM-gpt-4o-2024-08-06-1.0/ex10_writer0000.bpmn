@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_supplier_retailer_process">
+  <rootElements xsi:type="bpmn:Process" id="_supplier_retailer_process_id" isExecutable="true">
+    <laneSets id="_laneSet1">
+      <lanes id="_lane_supplier" name="Supplier">
+        <flowNodeRefs>_startEvent</flowNodeRefs>
+        <flowNodeRefs>_prepOfferTask</flowNodeRefs>
+        <flowNodeRefs>_decideNextAction</flowNodeRefs>
+        <flowNodeRefs>_cancelOrderTask</flowNodeRefs>
+        <flowNodeRefs>_processOrderTask</flowNodeRefs>
+        <flowNodeRefs>_updateOrderTask</flowNodeRefs>
+        <flowNodeRefs>_endEventCancelled</flowNodeRefs>
+        <flowNodeRefs>_endEventProcessed</flowNodeRefs>
+        <flowNodeRefs>_askConfirmationTask</flowNodeRefs>
+      </lanes>
+      <lanes id="_lane_retailer" name="Retailer">
+        <flowNodeRefs>_reqOfferTask</flowNodeRefs>
+        <flowNodeRefs>_confirmOrderTask</flowNodeRefs>
+        <flowNodeRefs>_changeOrderTask</flowNodeRefs>
+        <flowNodeRefs>_cancelOrderTaskRetailer</flowNodeRefs>
+      </lanes>
+    </laneSets>
+    <flowElements xsi:type="bpmn:StartEvent" id="_startEvent" name="Start Process" outgoing="_flow1"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_reqOfferTask" name="Request Offer from Supplier" outgoing="_flow2"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_flow1" sourceRef="_startEvent" targetRef="_reqOfferTask"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_flow2" sourceRef="_reqOfferTask" targetRef="_prepOfferTask"/>
+    <flowElements xsi:type="bpmn:ServiceTask" id="_prepOfferTask" name="Prepare Offer" outgoing="_flow3"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_flow3" sourceRef="_prepOfferTask" targetRef="_decideNextAction"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="_decideNextAction" name="Receive Order Response?" incoming="_flow3" outgoing="_flow4 _flow5 _flow6 _flow7"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_flow4" name="Receive Order Confirmation" sourceRef="_decideNextAction" targetRef="_processOrderTask"/>
+    <flowElements xsi:type="bpmn:ServiceTask" id="_processOrderTask" name="Process Order" outgoing="_flow8"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_flow5" name="Receive Order Change" sourceRef="_decideNextAction" targetRef="_updateOrderTask"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_updateOrderTask" name="Update Order" outgoing="_flow9"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_flow6" name="No Response" sourceRef="_decideNextAction" targetRef="_cancelOrderTask"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_flow7" name="Order Cancellation" sourceRef="_decideNextAction" targetRef="_cancelOrderTask"/>
+    <flowElements xsi:type="bpmn:ServiceTask" id="_cancelOrderTask" name="Cancel Order" outgoing="_flow10"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="_endEventCancelled" name="Order Cancelled" incoming="_flow10"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_flow8" sourceRef="_processOrderTask" targetRef="_endEventProcessed"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="_endEventProcessed" name="Order Processed" incoming="_flow8"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_flow9" sourceRef="_updateOrderTask" targetRef="_askConfirmationTask"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_askConfirmationTask" name="Ask for Order Confirmation Again" outgoing="_flow11"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_flow11" sourceRef="_askConfirmationTask" targetRef="_orderLimitationGateway"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="_orderLimitationGateway" name="More than 3 Changes?" outgoing="_flow12"/>
+
+    <flowElements xsi:type="bpmn:UserTask" id="_confirmOrderTask" name="Confirm Order"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_changeOrderTask" name="Request Order Change"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_cancelOrderTaskRetailer" name="Cancel Order Request"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_flow12" sourceRef="_orderLimitationGateway" targetRef="_confirmOrderTask"/>
+  </rootElements>
+</bpmn:Definitions>

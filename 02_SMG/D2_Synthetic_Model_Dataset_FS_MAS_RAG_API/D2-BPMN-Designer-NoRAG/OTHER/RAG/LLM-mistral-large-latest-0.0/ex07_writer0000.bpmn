@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_KkUY4Y8DEe-v648egk3nxQ">
+  <bpmn:Collaboration id="_Collaboration_1" name="Doctor Rating Workflow">
+    <bpmn:Participant id="_Participant_QA" name="Quality Assurance Department" processRef="_Process_QA"/>
+    <bpmn:Participant id="_Participant_Director" name="Managing Director" processRef="_Process_Director"/>
+    <bpmn:MessageFlow id="_MessageFlow_1" name="Forward Expertise" sourceRef="_Task_ForwardExpertise" targetRef="_Task_FileResults"/>
+  </bpmn:Collaboration>
+  <bpmn:Process id="_Process_QA" name="Quality Assurance Process">
+    <bpmn:flowElements xsi:type="bpmn:StartEvent" id="_StartEvent_QA" name="Start QA Process"/>
+    <bpmn:flowElements xsi:type="bpmn:Task" id="_Task_InterviewPatients" name="Interview Patients"/>
+    <bpmn:flowElements xsi:type="bpmn:IntermediateCatchEvent" id="_Event_ReceiveExpertise" name="Receive Expertise" parallelMultiple="false">
+      <bpmn:eventDefinitions xsi:type="bpmn:MessageEventDefinition" id="_MessageEventDefinition_1" messageRef="_Message_Expertise"/>
+    </bpmn:flowElements>
+    <bpmn:flowElements xsi:type="bpmn:Task" id="_Task_FileResults" name="File Results"/>
+    <bpmn:flowElements xsi:type="bpmn:Task" id="_Task_CreateReport" name="Create Report"/>
+    <bpmn:flowElements xsi:type="bpmn:EndEvent" id="_EndEvent_QA" name="End QA Process"/>
+    <bpmn:flowElements xsi:type="bpmn:SequenceFlow" id="_SequenceFlow_1" sourceRef="_StartEvent_QA" targetRef="_Task_InterviewPatients"/>
+    <bpmn:flowElements xsi:type="bpmn:SequenceFlow" id="_SequenceFlow_2" sourceRef="_Task_InterviewPatients" targetRef="_Event_ReceiveExpertise"/>
+    <bpmn:flowElements xsi:type="bpmn:SequenceFlow" id="_SequenceFlow_3" sourceRef="_Event_ReceiveExpertise" targetRef="_Task_FileResults"/>
+    <bpmn:flowElements xsi:type="bpmn:SequenceFlow" id="_SequenceFlow_4" sourceRef="_Task_FileResults" targetRef="_Task_CreateReport"/>
+    <bpmn:flowElements xsi:type="bpmn:SequenceFlow" id="_SequenceFlow_5" sourceRef="_Task_CreateReport" targetRef="_EndEvent_QA"/>
+  </bpmn:Process>
+  <bpmn:Process id="_Process_Director" name="Director Process">
+    <bpmn:flowElements xsi:type="bpmn:StartEvent" id="_StartEvent_Director" name="Start Director Process"/>
+    <bpmn:flowElements xsi:type="bpmn:Task" id="_Task_AskExpert" name="Ask Expert for Review"/>
+    <bpmn:flowElements xsi:type="bpmn:IntermediateCatchEvent" id="_Event_ReceiveExpertiseResponse" name="Receive Expertise Response" parallelMultiple="false">
+      <bpmn:eventDefinitions xsi:type="bpmn:MessageEventDefinition" id="_MessageEventDefinition_2" messageRef="_Message_ExpertiseResponse"/>
+    </bpmn:flowElements>
+    <bpmn:flowElements xsi:type="bpmn:ExclusiveGateway" id="_Gateway_CheckResponse" name="Expert Responded?"/>
+    <bpmn:flowElements xsi:type="bpmn:Task" id="_Task_ForwardExpertise" name="Forward Expertise to QA"/>
+    <bpmn:flowElements xsi:type="bpmn:Task" id="_Task_PayExpert" name="Pay Expert"/>
+    <bpmn:flowElements xsi:type="bpmn:EndEvent" id="_EndEvent_Director" name="End Director Process"/>
+    <bpmn:flowElements xsi:type="bpmn:SequenceFlow" id="_SequenceFlow_6" sourceRef="_StartEvent_Director" targetRef="_Task_AskExpert"/>
+    <bpmn:flowElements xsi:type="bpmn:SequenceFlow" id="_SequenceFlow_7" sourceRef="_Task_AskExpert" targetRef="_Event_ReceiveExpertiseResponse"/>
+    <bpmn:flowElements xsi:type="bpmn:SequenceFlow" id="_SequenceFlow_8" sourceRef="_Event_ReceiveExpertiseResponse" targetRef="_Gateway_CheckResponse"/>
+    <bpmn:flowElements xsi:type="bpmn:SequenceFlow" id="_SequenceFlow_9" sourceRef="_Gateway_CheckResponse" targetRef="_Task_ForwardExpertise" name="Yes"/>
+    <bpmn:flowElements xsi:type="bpmn:SequenceFlow" id="_SequenceFlow_10" sourceRef="_Gateway_CheckResponse" targetRef="_Task_AskExpert" name="No"/>
+    <bpmn:flowElements xsi:type="bpmn:SequenceFlow" id="_SequenceFlow_11" sourceRef="_Task_ForwardExpertise" targetRef="_Task_PayExpert"/>
+    <bpmn:flowElements xsi:type="bpmn:SequenceFlow" id="_SequenceFlow_12" sourceRef="_Task_PayExpert" targetRef="_EndEvent_Director"/>
+  </bpmn:Process>
+  <bpmn:Message id="_Message_Expertise" name="Expertise"/>
+  <bpmn:Message id="_Message_ExpertiseResponse" name="Expertise Response"/>
+</bpmn:Definitions>

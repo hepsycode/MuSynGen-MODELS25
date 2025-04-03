@@ -1,0 +1,70 @@
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4-turbo-2024-04-09-0.0/ex00_writer0001.bpmn
+
+Validation Result: Validation successful: No errors found.
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4-turbo-2024-04-09-0.0/ex01_writer0001.bpmn
+
+Validation Result: Validation successful: No errors found.
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4-turbo-2024-04-09-0.0/ex02_writer0001.bpmn
+
+Validation Result: Validation error: org.eclipse.emf.ecore.xmi.ClassNotFoundException: Class 'FlowNode' is not found or is abstract. (file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4-turbo-2024-04-09-0.0/ex02_writer0001.bpmn, 6, 23)
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4-turbo-2024-04-09-0.0/ex03_writer0001.bpmn
+
+Validation Result: Validation error: org.eclipse.emf.ecore.xmi.ClassNotFoundException: Class 'FlowNode' is not found or is abstract. (file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4-turbo-2024-04-09-0.0/ex03_writer0001.bpmn, 6, 23)
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4-turbo-2024-04-09-0.0/ex04_writer0008.bpmn
+
+Validation Result: Validation error: org.eclipse.emf.ecore.xmi.ClassNotFoundException: Class 'FlowNode' is not found or is abstract. (file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4-turbo-2024-04-09-0.0/ex04_writer0008.bpmn, 6, 23)
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4-turbo-2024-04-09-0.0/ex05_writer0013.bpmn
+
+Validation Result: Validation error: org.eclipse.emf.ecore.xmi.ClassNotFoundException: Class 'FlowNode' is not found or is abstract. (file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4-turbo-2024-04-09-0.0/ex05_writer0013.bpmn, 6, 23)
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4-turbo-2024-04-09-0.0/ex07_writer0000.bpmn
+
+Validation Result: Validation error: org.eclipse.emf.ecore.xmi.ClassNotFoundException: Class 'FlowNode' is not found or is abstract. (file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4-turbo-2024-04-09-0.0/ex07_writer0000.bpmn, 6, 23)
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4-turbo-2024-04-09-0.0/ex08_writer0000.bpmn
+
+Validation Result: Validation errors found:
+Diagnosis of org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#Definitions@5502d0e1{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4-turbo-2024-04-09-0.0/ex08_writer0000.bpmn#Definitions_1}
+  The feature 'outgoing' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#Task@7e1b8cb5{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4-turbo-2024-04-09-0.0/ex08_writer0000.bpmn#Task_1}' contains a dangling reference 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#SequenceFlow@547de916{#//}'
+  The feature 'incoming' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#Task@7e1b8cb5{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4-turbo-2024-04-09-0.0/ex08_writer0000.bpmn#Task_1}' contains a dangling reference 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#SequenceFlow@60f55cd9{#//}'
+  The feature 'outgoing' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#Task@3cd882d8{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4-turbo-2024-04-09-0.0/ex08_writer0000.bpmn#Task_2}' contains a dangling reference 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#SequenceFlow@1e04cfd2{#//}'
+  The feature 'incoming' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#Task@3cd882d8{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4-turbo-2024-04-09-0.0/ex08_writer0000.bpmn#Task_2}' contains a dangling reference 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#SequenceFlow@258aa05d{#//}'
+  The feature 'outgoing' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#Task@6f5333a1{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4-turbo-2024-04-09-0.0/ex08_writer0000.bpmn#Task_3}' contains a dangling reference 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#SequenceFlow@17e5b2d1{#//}'
+  The feature 'incoming' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#Task@6f5333a1{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4-turbo-2024-04-09-0.0/ex08_writer0000.bpmn#Task_3}' contains a dangling reference 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#SequenceFlow@2fa795a0{#//}'
+  The feature 'outgoing' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#Task@5fdf5041{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4-turbo-2024-04-09-0.0/ex08_writer0000.bpmn#Task_4}' contains a dangling reference 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#SequenceFlow@29e7be20{#//}'
+  The feature 'incoming' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#Task@5fdf5041{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4-turbo-2024-04-09-0.0/ex08_writer0000.bpmn#Task_4}' contains a dangling reference 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#SequenceFlow@13aef2f7{#//}'
+  The feature 'outgoing' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#Task@b76fb7{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4-turbo-2024-04-09-0.0/ex08_writer0000.bpmn#Task_5}' contains a dangling reference 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#SequenceFlow@25cf6ab8{#//}'
+  The feature 'incoming' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#Task@b76fb7{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4-turbo-2024-04-09-0.0/ex08_writer0000.bpmn#Task_5}' contains a dangling reference 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#SequenceFlow@31cdc69f{#//}'
+  The feature 'outgoing' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#Task@5590b31b{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4-turbo-2024-04-09-0.0/ex08_writer0000.bpmn#Task_6}' contains a dangling reference 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#SequenceFlow@6ee1a4c9{#//}'
+  The feature 'incoming' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#Task@5590b31b{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4-turbo-2024-04-09-0.0/ex08_writer0000.bpmn#Task_6}' contains a dangling reference 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#SequenceFlow@30258907{#//}'
+  The feature 'outgoing' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#Task@6f8358a2{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4-turbo-2024-04-09-0.0/ex08_writer0000.bpmn#Task_7}' contains a dangling reference 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#SequenceFlow@3f5b2622{#//}'
+  The feature 'incoming' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#Task@6f8358a2{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4-turbo-2024-04-09-0.0/ex08_writer0000.bpmn#Task_7}' contains a dangling reference 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#SequenceFlow@5c7f0aec{#//}'
+  The feature 'incoming' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#EndEvent@408ecdd5{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4-turbo-2024-04-09-0.0/ex08_writer0000.bpmn#EndEvent_1}' contains a dangling reference 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#SequenceFlow@353dcb2e{#//}'
+
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4-turbo-2024-04-09-0.0/ex09_writer0002.bpmn
+
+Validation Result: Validation error: org.eclipse.emf.ecore.xmi.ClassNotFoundException: Class 'FlowNode' is not found or is abstract. (file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4-turbo-2024-04-09-0.0/ex09_writer0002.bpmn, 6, 23)
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4-turbo-2024-04-09-0.0/ex10_writer0000.bpmn
+
+Validation Result: Validation error: org.eclipse.emf.ecore.xmi.ClassNotFoundException: Class 'FlowNode' is not found or is abstract. (file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4-turbo-2024-04-09-0.0/ex10_writer0000.bpmn, 10, 23)
+
+
+Validation Summary:
+Valid models: 2
+Models with errors: 8

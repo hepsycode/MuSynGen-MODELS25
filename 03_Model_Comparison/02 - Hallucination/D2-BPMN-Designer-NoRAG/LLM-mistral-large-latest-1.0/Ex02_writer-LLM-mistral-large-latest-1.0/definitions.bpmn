@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_892F4I8DEe-v648egk3nxQ">
+  <rootElements xsi:type="bpmn:Process" id="_892F4Y8DEe-v648egk3nxQ">
+    <flowElements xsi:type="bpmn:StartEvent" id="_dD3G_I8JEe-v648egk3nxQ" name="Claim Received" outgoing="_p3Q0II8DEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_ob3RUI8JEe-v648egk3nxQ" name="Examine Claim and Write Settlement Recommendation" outgoing="_tLvnkI8JEe-v648egk3nxQ" incoming="_p3Q0II8DEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_p3Q0II8DEe-v648egk3nxQ" targetRef="_ob3RUI8JEe-v648egk3nxQ" sourceRef="_dD3G_I8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_q7uhgI8JEe-v648egk3nxQ" name="Check Settlement Recommendation" outgoing="_wYBc0I8JEe-v648egk3nxQ _t0sukI8JEe-v648egk3nxQ" incoming="_tLvnkI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_9B1OYI8JEe-v648egk3nxQ" name="Re-examine Claim and Write Settlement Recommendation" outgoing="_EYflkI8KEe-v648egk3nxQ" incoming="_wYBc0I8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_tLvnkI8JEe-v648egk3nxQ" targetRef="_q7uhgI8JEe-v648egk3nxQ" sourceRef="_ob3RUI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_wYBc0I8JEe-v648egk3nxQ" name="Not OK" targetRef="_9B1OYI8JEe-v648egk3nxQ" sourceRef="_q7uhgI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_t0sukI8JEe-v648egk3nxQ" name="OK" sourceRef="_q7uhgI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_EYflkI8KEe-v648egk3nxQ" targetRef="_q7uhgI8JEe-v648egk3nxQ" sourceRef="_9B1OYI8JEe-v648egk3nxQ"/>
+    <laneSets id="_L9VxQI8DEe-v648egk3nxQ" name="Insurer">
+      <lanes id="_L9W1UI8DEe-v648egk3nxQ" name="Claims Officer" flowNodeRefs="_dD3G_I8JEe-v648egk3nxQ _ob3RUI8JEe-v648egk3nxQ _9B1OYI8JEe-v648egk3nxQ">
+        <extensionValues id="_5Ja3AI8JEe-v648egk3nxQ">
+          <value xsi:type="bpmn:DataObject" id="_5Ja3EI8JEe-v648egk3nxQ" name="Claim Document"/>
+        </extensionValues>
+        <extensionValues id="_MLqPAI8KEe-v648egk3nxQ">
+          <value xsi:type="bpmn:DataStore" id="_MLqPAY8KEe-v648egk3nxQ" name="Claims Database"/>
+        </extensionValues>
+      </lanes>
+      <lanes id="_S1n9gI8JEe-v648egk3nxQ" name="Senior Claims Officer" flowNodeRefs="_q7uhgI8JEe-v648egk3nxQ">
+        <extensionValues id="_aStMwI8LEe-v648egk3nxQ">
+          <value xsi:type="bpmn:DataObject" id="_aStMyI8LEe-v648egk3nxQ" name="Settlement Recommendation Document"/>
+        </extensionValues>
+      </lanes>
+    </laneSets>
+    <artifacts xsi:type="bpmn:Association" id="_BEB1II8KEe-v648egk3nxQ" sourceRef="_dD3G_I8JEe-v648egk3nxQ" targetRef="_5Ja3EI8JEe-v648egk3nxQ"/>
+    <artifacts xsi:type="bpmn:Association" id="_Bx3UoI8KEe-v648egk3nxQ" sourceRef="_5Ja3EI8JEe-v648egk3nxQ" targetRef="_ob3RUI8JEe-v648egk3nxQ"/>
+    <artifacts xsi:type="bpmn:Association" id="_E5hV1I8KEe-v648egk3nxQ" sourceRef="_ob3RUI8JEe-v648egk3nxQ" targetRef="_MLqPAY8KEe-v648egk3nxQ"/>
+    <artifacts xsi:type="bpmn:Association" id="_O8J3oI8KEe-v648egk3nxQ" sourceRef="_MLqPAY8KEe-v648egk3nxQ" targetRef="_q7uhgI8JEe-v648egk3nxQ"/>
+    <artifacts xsi:type="bpmn:Association" id="_WP6ZII8KEe-v648egk3nxQ" sourceRef="_q7uhgI8JEe-v648egk3nxQ" targetRef="_aStMyI8LEe-v648egk3nxQ"/>
+    <artifacts xsi:type="bpmn:Association" id="_c38dEI8KEe-v648egk3nxQ" sourceRef="_aStMyI8LEe-v648egk3nxQ" targetRef="_9B1OYI8JEe-v648egk3nxQ"/>
+  </rootElements>
+</bpmn:Definitions>

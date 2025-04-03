@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hml:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hml="org.univaq.hepsy">
+  <nodes xsi:type="hml:Stimulus" name="stimulus">
+    <ports name="stim_fir1_out_port">
+      <pChannels name="stim_fir1_channel" pFrom="//@nodes.0/@ports.0" pTo="//@nodes.2/@ports.0" queueSize="10" rendezVous="true">
+        <message name="stim_fir1_message">
+          <entry name="raw_signal" type="sc_int"/>
+        </message>
+      </pChannels>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:Display" name="display">
+    <ports name="system_display_in_port">
+      <pChannels name="gcd_display_channel" pFrom="//@nodes.2/@ports.1" pTo="//@nodes.1/@ports.0" queueSize="5" rendezVous="true">
+        <message name="gcd_display_payload">
+          <entry name="gcd_result" type="sc_int"/>
+        </message>
+      </pChannels>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:StructuredNode" name="FIRFIRGCD_ext">
+    <processes name="fir1"/>
+    <processes name="fir2"/>
+    <processes name="fir_ext"/>
+    <processes name="gcd"/>
+    <nChannels name="fir1_fir2_channel" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.1" queueSize="8" rendezVous="true">
+      <message name="fir1_fir2_message">
+        <entry name="filtered_signal" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="fir2_firext_channel" nFrom="//@nodes.2/@processes.1" nTo="//@nodes.2/@processes.2" queueSize="8" rendezVous="true">
+      <message name="fir2_firext_message">
+        <entry name="refined_signal" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="firext_gcd_channel" nFrom="//@nodes.2/@processes.2" nTo="//@nodes.2/@processes.3" queueSize="8" rendezVous="true">
+      <message name="firext_gcd_message">
+        <entry name="enhanced_signal" type="sc_int"/>
+      </message>
+    </nChannels>
+    <ports name="fir1_in" portExtension="//@nodes.2/@processes.0"/>
+    <ports name="fir2_in" portExtension="//@nodes.2/@processes.1"/>
+    <ports name="fir_ext_in" portExtension="//@nodes.2/@processes.2"/>
+    <ports name="gcd_in" portExtension="//@nodes.2/@processes.3"/>
+  </nodes>
+</hml:BehaviorSpecification>

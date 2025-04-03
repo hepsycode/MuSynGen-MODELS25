@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="DoctorRatingProcess">
+  <rootElements xsi:type="bpmn:Process" id="doctorRatingProcess">
+    <laneSets id="laneSet1">
+      <lanes id="lane1" name="Quality Assurance Specialist">
+        <flowNodeRefs>startEvent1 userTask1 userTask2 endEvent1</flowNodeRefs>
+      </lanes>
+      <lanes id="lane2" name="Managing Director">
+        <flowNodeRefs>userTask3 subProcess1 userTask4</flowNodeRefs>
+      </lanes>
+    </laneSets>
+    <flowElements xsi:type="bpmn:StartEvent" id="startEvent1" name="Start Doctor Rating">
+      <outgoing>sequenceFlow1</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="userTask1" name="Interview Patients">
+      <incoming>sequenceFlow1</incoming>
+      <outgoing>sequenceFlow2</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="sequenceFlow1" sourceRef="startEvent1" targetRef="userTask1"/>
+    <flowElements xsi:type="bpmn:UserTask" id="userTask2" name="File Patient Interview Results">
+      <incoming>sequenceFlow2</incoming>
+      <outgoing>sequenceFlow4</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="userTask3" name="Request External Expert Review">
+      <outgoing>sequenceFlow5</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SubProcess" id="subProcess1" name="Handle Expert Response">
+      <triggeredByEvent>true</triggeredByEvent>
+      <incoming>sequenceFlow5</incoming>
+      <outgoing>sequenceFlow3</outgoing>
+      <flowElements xsi:type="bpmn:IntermediateCatchEvent" id="intermediateCatchEvent1" name="Wait for Expert Response">
+        <outgoing>sequenceFlow7</outgoing>
+      </flowElements>
+      <flowElements xsi:type="bpmn:UserTask" id="subUserTask1" name="Evaluate Expert Response">
+        <incoming>sequenceFlow7</incoming>
+        <outgoing>sequenceFlow8</outgoing>
+      </flowElements>
+      <flowElements xsi:type="bpmn:EndEvent" id="subEndEvent1">
+        <incoming>sequenceFlow8</incoming>
+      </flowElements>
+      <flowElements xsi:type="bpmn:SequenceFlow" id="sequenceFlow7" sourceRef="intermediateCatchEvent1" targetRef="subUserTask1"/>
+      <flowElements xsi:type="bpmn:SequenceFlow" id="sequenceFlow8" sourceRef="subUserTask1" targetRef="subEndEvent1"/>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="sequenceFlow5" sourceRef="userTask3" targetRef="subProcess1"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="sequenceFlow3" sourceRef="subProcess1" targetRef="userTask2"/>
+    <flowElements xsi:type="bpmn:UserTask" id="userTask4" name="Issue Payment to Expert">
+      <incoming>sequenceFlow6</incoming>
+      <outgoing>sequenceFlow9</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="sequenceFlow6" sourceRef="subProcess1" targetRef="userTask4"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="endEvent1" name="Generate Final Report">
+      <incoming>sequenceFlow4 sequenceFlow9</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="sequenceFlow2" sourceRef="userTask1" targetRef="userTask2"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="sequenceFlow4" sourceRef="userTask2" targetRef="endEvent1"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="sequenceFlow9" sourceRef="userTask4" targetRef="endEvent1"/>
+  </rootElements>
+</bpmn:Definitions>

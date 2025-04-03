@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_TribunalProcess">
+  <rootElements xsi:type="bpmn:Process" id="_CompensationProcess" isExecutable="true">
+    <flowElements xsi:type="bpmn:StartEvent" id="_StartEvent" name="Request for Compensation Received" outgoing="_flowToRetrieveFile"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_RetrieveFileTask" name="Retrieve File for Premises" outgoing="_flowToCheckRequest" incoming="_flowToRetrieveFile"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_flowToRetrieveFile" targetRef="_RetrieveFileTask" sourceRef="_StartEvent"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_CheckRequestTask" name="Check Request Compliance" outgoing="_flowToSetDate" incoming="_flowToCheckRequest"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_flowToCheckRequest" targetRef="_CheckRequestTask" sourceRef="_RetrieveFileTask"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_SetHearingDateTask" name="Set Hearing Date" outgoing="_flowToFeesCheck" incoming="_flowToSetDate"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_flowToSetDate" targetRef="_SetHearingDateTask" sourceRef="_CheckRequestTask"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="_FeesGateway" name="Fees Paid?" outgoing="_flowToEnd _flowToProduceNotice" incoming="_flowToFeesCheck"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_flowToFeesCheck" targetRef="_FeesGateway" sourceRef="_SetHearingDateTask"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_ProduceFeesNoticeTask" name="Produce Fees Notice" outgoing="_flowToWaitForPayment" incoming="_flowToProduceNotice"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_flowToProduceNotice" targetRef="_ProduceFeesNoticeTask" sourceRef="_FeesGateway"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_WaitForPaymentTask" name="Wait for Payment" outgoing="_flowToCheckRequestAgain" incoming="_flowToWaitForPayment"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_flowToWaitForPayment" targetRef="_WaitForPaymentTask" sourceRef="_ProduceFeesNoticeTask"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_flowToCheckRequestAgain" targetRef="_CheckRequestTask" sourceRef="_WaitForPaymentTask"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="_EndEvent" name="Hearing Date Allocated" incoming="_flowToEnd"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_flowToEnd" targetRef="_EndEvent" sourceRef="_FeesGateway"/>
+    <laneSets id="_TribunalLaneSet" name="Tribunal">
+      <lanes id="_CashierLane" name="Cashier" flowNodeRefs="_StartEvent _RetrieveFileTask _CheckRequestTask _SetHearingDateTask _FeesGateway _ProduceFeesNoticeTask _WaitForPaymentTask _EndEvent"/>
+    </laneSets>
+    <artifacts xsi:type="bpmn:DataObjectReference" id="_RequestDataObject" name="Request Document" dataObjectRef="_RequestData"/>
+    <artifacts xsi:type="bpmn:DataObject" id="_RequestData" name="Request Document"/>
+    <artifacts xsi:type="bpmn:DataStoreReference" id="_PremisesDataStoreRef" name="Premises File" dataStoreRef="_PremisesDataStore"/>
+    <artifacts xsi:type="bpmn:DataStore" id="_PremisesDataStore" name="Premises File" capacity="1" isUnlimited="false"/>
+  </rootElements>
+</bpmn:Definitions>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="universityPhDAdmissionProcess">
+  <rootElements xsi:type="bpmn:Process" id="PhDAdmission" isExecutable="true">
+    <flowElements xsi:type="bpmn:StartEvent" id="startEvent" name="Start Application Process" outgoing="flowA"/>
+    <flowElements xsi:type="bpmn:ServiceTask" id="fillFormTask" name="Fill Online Application Form" outgoing="flowB" incoming="flowA">
+      <implementation>http://universityapp.backend/fillForm</implementation>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flowA" sourceRef="startEvent" targetRef="fillFormTask"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flowB" sourceRef="fillFormTask" targetRef="generatePDFTask"/>
+    <flowElements xsi:type="bpmn:ServiceTask" id="generatePDFTask" name="Generate PDF Document" outgoing="flowC" incoming="flowB">
+      <implementation>http://universityapp.backend/generatePDF</implementation>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flowC" sourceRef="generatePDFTask" targetRef="receiveDocumentsTask"/>
+    <flowElements xsi:type="bpmn:UserTask" id="receiveDocumentsTask" name="Receive Signed Application and Documents" outgoing="flowD" incoming="flowC"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flowD" sourceRef="receiveDocumentsTask" targetRef="initialAssessmentTask"/>
+    <flowElements xsi:type="bpmn:UserTask" id="initialAssessmentTask" name="Initial Assessment" outgoing="flowE flowF" incoming="flowD"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flowE" sourceRef="initialAssessmentTask" targetRef="rejectTask" name="Insufficient Grades"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flowF" sourceRef="initialAssessmentTask" targetRef="forwardToCommitteeTask" name="Sufficient Grades"/>
+    <flowElements xsi:type="bpmn:UserTask" id="rejectTask" name="Send Rejection Email" incoming="flowE" outgoing="flowEnd">
+      <implementation>http://universityapp.backend/sendRejectionEmail</implementation>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flowEnd" sourceRef="rejectTask" targetRef="endEvent"/>
+    <flowElements xsi:type="bpmn:UserTask" id="forwardToCommitteeTask" name="Forward to Academic Committee" incoming="flowF" outgoing="flowG"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flowG" sourceRef="forwardToCommitteeTask" targetRef="committeeDecisionTask"/>
+    <flowElements xsi:type="bpmn:UserTask" id="committeeDecisionTask" name="Committee Meeting and Decision" outgoing="flowH flowI" incoming="flowG">
+      <implementation>http://universityapp.backend/committeeDecision</implementation>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flowH" sourceRef="committeeDecisionTask" targetRef="sendAdmissionEmailTask" name="Accepted"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flowI" sourceRef="committeeDecisionTask" targetRef="rejectTask" name="Rejected"/>
+    <flowElements xsi:type="bpmn:UserTask" id="sendAdmissionEmailTask" name="Send Admission Email" incoming="flowH" outgoing="flowEnd">
+      <implementation>http://universityapp.backend/sendAdmissionEmail</implementation>
+    </flowElements>
+    <flowElements xsi:type="bpmn:EndEvent" id="endEvent" name="End Process"/>
+    <laneSets>
+      <lanes id="administrationLane" name="Administration Office" flowNodeRefs="receiveDocumentsTask initialAssessmentTask forwardToCommitteeTask rejectTask"/>
+      <lanes id="committeeLane" name="Academic Committee" flowNodeRefs="committeeDecisionTask"/>
+      <lanes id="systemLane" name="System Services" flowNodeRefs="fillFormTask generatePDFTask sendAdmissionEmailTask"/>
+    </laneSets>
+  </rootElements>
+</bpmn:Definitions>

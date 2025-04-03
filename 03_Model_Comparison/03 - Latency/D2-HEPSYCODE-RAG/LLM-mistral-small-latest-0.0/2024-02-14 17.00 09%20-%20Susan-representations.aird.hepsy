@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hml:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hml="org.univaq.hepsy">
+  <nodes xsi:type="hml:Stimulus" name="stimulus">
+    <ports name="stim_system_out_port"/>
+  </nodes>
+  <nodes xsi:type="hml:StructuredNode" name="SUSAN">
+    <nChannels name="stim_acq_channel" nFrom="//@nodes.0" nTo="//@nodes.1" queueSize="10" rendezVous="true">
+      <message name="raw_image_data">
+        <entry name="image_data" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="preproc_susan_channel" nFrom="//@nodes.1/@processes.0" nTo="//@nodes.1/@processes.1" queueSize="10" rendezVous="true">
+      <message name="preprocessed_data">
+        <entry name="preprocessed_image" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="nucleus_channel" nFrom="//@nodes.1/@processes.1" nTo="//@nodes.1/@processes.2" queueSize="10" rendezVous="true">
+      <message name="nucleus_data">
+        <entry name="nucleus_info" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="mask_channel" nFrom="//@nodes.1/@processes.2" nTo="//@nodes.1/@processes.3" queueSize="10" rendezVous="true">
+      <message name="masked_data">
+        <entry name="masked_image" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="edge_channel" nFrom="//@nodes.1/@processes.3" nTo="//@nodes.1/@processes.4" queueSize="10" rendezVous="true">
+      <message name="edge_data">
+        <entry name="edge_info" type="sc_int"/>
+      </message>
+    </nChannels>
+    <ports name="system_display_out_port" portExtension="//@nodes.1/@processes.4"/>
+    <processes name="preproc"/>
+    <processes name="nucleus"/>
+    <processes name="masking"/>
+    <processes name="edgeDetect"/>
+  </nodes>
+  <nodes xsi:type="hml:Display" name="display">
+    <ports name="system_display_in_port"/>
+  </nodes>
+  <nodes xsi:type="hml:Channel" name="disp_channel" nFrom="//@nodes.1" nTo="//@nodes.2" queueSize="10" rendezVous="true">
+    <message name="final_processed_data">
+      <entry name="final_image" type="sc_int"/>
+    </message>
+  </nodes>
+</hml:BehaviorSpecification>

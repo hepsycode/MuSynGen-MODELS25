@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="DoctorRatingProcess">
+  <rootElements xsi:type="bpmn:Process" id="DoctorRatingProcess_Main" name="Doctor Rating Process">
+    <laneSets id="DoctorRatingProcess_LaneSet">
+      <lanes id="DoctorRatingProcess_Lane_QASpecialist" name="QA Specialist">
+        <flowNodeRefs>DoctorRatingProcess_StartEvent DoctorRatingProcess_Task_InterviewPatients DoctorRatingProcess_Task_FileResults DoctorRatingProcess_Task_CreateReport</flowNodeRefs>
+      </lanes>
+      <lanes id="DoctorRatingProcess_Lane_Director" name="Managing Director">
+        <flowNodeRefs>DoctorRatingProcess_Task_AskExpert DoctorRatingProcess_Task_ReceiveExpertise DoctorRatingProcess_Task_PayExpenses</flowNodeRefs>
+      </lanes>
+    </laneSets>
+    <flowElements xsi:type="bpmn:StartEvent" id="DoctorRatingProcess_StartEvent" name="Start Doctor Rating">
+      <outgoing>DoctorRatingProcess_Flow_StartToInterview</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="DoctorRatingProcess_Task_InterviewPatients" name="Interview Patients">
+      <incoming>DoctorRatingProcess_Flow_StartToInterview</incoming>
+      <outgoing>DoctorRatingProcess_Flow_InterviewToFileResults</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="DoctorRatingProcess_Flow_StartToInterview" sourceRef="DoctorRatingProcess_StartEvent" targetRef="DoctorRatingProcess_Task_InterviewPatients"/>
+    <flowElements xsi:type="bpmn:UserTask" id="DoctorRatingProcess_Task_AskExpert" name="Ask External Expert">
+      <outgoing>DoctorRatingProcess_Flow_AskToReceive</outgoing>
+      <incoming>DoctorRatingProcess_Flow_PayToAskExpert</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="DoctorRatingProcess_Task_ReceiveExpertise" name="Receive Expertise">
+      <incoming>DoctorRatingProcess_Flow_AskToReceive</incoming>
+      <outgoing>DoctorRatingProcess_Flow_ReceiveToFileResults</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="DoctorRatingProcess_Flow_AskToReceive" sourceRef="DoctorRatingProcess_Task_AskExpert" targetRef="DoctorRatingProcess_Task_ReceiveExpertise"/>
+    <flowElements xsi:type="bpmn:UserTask" id="DoctorRatingProcess_Task_FileResults" name="File Results">
+      <incoming>DoctorRatingProcess_Flow_InterviewToFileResults</incoming>
+      <incoming>DoctorRatingProcess_Flow_ReceiveToFileResults</incoming>
+      <outgoing>DoctorRatingProcess_Flow_ResultsToCreateReport</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="DoctorRatingProcess_Flow_InterviewToFileResults" sourceRef="DoctorRatingProcess_Task_InterviewPatients" targetRef="DoctorRatingProcess_Task_FileResults"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="DoctorRatingProcess_Flow_ReceiveToFileResults" sourceRef="DoctorRatingProcess_Task_ReceiveExpertise" targetRef="DoctorRatingProcess_Task_FileResults"/>
+    <flowElements xsi:type="bpmn:UserTask" id="DoctorRatingProcess_Task_CreateReport" name="Create Report">
+      <incoming>DoctorRatingProcess_Flow_ResultsToCreateReport</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="DoctorRatingProcess_Flow_ResultsToCreateReport" sourceRef="DoctorRatingProcess_Task_FileResults" targetRef="DoctorRatingProcess_Task_CreateReport"/>
+    <flowElements xsi:type="bpmn:UserTask" id="DoctorRatingProcess_Task_PayExpenses" name="Pay Expert Expenses">
+      <outgoing>DoctorRatingProcess_Flow_PayToAskExpert</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="DoctorRatingProcess_Flow_PayToAskExpert" sourceRef="DoctorRatingProcess_Task_PayExpenses" targetRef="DoctorRatingProcess_Task_AskExpert"/>
+  </rootElements>
+</bpmn:Definitions>

@@ -1,0 +1,12 @@
+node,total_emissions
+generate_query_node,1.1583490358870568e-07
+cache_context_node,6.614470929804254e-08
+model_generation_node,5.814272602480443e-05
+model_validation_node,5.9078599667749504e-05
+model_validation_node,5.926180991388327e-05
+model_validation_node,1.7718683436950038e-07
+model_generation_node,1.7562697729119077e-07
+model_validation_node,1.7835886410904414e-07
+model_validation_node,1.3737125595217921e-07
+model_validation_node,1.0127876406410158e-07
+FILE_2024-02-13 16.59 00%20-%20DigitalCam%20Parallel-representations.aird.hepsy,0.0004544378697737922

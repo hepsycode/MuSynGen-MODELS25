@@ -1,0 +1,21 @@
+File,Tag,Occurrences,Category,CategoryEMF
+2024-02-14 17.58 11%20-%20JPEG%20Reduced-representations.aird.hepsy,name,38,Uncategorized,Uncategorized
+2024-02-14 17.58 11%20-%20JPEG%20Reduced-representations.aird.hepsy,nchannels,8,Uncategorized,Relations
+2024-02-14 17.58 11%20-%20JPEG%20Reduced-representations.aird.hepsy,nfrom,8,Uncategorized,Attributes
+2024-02-14 17.58 11%20-%20JPEG%20Reduced-representations.aird.hepsy,nto,8,Uncategorized,Attributes
+2024-02-14 17.58 11%20-%20JPEG%20Reduced-representations.aird.hepsy,queuesize,8,Uncategorized,Attributes
+2024-02-14 17.58 11%20-%20JPEG%20Reduced-representations.aird.hepsy,rendezvous,8,Uncategorized,Attributes
+2024-02-14 17.58 11%20-%20JPEG%20Reduced-representations.aird.hepsy,message,8,Uncategorized,Classes
+2024-02-14 17.58 11%20-%20JPEG%20Reduced-representations.aird.hepsy,entry,8,Uncategorized,Classes
+2024-02-14 17.58 11%20-%20JPEG%20Reduced-representations.aird.hepsy,type,8,Uncategorized,Attributes
+2024-02-14 17.58 11%20-%20JPEG%20Reduced-representations.aird.hepsy,processes,6,Uncategorized,Classes
+2024-02-14 17.58 11%20-%20JPEG%20Reduced-representations.aird.hepsy,ports,4,Uncategorized,Classes
+2024-02-14 17.58 11%20-%20JPEG%20Reduced-representations.aird.hepsy,nodes,3,Uncategorized,Classes
+2024-02-14 17.58 11%20-%20JPEG%20Reduced-representations.aird.hepsy,{http://www.w3.org/2001/xmlschema-instance}type,3,Uncategorized,Uncategorized
+2024-02-14 17.58 11%20-%20JPEG%20Reduced-representations.aird.hepsy,pchannels,2,Uncategorized,Relations
+2024-02-14 17.58 11%20-%20JPEG%20Reduced-representations.aird.hepsy,pfrom,2,Uncategorized,Attributes
+2024-02-14 17.58 11%20-%20JPEG%20Reduced-representations.aird.hepsy,pto,2,Uncategorized,Attributes
+2024-02-14 17.58 11%20-%20JPEG%20Reduced-representations.aird.hepsy,behaviorspecification,1,Uncategorized,Uncategorized
+2024-02-14 17.58 11%20-%20JPEG%20Reduced-representations.aird.hepsy,{http://www.omg.org/xmi}version,1,Uncategorized,Uncategorized
+2024-02-14 17.58 11%20-%20JPEG%20Reduced-representations.aird.hepsy,portextension,1,Uncategorized,Attributes
+2024-02-14 17.58 11%20-%20JPEG%20Reduced-representations.aird.hepsy,processextension,1,Uncategorized,Uncategorized

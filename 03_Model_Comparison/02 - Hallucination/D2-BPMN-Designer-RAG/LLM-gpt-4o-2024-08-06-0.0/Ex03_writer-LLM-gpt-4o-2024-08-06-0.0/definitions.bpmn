@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_InsurerProcess">
+  <rootElements xsi:type="bpmn:Process" id="_ClaimHandlingProcess" isExecutable="true">
+    <flowElements xsi:type="bpmn:StartEvent" id="_ClaimReceived" name="Claim Received" outgoing="_CheckInsuranceStatus"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_CheckInsurance" name="Check Insurance Status" outgoing="_InsuranceStatusDecision" incoming="_CheckInsuranceStatus"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_CheckInsuranceStatus" targetRef="_CheckInsurance" sourceRef="_ClaimReceived"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="_InsuranceStatusDecision" name="Is Claimant Insured?" outgoing="_RejectClaim _EvaluateClaim" incoming="_CheckInsuranceStatus"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_RejectClaim" name="No" targetRef="_SendRejectionNotification" sourceRef="_InsuranceStatusDecision"/>
+    <flowElements xsi:type="bpmn:ServiceTask" id="_SendRejectionNotification" name="Send Rejection Notification" implementation="SAP" outgoing="_EndProcess" incoming="_RejectClaim"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_EvaluateClaim" name="Yes" targetRef="_EvaluateSeverity" sourceRef="_InsuranceStatusDecision"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_EvaluateSeverity" name="Evaluate Claim Severity" outgoing="_SeverityDecision" incoming="_EvaluateClaim"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="_SeverityDecision" name="Claim Severity?" outgoing="_SendSimpleForms _SendComplexForms" incoming="_EvaluateSeverity"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_SendSimpleForms" name="Simple" targetRef="_SendForms" sourceRef="_SeverityDecision"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_SendComplexForms" name="Complex" targetRef="_SendForms" sourceRef="_SeverityDecision"/>
+    <flowElements xsi:type="bpmn:ServiceTask" id="_SendForms" name="Send Relevant Forms" implementation="SAP" outgoing="_FormsReturned" incoming="_SendSimpleForms _SendComplexForms"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_CheckForms" name="Check Forms for Completeness" outgoing="_FormsCompleteDecision" incoming="_FormsReturned"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_FormsReturned" targetRef="_CheckForms" sourceRef="_SendForms"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="_FormsCompleteDecision" name="Are Forms Complete?" outgoing="_RegisterClaim _RequestFormUpdate" incoming="_CheckForms"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_RegisterClaim" name="Yes" targetRef="_RegisterInSystem" sourceRef="_FormsCompleteDecision"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_RegisterInSystem" name="Register Claim in System" outgoing="_EndProcess" incoming="_RegisterClaim"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_RequestFormUpdate" name="No" targetRef="_RequestUpdate" sourceRef="_FormsCompleteDecision"/>
+    <flowElements xsi:type="bpmn:ServiceTask" id="_RequestUpdate" name="Request Form Update" implementation="SAP" outgoing="_UpdatedFormsReturned" incoming="_RequestFormUpdate"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_RecheckForms" name="Recheck Updated Forms" outgoing="_FormsCompleteDecision" incoming="_UpdatedFormsReturned"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_UpdatedFormsReturned" targetRef="_RecheckForms" sourceRef="_RequestUpdate"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="_EndProcess" name="Process Ended" incoming="_SendRejectionNotification _RegisterInSystem"/>
+    <laneSets id="_InsurerLaneSet" name="Insurer">
+      <lanes id="_ClaimsOfficerLane" name="Claims Officer" flowNodeRefs="_ClaimReceived _CheckInsurance _InsuranceStatusDecision _EvaluateSeverity _SeverityDecision _CheckForms _FormsCompleteDecision _RecheckForms"/>
+      <lanes id="_SeniorClaimsOfficerLane" name="Senior Claims Officer" flowNodeRefs="_EvaluateSeverity"/>
+      <lanes id="_SAPSystemLane" name="SAP System" flowNodeRefs="_SendRejectionNotification _SendForms _RequestUpdate"/>
+    </laneSets>
+    <artifacts xsi:type="bpmn:DataObject" id="_ClaimForm" name="Claim Form"/>
+    <artifacts xsi:type="bpmn:DataStore" id="_ClaimsManagementSystem" name="Claims Management System"/>
+  </rootElements>
+</bpmn:Definitions>

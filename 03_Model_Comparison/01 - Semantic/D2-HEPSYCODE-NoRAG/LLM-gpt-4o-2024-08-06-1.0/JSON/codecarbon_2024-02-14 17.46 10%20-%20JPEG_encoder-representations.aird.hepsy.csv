@@ -1,0 +1,7 @@
+total_emissions,node
+6.00862660198748e-08,generate_query_node
+5.995227444182129e-08,cache_context_node
+0.0005152460850257035,model_generation_node
+0.0005669256788547707,model_validation_node
+1.967539133850222e-07,model_validation_node
+0.002875989879147628,FILE_2024-02-14 17.46 10%20-%20JPEG_encoder-representations.aird.hepsy

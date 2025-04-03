@@ -1,0 +1,12 @@
+{
+    "response_length": 4328,
+    "execution_time": 33.569581270217896,
+    "temperature": 1.0,
+    "usage": {
+        "input_tokens": 6039,
+        "output_tokens": 1635,
+        "total_tokens": 7674
+    },
+    "price_usd": 0.0010944,
+    "model_name": "mistral-large-latest"
+}

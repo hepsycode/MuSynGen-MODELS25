@@ -1,0 +1,85 @@
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4o-2024-08-06-1.0/ex00_writer0001.bpmn
+
+Validation Result: Validation successful: No errors found.
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4o-2024-08-06-1.0/ex01_writer0001.bpmn
+
+Validation Result: Validation successful: No errors found.
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4o-2024-08-06-1.0/ex02_writer0001.bpmn
+
+Validation Result: Validation successful: No errors found.
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4o-2024-08-06-1.0/ex03_writer0001.bpmn
+
+Validation Result: Validation errors found:
+Diagnosis of org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#Definitions@4f752219{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4o-2024-08-06-1.0/ex03_writer0001.bpmn#InsurerHandlingClaimProcess}
+  The required feature 'id' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#InputOutputSpecification@6b2af268{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4o-2024-08-06-1.0/ex03_writer0001.bpmn#//@rootElements.0/@flowElements.5/@ioSpecification}' must be set
+  The required feature 'id' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#DataOutputAssociation@5bfcb511{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4o-2024-08-06-1.0/ex03_writer0001.bpmn#//@rootElements.0/@flowElements.5/@dataOutputAssociations.0}' must be set
+  The feature 'targetRef' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#DataOutputAssociation@5bfcb511{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4o-2024-08-06-1.0/ex03_writer0001.bpmn#//@rootElements.0/@flowElements.5/@dataOutputAssociations.0}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#ItemAwareElement@5091d1cc{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4o-2024-08-06-1.0/SAPSystem#NotificationMessage}'
+  The required feature 'id' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#InputOutputSpecification@10ef8d1f{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4o-2024-08-06-1.0/ex03_writer0001.bpmn#//@rootElements.0/@flowElements.11/@ioSpecification}' must be set
+  The required feature 'id' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#DataOutputAssociation@6bd45574{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4o-2024-08-06-1.0/ex03_writer0001.bpmn#//@rootElements.0/@flowElements.11/@dataOutputAssociations.0}' must be set
+  The feature 'targetRef' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#DataOutputAssociation@6bd45574{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4o-2024-08-06-1.0/ex03_writer0001.bpmn#//@rootElements.0/@flowElements.11/@dataOutputAssociations.0}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#ItemAwareElement@553e3122{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4o-2024-08-06-1.0/SAPSystem#SimpleClaimForms}'
+  The required feature 'id' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#InputOutputSpecification@b7f85f8{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4o-2024-08-06-1.0/ex03_writer0001.bpmn#//@rootElements.0/@flowElements.13/@ioSpecification}' must be set
+  The required feature 'id' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#DataOutputAssociation@679466fd{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4o-2024-08-06-1.0/ex03_writer0001.bpmn#//@rootElements.0/@flowElements.13/@dataOutputAssociations.0}' must be set
+  The feature 'targetRef' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#DataOutputAssociation@679466fd{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4o-2024-08-06-1.0/ex03_writer0001.bpmn#//@rootElements.0/@flowElements.13/@dataOutputAssociations.0}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#ItemAwareElement@2e22f08e{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4o-2024-08-06-1.0/SAPSystem#ComplexClaimForms}'
+  The required feature 'id' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#InputOutputSpecification@ab16349{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4o-2024-08-06-1.0/ex03_writer0001.bpmn#//@rootElements.0/@flowElements.19/@ioSpecification}' must be set
+  The required feature 'id' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#DataInputAssociation@f7709ad{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4o-2024-08-06-1.0/ex03_writer0001.bpmn#//@rootElements.0/@flowElements.19/@dataInputAssociations.0}' must be set
+  The required feature 'targetRef' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#DataInputAssociation@f7709ad{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4o-2024-08-06-1.0/ex03_writer0001.bpmn#//@rootElements.0/@flowElements.19/@dataInputAssociations.0}' must be set
+  The feature 'sourceRef' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#DataInputAssociation@f7709ad{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4o-2024-08-06-1.0/ex03_writer0001.bpmn#//@rootElements.0/@flowElements.19/@dataInputAssociations.0}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#ItemAwareElement@29b4696b{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4o-2024-08-06-1.0/ClaimsManagementSystem#ClaimDetails}'
+  The required feature 'id' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#InputOutputSpecification@6b91ab3c{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4o-2024-08-06-1.0/ex03_writer0001.bpmn#//@rootElements.0/@flowElements.21/@ioSpecification}' must be set
+  The required feature 'id' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#DataOutputAssociation@56d4302b{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4o-2024-08-06-1.0/ex03_writer0001.bpmn#//@rootElements.0/@flowElements.21/@dataOutputAssociations.0}' must be set
+  The feature 'targetRef' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#DataOutputAssociation@56d4302b{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4o-2024-08-06-1.0/ex03_writer0001.bpmn#//@rootElements.0/@flowElements.21/@dataOutputAssociations.0}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#ItemAwareElement@61d9713d{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4o-2024-08-06-1.0/SAPSystem#UpdateRequest}'
+  The feature 'dataObjectRef' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#DataObjectReference@6baca35c{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4o-2024-08-06-1.0/ex03_writer0001.bpmn#ClaimFormsDataObject}' contains a dangling reference 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#DataObject@d822d5e{#ClaimFormsDataObjectReference}'
+
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4o-2024-08-06-1.0/ex04_writer0008.bpmn
+
+Validation Result: Validation successful: No errors found.
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4o-2024-08-06-1.0/ex05_writer0013.bpmn
+
+Validation Result: Validation successful: No errors found.
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4o-2024-08-06-1.0/ex07_writer0000.bpmn
+
+Validation Result: Validation successful: No errors found.
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4o-2024-08-06-1.0/ex08_writer0000.bpmn
+
+Validation Result: Validation errors found:
+Diagnosis of org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#Definitions@5d5a0f56{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4o-2024-08-06-1.0/ex08_writer0000.bpmn#school_course_selection}
+  Validation failed with an exception for 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#UserTask@7d579f17{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4o-2024-08-06-1.0/ex08_writer0000.bpmn#assign_and_rebook_v1}'
+  The required feature 'id' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#LaneSet@7009e216{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4o-2024-08-06-1.0/ex08_writer0000.bpmn#//@rootElements.0/@laneSets.0}' must be set
+  Validation failed with an exception for 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#UserTask@4d1b9d8{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4o-2024-08-06-1.0/ex08_writer0000.bpmn#assign_and_rebook_v2}'
+  The required feature 'id' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#LaneSet@2eae2392{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4o-2024-08-06-1.0/ex08_writer0000.bpmn#//@rootElements.1/@laneSets.0}' must be set
+
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4o-2024-08-06-1.0/ex09_writer0002.bpmn
+
+Validation Result: Validation error: org.eclipse.emf.ecore.xmi.ClassNotFoundException: Class 'FlowNode' is not found or is abstract. (file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4o-2024-08-06-1.0/ex09_writer0002.bpmn, 6, 23)
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4o-2024-08-06-1.0/ex10_writer0000.bpmn
+
+Validation Result: Validation errors found:
+Diagnosis of org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#Definitions@78c0a418{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4o-2024-08-06-1.0/ex10_writer0000.bpmn#_e8lrdN8DEe-v648egk3nxQ}
+  The required feature 'id' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#FormalExpression@6806d6f0{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4o-2024-08-06-1.0/ex10_writer0000.bpmn#//@rootElements.0/@flowElements.5/@eventDefinitions.0/@timeDuration}' must be set
+  The required feature 'evaluatesToTypeRef' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#FormalExpression@6806d6f0{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4o-2024-08-06-1.0/ex10_writer0000.bpmn#//@rootElements.0/@flowElements.5/@eventDefinitions.0/@timeDuration}' must be set
+  The feature 'body' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#FormalExpression@6806d6f0{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-BPMN-Designer-RAG/LLM-gpt-4o-2024-08-06-1.0/ex10_writer0000.bpmn#//@rootElements.0/@flowElements.5/@eventDefinitions.0/@timeDuration}' contains a dangling reference 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/http://www.omg.org/spec/BPMN/20100524/MODEL-XMI#FormalExpression@461f4cc8{#//}'
+
+
+
+Validation Summary:
+Valid models: 6
+Models with errors: 4
+
+Click to add a cell.

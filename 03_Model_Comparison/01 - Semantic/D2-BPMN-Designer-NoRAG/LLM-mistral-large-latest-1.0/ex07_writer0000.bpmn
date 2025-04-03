@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="doctorRatingWorkflow">
+  <rootElements xsi:type="bpmn:Process" id="processId">
+    <laneSets id="laneSet1" name="Hospital">
+      <lanes id="qaLane" name="Quality Assurance" flowNodeRefs="startQA interviewPatient receiveExpertise fileResults createReport endReport">
+      </lanes>
+      <lanes id="directorLane" name="Managing Director" flowNodeRefs="askExpert checkTime sendExpertise payExpert endPayment">
+      </lanes>
+    </laneSets>
+    <flowElements xsi:type="bpmn:StartEvent" id="startQA" name="Start Rating Process" outgoing="interviewFlow"/>
+    <flowElements xsi:type="bpmn:Task" id="interviewPatient" name="Interview Patients" outgoing="receiveExpertiseFlow">
+      <extensionValues id="interviewPatientValue">
+        <value xsi:type="bpmn:SubProcess" id="preDefinedSubProcess1" name="Patient Interview Workflow"/>
+      </extensionValues>
+    </flowElements>
+    <flowElements xsi:type="bpmn:Task" id="askExpert" name="Ask Expert for Review" outgoing="expertResponseFlow"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="expertResponseFlow" sourceRef="askExpert" targetRef="checkTime"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="checkTime" name="Expert Responded?" outgoing="yesResponseFlow noResponseFlow"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="yesResponseFlow" name="Yes" sourceRef="checkTime" targetRef="sendExpertise"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="noResponseFlow" name="No" sourceRef="checkTime" targetRef="askExpert"/>
+    <flowElements xsi:type="bpmn:Task" id="sendExpertise" name="Send Expertise to QA" outgoing="receiveExpertiseFlow"/>
+    <flowElements xsi:type="bpmn:Task" id="receiveExpertise" name="Receive Expertise" outgoing="fileResultsFlow"/>
+    <flowElements xsi:type="bpmn:Task" id="fileResults" name="File Results" outgoing="createReportFlow"/>
+    <flowElements xsi:type="bpmn:Task" id="createReport" name="Create Report" outgoing="endReportFlow"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="endReport" name="Report Created" incoming="endReportFlow">
+      <eventDefinitions xsi:type="bpmn:SignalEventDefinition" id="reportCreated"/>
+    </flowElements>
+    <flowElements xsi:type="bpmn:Task" id="payExpert" name="Pay Expert" outgoing="endPaymentFlow"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="endPayment" name="Payment Completed" incoming="endPaymentFlow">
+      <eventDefinitions xsi:type="bpmn:SignalEventDefinition" id="paymentCompleted"/>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="interviewFlow" sourceRef="startQA" targetRef="interviewPatient"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="receiveExpertiseFlow" sourceRef="interviewPatient" targetRef="receiveExpertise"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="fileResultsFlow" sourceRef="receiveExpertise" targetRef="fileResults"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="createReportFlow" sourceRef="fileResults" targetRef="createReport"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="endReportFlow" sourceRef="createReport" targetRef="endReport"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="endPaymentFlow" sourceRef="payExpert" targetRef="endPayment"/>
+  </rootElements>
+</bpmn:Definitions>

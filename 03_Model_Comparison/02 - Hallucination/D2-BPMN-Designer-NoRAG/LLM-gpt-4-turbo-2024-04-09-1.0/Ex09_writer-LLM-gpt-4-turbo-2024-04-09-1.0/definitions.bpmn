@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:Definitions xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" xmi:version="2.0" id="PhD_Admission_Process">
+  <rootElements xsi:type="bpmn:Process" id="admissionsProcess" isExecutable="true">
+    <laneSets id="laneSet1">
+      <lanes id="lane1" name="Admissions Office">
+        <flowNodeRefs>startEvent onlineApplicationSubmittal taskGeneratePDF taskSendDocuments taskInitialAssessment taskNotifyRejection taskForwardDocuments taskCheckOutcomes taskNotifyCandidate</flowNodeRefs>
+      </lanes>
+      <lanes id="lane2" name="Academic Committee">
+        <flowNodeRefs>taskReviewApplications taskNotifyOffice</flowNodeRefs>
+      </lanes>
+    </laneSets>
+    <flowElements xsi:type="bpmn:StartEvent" id="startEvent" name="Online Application Submitted">
+      <outgoing>flow1</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="onlineApplicationSubmittal" name="Fill Online Application">
+      <incoming>flow1</incoming>
+      <outgoing>flow2</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="taskGeneratePDF" name="Generate and Download PDF">
+      <incoming>flow2</incoming>
+      <outgoing>flow3</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="taskSendDocuments" name="Send Signed PDF, Transcript, and Motivation Letter">
+      <incoming>flow3</incoming>
+      <outgoing>flow4</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="taskInitialAssessment" name="Initial Document Assessment">
+      <incoming>flow4</incoming>
+      <outgoing>flow5</outgoing>
+      <outgoing>flow6</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:EndEvent" id="endEventRejected" name="Application Rejected">
+      <incoming>flow5</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="taskNotifyRejection" name="Notify Rejection by Email">
+      <incoming>flow5</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="taskForwardDocuments" name="Forward Documents to Academic Committee">
+      <incoming>flow6</incoming>
+      <outgoing>flow7</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="taskReviewApplications" name="Monthly Review Meeting">
+      <incoming>flow7</incoming>
+      <outgoing>flow8</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="taskNotifyOffice" name="Notify Selection Outcomes">
+      <incoming>flow8</incoming>
+      <outgoing>flow9</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="taskCheckOutcomes" name="Check Selection Outcomes">
+      <incoming>flow9</incoming>
+      <outgoing>flow10</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="taskNotifyCandidate" name="Notify Candidate by Email">
+      <incoming>flow10</incoming>
+      <outgoing>flow11</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:EndEvent" id="endEventAdmitted" name="Application Process Completed">
+      <incoming>flow11</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flow1" sourceRef="startEvent" targetRef="onlineApplicationSubmittal"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flow2" sourceRef="onlineApplicationSubmittal" targetRef="taskGeneratePDF"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flow3" sourceRef="taskGeneratePDF" targetRef="taskSendDocuments"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flow4" sourceRef="taskSendDocuments" targetRef="taskInitialAssessment"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flow5" sourceRef="taskInitialAssessment" targetRef="taskNotifyRejection" name="Insufficient Grades"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flow6" sourceRef="taskInitialAssessment" targetRef="taskForwardDocuments" name="Sufficient Grades"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flow7" sourceRef="taskForwardDocuments" targetRef="taskReviewApplications"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flow8" sourceRef="taskReviewApplications" targetRef="taskNotifyOffice"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flow9" sourceRef="taskNotifyOffice" targetRef="taskCheckOutcomes"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flow10" sourceRef="taskCheckOutcomes" targetRef="taskNotifyCandidate"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="flow11" sourceRef="taskNotifyCandidate" targetRef="endEventAdmitted"/>
+  </rootElements>
+</bpmn:Definitions>

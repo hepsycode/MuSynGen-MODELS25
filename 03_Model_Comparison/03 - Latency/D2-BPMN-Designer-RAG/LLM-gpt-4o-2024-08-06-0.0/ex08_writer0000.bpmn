@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_SchoolProcess">
+  <rootElements xsi:type="bpmn:Process" id="_ElectiveCourseProcess">
+    <flowElements xsi:type="bpmn:StartEvent" id="_StartEvent" name="Start Elective Course Process" outgoing="_toCollectDescriptions"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_CollectDescriptions" name="Collect Course Descriptions" outgoing="_toEnterCBS" incoming="_toCollectDescriptions"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_toCollectDescriptions" targetRef="_CollectDescriptions" sourceRef="_StartEvent"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_EnterCBS" name="Enter Information into CBS" outgoing="_toSendStudentList" incoming="_toEnterCBS"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_toEnterCBS" targetRef="_EnterCBS" sourceRef="_CollectDescriptions"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_SendStudentList" name="Send Student List to Teachers" outgoing="_toSelectStudents" incoming="_toSendStudentList"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_toSendStudentList" targetRef="_SendStudentList" sourceRef="_EnterCBS"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_SelectStudents" name="Select Students for Courses" outgoing="_toHandleUnaccepted" incoming="_toSelectStudents"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_toSelectStudents" targetRef="_SelectStudents" sourceRef="_SendStudentList"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_HandleUnaccepted" name="Handle Unaccepted Students" outgoing="_toRebookStudents" incoming="_toHandleUnaccepted"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_toHandleUnaccepted" targetRef="_HandleUnaccepted" sourceRef="_SelectStudents"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_RebookStudents" name="Rebook Students in CBS" outgoing="_toEndEvent" incoming="_toRebookStudents"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_toRebookStudents" targetRef="_RebookStudents" sourceRef="_HandleUnaccepted"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="_EndEvent" name="End Elective Course Process" incoming="_toEndEvent"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_toEndEvent" targetRef="_EndEvent" sourceRef="_RebookStudents"/>
+    <laneSets id="_LaneSet" name="School Process">
+      <lanes id="_SecretaryLane" name="Secretary" flowNodeRefs="_CollectDescriptions _EnterCBS _SendStudentList _HandleUnaccepted _RebookStudents"/>
+      <lanes id="_TeacherLane" name="Teacher" flowNodeRefs="_SelectStudents"/>
+    </laneSets>
+  </rootElements>
+</bpmn:Definitions>

@@ -1,0 +1,78 @@
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-NoRAG/LLM-mistral-large-latest-0.0/2024-02-13 16.44 00%20-%20DigitalCam%20Nominal-representations.aird.hepsy
+
+Validation Result: Validation successful: No errors found.
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-NoRAG/LLM-mistral-large-latest-0.0/2024-02-13 16.59 00%20-%20DigitalCam%20Parallel-representations.aird.hepsy
+
+Validation Result: Validation error: org.eclipse.emf.ecore.xmi.IllegalValueException: Value 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl@24704ba1 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@2767ef9a (name: Port) (instanceClassName: null) (abstract: false, interface: false))' is not legal. (file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-NoRAG/LLM-mistral-large-latest-0.0/2024-02-13%2016.59%2000%2520-%2520DigitalCam%2520Parallel-representations.aird.hepsy, 13, 101)
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-NoRAG/LLM-mistral-large-latest-0.0/2024-02-13 17.34 01%20-%20FIRFIRGCD-representations.aird.hepsy
+
+Validation Result: Validation successful: No errors found.
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-NoRAG/LLM-mistral-large-latest-0.0/2024-02-14 14.40 02%20-%20RT%20App-representations.aird.hepsy
+
+Validation Result: Validation successful: No errors found.
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-NoRAG/LLM-mistral-large-latest-0.0/2024-02-14 14.50 03%20-%20RT%20App%20Paper-representations.aird.hepsy
+
+Validation Result: Validation error: org.eclipse.emf.ecore.xmi.IllegalValueException: Value 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl@57c232 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@5ef2ca2c (name: Process) (instanceClassName: null) (abstract: false, interface: false))' is not legal. (file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-NoRAG/LLM-mistral-large-latest-0.0/2024-02-14%2014.50%2003%2520-%2520RT%2520App%2520Paper-representations.aird.hepsy, -1, -1)
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-NoRAG/LLM-mistral-large-latest-0.0/2024-02-14 15.04 04%20-%20RT%20App%20Paper%202-representations.aird.hepsy
+
+Validation Result: Validation successful: No errors found.
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-NoRAG/LLM-mistral-large-latest-0.0/2024-02-14 15.40 05%20-%20Hepsy%20Example-representations.aird.hepsy
+
+Validation Result: Validation successful: No errors found.
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-NoRAG/LLM-mistral-large-latest-0.0/2024-02-14 15.51 06%20-%20Sobel-representations.aird.hepsy
+
+Validation Result: Validation successful: No errors found.
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-NoRAG/LLM-mistral-large-latest-0.0/2024-02-14 15.52 07%20-%20Roberts-representations.aird.hepsy
+
+Validation Result: Validation successful: No errors found.
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-NoRAG/LLM-mistral-large-latest-0.0/2024-02-14 16.25 08%20-%20RASTA-PLP-representations.aird.hepsy
+
+Validation Result: Validation successful: No errors found.
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-NoRAG/LLM-mistral-large-latest-0.0/2024-02-14 17.00 09%20-%20Susan-representations.aird.hepsy
+
+Validation Result: Validation error: org.eclipse.emf.ecore.xmi.IllegalValueException: Value 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl@59f8ee59 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@562ab058 (name: Port) (instanceClassName: null) (abstract: false, interface: false))' is not legal. (file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-NoRAG/LLM-mistral-large-latest-0.0/2024-02-14%2017.00%2009%2520-%2520Susan-representations.aird.hepsy, 34, 126)
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-NoRAG/LLM-mistral-large-latest-0.0/2024-02-14 17.46 10%20-%20JPEG_encoder-representations.aird.hepsy
+
+Validation Result: Validation successful: No errors found.
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-NoRAG/LLM-mistral-large-latest-0.0/2024-02-14 17.58 11%20-%20JPEG%20Reduced-representations.aird.hepsy
+
+Validation Result: Validation successful: No errors found.
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-NoRAG/LLM-mistral-large-latest-0.0/2024-02-14 18.17 12%20-%20FIRFIRGCD_ext-representations.aird.hepsy
+
+Validation Result: Validation successful: No errors found.
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-NoRAG/LLM-mistral-large-latest-0.0/2024-02-14 18.30 13%20-%20FIRFIRGCD_HPV-representations.aird.hepsy
+
+Validation Result: Validation error: org.eclipse.emf.ecore.xmi.UnresolvedReferenceException: Unresolved reference '//@nodes.1/@ports.5'. (file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-NoRAG/LLM-mistral-large-latest-0.0/2024-02-14%2018.30%2013%2520-%2520FIRFIRGCD_HPV-representations.aird.hepsy, 19, 96)
+
+
+Validation Summary:
+Valid models: 11
+Models with errors: 4

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hml:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hml="org.univaq.hepsy">
+  <nodes xsi:type="hml:Stimulus" name="stimulus">
+    <ports name="stim_system_out_port">
+      <pChannels name="stim_preproc_channel" pFrom="//@nodes.0/@ports.0" pTo="//@nodes.2/@ports.0" queueSize="8" rendezVous="true">
+        <message name="stim_preproc_message">
+          <entry name="raw_image_data" type="sc_int"/>
+        </message>
+      </pChannels>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:Display" name="display">
+    <ports name="system_display_in_port">
+      <pChannels name="roberts_display_channel" pFrom="//@nodes.1/@ports.0" pTo="//@nodes.2/@ports.1" queueSize="8" rendezVous="true">
+        <message name="roberts_display_message">
+          <entry name="edge_detected_image" type="sc_int"/>
+        </message>
+      </pChannels>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:StructuredNode" name="roberts">
+    <nChannels name="preproc_cross1_channel" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.1" queueSize="8" rendezVous="true">
+      <message name="preproc_cross1_message">
+        <entry name="conditioned_image_data" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="preproc_cross2_channel" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.2" queueSize="8" rendezVous="true">
+      <message name="preproc_cross2_message">
+        <entry name="conditioned_image_data" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="cross_merge_channel" nFrom="//@nodes.2/@processes.1" nTo="//@nodes.2/@processes.3" queueSize="8" rendezVous="true">
+      <message name="cross_merge_message">
+        <entry name="gradient_components" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="cross_merge_channel2" nFrom="//@nodes.2/@processes.2" nTo="//@nodes.2/@processes.3" queueSize="8" rendezVous="true">
+      <message name="cross_merge_message2">
+        <entry name="gradient_components" type="sc_int"/>
+      </message>
+    </nChannels>
+    <ports name="system_display_out_port" portExtension="//@nodes.2/@processes.3"/>
+    <processes name="preproc"/>
+    <processes name="roberts_cross1"/>
+    <processes name="roberts_cross2"/>
+    <processes name="roberts_merge"/>
+  </nodes>
+</hml:BehaviorSpecification>

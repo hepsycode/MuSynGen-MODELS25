@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_eewf4aweea-v648egk3nxQ">
+  <rootElements xsi:type="bpmn:Process" id="_eewf4aweea-v648egk3nxQ">
+    <flowElements xsi:type="bpmn:StartEvent" id="_wi3j5jewra-v648egk3nxQ" name="PhD Application Started" outgoing="_umsb0jewra-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_2oOkPjewra-v648egk3nxQ" name="Receive Online Application" outgoing="_rl0XUjewra-v648egk3nxQ" incoming="_umsb0jewra-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_5lSQ8jewra-v648egk3nxQ" name="Generate and Request Signed PDF" outgoing="_7oAqcjewra-v648egk3nxQ" incoming="_rl0XUjewra-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:IntermediateCatchEvent" id="_D0oomjewra-v648egk3nxQ" name="Documents Received" outgoing="_aQ17Mjewra-v648egk3nxQ" incoming="_7oAqcjewra-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="_1BV00jewra-v648egk3nxQ" name="Assess Grades/Motivation" outgoing="_e0SgQjewra-v648egk3nxQ _pWPfIjewra-v648egk3nxQ" incoming="_aQ17Mjewra-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_umsb0jewra-v648egk3nxQ" targetRef="_2oOkPjewra-v648egk3nxQ" sourceRef="_wi3j5jewra-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_rl0XUjewra-v648egk3nxQ" targetRef="_5lSQ8jewra-v648egk3nxQ" sourceRef="_2oOkPjewra-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_7oAqcjewra-v648egk3nxQ" targetRef="_D0oomjewra-v648egk3nxQ" sourceRef="_5lSQ8jewra-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_aQ17Mjewra-v648egk3nxQ" targetRef="_1BV00jewra-v648egk3nxQ" sourceRef="_D0oomjewra-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_IWzAojewra-v648egk3nxQ" name="Send Rejection Notification" outgoing="_lHYjQjewra-v648egk3nxQ" incoming="_e0SgQjewra-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="_5VZ0Mjewra-v648egk3nxQ" name="Application Rejected" incoming="_lHYjQjewra-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_e0SgQjewra-v648egk3nxQ" name="Reject" targetRef="_IWzAojewra-v648egk3nxQ" sourceRef="_1BV00jewra-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_qHc3ojewra-v648egk3nxQ" name="Forward to Academic Committee" outgoing="_o4PaMjewra-v648egk3nxQ" incoming="_pWPfIjewra-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_pWPfIjewra-v648egk3nxQ" name="Accept" targetRef="_qHc3ojewra-v648egk3nxQ" sourceRef="_1BV00jewra-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:IntermediateCatchEvent" id="_9o3hgjewra-v648egk3nxQ" name="Committee Decision" outgoing="_zafE0jewra-v648egk3nxQ" incoming="_o4PaMjewra-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_Wz4wUjewra-v648egk3nxQ" name="Check Outcomes and Notify" outgoing="_mqPricewra-v648egk3nxQ _ylBF4jewra-v648egk3nxQ" incoming="_zafE0jewra-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_o4PaMjewra-v648egk3nxQ" targetRef="_9o3hgjewra-v648egk3nxQ" sourceRef="_qHc3ojewra-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_zafE0jewra-v648egk3nxQ" targetRef="_Wz4wUjewra-v648egk3nxQ" sourceRef="_9o3hgjewra-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_yGnRkjewra-v648egk3nxQ" name="Send Admission Email" outgoing="_eGWo0jewra-v648egk3nxQ" incoming="_mqPricewra-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_Df1xojewra-v648egk3nxQ" name="Send Rejection Email" outgoing="_rHXsYjewra-v648egk3nxQ" incoming="_ylBF4jewra-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_mqPricewra-v648egk3nxQ" name="Admit" targetRef="_yGnRkjewra-v648egk3nxQ" sourceRef="_Wz4wUjewra-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_ylBF4jewra-v648egk3nxQ" name="Reject" targetRef="_Df1xojewra-v648egk3nxQ" sourceRef="_Wz4wUjewra-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="_1VXhYjewra-v648egk3nxQ" name="Admission Confirmed" incoming="_eGWo0jewra-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="_zVZrQjewra-v648egk3nxQ" name="Rejection Confirmed" incoming="_rHXsYjewra-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_eGWo0jewra-v648egk3nxQ" targetRef="_1VXhYjewra-v648egk3nxQ" sourceRef="_yGnRkjewra-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_rHXsYjewra-v648egk3nxQ" targetRef="_zVZrQjewra-v648egk3nxQ" sourceRef="_Df1xojewra-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_lHYjQjewra-v648egk3nxQ" targetRef="_5VZ0Mjewra-v648egk3nxQ" sourceRef="_IWzAojewra-v648egk3nxQ"/>
+    <laneSets id="_c8v8Uaweea-v648egk3nxQ" name="University">
+      <lanes id="_aBw6saweea-v648egk3nxQ" name="Admissions Office" flowNodeRefs="_wi3j5jewra-v648egk3nxQ _2oOkPjewra-v648egk3nxQ _5lSQ8jewra-v648egk3nxQ _D0oomjewra-v648egk3nxQ _1BV00jewra-v648egk3nxQ _IWzAojewra-v648egk3nxQ _5VZ0Mjewra-v648egk3nxQ _qHc3ojewra-v648egk3nxQ _Wz4wUjewra-v648egk3nxQ _yGnRkjewra-v648egk3nxQ _Df1xojewra-v648egk3nxQ _1VXhYjewra-v648egk3nxQ _zVZrQjewra-v648egk3nxQ"/>
+      <lanes id="_rfUqwaweea-v648egk3nxQ" name="Academic Committee" flowNodeRefs="_9o3hgjewra-v648egk3nxQ"/>
+    </laneSets>
+  </rootElements>
+</bpmn:Definitions>

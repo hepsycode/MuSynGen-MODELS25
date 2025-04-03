@@ -1,0 +1,61 @@
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" id="_1" targetNamespace="http://www.omg.org/bpmn20">
+  <bpmn:Collaboration id="_2" name="Supplier-Retailer Collaboration" isClosed="false">
+    <bpmn:Participant id="_3" name="Supplier" processRef="_4"/>
+    <bpmn:Participant id="_5" name="Retailer" processRef="_6"/>
+    <bpmn:MessageFlow id="_7" name="Request Offer" sourceRef="_8" targetRef="_9"/>
+    <bpmn:MessageFlow id="_10" name="Send Offer" sourceRef="_11" targetRef="_12"/>
+    <bpmn:MessageFlow id="_13" name="Order Confirmation" sourceRef="_14" targetRef="_15"/>
+    <bpmn:MessageFlow id="_16" name="Order Change" sourceRef="_17" targetRef="_18"/>
+    <bpmn:MessageFlow id="_19" name="Order Cancellation" sourceRef="_20" targetRef="_21"/>
+  </bpmn:Collaboration>
+  <bpmn:Process id="_4" name="Supplier Process" isExecutable="true">
+    <bpmn:StartEvent id="_9" name="Offer Request Received"/>
+    <bpmn:IntermediateCatchEvent id="_11" name="Send Offer to Retailer"/>
+    <bpmn:Task id="_22" name="Prepare Offer"/>
+    <bpmn:IntermediateCatchEvent id="_15" name="Receive Order Confirmation"/>
+    <bpmn:IntermediateCatchEvent id="_18" name="Receive Order Change"/>
+    <bpmn:IntermediateCatchEvent id="_21" name="Receive Order Cancellation"/>
+    <bpmn:EventBasedGateway id="_23" name="Event Based Gateway"/>
+    <bpmn:IntermediateCatchEvent id="_24" name="48h Timer"/>
+    <bpmn:Task id="_25" name="Process Order"/>
+    <bpmn:ExclusiveGateway id="_26" name="Order Change Gateway"/>
+    <bpmn:Task id="_27" name="Update Order"/>
+    <bpmn:Task id="_28" name="Cancel Order"/>
+    <bpmn:EndEvent id="_29" name="Order Processed"/>
+    <bpmn:EndEvent id="_30" name="Order Cancelled"/>
+    <bpmn:SequenceFlow id="_31" sourceRef="_9" targetRef="_22"/>
+    <bpmn:SequenceFlow id="_32" sourceRef="_22" targetRef="_11"/>
+    <bpmn:SequenceFlow id="_33" sourceRef="_11" targetRef="_23"/>
+    <bpmn:SequenceFlow id="_34" sourceRef="_23" targetRef="_15"/>
+    <bpmn:SequenceFlow id="_35" sourceRef="_23" targetRef="_18"/>
+    <bpmn:SequenceFlow id="_36" sourceRef="_23" targetRef="_21"/>
+    <bpmn:SequenceFlow id="_37" sourceRef="_23" targetRef="_24"/>
+    <bpmn:SequenceFlow id="_38" sourceRef="_15" targetRef="_25"/>
+    <bpmn:SequenceFlow id="_39" sourceRef="_24" targetRef="_28"/>
+    <bpmn:SequenceFlow id="_40" sourceRef="_21" targetRef="_28"/>
+    <bpmn:SequenceFlow id="_41" sourceRef="_18" targetRef="_26"/>
+    <bpmn:SequenceFlow id="_42" sourceRef="_26" targetRef="_27"/>
+    <bpmn:SequenceFlow id="_43" sourceRef="_27" targetRef="_23"/>
+    <bpmn:SequenceFlow id="_44" sourceRef="_28" targetRef="_30"/>
+    <bpmn:SequenceFlow id="_45" sourceRef="_25" targetRef="_29"/>
+  </bpmn:Process>
+  <bpmn:Process id="_6" name="Retailer Process" isExecutable="true">
+    <bpmn:StartEvent id="_8" name="Request Offer from Supplier"/>
+    <bpmn:IntermediateThrowEvent id="_12" name="Receive Offer"/>
+    <bpmn:Task id="_46" name="Review Offer"/>
+    <bpmn:ExclusiveGateway id="_47" name="Decision Gateway"/>
+    <bpmn:IntermediateThrowEvent id="_14" name="Send Order Confirmation"/>
+    <bpmn:IntermediateThrowEvent id="_17" name="Send Order Change"/>
+    <bpmn:IntermediateThrowEvent id="_20" name="Send Order Cancellation"/>
+    <bpmn:EndEvent id="_48" name="Process End"/>
+    <bpmn:SequenceFlow id="_49" sourceRef="_8" targetRef="_12"/>
+    <bpmn:SequenceFlow id="_50" sourceRef="_12" targetRef="_46"/>
+    <bpmn:SequenceFlow id="_51" sourceRef="_46" targetRef="_47"/>
+    <bpmn:SequenceFlow id="_52" sourceRef="_47" targetRef="_14"/>
+    <bpmn:SequenceFlow id="_53" sourceRef="_47" targetRef="_17"/>
+    <bpmn:SequenceFlow id="_54" sourceRef="_47" targetRef="_20"/>
+    <bpmn:SequenceFlow id="_55" sourceRef="_14" targetRef="_48"/>
+    <bpmn:SequenceFlow id="_56" sourceRef="_17" targetRef="_48"/>
+    <bpmn:SequenceFlow id="_57" sourceRef="_20" targetRef="_48"/>
+  </bpmn:Process>
+</bpmn:Definitions>

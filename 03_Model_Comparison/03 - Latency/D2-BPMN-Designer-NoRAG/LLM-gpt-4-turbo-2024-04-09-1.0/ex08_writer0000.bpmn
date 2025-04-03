@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" xmlns:xmi="http://www.omg.org/XMI" xmi:version="2.0" id="Definitions_ElectiveCourses">
+  <rootElements xsi:type="bpmn:Process" id="Process_ElectiveCourseSelection" name="Elective Course Allocation Process">
+    <flowElements xsi:type="bpmn:StartEvent" id="StartEvent_CourseSelection" name="Begin School Year">
+      <outgoing>SequenceFlow_StartToInit</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:Task" id="Task_SubmitCourseDescription" name="Submit Course Description">
+      <incoming>SequenceFlow_StartToInit</incoming>
+      <outgoing>SequenceFlow_SubmitToListing</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_StartToInit" sourceRef="StartEvent_CourseSelection" targetRef="Task_SubmitCourseDescription"/>
+
+    <flowElements xsi:type="bpmn:ParallelGateway" id="ParallelGateway_ReviewInitiation" name="Coordinate Course Listing">
+      <incoming>SequenceFlow_SubmitToListing</incoming>
+      <outgoing>SequenceFlow_ToRegisteredStudents</outgoing>
+      <outgoing>SequenceFlow_CollectDescriptions</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_SubmitToListing" sourceRef="Task_SubmitCourseDescription" targetRef="ParallelGateway_ReviewInitiation"/>
+
+    <flowElements xsi:type="bpmn:Task" id="Task_CollectDescriptions" name="Collect Descriptions">
+      <incoming>SequenceFlow_CollectDescriptions</incoming>
+      <outgoing>SequenceFlow_CBSUpdate</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_CollectDescriptions" sourceRef="ParallelGateway_ReviewInitiation" targetRef="Task_CollectDescriptions"/>
+
+    <flowElements xsi:type="bpmn:Task" id="Task_UpdateCourseBookingSystem" name="Update CBS">
+      <incoming>SequenceFlow_CBSUpdate</incoming>
+      <outgoing>SequenceFlow_EntryCompleted</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_CBSUpdate" sourceRef="Task_CollectDescriptions" targetRef="Task_UpdateCourseBookingSystem"/>
+
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="ExclusiveGateway_StudentReview" name="Review Student Registrations">
+      <incoming>SequenceFlow_EntryCompleted</incoming>
+      <outgoing>SequenceFlow_Prioritize</outgoing>
+      <outgoing>SequenceFlow_AcceptAll</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_EntryCompleted" sourceRef="Task_UpdateCourseBookingSystem" targetRef="ExclusiveGateway_StudentReview"/>
+
+    <flowElements xsi:type="bpmn:Task" id="Task_PrioritizeAndList" name="Prioritize and List Students">
+      <incoming>SequenceFlow_Prioritize</incoming>
+      <outgoing>SequenceFlow_NonAcceptedHandling</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_Prioritize" name="Needs Prioritization" sourceRef="ExclusiveGateway_StudentReview" targetRef="Task_PrioritizeAndList"/>
+
+    <flowElements xsi:type="bpmn:Task" id="Task_HandleNotAccepted" name="Handle Non-Accepted Students">
+      <incoming>SequenceFlow_NonAcceptedHandling</incoming>
+      <outgoing>SequenceFlow_PerformRebooking</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_NonAcceptedHandling" sourceRef="Task_PrioritizeAndList" targetRef="Task_HandleNotAccepted"/>
+
+    <flowElements xsi:type="bpmn:Task" id="Task_PerformRebooking" name="Rebook Students">
+      <incoming>SequenceFlow_PerformRebooking</incoming>
+      <outgoing>SequenceFlow_RebookingComplete</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_PerformRebooking" sourceRef="Task_HandleNotAccepted" targetRef="Task_PerformRebooking"/>
+
+    <flowElements xsi:type="bpmn:Task" id="Task_AcceptAllStudents" name="Accept All Students">
+      <incoming>SequenceFlow_AcceptAll</incoming>
+      <outgoing>SequenceFlow_RebookingComplete</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_AcceptAll" name="All Accepted" sourceRef="ExclusiveGateway_StudentReview" targetRef="Task_AcceptAllStudents"/>
+
+    <flowElements xsi:type="bpmn:EndEvent" id="EndEvent_CourseAllocationComplete" name="Course Allocation Completed">
+      <incoming>SequenceFlow_RebookingComplete</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_RebookingComplete" sourceRef="Task_PerformRebooking" targetRef="EndEvent_CourseAllocationComplete"/>
+
+    <flowElements xsi:type="bpmn:Task" id="Task_SendListingToTeachers" name="Send Student List to Teachers">
+      <incoming>SequenceFlow_ToRegisteredStudents</incoming>
+      <outgoing>SequenceFlow_ListSent</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_ToRegisteredStudents" sourceRef="ParallelGateway_ReviewInitiation" targetRef="Task_SendListingToTeachers"/>
+
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="ExclusiveGateway_DecideActionsPostList" name="Decide Based on Student Numbers">
+      <incoming>SequenceFlow_ListSent</incoming>
+      <outgoing>SequenceFlow_EntryCompleted</outgoing>
+      <outgoing>SequenceFlow_Prioritize</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_ListSent" sourceRef="Task_SendListingToTeachers" targetRef="ExclusiveGateway_DecideActionsPostList"/>
+  </rootElements>
+</bpmn:Definitions>

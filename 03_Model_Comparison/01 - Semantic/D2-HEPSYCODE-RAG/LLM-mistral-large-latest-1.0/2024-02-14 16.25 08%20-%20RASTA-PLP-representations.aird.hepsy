@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hml:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hml="org.univaq.hepsy">
+  <nodes xsi:type="hml:Stimulus" name="Stimulus">
+    <ports name="stim_system_out_port"/>
+  </nodes>
+  <nodes xsi:type="hml:StructuredNode" name="RastaPlp">
+    <ports name="system_display_out_port"/>
+    <processes name="preproc"/>
+    <processes name="rasta"/>
+    <processes name="plp"/>
+    <nChannels name="stim_preproc_channel" nFrom="//@nodes.0" nTo="//@nodes.1/@processes.0" queueSize="8" rendezVous="true">
+      <message name="raw_audio_data">
+        <entry name="audioData" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="preproc_rasta_channel" nFrom="//@nodes.1/@processes.0" nTo="//@nodes.1/@processes.1" queueSize="8" rendezVous="true">
+      <message name="conditioned_audio_data">
+        <entry name="processedAudio" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="rasta_plp_channel" nFrom="//@nodes.1/@processes.1" nTo="//@nodes.1/@processes.2" queueSize="8" rendezVous="true">
+      <message name="rasta_filtered_data">
+        <entry name="filteredAudio" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="plp_postproc_channel" nFrom="//@nodes.1/@processes.2" nTo="//@nodes.2" queueSize="8" rendezVous="true">
+      <message name="cepstral_coefficients">
+        <entry name="cepstralFeatures" type="sc_int"/>
+      </message>
+    </nChannels>
+  </nodes>
+  <nodes xsi:type="hml:Display" name="Display">
+    <ports name="system_display_in_port"/>
+  </nodes>
+  <nChannels name="display_channel" nFrom="//@nodes.1/@ports.0" nTo="//@nodes.2/@ports.0" queueSize="8" rendezVous="true">
+    <message name="display_data">
+      <entry name="displayFeatures" type="sc_int"/>
+    </message>
+  </nChannels>
+</hml:BehaviorSpecification>

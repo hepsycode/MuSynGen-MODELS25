@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_ZkUY4Y8DEe-v648egk3nxQ">
+  <rootElements xsi:type="bpmn:Process" id="_ZkUY4I8DEe-v648egk3nxQ">
+    <flowElements xsi:type="bpmn:StartEvent" id="_ZdDiegI8JEe-v648egk3nxQ" name="New Credit Request Received" outgoing="_ZFDiegI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_ZobWrUI8JEe-v648egk3nxQ" name="Assess Risk" outgoing="_ZtBvnoI8JEe-v648egk3nxQ" incoming="_ZFDiegI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_ZFDiegI8JEe-v648egk3nxQ" targetRef="_ZobWrUI8JEe-v648egk3nxQ" sourceRef="_ZdDiegI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="_Zt0sukI8JEe-v648egk3nxQ" name="Risk above threshold?" outgoing="_ZyVKpEI8JEe-v648egk3nxQ _Z3rueEI8JEe-v648egk3nxQ" incoming="_ZtBvnoI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_ZtBvnoI8JEe-v648egk3nxQ" targetRef="_Zt0sukI8JEe-v648egk3nxQ" sourceRef="_ZobWrUI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_Z0FCrQI8JEe-v648egk3nxQ" name="Advanced Risk Assessment" outgoing="_ZJ3GCUI8KEe-v648egk3nxQ" incoming="_Z3rueEI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_Z3rueEI8JEe-v648egk3nxQ" name="Yes" targetRef="_Z0FCrQI8JEe-v648egk3nxQ" sourceRef="_Zt0sukI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_Z9BHOYI8JEe-v648egk3nxQ" name="Simple Risk Assessment" outgoing="_ZEYfEkI8KEe-v648egk3nxQ" incoming="_ZyVKpEI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_ZyVKpEI8JEe-v648egk3nxQ" name="No" targetRef="_Z9BHOYI8JEe-v648egk3nxQ" sourceRef="_Zt0sukI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:ParallelGateway" id="_Zw3ntAI8JEe-v648egk3nxQ" outgoing="_ZAR0KII8KEe-v648egk3nxQ _ZWHTVPoI8LEe-v648egk3nxQ" incoming="_ZJ3GCUI8KEe-v648egk3nxQ _ZEYfEkI8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_ZEYfEkI8KEe-v648egk3nxQ" targetRef="_Zw3ntAI8JEe-v648egk3nxQ" sourceRef="_Z9BHOYI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_ZJ3GCUI8KEe-v648egk3nxQ" targetRef="_Zw3ntAI8JEe-v648egk3nxQ" sourceRef="_Z0FCrQI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_ZCn4CkI8KEe-v648egk3nxQ" name="Notify Customer" outgoing="_ZRTXmoI8KEe-v648egk3nxQ" incoming="_ZAR0KII8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_ZAR0KII8KEe-v648egk3nxQ" targetRef="_ZCn4CkI8KEe-v648egk3nxQ" sourceRef="_Zw3ntAI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_ZGf0kgI8KEe-v648egk3nxQ" name="Organize Disbursement" outgoing="_ZJ3GCUI8KEe-v648egk3nxQ" incoming="_ZWHTVPoI8LEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_ZWHTVPoI8LEe-v648egk3nxQ" targetRef="_ZGf0kgI8KEe-v648egk3nxQ" sourceRef="_Zw3ntAI8JEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="_ZjLYxEI8KEe-v648egk3nxQ" name="Assessment Completed" incoming="_ZRTXmoI8KEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_ZRTXmoI8KEe-v648egk3nxQ" targetRef="_ZjLYxEI8KEe-v648egk3nxQ" sourceRef="_ZCn4CkI8KEe-v648egk3nxQ"/>
+  </rootElements>
+</bpmn:Definitions>

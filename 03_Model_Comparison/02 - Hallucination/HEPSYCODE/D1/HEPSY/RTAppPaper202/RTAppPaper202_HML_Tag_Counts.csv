@@ -1,0 +1,21 @@
+File,Tag,Occurrences,Category,CategoryEMF
+2024-02-14 15.04 04%20-%20RT%20App%20Paper%202-representations.aird.hepsy,name,36,Uncategorized,Uncategorized
+2024-02-14 15.04 04%20-%20RT%20App%20Paper%202-representations.aird.hepsy,ports,8,Uncategorized,Classes
+2024-02-14 15.04 04%20-%20RT%20App%20Paper%202-representations.aird.hepsy,nchannels,6,Uncategorized,Relations
+2024-02-14 15.04 04%20-%20RT%20App%20Paper%202-representations.aird.hepsy,nfrom,6,Uncategorized,Attributes
+2024-02-14 15.04 04%20-%20RT%20App%20Paper%202-representations.aird.hepsy,nto,6,Uncategorized,Attributes
+2024-02-14 15.04 04%20-%20RT%20App%20Paper%202-representations.aird.hepsy,queuesize,6,Uncategorized,Attributes
+2024-02-14 15.04 04%20-%20RT%20App%20Paper%202-representations.aird.hepsy,rendezvous,6,Uncategorized,Attributes
+2024-02-14 15.04 04%20-%20RT%20App%20Paper%202-representations.aird.hepsy,message,6,Uncategorized,Classes
+2024-02-14 15.04 04%20-%20RT%20App%20Paper%202-representations.aird.hepsy,entry,6,Uncategorized,Classes
+2024-02-14 15.04 04%20-%20RT%20App%20Paper%202-representations.aird.hepsy,type,6,Uncategorized,Attributes
+2024-02-14 15.04 04%20-%20RT%20App%20Paper%202-representations.aird.hepsy,processes,6,Uncategorized,Classes
+2024-02-14 15.04 04%20-%20RT%20App%20Paper%202-representations.aird.hepsy,pchannels,4,Uncategorized,Relations
+2024-02-14 15.04 04%20-%20RT%20App%20Paper%202-representations.aird.hepsy,pfrom,4,Uncategorized,Attributes
+2024-02-14 15.04 04%20-%20RT%20App%20Paper%202-representations.aird.hepsy,pto,4,Uncategorized,Attributes
+2024-02-14 15.04 04%20-%20RT%20App%20Paper%202-representations.aird.hepsy,nodes,3,Uncategorized,Classes
+2024-02-14 15.04 04%20-%20RT%20App%20Paper%202-representations.aird.hepsy,{http://www.w3.org/2001/xmlschema-instance}type,3,Uncategorized,Uncategorized
+2024-02-14 15.04 04%20-%20RT%20App%20Paper%202-representations.aird.hepsy,portextension,2,Uncategorized,Attributes
+2024-02-14 15.04 04%20-%20RT%20App%20Paper%202-representations.aird.hepsy,processextension,2,Uncategorized,Uncategorized
+2024-02-14 15.04 04%20-%20RT%20App%20Paper%202-representations.aird.hepsy,behaviorspecification,1,Uncategorized,Uncategorized
+2024-02-14 15.04 04%20-%20RT%20App%20Paper%202-representations.aird.hepsy,{http://www.omg.org/xmi}version,1,Uncategorized,Uncategorized

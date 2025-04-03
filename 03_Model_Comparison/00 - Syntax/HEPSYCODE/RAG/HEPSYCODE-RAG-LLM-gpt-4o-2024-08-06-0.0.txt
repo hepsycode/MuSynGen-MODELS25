@@ -1,0 +1,109 @@
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-gpt-4o-2024-08-06-0.0/2024-02-13 16.44 00%20-%20DigitalCam%20Nominal-representations.aird.hepsy
+
+Validation Result: Validation successful: No errors found.
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-gpt-4o-2024-08-06-0.0/2024-02-13 16.59 00%20-%20DigitalCam%20Parallel-representations.aird.hepsy
+
+Validation Result: Validation error: org.eclipse.emf.ecore.xmi.IllegalValueException: Value 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl@305ac3c2 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@63286bff (name: Port) (instanceClassName: null) (abstract: false, interface: false))' is not legal. (file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-gpt-4o-2024-08-06-0.0/2024-02-13%2016.59%2000%2520-%2520DigitalCam%2520Parallel-representations.aird.hepsy, -1, -1)
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-gpt-4o-2024-08-06-0.0/2024-02-13 17.34 01%20-%20FIRFIRGCD-representations.aird.hepsy
+
+Validation Result: Validation errors found:
+Diagnosis of org.eclipse.emf.ecore.impl.DynamicEObjectImpl/org.univaq.hepsy#BehaviorSpecification@678a5fe2{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-gpt-4o-2024-08-06-0.0/2024-02-13%2017.34%2001%2520-%2520FIRFIRGCD-representations.aird.hepsy#/}
+  The feature 'processExtension' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/org.univaq.hepsy#Process@1f14e29f{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-gpt-4o-2024-08-06-0.0/2024-02-13%2017.34%2001%2520-%2520FIRFIRGCD-representations.aird.hepsy#//@nodes.1/@processes.0}' contains a dangling reference 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/org.univaq.hepsy#Port@6b04f3f7{#//}'
+  The feature 'processExtension' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/org.univaq.hepsy#Process@45838223{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-gpt-4o-2024-08-06-0.0/2024-02-13%2017.34%2001%2520-%2520FIRFIRGCD-representations.aird.hepsy#//@nodes.1/@processes.1}' contains a dangling reference 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/org.univaq.hepsy#Port@7043a03e{#//}'
+  The feature 'processExtension' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/org.univaq.hepsy#Process@487bb4b3{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-gpt-4o-2024-08-06-0.0/2024-02-13%2017.34%2001%2520-%2520FIRFIRGCD-representations.aird.hepsy#//@nodes.1/@processes.2}' contains a dangling reference 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/org.univaq.hepsy#Port@42c6d00{#//}'
+  The feature 'processExtension' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/org.univaq.hepsy#Process@5d67753c{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-gpt-4o-2024-08-06-0.0/2024-02-13%2017.34%2001%2520-%2520FIRFIRGCD-representations.aird.hepsy#//@nodes.1/@processes.3}' contains a dangling reference 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/org.univaq.hepsy#Port@30486cfe{#//}'
+
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-gpt-4o-2024-08-06-0.0/2024-02-14 14.40 02%20-%20RT%20App-representations.aird.hepsy
+
+Validation Result: Validation errors found:
+Diagnosis of org.eclipse.emf.ecore.impl.DynamicEObjectImpl/org.univaq.hepsy#BehaviorSpecification@70f721ce{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-gpt-4o-2024-08-06-0.0/2024-02-14%2014.40%2002%2520-%2520RT%2520App-representations.aird.hepsy#/}
+  The feature 'processExtension' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/org.univaq.hepsy#Process@787f003a{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-gpt-4o-2024-08-06-0.0/2024-02-14%2014.40%2002%2520-%2520RT%2520App-representations.aird.hepsy#//@nodes.1/@processes.0}' contains a dangling reference 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/org.univaq.hepsy#Port@6fec5424{#//}'
+  The feature 'processExtension' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/org.univaq.hepsy#Process@6f8621dd{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-gpt-4o-2024-08-06-0.0/2024-02-14%2014.40%2002%2520-%2520RT%2520App-representations.aird.hepsy#//@nodes.1/@processes.1}' contains a dangling reference 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/org.univaq.hepsy#Port@26b694b2{#//}'
+  The feature 'processExtension' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/org.univaq.hepsy#Process@26483e8e{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-gpt-4o-2024-08-06-0.0/2024-02-14%2014.40%2002%2520-%2520RT%2520App-representations.aird.hepsy#//@nodes.1/@processes.2}' contains a dangling reference 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/org.univaq.hepsy#Port@2b081317{#//}'
+  The feature 'processExtension' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/org.univaq.hepsy#Process@755e4762{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-gpt-4o-2024-08-06-0.0/2024-02-14%2014.40%2002%2520-%2520RT%2520App-representations.aird.hepsy#//@nodes.1/@processes.3}' contains a dangling reference 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/org.univaq.hepsy#Port@67df5e7f{#//}'
+
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-gpt-4o-2024-08-06-0.0/2024-02-14 14.50 03%20-%20RT%20App%20Paper-representations.aird.hepsy
+
+Validation Result: Validation error: org.eclipse.emf.ecore.xmi.FeatureNotFoundException: Feature 'pFrom' not found. (file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-gpt-4o-2024-08-06-0.0/2024-02-14%2014.50%2003%2520-%2520RT%2520App%2520Paper-representations.aird.hepsy, 15, 115)
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-gpt-4o-2024-08-06-0.0/2024-02-14 15.04 04%20-%20RT%20App%20Paper%202-representations.aird.hepsy
+
+Validation Result: Validation error: org.eclipse.emf.ecore.xmi.FeatureNotFoundException: Feature 'nFrom' not found. (file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-gpt-4o-2024-08-06-0.0/2024-02-14%2015.04%2004%2520-%2520RT%2520App%2520Paper%25202-representations.aird.hepsy, 15, 113)
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-gpt-4o-2024-08-06-0.0/2024-02-14 15.40 05%20-%20Hepsy%20Example-representations.aird.hepsy
+
+Validation Result: Validation errors found:
+Diagnosis of org.eclipse.emf.ecore.impl.DynamicEObjectImpl/org.univaq.hepsy#BehaviorSpecification@19debd64{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-gpt-4o-2024-08-06-0.0/2024-02-14%2015.40%2005%2520-%2520Hepsy%2520Example-representations.aird.hepsy#/}
+  The feature 'processExtension' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/org.univaq.hepsy#Process@1826d007{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-gpt-4o-2024-08-06-0.0/2024-02-14%2015.40%2005%2520-%2520Hepsy%2520Example-representations.aird.hepsy#//@nodes.1/@processes.0}' contains a dangling reference 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/org.univaq.hepsy#Port@da83615{#//}'
+  The feature 'processExtension' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/org.univaq.hepsy#Process@13186fb5{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-gpt-4o-2024-08-06-0.0/2024-02-14%2015.40%2005%2520-%2520Hepsy%2520Example-representations.aird.hepsy#//@nodes.1/@processes.1}' contains a dangling reference 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/org.univaq.hepsy#Port@7f41c52f{#//}'
+
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-gpt-4o-2024-08-06-0.0/2024-02-14 15.51 06%20-%20Sobel-representations.aird.hepsy
+
+Validation Result: Validation errors found:
+Diagnosis of org.eclipse.emf.ecore.impl.DynamicEObjectImpl/org.univaq.hepsy#BehaviorSpecification@77d94aff{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-gpt-4o-2024-08-06-0.0/2024-02-14%2015.51%2006%2520-%2520Sobel-representations.aird.hepsy#/}
+  The feature 'processExtension' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/org.univaq.hepsy#Process@7beca1df{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-gpt-4o-2024-08-06-0.0/2024-02-14%2015.51%2006%2520-%2520Sobel-representations.aird.hepsy#//@nodes.1/@processes.0}' contains a dangling reference 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/org.univaq.hepsy#Port@5f85e2e7{#//}'
+  The feature 'processExtension' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/org.univaq.hepsy#Process@601805c4{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-gpt-4o-2024-08-06-0.0/2024-02-14%2015.51%2006%2520-%2520Sobel-representations.aird.hepsy#//@nodes.1/@processes.1}' contains a dangling reference 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/org.univaq.hepsy#Port@5dab358a{#//}'
+  The feature 'processExtension' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/org.univaq.hepsy#Process@43d785b9{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-gpt-4o-2024-08-06-0.0/2024-02-14%2015.51%2006%2520-%2520Sobel-representations.aird.hepsy#//@nodes.1/@processes.2}' contains a dangling reference 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/org.univaq.hepsy#Port@33b5d5fe{#//}'
+  The feature 'processExtension' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/org.univaq.hepsy#Process@1323c069{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-gpt-4o-2024-08-06-0.0/2024-02-14%2015.51%2006%2520-%2520Sobel-representations.aird.hepsy#//@nodes.1/@processes.3}' contains a dangling reference 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/org.univaq.hepsy#Port@1720b0e2{#//}'
+
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-gpt-4o-2024-08-06-0.0/2024-02-14 15.52 07%20-%20Roberts-representations.aird.hepsy
+
+Validation Result: Validation errors found:
+Diagnosis of org.eclipse.emf.ecore.impl.DynamicEObjectImpl/org.univaq.hepsy#BehaviorSpecification@4cca4cb8{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-gpt-4o-2024-08-06-0.0/2024-02-14%2015.52%2007%2520-%2520Roberts-representations.aird.hepsy#/}
+  The feature 'processExtension' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/org.univaq.hepsy#Process@42d40747{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-gpt-4o-2024-08-06-0.0/2024-02-14%2015.52%2007%2520-%2520Roberts-representations.aird.hepsy#//@nodes.1/@processes.0}' contains a dangling reference 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/org.univaq.hepsy#Port@370bc045{#//}'
+  The feature 'processExtension' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/org.univaq.hepsy#Process@28fce4c4{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-gpt-4o-2024-08-06-0.0/2024-02-14%2015.52%2007%2520-%2520Roberts-representations.aird.hepsy#//@nodes.1/@processes.1}' contains a dangling reference 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/org.univaq.hepsy#Port@36cdd2ef{#//}'
+  The feature 'processExtension' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/org.univaq.hepsy#Process@5441054e{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-gpt-4o-2024-08-06-0.0/2024-02-14%2015.52%2007%2520-%2520Roberts-representations.aird.hepsy#//@nodes.1/@processes.2}' contains a dangling reference 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/org.univaq.hepsy#Port@3da1ee6b{#//}'
+  The feature 'processExtension' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/org.univaq.hepsy#Process@7234e7df{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-gpt-4o-2024-08-06-0.0/2024-02-14%2015.52%2007%2520-%2520Roberts-representations.aird.hepsy#//@nodes.1/@processes.3}' contains a dangling reference 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/org.univaq.hepsy#Port@2a3609dc{#//}'
+
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-gpt-4o-2024-08-06-0.0/2024-02-14 16.25 08%20-%20RASTA-PLP-representations.aird.hepsy
+
+Validation Result: Validation error: org.eclipse.emf.ecore.xmi.IllegalValueException: Value 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl@67f159b1 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@22406b88 (name: Port) (instanceClassName: null) (abstract: false, interface: false))' is not legal. (file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-gpt-4o-2024-08-06-0.0/2024-02-14%2016.25%2008%2520-%2520RASTA-PLP-representations.aird.hepsy, 27, 102)
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-gpt-4o-2024-08-06-0.0/2024-02-14 17.00 09%20-%20Susan-representations.aird.hepsy
+
+Validation Result: Validation error: org.eclipse.emf.ecore.xmi.UnresolvedReferenceException: Unresolved reference '//@nodes.1/@ports.1'. (file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-gpt-4o-2024-08-06-0.0/2024-02-14%2017.00%2009%2520-%2520Susan-representations.aird.hepsy, 14, 125)
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-gpt-4o-2024-08-06-0.0/2024-02-14 17.46 10%20-%20JPEG_encoder-representations.aird.hepsy
+
+Validation Result: Validation errors found:
+Diagnosis of org.eclipse.emf.ecore.impl.DynamicEObjectImpl/org.univaq.hepsy#BehaviorSpecification@78b9b415{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-gpt-4o-2024-08-06-0.0/2024-02-14%2017.46%2010%2520-%2520JPEG_encoder-representations.aird.hepsy#/}
+  The feature 'processExtension' of 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/org.univaq.hepsy#Process@17590cdc{file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-gpt-4o-2024-08-06-0.0/2024-02-14%2017.46%2010%2520-%2520JPEG_encoder-representations.aird.hepsy#//@nodes.1/@processes.0}' contains a dangling reference 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl/org.univaq.hepsy#Port@14344445{#//}'
+
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-gpt-4o-2024-08-06-0.0/2024-02-14 17.58 11%20-%20JPEG%20Reduced-representations.aird.hepsy
+
+Validation Result: Validation error: org.eclipse.emf.ecore.xmi.IllegalValueException: Value 'org.eclipse.emf.ecore.impl.DynamicEObjectImpl@b5a8577 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1363f40c (name: Port) (instanceClassName: null) (abstract: false, interface: false))' is not legal. (file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-gpt-4o-2024-08-06-0.0/2024-02-14%2017.58%2011%2520-%2520JPEG%2520Reduced-representations.aird.hepsy, -1, -1)
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-gpt-4o-2024-08-06-0.0/2024-02-14 18.17 12%20-%20FIRFIRGCD_ext-representations.aird.hepsy
+
+Validation Result: Validation successful: No errors found.
+
+
+Validating C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-gpt-4o-2024-08-06-0.0/2024-02-14 18.30 13%20-%20FIRFIRGCD_HPV-representations.aird.hepsy
+
+Validation Result: Validation error: org.eclipse.emf.ecore.xmi.UnresolvedReferenceException: Unresolved reference '//@nodes.2/@processes.4'. (file:/C:/Users/vitto/Desktop/github/Re-MASTER-LLM-MODELS/02_SMG/D2_Synthetic_Model_Dataset_FS_MAS_RAG_API/D2-HEPSYCODE-RAG/LLM-gpt-4o-2024-08-06-0.0/2024-02-14%2018.30%2013%2520-%2520FIRFIRGCD_HPV-representations.aird.hepsy, 29, 134)
+
+
+Validation Summary:
+Valid models: 2
+Models with errors: 13

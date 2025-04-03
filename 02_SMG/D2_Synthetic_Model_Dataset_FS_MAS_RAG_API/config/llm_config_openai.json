@@ -3,7 +3,7 @@
     "llm": "gpt-4o-2024-08-06",
     "price_per_input_token": 0.0000025,
     "price_per_output_token": 0.00001,
-    "temperature": 1.0,
+    "temperature": 0.0,
     "max_retries": 2,
     "api_keys": {
         "gpt-4o-2024-08-06": ""

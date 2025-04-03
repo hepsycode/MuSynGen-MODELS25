@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_e8lrdN8DEe-v648egk3nxQ">
+  <rootElements xsi:type="bpmn:Process" id="_e8lriN8DEe-v648egk3nxQ">
+    <flowElements xsi:type="bpmn:StartEvent" id="_dXuggN8LEe-v648egk3nxQ" name="Retailer requests offer" outgoing="_j7TQMN8LEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:ServiceTask" id="_fJsagN8LEe-v648egk3nxQ" name="Prepare offer" outgoing="_kY1AUN8LEe-v648egk3nxQ" incoming="_j7TQMN8LEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_j7TQMN8LEe-v648egk3nxQ" targetRef="_fJsagN8LEe-v648egk3nxQ" sourceRef="_dXuggN8LEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SendTask" id="_gO3gUN8LEe-v648egk3nxQ" name="Send offer to retailer" outgoing="_eXRqgN8LEe-v648egk3nxQ" incoming="_kY1AUN8LEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_kY1AUN8LEe-v648egk3nxQ" targetRef="_gO3gUN8LEe-v648egk3nxQ" sourceRef="_fJsagN8LEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:IntermediateCatchEvent" id="_hKtrgN8LEe-v648egk3nxQ" name="Await retailer response" outgoing="_lIcpYN8LEe-v648egk3nxQ _m7ztZN8LEe-v648egk3nxQ _n-_JaN8LEe-v648egk3nxQ" incoming="_eXRqgN8LEe-v648egk3nxQ">
+      <eventDefinitions xsi:type="bpmn:TimerEventDefinition" id="_hQueXN8LEe-v648egk3nxQ">
+        <timeDuration xsi:type="bpmn:FormalExpression" language="http://www.w3.org/1999/XPath">
+          <body xsi:type="bpmn:FormalExpression">PT48H</body>
+        </timeDuration>
+      </eventDefinitions>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_eXRqgN8LEe-v648egk3nxQ" targetRef="_hKtrgN8LEe-v648egk3nxQ" sourceRef="_gO3gUN8LEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="_iIJsmN8LEe-v648egk3nxQ" name="Response Received?" outgoing="_oGxnUN8LEe-v648egk3nxQ _pqBYYN8LEe-v648egk3nxQ _xzj4YN8LEe-v648egk3nxQ" incoming="_lIcpYN8LEe-v648egk3nxQ _n-_JaN8LEe-v648egk3nxQ _m7ztZN8LEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_lIcpYN8LEe-v648egk3nxQ" targetRef="_iIJsmN8LEe-v648egk3nxQ" sourceRef="_hKtrgN8LEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_m7ztZN8LEe-v648egk3nxQ" targetRef="_iIJsmN8LEe-v648egk3nxQ" sourceRef="_hKtrgN8LEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_n-_JaN8LEe-v648egk3nxQ" targetRef="_iIJsmN8LEe-v648egk3nxQ" sourceRef="_hKtrgN8LEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:Task" id="_rwJXgN8LEe-v648egk3nxQ" name="Process order confirmation" outgoing="_fyvmSN8LEe-v648egk3nxQ" incoming="_oGxnUN8LEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_oGxnUN8LEe-v648egk3nxQ" targetRef="_rwJXgN8LEe-v648egk3nxQ" sourceRef="_iIJsmN8LEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="_v5tIpN8LEe-v648egk3nxQ" name="Order processed" incoming="_fyvmSN8LEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_fyvmSN8LEe-v648egk3nxQ" targetRef="_v5tIpN8LEe-v648egk3nxQ" sourceRef="_rwJXgN8LEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:Task" id="_p7Z1uN8LEe-v648egk3nxQ" name="Update order and send confirmation request" outgoing="_lIcpYN8LEe-v648egk3nxQ" incoming="_pqBYYN8LEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_pqBYYN8LEe-v648egk3nxQ" targetRef="_p7Z1uN8LEe-v648egk3nxQ" sourceRef="_iIJsmN8LEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:Task" id="_qmSg1N8LEe-v648egk3nxQ" name="Cancel order" outgoing="_xrtaIN8LEe-v648egk3nxQ" incoming="_xzj4YN8LEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_xzj4YN8LEe-v648egk3nxQ" targetRef="_qmSg1N8LEe-v648egk3nxQ" sourceRef="_iIJsmN8LEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="_yzTZkN8LEe-v648egk3nxQ" name="Order cancelled" incoming="_xrtaIN8LEe-v648egk3nxQ"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_xrtaIN8LEe-v648egk3nxQ" targetRef="_yzTZkN8LEe-v648egk3nxQ" sourceRef="_qmSg1N8LEe-v648egk3nxQ"/>
+    <laneSets id="_pqrnYN8LEe-v648egk3nxQ" name="Order Process">
+      <lanes id="_pqsnYN8LEe-v648egk3nxQ" name="Supplier" flowNodeRefs="_dXuggN8LEe-v648egk3nxQ _fJsagN8LEe-v648egk3nxQ _gO3gUN8LEe-v648egk3nxQ _hKtrgN8LEe-v648egk3nxQ _iIJsmN8LEe-v648egk3nxQ _rwJXgN8LEe-v648egk3nxQ _p7Z1uN8LEe-v648egk3nxQ _qmSg1N8LEe-v648egk3nxQ"/>
+      <lanes id="_vqpnYN8LEe-v648egk3nxQ" name="Retailer" flowNodeRefs="_hKtrgN8LEe-v648egk3nxQ"/>
+    </laneSets>
+  </rootElements>
+</bpmn:Definitions>

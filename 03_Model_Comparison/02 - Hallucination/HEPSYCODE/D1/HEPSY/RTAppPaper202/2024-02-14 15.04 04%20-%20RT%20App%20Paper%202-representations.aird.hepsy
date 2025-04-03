@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hml:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hml="org.univaq.hepsy">
+  <nodes xsi:type="hml:Stimulus">
+    <ports name="stim1_out">
+      <pChannels name="stim1_system1_channel" pFrom="//@nodes.0/@ports.0" pTo="//@nodes.2/@ports.0"/>
+    </ports>
+    <ports name="stim2_out">
+      <pChannels name="stim2_system2_channel" pFrom="//@nodes.0/@ports.1" pTo="//@nodes.2/@ports.3"/>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:Display">
+    <ports name="display1_in">
+      <pChannels name="system1_display1_channel" pFrom="//@nodes.1/@ports.0" pTo="//@nodes.2/@ports.1"/>
+    </ports>
+    <ports name="display2_in">
+      <pChannels name="system2_display2_channel" pFrom="//@nodes.1/@ports.1" pTo="//@nodes.2/@ports.2"/>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:StructuredNode">
+    <nChannels name="t1_t2_channel" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.2" queueSize="16" rendezVous="true">
+      <message name="t1_t2_payload">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="t2_t3_channel" nFrom="//@nodes.2/@processes.2" nTo="//@nodes.2/@processes.3" queueSize="32" rendezVous="true">
+      <message name="t2_t3_payload">
+        <entry name="sample" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <nChannels name="t4_t2_channel" nFrom="//@nodes.2/@processes.1" nTo="//@nodes.2/@processes.2" queueSize="32" rendezVous="true">
+      <message name="t4_t2_payload">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="t1_t5_channel" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.4" queueSize="64" rendezVous="true">
+      <message name="t1_t5_payload">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="t5_t3_channel" nFrom="//@nodes.2/@processes.4" nTo="//@nodes.2/@processes.3" queueSize="128" rendezVous="true">
+      <message name="t5_t3_payload">
+        <entry name="sample" type="sc_int"/>
+      </message>
+    </nChannels>
+    <nChannels name="t2_t6_channel" nFrom="//@nodes.2/@processes.2" nTo="//@nodes.2/@processes.5" queueSize="64" rendezVous="true">
+      <message name="t2_t6_payload">
+        <entry name="t2_t6_payload" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <ports name="system1_in" portExtension="//@nodes.2/@processes.0"/>
+    <ports name="system1_out"/>
+    <ports name="system2_out"/>
+    <ports name="system1_in" portExtension="//@nodes.2/@processes.1"/>
+    <processes name="t1"/>
+    <processes name="t4"/>
+    <processes name="t2"/>
+    <processes name="t3" processExtension="//@nodes.2/@ports.1"/>
+    <processes name="t5"/>
+    <processes name="t6" processExtension="//@nodes.2/@ports.2"/>
+  </nodes>
+</hml:BehaviorSpecification>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="Definitions_1">
+  <rootElements xsi:type="bpmn:Process" id="Process_1">
+    <flowElements xsi:type="bpmn:StartEvent" id="StartEvent_1" name="Receive Credit Request" outgoing="SequenceFlow_1"/>
+    <flowElements xsi:type="bpmn:Task" id="Task_1" name="Assess Risk" outgoing="SequenceFlow_2" incoming="SequenceFlow_1"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="ExclusiveGateway_1" name="Risk Above Threshold?" outgoing="SequenceFlow_3 SequenceFlow_4" incoming="SequenceFlow_2"/>
+    <flowElements xsi:type="bpmn:Task" id="Task_2" name="Advanced Risk Assessment" outgoing="SequenceFlow_5" incoming="SequenceFlow_3"/>
+    <flowElements xsi:type="bpmn:Task" id="Task_3" name="Simple Risk Assessment" outgoing="SequenceFlow_6" incoming="SequenceFlow_4"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="ExclusiveGateway_2" name="Assessment Completed" outgoing="SequenceFlow_7" incoming="SequenceFlow_5 SequenceFlow_6"/>
+    <flowElements xsi:type="bpmn:Task" id="Task_4" name="Notify Customer" outgoing="SequenceFlow_8" incoming="SequenceFlow_7"/>
+    <flowElements xsi:type="bpmn:Task" id="Task_5" name="Organize Disbursement" outgoing="SequenceFlow_9" incoming="SequenceFlow_8"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="EndEvent_1" name="End Process" incoming="SequenceFlow_9"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_1" sourceRef="StartEvent_1" targetRef="Task_1"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_2" sourceRef="Task_1" targetRef="ExclusiveGateway_1"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_3" name="Yes" sourceRef="ExclusiveGateway_1" targetRef="Task_2"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_4" name="No" sourceRef="ExclusiveGateway_1" targetRef="Task_3"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_5" sourceRef="Task_2" targetRef="ExclusiveGateway_2"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_6" sourceRef="Task_3" targetRef="ExclusiveGateway_2"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_7" sourceRef="ExclusiveGateway_2" targetRef="Task_4"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_8" sourceRef="Task_4" targetRef="Task_5"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_9" sourceRef="Task_5" targetRef="EndEvent_1"/>
+  </rootElements>
+</bpmn:Definitions>

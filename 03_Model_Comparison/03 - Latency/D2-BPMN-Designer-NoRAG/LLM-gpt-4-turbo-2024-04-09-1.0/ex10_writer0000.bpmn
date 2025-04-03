@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:Definitions xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" xmi:version="2.0" id="BpmnDef">
+  <rootElements xsi:type="bpmn:Process" id="_Process_1" name="Supplier and Retailer Process">
+    <laneSets id="_Laneset_1">
+      <lanes id="_Lane_1" name="Retailer"/>
+      <lanes id="_Lane_2" name="Supplier"/>
+    </laneSets>
+    <flowElements xsi:type="bpmn:StartEvent" id="_StartEvent_1" name="Start">
+      <outgoing>_SequenceFlow_start_to_requestOffer</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="_UserTask_requestOffer" name="Request Offer">
+      <incoming>_SequenceFlow_start_to_requestOffer</incoming>
+      <outgoing>_SequenceFlow_requestOffer_to_prepareOffer</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_SequenceFlow_start_to_requestOffer" sourceRef="_StartEvent_1" targetRef="_UserTask_requestOffer"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_UserTask_prepareOffer" name="Prepare Offer">
+      <incoming>_SequenceFlow_requestOffer_to_prepareOffer</incoming>
+      <outgoing>_SequenceFlow_prepareOffer_to_sendOffer</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_SequenceFlow_requestOffer_to_prepareOffer" sourceRef="_UserTask_requestOffer" targetRef="_UserTask_prepareOffer"/>
+    <flowElements xsi:type="bpmn:SendTask" id="_SendTask_sendOffer" name="Send Offer">
+      <incoming>_SequenceFlow_prepareOffer_to_sendOffer</incoming>
+      <outgoing>_SequenceFlow_sendOffer_to_waitResponse</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_SequenceFlow_prepareOffer_to_sendOffer" sourceRef="_UserTask_prepareOffer" targetRef="_SendTask_sendOffer"/>
+    <flowElements xsi:type="bpmn:IntermediateCatchEvent" id="_IntermediateCatchEvent_waitResponse" name="Wait for Response">
+      <incoming>_SequenceFlow_sendOffer_to_waitResponse</incoming>
+      <outgoing>_SequenceFlow_waitResponse_to_receiveOrderConfirmation</outgoing>
+      <outgoing>_SequenceFlow_waitResponse_to_receiveOrderChange</outgoing>
+      <outgoing>_SequenceFlow_waitResponse_to_receiveOrderCancellation</outgoing>
+      <timerEventDefinition/>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_SequenceFlow_sendOffer_to_waitResponse" sourceRef="_SendTask_sendOffer" targetRef="_IntermediateCatchEvent_waitResponse"/>
+    <flowElements xsi:type="bpmn:ReceiveTask" id="_ReceiveTask_receiveOrderConfirmation" name="Receive Order Confirmation">
+      <incoming>_SequenceFlow_waitResponse_to_receiveOrderConfirmation</incoming>
+      <outgoing>_SequenceFlow_receiveOrderConfirmation_to_processOrder</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:ReceiveTask" id="_ReceiveTask_receiveOrderChange" name="Receive Order Change">
+      <incoming>_SequenceFlow_waitResponse_to_receiveOrderChange</incoming>
+      <outgoing>_SequenceFlow_receiveOrderChange_to_updateOrder</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:ReceiveTask" id="_ReceiveTask_receiveOrderCancellation" name="Receive Order Cancellation">
+      <incoming>_SequenceFlow_waitResponse_to_receiveOrderCancellation</incoming>
+      <outgoing>_SequenceFlow_receiveOrderCancellation_to_cancelOrder</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_SequenceFlow_waitResponse_to_receiveOrderConfirmation" sourceRef="_IntermediateCatchEvent_waitResponse" targetRef="_ReceiveTask_receiveOrderConfirmation"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_SequenceFlow_waitResponse_to_receiveOrderChange" sourceRef="_IntermediateCatchEvent_waitResponse" targetRef="_ReceiveTask_receiveOrderChange"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_SequenceFlow_waitResponse_to_receiveOrderCancellation" sourceRef="_IntermediateCatchEvent_waitResponse" targetRef="_ReceiveTask_receiveOrderCancellation"/>
+    <flowElements xsi:type="bpmn:UserTask" id="_UserTask_processOrder" name="Process Order">
+      <incoming>_SequenceFlow_receiveOrderConfirmation_to_processOrder</incoming>
+      <outgoing>_SequenceFlow_processOrder_to_endEvent</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="_UserTask_updateOrder" name="Update Order">
+      <incoming>_SequenceFlow_receiveOrderChange_to_updateOrder</incoming>
+      <outgoing>_SequenceFlow_updateOrder_to_confirmOrderChange</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_SequenceFlow_receiveOrderConfirmation_to_processOrder" sourceRef="_ReceiveTask_receiveOrderConfirmation" targetRef="_UserTask_processOrder"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_SequenceFlow_receiveOrderChange_to_updateOrder" sourceRef="_ReceiveTask_receiveOrderChange" targetRef="_UserTask_updateOrder"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="_EndEvent_endProcess" name="End Process">
+      <incoming>_SequenceFlow_processOrder_to_endEvent</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="_SequenceFlow_processOrder_to_endEvent" sourceRef="_UserTask_processOrder" targetRef="_EndEvent_endProcess"/>
+  </rootElements>
+</bpmn:Definitions>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hml:BehaviorSpecification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hml="org.univaq.hepsy" name="">
+  <nodes xsi:type="hml:Stimulus" name="Stimulus">
+    <ports name="stim_system_out_port">
+      <pChannels name="stim_system_channel" pFrom="//@nodes.0/@ports.0" pTo="//@nodes.2/@ports.0" queueSize="8" rendezVous="true">
+        <message name="stim_system_payload">
+          <entry name="stim_01" type="sc_uint"/>
+        </message>
+      </pChannels>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:Display" name="Display">
+    <ports name="system_display_in_port">
+      <pChannels pFrom="//@nodes.1/@ports.0"/>
+      <pChannels pFrom="//@nodes.1/@ports.0" pTo="//@nodes.2/@ports.1"/>
+    </ports>
+  </nodes>
+  <nodes xsi:type="hml:StructuredNode" name="DigitalCam">
+    <nChannels name="ccdpp_cntrl_channel" nFrom="//@nodes.2/@processes.0" nTo="//@nodes.2/@processes.1" queueSize="16" rendezVous="true">
+      <message name="ccdpp_cntrl_payload">
+        <entry name="img_01" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <nChannels name="cntrl_codec_channel" nFrom="//@nodes.2/@processes.1" nTo="//@nodes.2/@processes.2" queueSize="8" rendezVous="true">
+      <message name="cntrl_codec_payload">
+        <entry name="img_01_08" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <nChannels name="codec_cntrl_channel" nFrom="//@nodes.2/@processes.2" nTo="//@nodes.2/@processes.1" queueSize="16" rendezVous="true">
+      <message name="codec_cntrl_payload">
+        <entry name="img_01_08" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <nChannels name="cntrl_uat_channel" nFrom="//@nodes.2/@processes.1" nTo="//@nodes.2/@processes.3" queueSize="8" rendezVous="true">
+      <message name="cntrl_uat_payload">
+        <entry name="img_out" type="sc_uint"/>
+      </message>
+    </nChannels>
+    <ports name="stim_system_in_port" portExtension="//@nodes.2/@processes.0"/>
+    <ports name="system_display_out_port"/>
+    <processes name="ccdpp"/>
+    <processes name="cntrl"/>
+    <processes name="codec"/>
+    <processes name="uat" processExtension="//@nodes.2/@ports.1"/>
+  </nodes>
+</hml:BehaviorSpecification>

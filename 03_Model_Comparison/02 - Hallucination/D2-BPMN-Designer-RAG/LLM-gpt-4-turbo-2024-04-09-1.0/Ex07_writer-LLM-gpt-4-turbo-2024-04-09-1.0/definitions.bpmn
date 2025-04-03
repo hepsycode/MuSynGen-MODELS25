@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="DoctorRatingWorkflow">
+  <rootElements xsi:type="bpmn:Process" id="RatingProcess">
+    <laneSets id="DoctorRatingLaneSet">
+      <lanes id="QASpecialistLane" name="QA Specialist">
+        <flowNodeRefs>
+          <flowNodeRef>StartEvent</flowNodeRef>
+          <flowNodeRef>InterviewPatientsUserTask</flowNodeRef>
+          <flowNodeRef>CreateReportUserTask</flowNodeRef>
+        </flowNodeRefs>
+      </lanes>
+      <lanes id="ManagingDirectorLane" name="Managing Director">
+        <flowNodeRefs>
+          <flowNodeRef>AskExpertUserTask</flowNodeRef>
+          <flowNodeRef>HandleExpertiseUserTask</flowNodeRef>
+          <flowNodeRef>PayExpertUserTask</flowNodeRef>
+        </flowNodeRefs>
+      </lanes>
+    </laneSets>
+    <flowElements xsi:type="bpmn:StartEvent" id="StartEvent" name="Start Doctor Rating" outgoing="SequenceFlow1"/>
+    <flowElements xsi:type="bpmn:UserTask" id="InterviewPatientsUserTask" name="Interview Patients" incoming="SequenceFlow1" outgoing="SequenceFlow2"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow1" sourceRef="StartEvent" targetRef="InterviewPatientsUserTask"/>
+    <flowElements xsi:type="bpmn:UserTask" id="AskExpertUserTask" name="Ask External Expert" incoming="SequenceFlow2" outgoing="SequenceFlow3"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow2" sourceRef="InterviewPatientsUserTask" targetRef="AskExpertUserTask"/>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="ExpertResponseGateway" name="Did Expert Respond?" incoming="SequenceFlow3" outgoing="SequenceFlow4 SequenceFlow5"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow3" sourceRef="AskExpertUserTask" targetRef="ExpertResponseGateway"/>
+    <flowElements xsi:type="bpmn:UserTask" id="HandleExpertiseUserTask" name="Receive Expertise" incoming="SequenceFlow4" outgoing="SequenceFlow6"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow4" name="Yes - Expertise Received" sourceRef="ExpertResponseGateway" targetRef="HandleExpertiseUserTask"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow5" name="No - Ask Another Expert" sourceRef="ExpertResponseGateway" targetRef="AskExpertUserTask"/>
+    <flowElements xsi:type="bpmn:UserTask" id="CreateReportUserTask" name="Create Report" incoming="SequenceFlow6" outgoing="EndEventSequenceFlow"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow6" sourceRef="HandleExpertiseUserTask" targetRef="CreateReportUserTask"/>
+    <flowElements xsi:type="bpmn:UserTask" id="PayExpertUserTask" name="Pay Expert" incoming="SequenceFlow4" outgoing="SequenceFlow7"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow7" sourceRef="PayExpertUserTask" targetRef="HandleExpertiseUserTask"/>
+    <flowElements xsi:type="bpmn:EndEvent" id="EndEvent" name="End Doctor Rating" incoming="EndEventSequenceFlow"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="EndEventSequenceFlow" sourceRef="CreateReportUserTask" targetRef="EndEvent"/>
+  </rootElements>
+</bpmn:Definitions>

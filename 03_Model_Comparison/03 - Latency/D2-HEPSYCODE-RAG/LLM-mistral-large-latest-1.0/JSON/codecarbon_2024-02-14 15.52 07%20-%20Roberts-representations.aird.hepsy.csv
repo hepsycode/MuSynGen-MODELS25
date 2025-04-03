@@ -1,0 +1,6 @@
+total_emissions,node
+4.687513099957221e-08,generate_query_node
+6.425785765278736e-08,cache_context_node
+0.0008850782730930013,model_generation_node
+1.2896136884746885e-07,model_validation_node
+0.002103322889568203,FILE_2024-02-14 15.52 07%20-%20Roberts-representations.aird.hepsy

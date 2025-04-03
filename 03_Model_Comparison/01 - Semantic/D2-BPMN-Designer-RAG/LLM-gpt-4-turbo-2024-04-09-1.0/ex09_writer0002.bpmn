@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="Definitions_1">
+  <rootElements xsi:type="bpmn:Process" id="Process_1">
+    <laneSets id="LaneSet_1">
+      <lanes id="Lane_1" name="Admissions Office">
+        <flowNodeRefs>Activity_1 Activity_2 Activity_5</flowNodeRefs>
+      </lanes>
+      <lanes id="Lane_2" name="Academic Committee">
+        <flowNodeRefs>Activity_7</flowNodeRefs>
+      </lanes>
+      <lanes id="Lane_3" name="Administration Office">
+        <flowNodeRefs>Activity_3 Activity_6 Activity_8 Activity_9</flowNodeRefs>
+      </lanes>
+    </laneSets>
+    <flowElements xsi:type="bpmn:StartEvent" id="StartEvent_1" name="Start Application">
+      <outgoing>SequenceFlow_1</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="Activity_1" name="Fill Online Application">
+      <incoming>SequenceFlow_1</incoming>
+      <outgoing>SequenceFlow_2</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:Task" id="Activity_2" name="Record Online Application">
+      <incoming>SequenceFlow_2</incoming>
+      <outgoing>SequenceFlow_3</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="Activity_3" name="Generate PDF">
+      <incoming>SequenceFlow_3</incoming>
+      <outgoing>SequenceFlow_4</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="Activity_5" name="Initial Assessment">
+      <incoming>SequenceFlow_4</incoming>
+      <outgoing>SequenceFlow_5</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="ExclusiveGateway_1" name="Check Grades">
+      <incoming>SequenceFlow_5</incoming>
+      <outgoing>SequenceFlow_6</outgoing>
+      <outgoing>SequenceFlow_7</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:EndEvent" id="EndEvent_2" name="Reject by Email">
+      <incoming>SequenceFlow_6</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="Activity_6" name="Forward Application to Committee">
+      <incoming>SequenceFlow_7</incoming>
+      <outgoing>SequenceFlow_8</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="Activity_7" name="Meeting &amp; Decision">
+      <incoming>SequenceFlow_8</incoming>
+      <outgoing>SequenceFlow_9</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:ExclusiveGateway" id="ExclusiveGateway_2" name="Check Decision">
+      <incoming>SequenceFlow_9</incoming>
+      <outgoing>SequenceFlow_10</outgoing>
+      <outgoing>SequenceFlow_11</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="Activity_8" name="Send Admission Email">
+      <incoming>SequenceFlow_10</incoming>
+      <outgoing>SequenceFlow_12</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:UserTask" id="Activity_9" name="Send Rejection Email">
+      <incoming>SequenceFlow_11</incoming>
+      <outgoing>SequenceFlow_13</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:ParallelGateway" id="ParallelGateway_1" name="Final Process">
+      <incoming>SequenceFlow_12</incoming>
+      <incoming>SequenceFlow_13</incoming>
+      <outgoing>SequenceFlow_14</outgoing>
+    </flowElements>
+    <flowElements xsi:type="bpmn:EndEvent" id="EndEvent_3" name="End Process">
+      <incoming>SequenceFlow_14</incoming>
+    </flowElements>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_1" sourceRef="StartEvent_1" targetRef="Activity_1"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_2" sourceRef="Activity_1" targetRef="Activity_2"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_3" sourceRef="Activity_2" targetRef="Activity_3"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_4" sourceRef="Activity_3" targetRef="Activity_5"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_5" sourceRef="Activity_5" targetRef="ExclusiveGateway_1"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_6" name="Insufficient" sourceRef="ExclusiveGateway_1" targetRef="EndEvent_2"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_7" name="Sufficient" sourceRef="ExclusiveGateway_1" targetRef="Activity_6"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_8" sourceRef="Activity_6" targetRef="Activity_7"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_9" sourceRef="Activity_7" targetRef="ExclusiveGateway_2"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_10" name="Admission" sourceRef="ExclusiveGateway_2" targetRef="Activity_8"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_11" name="Rejection" sourceRef="ExclusiveGateway_2" targetRef="Activity_9"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_12" sourceRef="Activity_8" targetRef="ParallelGateway_1"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_13" sourceRef="Activity_9" targetRef="ParallelGateway_1"/>
+    <flowElements xsi:type="bpmn:SequenceFlow" id="SequenceFlow_14" sourceRef="ParallelGateway_1" targetRef="EndEvent_3"/>
+  </rootElements>
+</bpmn:Definitions>
