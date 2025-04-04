@@ -66,6 +66,8 @@ Includes analysis scripts and results:
 | Mistral Small   | 131K           | $0.10 / $0.30                      |
 | Mistral Large   | 131K           | $2.00 / $6.00                      |
 
+and more...
+
 ## 📄 Scientific Reference
 
 
@@ -74,8 +76,10 @@ Includes analysis scripts and results:
 
 - Vittoriano Muttillo — [vmuttillo@unite.it](mailto:vmuttillo@unite.it)  
 - Romina Eramo — [reramo@unite.it](mailto:reramo@unite.it)  
-- Riccardo Rubei, Claudio Di Sipio — [@univaq.it](mailto:)
-- Luca Berardinelli — [@jku.at](mailto:)
+- Riccardo Rubei — [riccardo.rubei@univaq.it](mailto:) 
+- Claudio Di Sipio — [claudio.disipio@univaq.it](mailto:)
+- Giacomo Valente — [giacomo.valente@univaq.it](mailto:)
+- Luca Berardinelli — [luca.berardinelli@jku.at](mailto:)
 
 Feel free to reach out for questions, feedback, or collaborations!
 
